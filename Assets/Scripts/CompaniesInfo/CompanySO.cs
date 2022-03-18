@@ -42,7 +42,7 @@ public class CompanySO : ScriptableObject
     void UpdatePrice()
     {
         _priceHistory.Add(price);
-        
+    
         float delta =  Random.Range(-2f,2f);
         price = price * delta/100;
     }
