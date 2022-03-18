@@ -24,7 +24,7 @@ public class Euros:Valute
 
 }
 
-public class Balance : MonoBehaviour
+public class Balance
 {
     public Dollars Dol;
     public Euros Eur;

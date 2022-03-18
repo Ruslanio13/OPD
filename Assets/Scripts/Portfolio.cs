@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 
 
-public class Portfolio : MonoBehaviour
+public class Portfolio
 {
     private Dictionary<CompanySO, int> _portfolio;
 
