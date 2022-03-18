@@ -6,6 +6,7 @@ public class DetailedInfoManager : MonoBehaviour
 {
     
     [SerializeField] public List<CompanySO> companies= new List<CompanySO>();
+    [SerializeField] public Graph _graph;
     public int currentIndex;
     public CompanySO currentCompany;
     [SerializeField] DetailedInfo table;
@@ -23,5 +24,18 @@ public class DetailedInfoManager : MonoBehaviour
         currentIndex = index;
         currentCompany = companies[currentIndex];
         table.SetInfo(companies[currentIndex]);
+    }
+
+
+
+    private void FixedUpdate() {
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            foreach(CompanySO comp in companies)
+            {
+                comp.UpdatePrice();
+            }
+            _graph.UpdateGraph();
+        }
     }
 }

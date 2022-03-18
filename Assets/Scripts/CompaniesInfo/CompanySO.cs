@@ -40,7 +40,7 @@ public class CompanySO : ScriptableObject
     public List<float> _priceHistory = new List<float>();
     
 
-    void UpdatePrice()
+    public void UpdatePrice()
     {
         _priceHistory.Add(price);
     
