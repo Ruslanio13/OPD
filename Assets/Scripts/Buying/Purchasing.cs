@@ -15,17 +15,23 @@ public class Purchasing : MonoBehaviour
     int sign;
     public void Buy()
     {
-        confirmationTable.SetActive(true);
-        prePurchaseTable.SetActive(false);
-        question.text = "Are you want to buy " + Convert.ToInt32(amountText.text) + " ?" ;
-        sign=1;
+        if(amountText.text != "")
+        {
+            confirmationTable.SetActive(true);
+            prePurchaseTable.SetActive(false);
+            question.text = "Are you want to buy " + Convert.ToInt32(amountText.text) + " ?" ;
+            sign=1;
+        }
     }
      public void Sell()
     {
-        confirmationTable.SetActive(true);
-        prePurchaseTable.SetActive(false);
-        question.text = "Are you want to sell " + Convert.ToInt32(amountText.text) + " ?" ;
-        sign=-1;
+        if(amountText.text != "")
+        {
+            confirmationTable.SetActive(true);
+            prePurchaseTable.SetActive(false);
+            question.text = "Are you want to sell " + Convert.ToInt32(amountText.text) + " ?" ;
+            sign=-1;
+        }
     }
 
     public void ConfirmAmount()
@@ -35,7 +41,7 @@ public class Purchasing : MonoBehaviour
     }
     public void Cancel()
     {
-        amountText.text = "Enter amount";
+        amountText.text = "";
         confirmationTable.SetActive(false);
         prePurchaseTable.SetActive(true); 
     }
