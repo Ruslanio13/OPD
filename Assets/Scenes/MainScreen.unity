@@ -11269,9 +11269,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2cd4ee3cdcd46924d8ae85704334e9d2, type: 2}
   - {fileID: 11400000, guid: ba55fc25e1ad9504fa0b58ef3a752158, type: 2}
   _graph: {fileID: 1840101093}
+  table: {fileID: 1346719311}
   currentIndex: 0
   currentCompany: {fileID: 0}
-  table: {fileID: 1346719311}
 --- !u!224 &1404330200 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4567249768268603063, guid: 142335b02e52bd34e87b1bab42f9ff4a, type: 3}
@@ -14788,6 +14788,46 @@ LineRenderer:
   - {x: 400, y: -300, z: 0}
   - {x: 400, y: -300, z: 0}
   - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
+  - {x: 400, y: -300, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -14856,7 +14896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _graph: {fileID: 1840101092}
-  _stepX: 80
+  _stepX: 40
   _deltaX: -400
   _deltaY: -350
   _scale: 10
