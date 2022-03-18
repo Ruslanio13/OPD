@@ -24,10 +24,10 @@ public class Graph : MonoBehaviour
         int count = DetailedInfoManager._instance.currentCompany._priceHistory.Count;
         for (int i = count - _graph.positionCount; i < count; i++, g++)
         {
-            //_graph.SetPosition(g, new Vector2(g * _stepX + _deltaX, Mathf.Clamp((DetailedInfoManager._instance.currentCompany._priceHistory[i] - DetailedInfoManager._instance.currentCompany._priceHistory[0] * .9f) * _scale, 0, 700) + _deltaY));
-            _graph.SetPosition(g, new Vector2(g * _stepX + _deltaX, DetailedInfoManager._instance.currentCompany._priceHistory[i] * 10));
+
+            _graph.SetPosition(g, new Vector2(g * _stepX + _deltaX, Mathf.Clamp((DetailedInfoManager._instance.currentCompany._priceHistory[i] 
+                - DetailedInfoManager._instance.currentCompany._priceHistory[0]) * _scale, -100, 600) + _deltaY));
         }
-        _graph.transform.localPosition = new Vector2(350f-_graph.GetPosition(_graph.positionCount-1).x, -_graph.GetPosition(_graph.positionCount-1).y);
     }
 
 }

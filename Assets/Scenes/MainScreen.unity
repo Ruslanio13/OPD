@@ -11651,7 +11651,7 @@ GameObject:
   - component: {fileID: 1439281986}
   - component: {fileID: 1439281985}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Graph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13469,7 +13469,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 448175666}
   m_Direction: 2
   m_Value: 0.99999934
-  m_Size: 0.42388865
+  m_Size: 0.42388868
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14898,7 +14898,7 @@ MonoBehaviour:
   _graph: {fileID: 1840101092}
   _stepX: 40
   _deltaX: -400
-  _deltaY: -350
+  _deltaY: -250
   _scale: 10
 --- !u!1 &1861904760
 GameObject:
