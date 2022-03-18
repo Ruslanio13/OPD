@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nokia
   m_EditorClassIdentifier: 
   companyName: Nokia
-  price: 15
+  price: 1.4316412e-16
   averagePrice2017: 0
   averagePrice2018: 0
   averagePrice2019: 0
@@ -24,3 +24,23 @@ MonoBehaviour:
   profit: 0
   staff: 0
   credit: 0
+  _vertices: []
+  _priceHistory:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 15
+  - -0.26289296
+  - -0.0014903207
+  - -0.000026936308
+  - 0.00000045247407
+  - 0.0000000033241572
+  - -3.1539558e-12
+  - -2.2771383e-14

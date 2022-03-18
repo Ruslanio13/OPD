@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Xiaomi
   m_EditorClassIdentifier: 
   companyName: Xiaomi
-  price: 18
+  price: 6.78967e-17
   averagePrice2017: 0
   averagePrice2018: 0
   averagePrice2019: 0
@@ -24,3 +24,23 @@ MonoBehaviour:
   profit: 0
   staff: 0
   credit: 0
+  _vertices: []
+  _priceHistory:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 18
+  - 0.32471886
+  - -0.001889003
+  - 0.000017093793
+  - -0.000000023059828
+  - -2.8128916e-10
+  - 3.9275944e-12
+  - -7.768271e-14

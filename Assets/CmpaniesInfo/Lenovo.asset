@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lenovo
   m_EditorClassIdentifier: 
   companyName: Lenovo
-  price: 12
+  price: 7.1032776e-16
   averagePrice2017: 0
   averagePrice2018: 0
   averagePrice2019: 0
@@ -24,3 +24,23 @@ MonoBehaviour:
   profit: 0
   staff: 0
   credit: 0
+  _vertices: []
+  _priceHistory:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 12
+  - -0.112931184
+  - -0.00046277672
+  - -0.000007815818
+  - -0.000000043615547
+  - -2.0382135e-10
+  - -3.736551e-12
+  - -4.9387157e-14

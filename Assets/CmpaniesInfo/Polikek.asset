@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Polikek
   m_EditorClassIdentifier: 
   companyName: Polikek
-  price: 1
+  price: 4.5704554e-18
   averagePrice2017: 0
   averagePrice2018: 0
   averagePrice2019: 0
@@ -24,3 +24,23 @@ MonoBehaviour:
   profit: 0
   staff: 0
   credit: 0
+  _vertices: []
+  _priceHistory:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 1
+  - 0.0038482214
+  - 0.0000037788097
+  - 0.00000006456202
+  - 0.0000000011397213
+  - 1.7976183e-11
+  - 2.2524376e-13
+  - 2.854261e-16

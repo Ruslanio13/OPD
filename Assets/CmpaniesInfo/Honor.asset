@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Honor
   m_EditorClassIdentifier: 
   companyName: Honor
-  price: 123
+  price: 2.9210305e-17
   averagePrice2017: 0
   averagePrice2018: 0
   averagePrice2019: 0
@@ -24,3 +24,23 @@ MonoBehaviour:
   profit: 0
   staff: 0
   credit: 0
+  _vertices: []
+  _priceHistory:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 123
+  - 0.3367548
+  - 0.0034878475
+  - 0.0000010912745
+  - 0.000000016559298
+  - -2.1320473e-10
+  - -3.0476054e-12
+  - 2.8051116e-14

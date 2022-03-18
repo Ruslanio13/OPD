@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sber
   m_EditorClassIdentifier: 
   companyName: sber
-  price: 0.01
+  price: -2.420825e-19
   averagePrice2017: 0
   averagePrice2018: 0
   averagePrice2019: 0
@@ -24,3 +24,23 @@ MonoBehaviour:
   profit: 0
   staff: 0
   credit: 0
+  _vertices: []
+  _priceHistory:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0.01
+  - 0.00016455611
+  - 0.0000013230105
+  - 0.000000010723815
+  - -1.7391279e-10
+  - 1.7227521e-13
+  - -2.8725454e-15
+  - 2.5750968e-17

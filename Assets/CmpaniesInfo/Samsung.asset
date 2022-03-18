@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Samsung
   m_EditorClassIdentifier: 
   companyName: Samsung
-  price: 200
+  price: -3.6884338e-16
   averagePrice2017: 0
   averagePrice2018: 0
   averagePrice2019: 0
@@ -24,3 +24,23 @@ MonoBehaviour:
   profit: 0
   staff: 0
   credit: 0
+  _vertices: []
+  _priceHistory:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 200
+  - -1.8419547
+  - 0.019129584
+  - 0.00023847543
+  - 0.0000007435511
+  - 0.0000000027160214
+  - -9.159562e-12
+  - 3.4282036e-14
