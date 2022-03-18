@@ -36,9 +36,16 @@ public class CompanySO : ScriptableObject
     public float GetPrice()=> price;
     
 
-    
+    public List<float> _priceHistory = new List<float>();
     
 
+    void UpdatePrice()
+    {
+        _priceHistory.Add(price);
+        
+        float delta =  Random.Range(-2f,2f);
+        price = price * delta/100;
+    }
     
     
 }
