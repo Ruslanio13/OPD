@@ -17,7 +17,7 @@ public class Portfolio : MonoBehaviour
 
 
         if(_portfolio.ContainsKey(company))
-            _portfolio[company] += 1;
+            _portfolio[company] += amount;
         else
             _portfolio.Add(company,amount);
 
