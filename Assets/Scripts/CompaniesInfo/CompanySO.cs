@@ -18,6 +18,7 @@ public class CompanySO : ScriptableObject
     [SerializeField] float profit;
     [SerializeField] int staff;
     [SerializeField] float credit;
+    [SerializeField] List<Vector2> _vertices = new List<Vector2>();
 
     
     public float AveragePrice2017 { get => averagePrice2017;  }
