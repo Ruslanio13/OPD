@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetCompanies : MonoBehaviour
+public class DetailedInfoManager : MonoBehaviour
 {
     
     [SerializeField] public List<CompanySO> companies= new List<CompanySO>();
@@ -13,7 +13,7 @@ public class SetCompanies : MonoBehaviour
         if(_instance == null){ _instance = this;}
     }
 
-    public static SetCompanies _instance;
+    public static DetailedInfoManager _instance;
 
     public void UpdateTable(int index)
     {
