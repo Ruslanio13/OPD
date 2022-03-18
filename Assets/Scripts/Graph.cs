@@ -25,7 +25,7 @@ public class Graph : MonoBehaviour
         for (int i = count - 10; i < count; i++, g++)
         {
 
-            _graph.SetPosition(g, new Vector2(g * _stepX + _deltaX, Mathf.Clamp((DetailedInfoManager._instance.currentCompany._priceHistory[i] - 90f) * _scale, 0, 700) + _deltaY));
+            _graph.SetPosition(g, new Vector2(g * _stepX + _deltaX, Mathf.Clamp((DetailedInfoManager._instance.currentCompany._priceHistory[i] - DetailedInfoManager._instance.currentCompany._priceHistory[0] * .9f) * _scale, 0, 700) + _deltaY));
         }
     }
 

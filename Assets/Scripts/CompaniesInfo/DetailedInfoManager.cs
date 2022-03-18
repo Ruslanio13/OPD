@@ -7,9 +7,9 @@ public class DetailedInfoManager : MonoBehaviour
     
     [SerializeField] public List<CompanySO> companies= new List<CompanySO>();
     [SerializeField] public Graph _graph;
+    [SerializeField] DetailedInfo table;
     public int currentIndex;
     public CompanySO currentCompany;
-    [SerializeField] DetailedInfo table;
     void Awake() 
     {
         if(_instance == null){ _instance = this;}
