@@ -11153,16 +11153,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e11830c40ea4e3459eab245df98f3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  averagePrice2017: {fileID: 0}
-  averagePrice2018: {fileID: 0}
-  averagePrice2019: {fileID: 0}
-  averagePrice2020: {fileID: 0}
-  averagePrice2021: {fileID: 0}
-  capitalization: {fileID: 0}
-  amountOfSecurities: {fileID: 0}
-  profit: {fileID: 0}
-  staff: {fileID: 0}
-  credit: {fileID: 0}
+  averagePrice2017: {fileID: 1503727243}
+  averagePrice2018: {fileID: 914053868}
+  averagePrice2019: {fileID: 2084681625}
+  averagePrice2020: {fileID: 1882861568}
+  averagePrice2021: {fileID: 2133172743}
+  capitalization: {fileID: 179871993}
+  amountOfSecurities: {fileID: 489138764}
+  profit: {fileID: 717202019}
+  staff: {fileID: 2092471593}
+  credit: {fileID: 1279402185}
 --- !u!224 &1348084642 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4567249768268603063, guid: 142335b02e52bd34e87b1bab42f9ff4a, type: 3}
