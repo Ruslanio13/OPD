@@ -9,9 +9,34 @@ public class Purchasing : MonoBehaviour
 {
     [SerializeField] TMP_InputField amountText;
     [SerializeField] int amount;
-    public void EnterAmount()
+    [SerializeField] GameObject confirmationTable;
+    [SerializeField] GameObject prePurchaseTable;
+    [SerializeField] TextMeshProUGUI question;
+    int sign;
+    public void Buy()
     {
-        amount = Convert.ToInt32(amountText.text);        
-        
+        confirmationTable.SetActive(true);
+        prePurchaseTable.SetActive(false);
+        question.text = "Are you want to buy " + Convert.ToInt32(amountText.text) + " ?" ;
+        sign=1;
+    }
+     public void Sell()
+    {
+        confirmationTable.SetActive(true);
+        prePurchaseTable.SetActive(false);
+        question.text = "Are you want to sell " + Convert.ToInt32(amountText.text) + " ?" ;
+        sign=-1;
+    }
+
+    public void ConfirmAmount()
+    {
+        amount = sign*Convert.ToInt32(amountText.text);
+        Cancel(); 
+    }
+    public void Cancel()
+    {
+        amountText.text = "Enter amount";
+        confirmationTable.SetActive(false);
+        prePurchaseTable.SetActive(true); 
     }
 }
