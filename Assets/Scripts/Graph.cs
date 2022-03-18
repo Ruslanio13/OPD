@@ -14,7 +14,6 @@ public class Graph : MonoBehaviour
 
     private void Start()
     {
-
         UpdateGraph();
     }
 
@@ -22,12 +21,12 @@ public class Graph : MonoBehaviour
     {
         int g = 0;
         int count = DetailedInfoManager._instance.currentCompany._priceHistory.Count;
-        for (int i = count - 10; i < count; i++, g++)
+        for (int i = count - _graph.positionCount; i < count; i++, g++)
         {
             //_graph.SetPosition(g, new Vector2(g * _stepX + _deltaX, Mathf.Clamp((DetailedInfoManager._instance.currentCompany._priceHistory[i] - DetailedInfoManager._instance.currentCompany._priceHistory[0] * .9f) * _scale, 0, 700) + _deltaY));
-            _graph.SetPosition(g, new Vector2(g * _stepX + _deltaX, DetailedInfoManager._instance.currentCompany._priceHistory[i]));
+            _graph.SetPosition(g, new Vector2(g * _stepX, DetailedInfoManager._instance.currentCompany._priceHistory[i]*10));
         }
-        _graph.transform.localPosition = new Vector2(_graph.transform.position.x, _graph.GetPosition(9).y);
+        _graph.transform.localPosition = new Vector2(-_graph.transform.position.x+_deltaX, -_graph.GetPosition(_graph.positionCount-1).y);
     }
 
 }

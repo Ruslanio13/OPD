@@ -30,7 +30,7 @@ public class DetailedInfoManager : MonoBehaviour
 
 
 
-    private void FixedUpdate() {
+    private void Update() {
         if(Input.GetKeyDown(KeyCode.A))
         {
             foreach(CompanySO comp in companies)
@@ -41,8 +41,5 @@ public class DetailedInfoManager : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit() {
-        foreach(CompanySO comp in companies)
-            comp.ClearHistory();
-    }
+
 }

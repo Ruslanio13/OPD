@@ -40,6 +40,7 @@ public class CompanySO : ScriptableObject
 
 
 
+
     public void UpdatePrice()
     {
         _priceHistory.Add(price);
@@ -47,10 +48,22 @@ public class CompanySO : ScriptableObject
         price += price * delta / 100;
     }
 
+
+    public void GeneratePreGameHistory()
+    {
+        float delta;
+        for(int i = 0; i < 1500; i++)
+            {
+                _priceHistory.Add(price);
+                delta = Random.Range(-2f, 2f);
+                price += price * delta /100;
+            }
+    }
+
     public void ClearHistory() 
     {
         if(_priceHistory.Count>10)
         _priceHistory.RemoveRange(0,_priceHistory.Count-10);    
     }
-    
+
 }
