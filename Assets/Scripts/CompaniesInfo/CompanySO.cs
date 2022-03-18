@@ -33,7 +33,7 @@ public class CompanySO : ScriptableObject
 
     public string returnNameOfCompany() => companyName;
 
-    public float returnPrice()=> price;
+    public float GetPrice()=> price;
     
 
     
