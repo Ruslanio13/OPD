@@ -19,11 +19,13 @@ public class DetailedInfoManager : MonoBehaviour
 
     public static DetailedInfoManager _instance;
 
-    public void UpdateTable(int index)
+    public void UpdateAllInformation(int index)
     {
         currentIndex = index;
         currentCompany = companies[currentIndex];
         table.SetInfo(companies[currentIndex]);
+        _graph.UpdateGraph();
+
     }
 
 
@@ -38,4 +40,5 @@ public class DetailedInfoManager : MonoBehaviour
             _graph.UpdateGraph();
         }
     }
+
 }

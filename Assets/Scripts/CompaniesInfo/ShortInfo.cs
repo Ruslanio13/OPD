@@ -25,7 +25,7 @@ public class ShortInfo : MonoBehaviour
     {
 
         company = DetailedInfoManager._instance.companies[index];
-        button.onClick.AddListener(()=>{DetailedInfoManager._instance.UpdateTable(index);});
+        button.onClick.AddListener(()=>{DetailedInfoManager._instance.UpdateAllInformation(index);});
         companyName.text = company.returnNameOfCompany();
         price.text = company.GetPrice().ToString();
     }
