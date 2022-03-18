@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShefKebab
   m_EditorClassIdentifier: 
   companyName: ShefKebab
-  price: 100
+  price: 2.4064962e-14
   averagePrice2017: 0
   averagePrice2018: 0
   averagePrice2019: 0
@@ -24,3 +24,23 @@ MonoBehaviour:
   profit: 0
   staff: 0
   credit: 0
+  _vertices: []
+  _priceHistory:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 100
+  - -1.8810625
+  - -0.024708176
+  - -0.000043499203
+  - 0.00000076226485
+  - -0.000000014578497
+  - 1.425188e-10
+  - 1.8642364e-12

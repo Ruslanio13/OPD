@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Jora
   m_EditorClassIdentifier: 
   companyName: Jora
-  price: 1000
+  price: 2.4275071e-14
   averagePrice2017: 0
   averagePrice2018: 0
   averagePrice2019: 0
@@ -24,3 +24,23 @@ MonoBehaviour:
   profit: 0
   staff: 0
   credit: 0
+  _vertices: []
+  _priceHistory:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 1000
+  - -5.069368
+  - 0.014805506
+  - -0.00021198487
+  - 0.000003828357
+  - 0.000000030081747
+  - -1.5720604e-10
+  - 1.4786548e-12

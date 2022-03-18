@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   companyName: Apple
-  price: 10
+  price: -2.7531652e-15
   averagePrice2017: 0
   averagePrice2018: 0
   averagePrice2019: 0
@@ -24,3 +24,23 @@ MonoBehaviour:
   profit: 0
   staff: 0
   credit: 0
+  _vertices: []
+  _priceHistory:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 10
+  - 0.15557685
+  - -0.0015403125
+  - -0.000021943684
+  - 0.0000002499915
+  - -0.0000000019514321
+  - 2.7961893e-11
+  - 1.5779176e-13

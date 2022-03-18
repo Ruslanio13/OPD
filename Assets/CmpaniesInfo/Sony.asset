@@ -13,4 +13,34 @@ MonoBehaviour:
   m_Name: Sony
   m_EditorClassIdentifier: 
   companyName: Sony
-  price: 4
+  price: -1.1556096e-17
+  averagePrice2017: 0
+  averagePrice2018: 0
+  averagePrice2019: 0
+  averagePrice2020: 0
+  averagePrice2021: 0
+  capitalization: 0
+  amountOfSecurities: 0
+  profit: 0
+  staff: 0
+  credit: 0
+  _vertices: []
+  _priceHistory:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 4
+  - 0.050597075
+  - 0.00051632733
+  - -0.000006842764
+  - 0.000000054662525
+  - -1.15809556e-10
+  - -2.1412088e-13
+  - 3.4954665e-15

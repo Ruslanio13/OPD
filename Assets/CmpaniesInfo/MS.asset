@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MS
   m_EditorClassIdentifier: 
   companyName: MicroSoft
-  price: 20
+  price: 3.743015e-15
   averagePrice2017: 0
   averagePrice2018: 0
   averagePrice2019: 0
@@ -24,3 +24,23 @@ MonoBehaviour:
   profit: 0
   staff: 0
   credit: 0
+  _vertices: []
+  _priceHistory:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 20
+  - -0.3168029
+  - -0.0010817188
+  - 0.000008654529
+  - 0.00000009668447
+  - -0.000000001865603
+  - 3.3122522e-11
+  - -2.1852875e-13
