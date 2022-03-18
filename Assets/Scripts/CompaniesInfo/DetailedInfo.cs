@@ -21,10 +21,8 @@ public class DetailedInfo : MonoBehaviour
 
     
 
-    public void SetInfo( CompanySO company)
+    public void SetInfo(CompanySO company)
     {
-        
-
         averagePrice2017.text = company.AveragePrice2017.ToString();
         averagePrice2018.text = company.AveragePrice2018.ToString();
         averagePrice2019.text = company.AveragePrice2019.ToString();
@@ -37,7 +35,4 @@ public class DetailedInfo : MonoBehaviour
         staff.text = company.Staff.ToString();
         credit.text = company.Credit.ToString();
     }
-
-    
-
 }
