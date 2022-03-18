@@ -19,7 +19,7 @@ public class Graph : MonoBehaviour
 
     public void UpdateGraph()
     {
-        for (int i = DetailedInfoManager._instance.currentCompany._priceHistory.Count, i > DetailedInfoManager._instance.currentCompany._priceHistory.Count-10;i--)
+        for (int i = DetailedInfoManager._instance.currentCompany._priceHistory.Count; i > DetailedInfoManager._instance.currentCompany._priceHistory.Count-10;i--)
         {
             _graph.SetPosition(i, new Vector2(i * _stepX + _deltaX, DetailedInfoManager._instance.currentCompany._priceHistory[i] + _deltaY));
         }
