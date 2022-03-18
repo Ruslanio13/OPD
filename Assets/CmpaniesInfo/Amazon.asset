@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Amazon
   m_EditorClassIdentifier: 
   companyName: Amazon
-  price: 3.4115755e-15
+  price: 100
   averagePrice2017: 1
   averagePrice2018: 1
   averagePrice2019: 1
@@ -36,21 +36,13 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 0, y: 0}
   _priceHistory:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 123
-  - 2.3712065
-  - 0.014321545
-  - -0.0002335065
-  - -0.0000010422982
-  - 0.00000001446521
-  - -1.3645902e-10
-  - -5.735643e-13
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100

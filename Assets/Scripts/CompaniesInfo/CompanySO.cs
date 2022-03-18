@@ -40,6 +40,7 @@ public class CompanySO : ScriptableObject
     public List<float> _priceHistory = new List<float>();
     
 
+
     public void UpdatePrice()
     {
         _priceHistory.Add(price);
@@ -49,7 +50,7 @@ public class CompanySO : ScriptableObject
     }
     
 
-    private void OnApplicationQuit() 
+    public void ClearHistory() 
     {
         if(_priceHistory.Count>10)
         _priceHistory.RemoveRange(0,_priceHistory.Count-10);    

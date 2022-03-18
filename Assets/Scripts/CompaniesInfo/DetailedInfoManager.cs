@@ -38,4 +38,9 @@ public class DetailedInfoManager : MonoBehaviour
             _graph.UpdateGraph();
         }
     }
+
+    private void OnApplicationQuit() {
+        foreach(CompanySO comp in companies)
+            comp.ClearHistory();
+    }
 }
