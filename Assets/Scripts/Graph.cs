@@ -8,6 +8,7 @@ public class Graph : MonoBehaviour
     [SerializeField] private float _stepX;
     [SerializeField] private float _deltaX;
     [SerializeField] private float _deltaY;
+    [SerializeField] private int _scale;
 
 
 
@@ -19,10 +20,12 @@ public class Graph : MonoBehaviour
 
     public void UpdateGraph()
     {
+        int g = 0;
         int count = DetailedInfoManager._instance.currentCompany._priceHistory.Count;
-        for (int i = count - 10; i < count; i++)
+        for (int i = count - 10; i < count; i++, g++)
         {
-            _graph.SetPosition(i, new Vector2(i * _stepX + _deltaX, DetailedInfoManager._instance.currentCompany._priceHistory[i] + _deltaY));
+
+            _graph.SetPosition(g, new Vector2(g * _stepX + _deltaX, Mathf.Clamp((DetailedInfoManager._instance.currentCompany._priceHistory[i] - 90f) * _scale, 0, 700) + _deltaY));
         }
     }
 

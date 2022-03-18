@@ -14850,6 +14850,7 @@ MonoBehaviour:
   _stepX: 80
   _deltaX: -400
   _deltaY: -350
+  _scale: 10
 --- !u!1 &1861904760
 GameObject:
   m_ObjectHideFlags: 0
