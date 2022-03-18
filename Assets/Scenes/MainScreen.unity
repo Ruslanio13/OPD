@@ -14779,7 +14779,7 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 165.7, z: 0}
+  - {x: -400, y: -300, z: 0}
   - {x: 400, y: -300, z: 0}
   m_Parameters:
     serializedVersion: 3
