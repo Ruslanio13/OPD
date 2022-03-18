@@ -8,6 +8,7 @@ public class Graph : MonoBehaviour
     [SerializeField] private float _stepX;
     [SerializeField] private float _deltaX;
     [SerializeField] private float _deltaY;
+    [SerializeField] private int _scale;
 
 
 
