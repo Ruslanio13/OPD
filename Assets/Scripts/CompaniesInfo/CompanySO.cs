@@ -45,7 +45,7 @@ public class CompanySO : ScriptableObject
         _priceHistory.Add(price);
     
         float delta =  Random.Range(-2f,2f);
-        price = price * delta/100;
+        price += price * delta/100;
     }
     
     
