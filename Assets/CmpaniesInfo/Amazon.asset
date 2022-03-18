@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: Amazon
   m_EditorClassIdentifier: 
   companyName: Amazon
-<<<<<<< HEAD
-  price: 100
-=======
   price: 112.09277
->>>>>>> 66095641c71d0397d36d56337fc34d4dd2dc385a
   averagePrice2017: 1
   averagePrice2018: 1
   averagePrice2019: 1
@@ -50,8 +46,6 @@ MonoBehaviour:
   - 100
   - 100
   - 100
-<<<<<<< HEAD
-=======
   - 100
   - 101.58104
   - 103.23893
@@ -219,4 +213,3 @@ MonoBehaviour:
   - 113.12953
   - 112.027725
   - 112.1676
->>>>>>> 66095641c71d0397d36d56337fc34d4dd2dc385a
