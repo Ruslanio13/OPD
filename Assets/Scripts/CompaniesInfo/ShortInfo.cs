@@ -29,6 +29,10 @@ public class ShortInfo : MonoBehaviour
         companyName.text = company.returnNameOfCompany();
         price.text = company.GetPrice().ToString();
     }
+    private void Update()
+    {
+        price.text = company.GetPrice().ToString();
+    }
 
     int GetIndex() => index;
 
