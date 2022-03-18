@@ -12,6 +12,8 @@ public class DetailedInfoManager : MonoBehaviour
     void Awake() 
     {
         if(_instance == null){ _instance = this;}
+        currentCompany = companies[0];
+        currentIndex = 0;
     }
 
     public static DetailedInfoManager _instance;
