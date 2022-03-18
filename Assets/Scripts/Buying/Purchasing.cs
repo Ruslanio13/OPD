@@ -9,6 +9,6 @@ public class Purchasing : MonoBehaviour
     float amount;
    public void EnterAmount()
    {
-      // amount = amountText;
+       amount = Convert.ToFloat(amountText);
    }
 }
