@@ -48,5 +48,11 @@ public class CompanySO : ScriptableObject
         price += price * delta/100;
     }
     
+
+    private void OnApplicationQuit() 
+    {
+        if(_priceHistory.Count>10)
+        _priceHistory.RemoveRange(0,_priceHistory.Count-10);    
+    }
     
 }
