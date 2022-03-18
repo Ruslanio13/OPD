@@ -28,6 +28,7 @@ public class Graph : MonoBehaviour
             _graph.SetPosition(g, new Vector2(g * _stepX + _deltaX, Mathf.Clamp((DetailedInfoManager._instance.currentCompany._priceHistory[i] 
                 - DetailedInfoManager._instance.currentCompany._priceHistory[0] * .9f) * _scale, 0, 700) + _deltaY));
         }
+        _graph.transform.localPosition = new Vector2(_graph.transform.position.x, _graph.GetPosition(9).y);
     }
 
 }

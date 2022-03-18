@@ -39,12 +39,18 @@ public class CompanySO : ScriptableObject
     public List<float> _priceHistory = new List<float>();
 
 
+
     public void UpdatePrice()
     {
         _priceHistory.Add(price);
-
         float delta = Random.Range(-2f, 2f);
         price += price * delta / 100;
+    }
+    
+    public void ClearHistory() 
+    {
+        if(_priceHistory.Count>10)
+        _priceHistory.RemoveRange(0,_priceHistory.Count-10);    
     }
 
 
