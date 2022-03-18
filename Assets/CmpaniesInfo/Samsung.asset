@@ -24,6 +24,7 @@ MonoBehaviour:
   profit: 0
   staff: 0
   credit: 0
+  _vertices: []
   _priceHistory:
   - 110.667465
   - 108.54828

@@ -49,8 +49,8 @@ public class CompanySO : ScriptableObject
 
     public void ClearHistory() 
     {
-        if(_priceHistory.Count>50)
-        _priceHistory.RemoveRange(0,_priceHistory.Count-50);    
+        if(_priceHistory.Count>10)
+        _priceHistory.RemoveRange(0,_priceHistory.Count-10);    
     }
-
+    
 }
