@@ -5,15 +5,15 @@ using System.Collections.Generic;
 
 public class Portfolio
 {
-    private Dictionary<CompanySO, int> _portfolio;
+    private Dictionary<Company, int> _portfolio;
 
 
 
 
-    public void BuySecurities(CompanySO company, int amount)
+    public void BuySecurities(Company company, Securities securities, int amount)
     {
 
-        if (amount * company.GetPrice() > PlayerManager._instance.GetBalance())
+        if (amount * securities.GetPrice() > PlayerManager._instance.GetBalance())
 
             if (_portfolio.ContainsKey(company))
                 _portfolio[company] += amount;

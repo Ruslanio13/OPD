@@ -11896,23 +11896,108 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   companies:
-  - {fileID: 11400000, guid: ce4d3b5472e7628459981a8648ec1944, type: 2}
-  - {fileID: 11400000, guid: 4989d4192b5c0b3459fa049f2f597689, type: 2}
-  - {fileID: 11400000, guid: a0ab1c5f177d5a24e96345bb4512f377, type: 2}
-  - {fileID: 11400000, guid: 12a089ae4985e1a4ca838a86813a8526, type: 2}
-  - {fileID: 11400000, guid: 54e69b86bed125c4eb6e487189d07990, type: 2}
-  - {fileID: 11400000, guid: e3d13c7a4b8ca5141826916c2c3483ae, type: 2}
-  - {fileID: 11400000, guid: 3c35d8e153ff49f468275df455e9f505, type: 2}
-  - {fileID: 11400000, guid: 8a1324f3559bb5c45971629eed2c5654, type: 2}
-  - {fileID: 11400000, guid: 3995ebc77406b9945b7c8de71bf9e35a, type: 2}
-  - {fileID: 11400000, guid: 1dd3b2ce5628f8c4f9abde17d532bf3d, type: 2}
-  - {fileID: 11400000, guid: be221dcf87601f14ba0885fbea142cfd, type: 2}
-  - {fileID: 11400000, guid: 2cd4ee3cdcd46924d8ae85704334e9d2, type: 2}
-  - {fileID: 11400000, guid: ba55fc25e1ad9504fa0b58ef3a752158, type: 2}
-  _graph: {fileID: 1840101093}
+  - companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
+  - companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
+  - companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
+  - companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
+  - companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
+  - companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
+  - companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
+  - companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
+  - companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
+  - companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
+  - companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
+  - companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
+  - companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
+  _graph: {fileID: 2041709490}
   table: {fileID: 1346719311}
   currentIndex: 0
-  currentCompany: {fileID: 0}
+  currentCompany:
+    companyName: Enter new company name here
+    _shareHistory: []
+    capitalization: 0
+    amountOfSecurities: 0
+    profit: 0
+    staff: 0
+    credit: 0
 --- !u!224 &1404330200 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4567249768268603063, guid: 142335b02e52bd34e87b1bab42f9ff4a, type: 3}
@@ -12298,7 +12383,7 @@ GameObject:
   - component: {fileID: 1439281986}
   - component: {fileID: 1439281985}
   m_Layer: 5
-  m_Name: Graph
+  m_Name: GraphBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12316,7 +12401,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1840101089}
+  - {fileID: 2041709487}
   m_Father: {fileID: 1466399924}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15409,9 +15494,8 @@ GameObject:
   - component: {fileID: 1840101089}
   - component: {fileID: 1840101091}
   - component: {fileID: 1840101092}
-  - component: {fileID: 1840101093}
   m_Layer: 5
-  m_Name: Graph
+  m_Name: LineRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15425,17 +15509,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840101088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00030517578}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1439281984}
+  m_Father: {fileID: 2041709487}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 819.1201, y: 635.83997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1840101091
 CanvasRenderer:
@@ -15592,23 +15676,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
---- !u!114 &1840101093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840101088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f838c3cda6d26af4288fd0dd2ec38c81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _graph: {fileID: 1840101092}
-  _stepX: 16
-  _deltaX: -400
-  _deltaY: -250
-  _scale: 10
 --- !u!1 &1861904760
 GameObject:
   m_ObjectHideFlags: 0
@@ -17010,6 +17077,103 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c746486346479a4f84f51b54aad08d6, type: 3}
+--- !u!1 &2041709486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2041709487}
+  - component: {fileID: 2041709490}
+  - component: {fileID: 2041709489}
+  - component: {fileID: 2041709488}
+  m_Layer: 5
+  m_Name: Graph
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2041709487
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041709486}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1840101089}
+  m_Father: {fileID: 1439281984}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -820, y: -636}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2041709488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041709486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f838c3cda6d26af4288fd0dd2ec38c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _graph: {fileID: 1840101092}
+  _stepX: 16
+  _deltaX: -400
+  _deltaY: -250
+--- !u!61 &2041709489
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041709486}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.92352295, y: -1.1631012}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 911.85693, y: 730.5525}
+  m_EdgeRadius: 0
+--- !u!114 &2041709490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041709486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f838c3cda6d26af4288fd0dd2ec38c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _graph: {fileID: 1840101092}
+  _stepX: 16
+  _deltaX: -400
+  _deltaY: -250
 --- !u!1 &2042640812 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8873377605450158406, guid: 5b4784474694f9d499d2e19525729192, type: 3}

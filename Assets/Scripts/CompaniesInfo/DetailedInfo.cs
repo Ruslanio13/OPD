@@ -21,13 +21,13 @@ public class DetailedInfo : MonoBehaviour
 
     
 
-    public void SetInfo(CompanySO company)
+    public void SetInfo(Company company)
     {
-        averagePrice2017.text = company.AveragePrice2017.ToString();
-        averagePrice2018.text = company.AveragePrice2018.ToString();
-        averagePrice2019.text = company.AveragePrice2019.ToString();
-        averagePrice2020.text = company.AveragePrice2020.ToString();
-        averagePrice2021.text = company.AveragePrice2021.ToString();
+        averagePrice2017.text = DetailedInfoManager._instance.currentSecurity.AveragePrice2017.ToString();
+        averagePrice2018.text = DetailedInfoManager._instance.currentSecurity.AveragePrice2018.ToString();
+        averagePrice2019.text = DetailedInfoManager._instance.currentSecurity.AveragePrice2019.ToString();
+        averagePrice2020.text = DetailedInfoManager._instance.currentSecurity.AveragePrice2020.ToString();
+        averagePrice2021.text = DetailedInfoManager._instance.currentSecurity.AveragePrice2021.ToString();
 
         capitalization.text = company.Capitalization.ToString();
         amountOfSecurities.text = company.AmountOfSecurities.ToString();

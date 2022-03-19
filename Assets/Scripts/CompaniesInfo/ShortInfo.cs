@@ -14,7 +14,7 @@ public class ShortInfo : MonoBehaviour
     [SerializeField] TextMeshProUGUI companyName;
     [SerializeField] TextMeshProUGUI percentOfChange;  
     [SerializeField] TextMeshProUGUI price;
-    CompanySO company;
+    Company company;
     DetailedInfoManager companies;
     DetailedInfoManager setCompanies;
     Color red = new Color(0.8f, 0.09f, 0.09f, 1);
@@ -27,43 +27,40 @@ public class ShortInfo : MonoBehaviour
         setCompanies = FindObjectOfType<DetailedInfoManager>();
     }
 
-    void Start() 
-    {
 
-        company = DetailedInfoManager._instance.companies[index];
-        button.onClick.AddListener(()=>{DetailedInfoManager._instance.UpdateAllInformation(index);});
-        companyName.text = company.returnNameOfCompany();
-        price.text = company.GetPrice().ToString();
-        previousPrice = company.GetPrice();
+    public void SetInfo(Company comp)
+    {
+        company = comp;
+        button.onClick.AddListener(() => { DetailedInfoManager._instance.UpdateAllInformation(company); });
+        companyName.text = company.GetNameOfCompany();
+        price.text = company.GetSecurityPrice().ToString();
+        previousPrice = company.GetSecurityPrice();
     }
+
     private void Update()
     {
         
-        if(previousPrice > company.GetPrice())
+        if(previousPrice > company.GetSecurityPrice())
         {
             percentOfChange.color = red;
             
-            deltaPrice = Math.Round((previousPrice/company.GetPrice()-1)*100,2);
+            deltaPrice = Math.Round((previousPrice/company.GetSecurityPrice()-1)*100,2);
             percentOfChange.text = deltaPrice.ToString()+"%";
         }
-        else if(previousPrice < company.GetPrice())
+        else if(previousPrice < company.GetSecurityPrice())
         {
             percentOfChange.color = green;
             
-            deltaPrice = Math.Round((company.GetPrice()/previousPrice-1)*100, 2);
+            deltaPrice = Math.Round((company.GetSecurityPrice()/previousPrice-1)*100, 2);
             percentOfChange.text = deltaPrice.ToString()+"%";
         }
-        price.text = company.GetPrice().ToString();
+        price.text = company.GetSecurityPrice().ToString();
 
-        previousPrice = company.GetPrice();
+        previousPrice = company.GetSecurityPrice();
        
-    }
-
-    int GetIndex() => index;
-
-    public void SetIndex()
-    {
-        setCompanies.currentIndex = index;
+        companyName.text = company.GetNameOfCompany();
+        price.text = DetailedInfoManager._instance.currentSecurity.GetPrice().ToString();
     }
 
 }
+

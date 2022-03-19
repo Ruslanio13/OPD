@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "  CompanyInfo", fileName = "New Company")]
-public class CompanySO : ScriptableObject
+using System;
+
+[Serializable]
+public class Company
 {
-    [TextArea(2, 6)]
     [SerializeField] string companyName = "Enter new company name here";
-    [SerializeField] float price = 0f;
-    [SerializeField] float averagePrice2017;
-    [SerializeField] float averagePrice2018;
-    [SerializeField] float averagePrice2019;
-    [SerializeField] float averagePrice2020;
-    [SerializeField] float averagePrice2021;
+    [SerializeField] private List<float> _shareHistory;
+    public Securities DisplayedSec;
+
+    public Share CompanyShare;
+    public Obligation CompanyObligation;
+    public Future CompanyFuture;
+
     [SerializeField] float capitalization;
     [SerializeField] int amountOfSecurities;
     [SerializeField] float profit;
@@ -20,50 +22,63 @@ public class CompanySO : ScriptableObject
     [SerializeField] float credit;
 
 
-    public float AveragePrice2017 { get => averagePrice2017; }
-    public float AveragePrice2018 { get => averagePrice2018; }
-    public float AveragePrice2019 { get => averagePrice2019; }
-    public float AveragePrice2020 { get => averagePrice2020; }
-    public float AveragePrice2021 { get => averagePrice2021; }
-    public float Capitalization { get => capitalization; }
-    public int AmountOfSecurities { get => amountOfSecurities; }
+
     public float Profit { get => profit; }
     public int Staff { get => staff; }
     public float Credit { get => credit; }
-
-    public string returnNameOfCompany() => companyName;
-
-    public float GetPrice() => price;
-
-
-    public List<float> _priceHistory = new List<float>();
+    public float Capitalization { get => capitalization; }
+    public int AmountOfSecurities { get => amountOfSecurities; }
 
 
 
+    public string GetNameOfCompany() => companyName;
+
+    public Company(string name)
+    {
+        companyName = name;
+        capitalization = UnityEngine.Random.Range(150f, 1000f);
+        amountOfSecurities = UnityEngine.Random.Range(150, 1000);
+        profit = UnityEngine.Random.Range(150f, 1000f);
+        staff = UnityEngine.Random.Range(150, 1000);
+        credit = UnityEngine.Random.Range(150f, 1000f);
+
+        CompanyObligation = new Obligation();
+        CompanyShare = new Share();
+        CompanyFuture = new Future();
+        
+        GeneratePreGameHistory();
+    }
 
     public void UpdatePrice()
     {
-        _priceHistory.Add(price);
-        float delta = Random.Range(-2f, 2f);
-        price += price * delta / 100;
+        CompanyShare.UpdatePrice();
+        CompanyObligation.UpdatePrice();
+        CompanyFuture.UpdatePrice();
     }
 
+    public float GetSecurityPrice()
+    {
+        if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Share))
+            return CompanyShare.GetPrice();
+        if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Obligation))
+            return CompanyObligation.GetPrice();
+        if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Future))
+            return CompanyFuture.GetPrice();
+
+        
+        return CompanyShare.GetPrice();
+    }
 
     public void GeneratePreGameHistory()
     {
-        float delta;
-        for(int i = 0; i < 1500; i++)
-            {
-                _priceHistory.Add(price);
-                delta = Random.Range(-2f, 2f);
-                price += price * delta /100;
-            }
+        for (int i = 0; i < 1500; i++)
+        {
+            CompanyShare.UpdatePrice();
+            CompanyObligation.UpdatePrice();
+            CompanyFuture.UpdatePrice();
+        }
     }
 
-    public void ClearHistory() 
-    {
-        if(_priceHistory.Count>10)
-        _priceHistory.RemoveRange(0,_priceHistory.Count-10);    
-    }
+
 
 }
