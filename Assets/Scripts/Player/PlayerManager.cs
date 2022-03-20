@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private Text _balance;
+    [SerializeField] private TextMeshProUGUI _balanceInMarket;
+    [SerializeField] private TextMeshProUGUI _balanceInPortfolio;
 
     private Portfolio _playerPortfolio;
     private Balance _playerBalance;
@@ -18,7 +20,8 @@ public class PlayerManager : MonoBehaviour
     private void Start() {
         _playerPortfolio = new Portfolio();
         _playerBalance = new Balance();
-        _balance.text = GetBalance().ToString() + "$";
+        _balanceInMarket.text = GetBalance().ToString("00.00") + "$";
+        _balanceInPortfolio.text = GetBalance().ToString("00.00") + "$";
     }
 
     public float GetBalance()
