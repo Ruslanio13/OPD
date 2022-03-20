@@ -15,21 +15,12 @@ public class DetailedInfoManager : MonoBehaviour
     void Awake()
     {
         if (_instance == null)
-            _instance = this;
-        
-        
+            _instance = this;       
     }
 
     private void Start() {
         SaveManager._instance.Load();
-        currentCompany = companies[0];
-        
-        currentSecurity = companies[0].CompanyShare;
-        Debug.Log(currentSecurity.GetType());
-        Debug.Log(typeof(Share));
-
-        currentIndex = 0;
-
+        UpdateAllInformation(companies[0]);        
         SetMarket(companies);
     }
 
@@ -64,9 +55,9 @@ public class DetailedInfoManager : MonoBehaviour
         currentCompany = company;
         currentSecurity = company.CompanyShare;
         table.SetInfo(company);
-
+        _graph.ResetPosition();
         _graph.UpdateGraph();
-
+        Debug.Log(company.GetNameOfCompany());
     }
 
 
@@ -77,9 +68,10 @@ public class DetailedInfoManager : MonoBehaviour
         {
             foreach (Company comp in companies)
             {
-                comp.GeneratePreGameHistory();
+                comp.UpdatePrice();
             }
-            //_graph.UpdateGraph();
+            _graph.ResetPosition();
+            _graph.UpdateGraph();
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             _graph.EnlargeScale();
@@ -96,7 +88,6 @@ public class DetailedInfoManager : MonoBehaviour
         {
             temp = Instantiate(_shortInfoPrefab, transform);
             temp.GetComponent<ShortInfo>().SetInfo(market[i]);
-            Debug.Log(market[i].GetNameOfCompany());
         }
     }
 

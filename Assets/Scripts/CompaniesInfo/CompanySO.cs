@@ -63,10 +63,19 @@ public class Company
         if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Obligation))
             return CompanyObligation.GetPrice();
         if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Future))
-            return CompanyFuture.GetPrice();
-
-        
+            return CompanyFuture.GetPrice();        
         return CompanyShare.GetPrice();
+    }
+
+    public float GetSecurityDelta()
+    {
+        if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(Share))
+            return CompanyShare.delta;
+        if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(Obligation))
+            return CompanyObligation.delta;
+        if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(Future))
+            return CompanyFuture.delta;
+        return CompanyShare.delta;
     }
 
     public void GeneratePreGameHistory()

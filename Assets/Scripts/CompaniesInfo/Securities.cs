@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Securities
 {
+    public float delta = 0;
     float price;
     float averagePrice2017;
     float averagePrice2018;
@@ -31,7 +32,7 @@ public class Securities
     public void UpdatePrice()
     {
         _priceHistory.Add(price);
-        float delta = UnityEngine.Random.Range(-2f, 2f); //Такое себе согласен
+        delta = UnityEngine.Random.Range(-2f, 2f); 
         price += price * delta / 100;
     }
 

@@ -9,6 +9,8 @@ public class Graph : MonoBehaviour
     [SerializeField] private float _stepX;
     [SerializeField] private float _deltaX;
     [SerializeField] private float _deltaY;
+    private float _minY;
+    private float _maxY;
     private float _visualScale;
     public enum Scale
     {
@@ -63,9 +65,9 @@ public class Graph : MonoBehaviour
     {
         _currentTimeScale = Scale.MONTH;
         _timeScaleKoef = 1;
-        _visualScale = 10;
 
         SetAmountOfDots(50);
+        ResetPosition();
         UpdateGraph();
     }
 
@@ -73,12 +75,12 @@ public class Graph : MonoBehaviour
     {
         int g = 0;
         int count = DetailedInfoManager._instance.currentSecurity._priceHistory.Count;
-        for (int i = count - _graph.positionCount*_timeScaleKoef; i < count; i = i+_timeScaleKoef, g++)
+        for (int i = count - _graph.positionCount * _timeScaleKoef; i < count; i = i + _timeScaleKoef, g++)
         {
-            //_graph.SetPosition(g, new Vector2(g * _stepX + _deltaX, Mathf.Clamp((DetailedInfoManager._instance.currentCompany._priceHistory[i] - DetailedInfoManager._instance.currentCompany._priceHistory[0] * .9f) * _scale, 0, 700) + _deltaY));
-            _graph.SetPosition(g, new Vector2(g * _stepX, DetailedInfoManager._instance.currentSecurity._priceHistory[i] * _visualScale));
+            float currentPrice = DetailedInfoManager._instance.currentSecurity._priceHistory[i];
+            _graph.SetPosition(g, new Vector2(g * _stepX, currentPrice * _visualScale));
         }
-        _graph.transform.localPosition = new Vector2(-_graph.transform.position.x + _deltaX, -_graph.GetPosition(_graph.positionCount - 1).y);
+        _graph.transform.localPosition = new Vector2(-_graph.transform.position.x + _deltaX, -(_maxY + _minY) / 2f * _visualScale);
     }
 
     private void OnGUI() {
@@ -99,6 +101,27 @@ public class Graph : MonoBehaviour
         Vector2 curScreenPoint = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
  
         Vector2 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint);
-        transform.position = curPosition;
+        transform.position = new Vector2(transform.position.x, curPosition.y);
+    }
+
+    public void ResetPosition()
+    {
+        _minY = 10000f;
+        _maxY = 0f;
+        transform.localPosition = new Vector2(transform.localPosition.x, 0f);
+        _visualScale = 3;
+        
+        int count = DetailedInfoManager._instance.currentSecurity._priceHistory.Count;
+        for (int i = count - _graph.positionCount * _timeScaleKoef; i < count; i = i + _timeScaleKoef)
+        {
+            float currentPrice = DetailedInfoManager._instance.currentSecurity._priceHistory[i];
+            if (_minY > currentPrice)
+
+                _minY = currentPrice;
+
+            if (_maxY < currentPrice)
+                _maxY = currentPrice;
+        }
+        _visualScale = 350f/(_maxY - _minY);
     }
 }

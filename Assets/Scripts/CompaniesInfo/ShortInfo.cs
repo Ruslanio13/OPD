@@ -25,6 +25,7 @@ public class ShortInfo : MonoBehaviour
     void Awake() 
     {
         setCompanies = FindObjectOfType<DetailedInfoManager>();
+        UpdatePercent();
     }
 
 
@@ -39,28 +40,22 @@ public class ShortInfo : MonoBehaviour
 
     private void Update()
     {
-        
-        if(previousPrice > company.GetSecurityPrice())
-        {
-            percentOfChange.color = red;
-            
-            deltaPrice = Math.Round((previousPrice/company.GetSecurityPrice()-1)*100,2);
-            percentOfChange.text = deltaPrice.ToString()+"%";
-        }
-        else if(previousPrice < company.GetSecurityPrice())
-        {
-            percentOfChange.color = green;
-            
-            deltaPrice = Math.Round((company.GetSecurityPrice()/previousPrice-1)*100, 2);
-            percentOfChange.text = deltaPrice.ToString()+"%";
-        }
-        price.text = company.GetSecurityPrice().ToString();
-
-        previousPrice = company.GetSecurityPrice();
-       
-        companyName.text = company.GetNameOfCompany();
-        price.text = DetailedInfoManager._instance.currentSecurity.GetPrice().ToString();
+        UpdatePercent();
     }
 
+    public void UpdatePercent()
+    {
+        if (company == null)
+            return;
+        deltaPrice = company.GetSecurityDelta();
+        if (deltaPrice > 0)
+            percentOfChange.color = green;
+        else if (deltaPrice < 0)
+            percentOfChange.color = red;
+
+            percentOfChange.text =  Math.Abs(deltaPrice).ToString("0.00") + "%";
+        price.text = company.GetSecurityPrice().ToString("0.00");
+        companyName.text = company.GetNameOfCompany();
+    }
 }
 
