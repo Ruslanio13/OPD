@@ -18,11 +18,25 @@ public class Purchasing : MonoBehaviour
     Company company;
     int sign;
     [SerializeField] GameObject portfolioShortInfoPrefab;
+    GameObject target;
 
 
     void Awake() 
     {
         detailedInfoManager = FindObjectOfType<DetailedInfoManager>();
+    }
+
+    public void DisplayMyCompanies(List<Company> companies) 
+    {
+        foreach(Company tempCompany in companies)
+        {
+         
+            if(tempCompany.GetSecurityMyAmount() != 0 )
+            {
+                amount = tempCompany.GetSecurityMyAmount();
+                AddInPortfolio(tempCompany,0);
+            }
+        }
     }
     public void Buy()
     {
@@ -39,11 +53,6 @@ public class Purchasing : MonoBehaviour
      public void Sell()
     {
         company = detailedInfoManager.currentCompany;
-        Debug.Log(amount);
-        if(company.GetSecurityMyAmount() < amount && amountText.text != "")
-        {
-            question.text = "Not enough securities on your balance!";
-        }
         if(amountText.text != "")
         {
             confirmationTable.SetActive(true);
@@ -55,9 +64,14 @@ public class Purchasing : MonoBehaviour
 
     public void ConfirmAmount()
     {
-        if(company.GetSecurityMyAmount() < Convert.ToInt32(amountText.text) && sign == -1 )
+        if(company.GetSecurityMyAmount() < -sign *Convert.ToInt32(amountText.text)  )
         {
             question.text = "Not enough securities on your balance!";
+            Invoke("Cancel",2f);
+        }
+        if(Convert.ToInt32(amountText.text) <= 0)
+        {
+            question.text = "Enter number more than 0";
             Invoke("Cancel",2f);
         }
         else
@@ -65,22 +79,30 @@ public class Purchasing : MonoBehaviour
             amount = sign * Convert.ToInt32(amountText.text);
             Cancel();
 
-            AddInPortfolio();
+            AddInPortfolio(detailedInfoManager.currentCompany, amount);
         }
         
     }
 
-    private void AddInPortfolio()
+    private void AddInPortfolio(Company company, int amount)
     {
         
         GameObject temp;
-        
-        company = detailedInfoManager.currentCompany;
         
         if(company.GetSecurityMyAmount() == 0 )
         {
             temp = Instantiate(portfolioShortInfoPrefab, portfolioContent.transform);
             temp.GetComponent<PortfolioShortInfo>().SetInfo(company, amount);  
+        }
+        else if(company.GetSecurityMyAmount() == -amount)
+        {
+            SearchForCompanyInPortfolio(company);
+            Destroy(target);
+        }
+        else if(amount == 0)
+        {
+            temp = Instantiate(portfolioShortInfoPrefab, portfolioContent.transform);
+            temp.GetComponent<PortfolioShortInfo>().SetInfo(company, company.GetSecurityMyAmount());
         }
 
         company.UpdateMyAmount(amount);
@@ -91,5 +113,16 @@ public class Purchasing : MonoBehaviour
         amountText.text = "";
         confirmationTable.SetActive(false);
         prePurchaseTable.SetActive(true); 
+    }
+
+    void SearchForCompanyInPortfolio(Company company)
+    {
+        foreach(PortfolioShortInfo portfolioShortInfo in portfolioContent.GetComponentsInChildren<PortfolioShortInfo>())
+        {
+            if(portfolioShortInfo.companyName.text == company.GetNameOfCompany())
+            {
+               target =  portfolioShortInfo.gameObject;
+            }
+        }
     }
 }

@@ -56,7 +56,7 @@ public class Company
         CompanyFuture.UpdatePrice();
     }
 
-    public void UpdateMyAmount(float amountDelta)
+    public void UpdateMyAmount(int amountDelta)
     {
         CompanyShare.UpdateMyAmountOfSecurities(amountDelta);
         CompanyObligation.UpdateMyAmountOfSecurities(amountDelta);
@@ -74,7 +74,7 @@ public class Company
         return CompanyShare.GetPrice();
     }
 
-    public float GetSecurityMyAmount()
+    public int GetSecurityMyAmount()
     {
         if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Share))
             return CompanyShare.GetMyAmountOfSecurities();

@@ -7,7 +7,7 @@ public class Securities
 {
     public float delta = 0;
     float price;
-    float myAmountOfSecurities = 0;
+    int myAmountOfSecurities = 0;
     float averagePrice2017;
     float averagePrice2018;
     float averagePrice2019;
@@ -20,7 +20,7 @@ public class Securities
     public float AveragePrice2021 { get => averagePrice2021; }
 
     public float GetPrice() => price;
-    public float GetMyAmountOfSecurities() => myAmountOfSecurities;
+    public int GetMyAmountOfSecurities() => myAmountOfSecurities;
     public List<float> _priceHistory = new List<float>();
 
     public Securities()
@@ -36,7 +36,7 @@ public class Securities
         price += price * delta / 100;
     }
 
-    public void UpdateMyAmountOfSecurities(float amountDelta)
+    public void UpdateMyAmountOfSecurities(int amountDelta)
     {
         myAmountOfSecurities += amountDelta;
     }
