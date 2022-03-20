@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-
-    private Portfolio _playerPortfolio;
     private Balance _playerBalance;
 
     public static PlayerManager _instance;
@@ -16,7 +14,6 @@ public class PlayerManager : MonoBehaviour
     }
 
     private void Start() {
-        _playerPortfolio = new Portfolio();
         _playerBalance = new Balance();
     }
 
@@ -24,5 +21,11 @@ public class PlayerManager : MonoBehaviour
     {
         return _playerBalance.Dol.AmountOnHands;
     }
+
+
+
+    
+
+    
 
 }

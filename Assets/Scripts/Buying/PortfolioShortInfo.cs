@@ -23,36 +23,23 @@ public class PortfolioShortInfo : MonoBehaviour
     Color green = new Color(0.09f, 0.7f, 0.1f, 1f); 
     
 
-    public void SetInfo(Company comp, float amount)
+    public void SetInfo(Securities sec, float amount)
     {
-        company = comp;
+        company = sec.ParentCompany;
         //button.onClick.AddListener(() => { DetailedInfoManager._instance.UpdateAllInformation(company); });
         companyName.text = company.GetNameOfCompany();
         
         price.text = company.GetSecurityPrice().ToString();
         myAmountOfSecurities.text = amount.ToString();
-    }
-
-    void Update() 
-    {
-       UpdatePercent(); 
-       myAmountOfSecurities.text = company.GetSecurityMyAmount().ToString();
-    }
-
-    public void UpdatePercent()
-    {
-        if (company == null)
-            return;
-        deltaPrice = company.GetSecurityDelta();
-        if (deltaPrice > 0)
-            percentOfChange.color = green;
-        else if (deltaPrice < 0)
-            percentOfChange.color = red;
-
-        percentOfChange.text =  Math.Abs(deltaPrice).ToString("0.00") + "%";
+        percentOfChange.text =  Math.Abs(company.GetSecurityDelta()).ToString("0.00") + "%";
         price.text = company.GetSecurityPrice().ToString("0.00");
-        //companyName.text = company.GetNameOfCompany();
     }
 
-     
+
+    public void SetAmount(int amount)
+    {
+        myAmountOfSecurities.text = amount.ToString();
+        if(amount <= 0)
+            Destroy(gameObject);
+    }     
 }

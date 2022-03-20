@@ -7,10 +7,17 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject marketScreen;
     [SerializeField] GameObject portfolioScreen;
+    
+    private void Start() {
+    }
+    
     public void Exit()
     {
         Application.Quit();
     } 
+
+
+    
 
     public void Portfolio()
     {

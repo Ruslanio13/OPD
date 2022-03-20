@@ -5,7 +5,8 @@ using UnityEngine;
 public class DetailedInfoManager : MonoBehaviour
 {
 
-    [SerializeField] public List<Company> companies = new List<Company>();
+    [SerializeField] public List<Company> Companies = new List<Company>();
+    [SerializeField] private Transform _shortInfoListTransform;
     [SerializeField] public Graph _graph;
     [SerializeField] DetailedInfo table;
     [SerializeField] private GameObject _shortInfoPrefab;
@@ -19,32 +20,31 @@ public class DetailedInfoManager : MonoBehaviour
     }
 
     private void Start() {
-        SaveManager._instance.Load();
-        UpdateAllInformation(companies[0]);        
-        SetMarket(companies);
+        UpdateAllInformation(Companies[0]);        
+        SetMarket(Companies);
     }
 
 
 
     public void InitializeCompanies()
     {
-        companies.Add(new Company("Sberbank"));
-        companies.Add(new Company("VTB"));
-        companies.Add(new Company("Tinkoff"));
-        companies.Add(new Company("Raiffaizen"));
-        companies.Add(new Company("Amazon"));
-        companies.Add(new Company("Asos"));
-        companies.Add(new Company("DNS"));
-        companies.Add(new Company("Samsung"));
-        companies.Add(new Company("Apple"));
-        companies.Add(new Company("Xiaomi"));
-        companies.Add(new Company("Meizu"));
-        companies.Add(new Company("LG"));
-        companies.Add(new Company("Lenovo"));
-        companies.Add(new Company("JBL"));
-        companies.Add(new Company("Oppo"));
-        companies.Add(new Company("Phillips"));
-        companies.Add(new Company("Sony"));
+        Companies.Add(new Company("Sberbank"));
+        Companies.Add(new Company("VTB"));
+        Companies.Add(new Company("Tinkoff"));
+        Companies.Add(new Company("Raiffaizen"));
+        Companies.Add(new Company("Amazon"));
+        Companies.Add(new Company("Asos"));
+        Companies.Add(new Company("DNS"));
+        Companies.Add(new Company("Samsung"));
+        Companies.Add(new Company("Apple"));
+        Companies.Add(new Company("Xiaomi"));
+        Companies.Add(new Company("Meizu"));
+        Companies.Add(new Company("LG"));
+        Companies.Add(new Company("Lenovo"));
+        Companies.Add(new Company("JBL"));
+        Companies.Add(new Company("Oppo"));
+        Companies.Add(new Company("Phillips"));
+        Companies.Add(new Company("Sony"));
 
     }
 
@@ -57,7 +57,6 @@ public class DetailedInfoManager : MonoBehaviour
         table.SetInfo(company);
         _graph.ResetPosition();
         _graph.UpdateGraph();
-        Debug.Log(company.GetNameOfCompany());
     }
 
 
@@ -66,7 +65,7 @@ public class DetailedInfoManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            foreach (Company comp in companies)
+            foreach (Company comp in Companies)
             {
                 comp.UpdatePrice();
             }
@@ -86,7 +85,7 @@ public class DetailedInfoManager : MonoBehaviour
         GameObject temp;
         for (int i = 0; i < market.Count; i++)
         {
-            temp = Instantiate(_shortInfoPrefab, transform);
+            temp = Instantiate(_shortInfoPrefab, _shortInfoListTransform);
             temp.GetComponent<ShortInfo>().SetInfo(market[i]);
         }
     }

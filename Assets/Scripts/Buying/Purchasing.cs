@@ -16,7 +16,7 @@ public class Purchasing : MonoBehaviour
  
     DetailedInfoManager detailedInfoManager;
     Company company;
-    int sign;
+    bool toSell;
     [SerializeField] GameObject portfolioShortInfoPrefab;
 
 
@@ -26,55 +26,51 @@ public class Purchasing : MonoBehaviour
     }
     public void Buy()
     {
-        company = detailedInfoManager.currentCompany;
-        Debug.Log(company.GetSecurityMyAmount());
         if(amountText.text != "")
         {
             confirmationTable.SetActive(true);
             prePurchaseTable.SetActive(false);
             question.text = "Are you want to buy " + Convert.ToInt32(amountText.text) + " ?" ;
-            sign=1;
+            toSell=false;
         }
     }
      public void Sell()
     {
-        company = detailedInfoManager.currentCompany;
-        if(company.GetSecurityMyAmount() < amount)
-        {
-            question.text = "Not enough securities on your balance!";
-        }
-        else if(amountText.text != "")
+        if(amountText.text != "")
         {
             confirmationTable.SetActive(true);
             prePurchaseTable.SetActive(false);
             question.text = "Are you want to sell " + Convert.ToInt32(amountText.text) + " ?" ;
-            sign=-1;
+            toSell=true;
         }
     }
 
     public void ConfirmAmount()
     {
-        amount = sign * Convert.ToInt32(amountText.text);
+        amount = Convert.ToInt32(amountText.text);
+        if(toSell)
+        PortfolioManager._instance.SellSecurities(DetailedInfoManager._instance.currentSecurity, amount);
+            else
+        PortfolioManager._instance.BuySecurities(DetailedInfoManager._instance.currentSecurity, amount);
+
         Cancel();
-
-        AddInPortfolio();
     }
 
-    private void AddInPortfolio()
-    {
+    // private void AddInPortfolio()
+    // {
         
-        GameObject temp;
+    //     GameObject temp;
         
-        company = detailedInfoManager.currentCompany;
+    //     company = detailedInfoManager.currentCompany;
         
-        if(company.GetSecurityMyAmount() == 0 )
-        {
-            temp = Instantiate(portfolioShortInfoPrefab, portfolioContent.transform);
-            temp.GetComponent<PortfolioShortInfo>().SetInfo(company, amount);  
-        }
+    //     if(company.GetSecurityMyAmount() == 0 )
+    //     {
+    //         temp = Instantiate(portfolioShortInfoPrefab, portfolioContent.transform);
+    //         temp.GetComponent<PortfolioShortInfo>().SetInfo(company, amount);  
+    //     }
 
-        company.UpdateMyAmount(amount);
-    }
+    //     company.UpdateMyAmount(amount);
+    // }
 
     public void Cancel()
     {
