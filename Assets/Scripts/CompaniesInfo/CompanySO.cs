@@ -73,9 +73,7 @@ public class Company
     {
         for (int i = 0; i < 1500; i++)
         {
-            CompanyShare.UpdatePrice();
-            CompanyObligation.UpdatePrice();
-            CompanyFuture.UpdatePrice();
+            UpdatePrice();
         }
     }
 

@@ -18,20 +18,21 @@ public class Securities
     public float AveragePrice2021 { get => averagePrice2021; }
 
     public float GetPrice() => price;
-
-    public void UpdatePrice()
-    {
-        System.Random rand = new System.Random();
-        _priceHistory.Add(price);
-        float delta = -2f + 4 * System.Convert.ToSingle(rand.NextDouble()); //Такое себе согласен
-        price += price * delta / 100;
-    }
     public List<float> _priceHistory = new List<float>();
+
+    private System.Random random;
 
     public Securities()
     {
-        System.Random rand = new System.Random();
-        price =  100f + 9000f*System.Convert.ToSingle(rand.NextDouble());
+        price =  500f;
+    }
+
+    
+    public void UpdatePrice()
+    {
+        _priceHistory.Add(price);
+        float delta = UnityEngine.Random.Range(-2f, 2f); //Такое себе согласен
+        price += price * delta / 100;
     }
 
 }
