@@ -10456,12 +10456,16 @@ MonoBehaviour:
     companyName: Enter new company name here
     _shareHistory: []
     DisplayedSec:
+      delta: 0
       _priceHistory: []
     CompanyShare:
+      delta: 0
       _priceHistory: []
     CompanyObligation:
+      delta: 0
       _priceHistory: []
     CompanyFuture:
+      delta: 0
       _priceHistory: []
     capitalization: 0
     amountOfSecurities: 0
@@ -10469,6 +10473,7 @@ MonoBehaviour:
     staff: 0
     credit: 0
   currentSecurity:
+    delta: 0
     _priceHistory: []
 --- !u!224 &1404330200 stripped
 RectTransform:
@@ -12558,7 +12563,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 448175666}
   m_Direction: 2
   m_Value: 0.99999934
-  m_Size: 0.42388865
+  m_Size: 0.42388868
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13655,7 +13660,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 819.1201, y: 635.83997}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1840101091
 CanvasRenderer:
@@ -15234,7 +15239,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -820, y: -636}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2041709488
 MonoBehaviour:
