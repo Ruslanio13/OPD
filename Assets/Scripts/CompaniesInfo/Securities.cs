@@ -21,8 +21,6 @@ public class Securities
     public float GetPrice() => price;
     public List<float> _priceHistory = new List<float>();
 
-    private System.Random random;
-
     public Securities()
     {
         price =  500f;
