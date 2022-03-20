@@ -44,7 +44,14 @@ public class PortfolioShortInfo : MonoBehaviour
         companyName.text = company.GetNameOfCompany();
         
         price.text = company.GetSecurityPrice().ToString();
+        
+        if(company.GetSecurityDelta() > 0f)
+            percentOfChange.color = green;
+        else if (company.GetSecurityDelta()<0f)
+            percentOfChange.color = red;
+        
         percentOfChange.text =  Math.Abs(company.GetSecurityDelta()).ToString("0.00") + "%";
+        
         price.text = company.GetSecurityPrice().ToString("0.00");
     }
 }
