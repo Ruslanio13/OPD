@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Securities
 {
-    public Company ParentCompany{get; private set;} 
+    [System.NonSerialized] public Company ParentCompany;
     public float delta = 0;
     float price;
     float averagePrice2017;

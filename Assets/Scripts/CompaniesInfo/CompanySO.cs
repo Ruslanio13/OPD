@@ -86,6 +86,11 @@ public class Company
         }
     }
 
-
+    public void SetCompanyToSecurities()
+    {
+        CompanyShare.ParentCompany = this;
+        CompanyObligation.ParentCompany = this;
+        CompanyFuture.ParentCompany = this;
+    }
 
 }

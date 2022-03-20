@@ -20,6 +20,11 @@ public class DetailedInfoManager : MonoBehaviour
     }
 
     private void Start() {
+        foreach (Company comp in Companies)
+        {
+            comp.SetCompanyToSecurities();
+        }
+        
         UpdateAllInformation(Companies[0]);        
         SetMarket(Companies);
     }
