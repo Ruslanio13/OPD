@@ -16,23 +16,16 @@ public class ShortInfo : MonoBehaviour
     [SerializeField] TextMeshProUGUI price;
     Company company;
     DetailedInfoManager companies;
-    DetailedInfoManager setCompanies;
     Color red = new Color(0.8f, 0.09f, 0.09f, 1);
     Color green = new Color(0.09f, 0.7f, 0.1f, 1f);
     float previousPrice;
     double deltaPrice;
 
-    void Awake() 
-    {
-        setCompanies = FindObjectOfType<DetailedInfoManager>();
-        UpdatePercent();
-    }
-
 
     public void SetInfo(Company comp)
     {
         company = comp;
-        button.onClick.AddListener(() => { DetailedInfoManager._instance.UpdateAllInformation(company); Debug.Log(company.GetSecurityMyAmount());});
+        button.onClick.AddListener(() => { DetailedInfoManager._instance.UpdateAllInformation(company); });
         companyName.text = company.GetNameOfCompany();
         price.text = company.GetSecurityPrice().ToString();
         previousPrice = company.GetSecurityPrice();
@@ -55,7 +48,6 @@ public class ShortInfo : MonoBehaviour
 
             percentOfChange.text =  Math.Abs(deltaPrice).ToString("0.00") + "%";
         price.text = company.GetSecurityPrice().ToString("0.00");
-        //companyName.text = company.GetNameOfCompany();
     }
 }
 

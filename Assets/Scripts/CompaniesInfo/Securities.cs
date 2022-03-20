@@ -5,9 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class Securities
 {
+    public Company ParentCompany{get; private set;} 
     public float delta = 0;
     float price;
-    int myAmountOfSecurities = 0;
     float averagePrice2017;
     float averagePrice2018;
     float averagePrice2019;
@@ -20,12 +20,12 @@ public class Securities
     public float AveragePrice2021 { get => averagePrice2021; }
 
     public float GetPrice() => price;
-    public int GetMyAmountOfSecurities() => myAmountOfSecurities;
     public List<float> _priceHistory = new List<float>();
 
-    public Securities()
+    public Securities(Company parentComp)
     {
         price =  500f;
+        ParentCompany = parentComp;
     }
 
     
@@ -35,23 +35,26 @@ public class Securities
         delta = UnityEngine.Random.Range(-2f, 2f); 
         price += price * delta / 100;
     }
+}
 
-    public void UpdateMyAmountOfSecurities(int amountDelta)
+[System.Serializable]
+public class Share : Securities
+{
+    public Share(Company parentComp) : base(parentComp)
     {
-        myAmountOfSecurities += amountDelta;
     }
-
-}
-
-[System.Serializable]
-public class Share:Securities
-{
 }
 [System.Serializable]
-public class Obligation:Securities
+public class Obligation : Securities
 {
+    public Obligation(Company parentComp) : base(parentComp)
+    {
+    }
 }
 [System.Serializable]
-public class Future:Securities
+public class Future : Securities
 {
+    public Future(Company parentComp) : base(parentComp)
+    {
+    }
 }

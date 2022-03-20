@@ -16,10 +16,14 @@ public class SaveManager : MonoBehaviour
         
     }
 
+    private void Start() {
+        Load();    
+    }
+
     public void Save()
     {
         Debug.Log("Game Saved!");
-        SaveData save = new SaveData(DetailedInfoManager._instance.companies);
+        SaveData save = new SaveData(DetailedInfoManager._instance.Companies, PortfolioManager._instance.Portfolio);
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
@@ -41,8 +45,8 @@ public class SaveManager : MonoBehaviour
         SaveData save = (SaveData)bf.Deserialize(file);
         file.Close();
 
-        DetailedInfoManager._instance.companies = save.companies;
-        FindObjectOfType<Purchasing>().DisplayMyCompanies(DetailedInfoManager._instance.companies);
+        DetailedInfoManager._instance.Companies = save.Companies;
+        PortfolioManager._instance.Portfolio = save.Portfolio;
     }
 
     private void OnApplicationQuit()
@@ -54,9 +58,11 @@ public class SaveManager : MonoBehaviour
 [Serializable]
 public class SaveData
 {
-    public List<Company> companies;
-    public SaveData(List<Company> comp)
+    public List<Company> Companies;
+    public Dictionary<Securities, int> Portfolio = new Dictionary<Securities, int>();
+    public SaveData(List<Company> comp, Dictionary<Securities, int> port)
     {
-        companies = comp;
+        Companies = comp;
+        Portfolio = port;
     }
 }

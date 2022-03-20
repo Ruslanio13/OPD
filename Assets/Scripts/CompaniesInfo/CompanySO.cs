@@ -42,9 +42,9 @@ public class Company
         staff = UnityEngine.Random.Range(150, 1000);
         credit = UnityEngine.Random.Range(150f, 1000f);
 
-        CompanyObligation = new Obligation();
-        CompanyShare = new Share();
-        CompanyFuture = new Future();
+        CompanyObligation = new Obligation(this);
+        CompanyShare = new Share(this);
+        CompanyFuture = new Future(this);
         
         GeneratePreGameHistory();
     }
@@ -55,14 +55,7 @@ public class Company
         CompanyObligation.UpdatePrice();
         CompanyFuture.UpdatePrice();
     }
-
-    public void UpdateMyAmount(int amountDelta)
-    {
-        CompanyShare.UpdateMyAmountOfSecurities(amountDelta);
-        CompanyObligation.UpdateMyAmountOfSecurities(amountDelta);
-        CompanyFuture.UpdateMyAmountOfSecurities(amountDelta);
-    }
-
+    
     public float GetSecurityPrice()
     {
         if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Share))
@@ -72,17 +65,6 @@ public class Company
         if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Future))
             return CompanyFuture.GetPrice();        
         return CompanyShare.GetPrice();
-    }
-
-    public int GetSecurityMyAmount()
-    {
-        if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Share))
-            return CompanyShare.GetMyAmountOfSecurities();
-        if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Obligation))
-            return CompanyObligation.GetMyAmountOfSecurities();
-        if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Future))
-            return CompanyFuture.GetMyAmountOfSecurities();        
-        return CompanyShare.GetMyAmountOfSecurities();
     }
 
     public float GetSecurityDelta()

@@ -6,7 +6,12 @@ public class Valute
     public float AmountOnHands{get; private set;}
     public Valute()
     {
-        AmountOnHands = 0f;
+        AmountOnHands = 1500000000f;
+    }
+    public void BuyWith(int amount)
+    {
+        if(AmountOnHands - amount >= 0f)
+        AmountOnHands = AmountOnHands - amount;
     }
 }
 
@@ -37,9 +42,6 @@ public class Balance
         Rub = new Rubles();
     }
 
-    public void BuyWith(Valute _valute)
-    {
-        throw new NotImplementedException();
-    }
+
 
 }

@@ -7,7 +7,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _balanceInMarket;
     [SerializeField] private TextMeshProUGUI _balanceInPortfolio;
 
-    private Portfolio _playerPortfolio;
     private Balance _playerBalance;
 
     public static PlayerManager _instance;
@@ -18,7 +17,6 @@ public class PlayerManager : MonoBehaviour
     }
 
     private void Start() {
-        _playerPortfolio = new Portfolio();
         _playerBalance = new Balance();
         _balanceInMarket.text = GetBalance().ToString("00.00") + "$";
         _balanceInPortfolio.text = GetBalance().ToString("00.00") + "$";
@@ -28,5 +26,11 @@ public class PlayerManager : MonoBehaviour
     {
         return _playerBalance.Dol.AmountOnHands;
     }
+
+
+
+    
+
+    
 
 }
