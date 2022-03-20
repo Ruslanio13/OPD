@@ -64,7 +64,7 @@ public class DetailedInfoManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             foreach (Company comp in companies)
             {
