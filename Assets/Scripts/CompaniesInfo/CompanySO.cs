@@ -56,6 +56,13 @@ public class Company
         CompanyFuture.UpdatePrice();
     }
 
+    public void UpdateMyAmount(float amountDelta)
+    {
+        CompanyShare.UpdateMyAmountOfSecurities(amountDelta);
+        CompanyObligation.UpdateMyAmountOfSecurities(amountDelta);
+        CompanyFuture.UpdateMyAmountOfSecurities(amountDelta);
+    }
+
     public float GetSecurityPrice()
     {
         if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Share))
@@ -65,6 +72,17 @@ public class Company
         if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Future))
             return CompanyFuture.GetPrice();        
         return CompanyShare.GetPrice();
+    }
+
+    public float GetSecurityMyAmount()
+    {
+        if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Share))
+            return CompanyShare.GetMyAmountOfSecurities();
+        if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Obligation))
+            return CompanyObligation.GetMyAmountOfSecurities();
+        if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Future))
+            return CompanyFuture.GetMyAmountOfSecurities();        
+        return CompanyShare.GetMyAmountOfSecurities();
     }
 
     public float GetSecurityDelta()

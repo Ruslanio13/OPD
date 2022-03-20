@@ -1,46 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using UnityEditor;
-using UnityEngine.Events;
+using UnityEngine.UI;
 using System;
 
-public class ShortInfo : MonoBehaviour
+public class PortfolioShortInfo : MonoBehaviour
 {
+
     [SerializeField] Button button;
     [SerializeField] int index;
     [SerializeField] TextMeshProUGUI companyName;
+    [SerializeField] TextMeshProUGUI additionalInfo;
+    [SerializeField] TextMeshProUGUI myAmountOfSecurities;
     [SerializeField] TextMeshProUGUI percentOfChange;  
     [SerializeField] TextMeshProUGUI price;
-    Company company;
+
     DetailedInfoManager companies;
-    DetailedInfoManager setCompanies;
+    Company company;
+    float deltaPrice;
     Color red = new Color(0.8f, 0.09f, 0.09f, 1);
-    Color green = new Color(0.09f, 0.7f, 0.1f, 1f);
-    float previousPrice;
-    double deltaPrice;
+    Color green = new Color(0.09f, 0.7f, 0.1f, 1f); 
+    
 
-    void Awake() 
-    {
-        setCompanies = FindObjectOfType<DetailedInfoManager>();
-        UpdatePercent();
-    }
-
-
-    public void SetInfo(Company comp)
+    public void SetInfo(Company comp, float amount)
     {
         company = comp;
-        button.onClick.AddListener(() => { DetailedInfoManager._instance.UpdateAllInformation(company); });
+        //button.onClick.AddListener(() => { DetailedInfoManager._instance.UpdateAllInformation(company); });
         companyName.text = company.GetNameOfCompany();
+        
         price.text = company.GetSecurityPrice().ToString();
-        previousPrice = company.GetSecurityPrice();
+        myAmountOfSecurities.text = amount.ToString();
     }
 
-    private void Update()
+    void Update() 
     {
-        UpdatePercent();
+       UpdatePercent(); 
+       myAmountOfSecurities.text = company.GetSecurityMyAmount().ToString();
     }
 
     public void UpdatePercent()
@@ -53,9 +49,10 @@ public class ShortInfo : MonoBehaviour
         else if (deltaPrice < 0)
             percentOfChange.color = red;
 
-            percentOfChange.text =  Math.Abs(deltaPrice).ToString("0.00") + "%";
+        percentOfChange.text =  Math.Abs(deltaPrice).ToString("0.00") + "%";
         price.text = company.GetSecurityPrice().ToString("0.00");
         //companyName.text = company.GetNameOfCompany();
     }
-}
 
+     
+}

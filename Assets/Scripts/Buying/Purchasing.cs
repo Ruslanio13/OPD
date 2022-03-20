@@ -12,9 +12,22 @@ public class Purchasing : MonoBehaviour
     [SerializeField] GameObject confirmationTable;
     [SerializeField] GameObject prePurchaseTable;
     [SerializeField] TextMeshProUGUI question;
+    [SerializeField] GameObject portfolioContent;
+ 
+    DetailedInfoManager detailedInfoManager;
+    Company company;
     int sign;
+    [SerializeField] GameObject portfolioShortInfoPrefab;
+
+
+    void Awake() 
+    {
+        detailedInfoManager = FindObjectOfType<DetailedInfoManager>();
+    }
     public void Buy()
     {
+        company = detailedInfoManager.currentCompany;
+        Debug.Log(company.GetSecurityMyAmount());
         if(amountText.text != "")
         {
             confirmationTable.SetActive(true);
@@ -25,7 +38,12 @@ public class Purchasing : MonoBehaviour
     }
      public void Sell()
     {
-        if(amountText.text != "")
+        company = detailedInfoManager.currentCompany;
+        if(company.GetSecurityMyAmount() < amount)
+        {
+            question.text = "Not enough securities on your balance!";
+        }
+        else if(amountText.text != "")
         {
             confirmationTable.SetActive(true);
             prePurchaseTable.SetActive(false);
@@ -36,9 +54,28 @@ public class Purchasing : MonoBehaviour
 
     public void ConfirmAmount()
     {
-        amount = sign*Convert.ToInt32(amountText.text);
-        Cancel(); 
+        amount = sign * Convert.ToInt32(amountText.text);
+        Cancel();
+
+        AddInPortfolio();
     }
+
+    private void AddInPortfolio()
+    {
+        
+        GameObject temp;
+        
+        company = detailedInfoManager.currentCompany;
+        
+        if(company.GetSecurityMyAmount() == 0 )
+        {
+            temp = Instantiate(portfolioShortInfoPrefab, portfolioContent.transform);
+            temp.GetComponent<PortfolioShortInfo>().SetInfo(company, amount);  
+        }
+
+        company.UpdateMyAmount(amount);
+    }
+
     public void Cancel()
     {
         amountText.text = "";
