@@ -32,7 +32,7 @@ public class ShortInfo : MonoBehaviour
     public void SetInfo(Company comp)
     {
         company = comp;
-        button.onClick.AddListener(() => { DetailedInfoManager._instance.UpdateAllInformation(company); });
+        button.onClick.AddListener(() => { DetailedInfoManager._instance.UpdateAllInformation(company); Debug.Log(company.GetSecurityMyAmount());});
         companyName.text = company.GetNameOfCompany();
         price.text = company.GetSecurityPrice().ToString();
         previousPrice = company.GetSecurityPrice();

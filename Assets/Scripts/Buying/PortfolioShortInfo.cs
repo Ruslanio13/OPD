@@ -10,13 +10,13 @@ public class PortfolioShortInfo : MonoBehaviour
 
     [SerializeField] Button button;
     [SerializeField] int index;
-    [SerializeField] TextMeshProUGUI companyName;
+    [SerializeField] public TextMeshProUGUI companyName;
     [SerializeField] TextMeshProUGUI additionalInfo;
     [SerializeField] TextMeshProUGUI myAmountOfSecurities;
     [SerializeField] TextMeshProUGUI percentOfChange;  
     [SerializeField] TextMeshProUGUI price;
 
-    DetailedInfoManager companies;
+    //DetailedInfoManager companies;
     Company company;
     float deltaPrice;
     Color red = new Color(0.8f, 0.09f, 0.09f, 1);

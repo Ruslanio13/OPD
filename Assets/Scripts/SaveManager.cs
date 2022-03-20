@@ -13,6 +13,7 @@ public class SaveManager : MonoBehaviour
     {
         if (_instance == null)
             _instance = this;
+        
     }
 
     private void Start() {
@@ -35,6 +36,8 @@ public class SaveManager : MonoBehaviour
         {
             Debug.Log("No save file. Creating New!");
             DetailedInfoManager._instance.InitializeCompanies();
+            
+            
             return;
         }
         BinaryFormatter bf = new BinaryFormatter();

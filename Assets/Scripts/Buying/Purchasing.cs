@@ -18,12 +18,14 @@ public class Purchasing : MonoBehaviour
     Company company;
     bool toSell;
     [SerializeField] GameObject portfolioShortInfoPrefab;
+    GameObject target;
 
 
     void Awake() 
     {
         detailedInfoManager = FindObjectOfType<DetailedInfoManager>();
     }
+
     public void Buy()
     {
         if(amountText.text != "")
@@ -77,5 +79,16 @@ public class Purchasing : MonoBehaviour
         amountText.text = "";
         confirmationTable.SetActive(false);
         prePurchaseTable.SetActive(true); 
+    }
+
+    void SearchForCompanyInPortfolio(Company company)
+    {
+        foreach(PortfolioShortInfo portfolioShortInfo in portfolioContent.GetComponentsInChildren<PortfolioShortInfo>())
+        {
+            if(portfolioShortInfo.companyName.text == company.GetNameOfCompany())
+            {
+               target =  portfolioShortInfo.gameObject;
+            }
+        }
     }
 }
