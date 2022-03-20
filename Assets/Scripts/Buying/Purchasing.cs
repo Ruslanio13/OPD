@@ -27,7 +27,7 @@ public class Purchasing : MonoBehaviour
     public void Buy()
     {
         company = detailedInfoManager.currentCompany;
-        Debug.Log(company.GetSecurityMyAmount());
+        
         if(amountText.text != "")
         {
             confirmationTable.SetActive(true);
@@ -39,11 +39,12 @@ public class Purchasing : MonoBehaviour
      public void Sell()
     {
         company = detailedInfoManager.currentCompany;
-        if(company.GetSecurityMyAmount() < amount)
+        Debug.Log(amount);
+        if(company.GetSecurityMyAmount() < amount && amountText.text != "")
         {
             question.text = "Not enough securities on your balance!";
         }
-        else if(amountText.text != "")
+        if(amountText.text != "")
         {
             confirmationTable.SetActive(true);
             prePurchaseTable.SetActive(false);
@@ -54,10 +55,19 @@ public class Purchasing : MonoBehaviour
 
     public void ConfirmAmount()
     {
-        amount = sign * Convert.ToInt32(amountText.text);
-        Cancel();
+        if(company.GetSecurityMyAmount() < Convert.ToInt32(amountText.text) && sign == -1 )
+        {
+            question.text = "Not enough securities on your balance!";
+            Invoke("Cancel",2f);
+        }
+        else
+        {
+            amount = sign * Convert.ToInt32(amountText.text);
+            Cancel();
 
-        AddInPortfolio();
+            AddInPortfolio();
+        }
+        
     }
 
     private void AddInPortfolio()
