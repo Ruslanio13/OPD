@@ -68,6 +68,7 @@ public class DetailedInfoManager : MonoBehaviour
             foreach (Company comp in Companies)
             {
                 comp.UpdatePrice();
+                PortfolioManager._instance.UpdatePortfolio();
             }
             _graph.ResetPosition();
             _graph.UpdateGraph();

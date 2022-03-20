@@ -26,13 +26,8 @@ public class PortfolioShortInfo : MonoBehaviour
     public void SetInfo(Securities sec, float amount)
     {
         company = sec.ParentCompany;
-        //button.onClick.AddListener(() => { DetailedInfoManager._instance.UpdateAllInformation(company); });
-        companyName.text = company.GetNameOfCompany();
-        
-        price.text = company.GetSecurityPrice().ToString();
         myAmountOfSecurities.text = amount.ToString();
-        percentOfChange.text =  Math.Abs(company.GetSecurityDelta()).ToString("0.00") + "%";
-        price.text = company.GetSecurityPrice().ToString("0.00");
+        UpdateInfo();        
     }
 
 
@@ -42,4 +37,14 @@ public class PortfolioShortInfo : MonoBehaviour
         if(amount <= 0)
             Destroy(gameObject);
     }     
+
+
+    public void UpdateInfo()
+    {
+        companyName.text = company.GetNameOfCompany();
+        
+        price.text = company.GetSecurityPrice().ToString();
+        percentOfChange.text =  Math.Abs(company.GetSecurityDelta()).ToString("0.00") + "%";
+        price.text = company.GetSecurityPrice().ToString("0.00");
+    }
 }
