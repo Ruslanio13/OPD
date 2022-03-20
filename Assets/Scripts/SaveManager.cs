@@ -23,7 +23,7 @@ public class SaveManager : MonoBehaviour
     public void Save()
     {
         Debug.Log("Game Saved!");
-        SaveData save = new SaveData(DetailedInfoManager._instance.Companies, PortfolioManager._instance.Portfolio);
+        SaveData save = new SaveData(DetailedInfoManager._instance.Companies, PortfolioManager._instance.Portfolio, PlayerManager._instance.PlayerBalance);
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
@@ -47,6 +47,7 @@ public class SaveManager : MonoBehaviour
 
         DetailedInfoManager._instance.Companies = save.Companies;
         PortfolioManager._instance.Portfolio = save.Portfolio;
+        PlayerManager._instance.PlayerBalance = save.Balance;
     }
 
     private void OnApplicationQuit()
@@ -60,9 +61,11 @@ public class SaveData
 {
     public List<Company> Companies;
     public Dictionary<Securities, int> Portfolio = new Dictionary<Securities, int>();
-    public SaveData(List<Company> comp, Dictionary<Securities, int> port)
+    public Balance Balance;
+    public SaveData(List<Company> comp, Dictionary<Securities, int> port, Balance bal)
     {
         Companies = comp;
         Portfolio = port;
+        Balance = bal;
     }
 }

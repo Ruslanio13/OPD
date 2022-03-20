@@ -42,6 +42,7 @@ public class PortfolioManager : MonoBehaviour
         if (amount * securities.GetPrice() < PlayerManager._instance.GetBalance())
         {
             AddSecurities(securities, amount);
+            PlayerManager._instance.Buy(amount*securities.GetPrice());
         }
         else
             Debug.Log("Not Enough Money");
