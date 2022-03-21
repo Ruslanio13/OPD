@@ -24,6 +24,7 @@ public class Valute : Securities
         {
             Delta = 0;
             Price = 1;
+            _priceHistory.Add(Price);
             return;
         }
 
