@@ -42,9 +42,9 @@ public class Company
         staff = UnityEngine.Random.Range(150, 1000);
         credit = UnityEngine.Random.Range(150f, 1000f);
 
-        CompanyObligation = new Obligation(this);
-        CompanyShare = new Share(this);
-        CompanyFuture = new Future(this);
+        CompanyObligation = new Obligation();
+        CompanyShare = new Share();
+        CompanyFuture = new Future();
         
         GeneratePreGameHistory();
     }
@@ -70,12 +70,12 @@ public class Company
     public float GetSecurityDelta()
     {
         if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(Share))
-            return CompanyShare.delta;
+            return CompanyShare.Delta;
         if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(Obligation))
-            return CompanyObligation.delta;
+            return CompanyObligation.Delta;
         if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(Future))
-            return CompanyFuture.delta;
-        return CompanyShare.delta;
+            return CompanyFuture.Delta;
+        return CompanyShare.Delta;
     }
 
     public void GeneratePreGameHistory()

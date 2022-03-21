@@ -11,43 +11,43 @@ public class ShortInfo : MonoBehaviour
 {
     [SerializeField] Button button;
     [SerializeField] int index;
-    [SerializeField] TextMeshProUGUI companyName;
-    [SerializeField] TextMeshProUGUI percentOfChange;  
+    [SerializeField] TextMeshProUGUI _securityName;
+    [SerializeField] TextMeshProUGUI percentOfChange;
     [SerializeField] TextMeshProUGUI price;
+    Securities sec;
     Company company;
+    Valute valute;
     DetailedInfoManager companies;
     Color red = new Color(0.8f, 0.09f, 0.09f, 1);
     Color green = new Color(0.09f, 0.7f, 0.1f, 1f);
-    float previousPrice;
     double deltaPrice;
 
 
-    public void SetInfo(Company comp)
+    public void SetInfo(Securities securities)
     {
-        company = comp;
-        button.onClick.AddListener(() => { DetailedInfoManager._instance.UpdateAllInformation(company); });
-        companyName.text = company.GetNameOfCompany();
-        price.text = company.GetSecurityPrice().ToString();
-        previousPrice = company.GetSecurityPrice();
+        sec = securities;
+        _securityName.text = securities.GetName();
+
+        button.onClick.AddListener(() => { DetailedInfoManager._instance.UpdateAllInformation(securities); });
+
+        UpdateInfo();
     }
 
-    private void Update()
-    {
-        UpdatePercent();
-    }
 
-    public void UpdatePercent()
+    public void UpdateInfo()
     {
-        if (company == null)
-            return;
-        deltaPrice = company.GetSecurityDelta();
+        deltaPrice = sec.Delta;
+        if(sec.GetType() == typeof(Valute))
+            price.text = sec.GetPrice().ToString();
+        else
+            price.text = sec.Price.ToString();
+
         if (deltaPrice > 0)
             percentOfChange.color = green;
         else if (deltaPrice < 0)
             percentOfChange.color = red;
 
-            percentOfChange.text =  Math.Abs(deltaPrice).ToString("0.00") + "%";
-        price.text = company.GetSecurityPrice().ToString("0.00");
+        percentOfChange.text = Math.Abs(deltaPrice).ToString("0.00") + "%";
     }
 }
 

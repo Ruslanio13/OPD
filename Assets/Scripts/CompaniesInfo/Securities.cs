@@ -6,8 +6,10 @@ using UnityEngine;
 public class Securities
 {
     [System.NonSerialized] public Company ParentCompany;
-    public float delta = 0;
-    float price;
+    public float Delta = 0;
+    
+    public float Price { get; protected set; }
+    public float PriceInSelValue{get; protected set;}
     float averagePrice2017;
     float averagePrice2018;
     float averagePrice2019;
@@ -19,42 +21,52 @@ public class Securities
     public float AveragePrice2020 { get => averagePrice2020; }
     public float AveragePrice2021 { get => averagePrice2021; }
 
-    public float GetPrice() => price;
+    public virtual float GetPrice(){
+       
+       
+       return Price / DetailedInfoManager._instance.currentValute.Price;
+    }
     public List<float> _priceHistory = new List<float>();
 
-    public Securities(Company parentComp)
+    public Securities()
     {
-        price =  500f;
-        ParentCompany = parentComp;
+        Price = 5f;
     }
 
-    
-    public void UpdatePrice()
+
+    public virtual void UpdatePrice()
     {
-        _priceHistory.Add(price);
-        delta = UnityEngine.Random.Range(-2f, 2f); 
-        price += price * delta / 100;
+        Delta = UnityEngine.Random.Range(-2f, 2f);
+        Price += Price * Delta / 100;
+        _priceHistory.Add(Price);
+    }
+
+    public virtual string GetName()
+    {
+        return ParentCompany.GetNameOfCompany();
+    }
+
+    public void RecalculateHistoryForValute(Valute val, Valute prevVal)
+    {
+        for(int i = _priceHistory.Count - 1500, j = val._priceHistory.Count - 1500; i < _priceHistory.Count; i++, j++)
+        {
+            _priceHistory[i] *= val._priceHistory[j] / prevVal._priceHistory[j];
+        }
+            Price *= val.Price/prevVal.Price;
     }
 }
 
 [System.Serializable]
 public class Share : Securities
 {
-    public Share(Company parentComp) : base(parentComp)
-    {
-    }
 }
 [System.Serializable]
 public class Obligation : Securities
 {
-    public Obligation(Company parentComp) : base(parentComp)
-    {
-    }
+
 }
 [System.Serializable]
 public class Future : Securities
 {
-    public Future(Company parentComp) : base(parentComp)
-    {
-    }
+
 }

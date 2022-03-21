@@ -1,55 +1,40 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Valute
+public class Valute : Securities
 {
-    public float AmountOnHands{get; private set;}
-    public Valute()
+    public string Name { get; protected set; }
+    public char Symbol { get; protected set; }
+    private bool isUpdatable;
+    public Valute(string name, char sign, bool isUpdatable = true)
     {
-        AmountOnHands = 1500000000f;
+        Price = UnityEngine.Random.Range(0.8f, 100f);
+        this.isUpdatable = isUpdatable;
+        Symbol = sign;
+        Name = name;
+        ParentCompany = null;
     }
-    public bool BuyWith(float amount)
+
+    public override void UpdatePrice()
     {
-        if(AmountOnHands >= amount)
+
+        if (!isUpdatable)
         {
-            AmountOnHands -= amount;
-            return true;
+            Delta = 0;
+            Price = 1;
+            return;
         }
 
-        return false;
+        Delta = UnityEngine.Random.Range(-2f, 2f);
+        Price += Price * Delta / 100;
+        _priceHistory.Add(Price);
     }
-}
-
-[Serializable]
-public class Dollars:Valute
-{
-    
-}
-[Serializable]
-public class Rubles:Valute
-{
-
-}
-[Serializable]
-public class Euros:Valute
-{
-
-}
-[Serializable]
-public class Balance
-{
-    public Dollars Dol;
-    public Euros Eur;
-    public Rubles Rub;
-
-    public Balance()
+    public override string GetName()
     {
-        Dol = new Dollars();
-        Eur = new Euros();
-        Rub = new Rubles();
+        return Name;
     }
-
 
 
 }

@@ -8,6 +8,7 @@ using TMPro;
 
 public class DetailedInfo : MonoBehaviour
 {
+    [SerializeField] private GameObject _allTable;
     [SerializeField] TextMeshProUGUI averagePrice2017;
     [SerializeField] TextMeshProUGUI averagePrice2018;
     [SerializeField] TextMeshProUGUI averagePrice2019;
@@ -21,18 +22,22 @@ public class DetailedInfo : MonoBehaviour
 
     
 
-    public void SetInfo(Company company)
+    public void SetInfo(Securities sec)
     {
-        averagePrice2017.text = DetailedInfoManager._instance.currentSecurity.AveragePrice2017.ToString();
-        averagePrice2018.text = DetailedInfoManager._instance.currentSecurity.AveragePrice2018.ToString();
-        averagePrice2019.text = DetailedInfoManager._instance.currentSecurity.AveragePrice2019.ToString();
-        averagePrice2020.text = DetailedInfoManager._instance.currentSecurity.AveragePrice2020.ToString();
-        averagePrice2021.text = DetailedInfoManager._instance.currentSecurity.AveragePrice2021.ToString();
+        averagePrice2017.text = sec.AveragePrice2017.ToString();
+        averagePrice2018.text = sec.AveragePrice2018.ToString();
+        averagePrice2019.text = sec.AveragePrice2019.ToString();
+        averagePrice2020.text = sec.AveragePrice2020.ToString();
+        averagePrice2021.text = sec.AveragePrice2021.ToString();
 
-        capitalization.text = company.Capitalization.ToString();
-        amountOfSecurities.text = company.AmountOfSecurities.ToString();
-        profit.text = company.Profit.ToString();
-        staff.text = company.Staff.ToString();
-        credit.text = company.Credit.ToString();
+        if(sec.ParentCompany == null)
+            return;
+        
+        capitalization.text = sec.ParentCompany.Capitalization.ToString();
+        amountOfSecurities.text = sec.ParentCompany.AmountOfSecurities.ToString();
+        profit.text = sec.ParentCompany.Profit.ToString();
+        staff.text = sec.ParentCompany.Staff.ToString();
+        credit.text = sec.ParentCompany.Credit.ToString();
     }
+    public void SetTableActive(bool isActive) => _allTable.SetActive(isActive);
 }

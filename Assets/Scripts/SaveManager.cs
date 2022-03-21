@@ -23,7 +23,7 @@ public class SaveManager : MonoBehaviour
     public void Save()
     {
         Debug.Log("Game Saved!");
-        SaveData save = new SaveData(DetailedInfoManager._instance.Companies, PortfolioManager._instance.Portfolio, PlayerManager._instance.PlayerBalance);
+        SaveData save = new SaveData(DetailedInfoManager._instance.Companies, PortfolioManager._instance.Portfolio, BalanceManager._instance.Wallet, BalanceManager._instance.Valutes);
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
@@ -36,7 +36,8 @@ public class SaveManager : MonoBehaviour
         {
             Debug.Log("No save file. Creating New!");
             DetailedInfoManager._instance.InitializeCompanies();
-            
+            BalanceManager._instance.GenerateValutesList();
+            BalanceManager._instance.CreateNewWallet();
             
             return;
         }
@@ -47,7 +48,9 @@ public class SaveManager : MonoBehaviour
 
         DetailedInfoManager._instance.Companies = save.Companies;
         PortfolioManager._instance.Portfolio = save.Portfolio;
-        PlayerManager._instance.PlayerBalance = save.Balance;
+        BalanceManager._instance.Wallet = save.Wallet;
+        BalanceManager._instance.Valutes = save.Valutes;
+
     }
 
     private void OnApplicationQuit()
@@ -61,11 +64,13 @@ public class SaveData
 {
     public List<Company> Companies;
     public Dictionary<Securities, int> Portfolio = new Dictionary<Securities, int>();
-    public Balance Balance;
-    public SaveData(List<Company> comp, Dictionary<Securities, int> port, Balance bal)
+    public Dictionary<Valute, float> Wallet = new Dictionary<Valute, float>();
+    public List<Valute> Valutes = new List<Valute>();
+    public SaveData(List<Company> comp, Dictionary<Securities, int> port, Dictionary<Valute, float> wal, List<Valute> val)
     {
         Companies = comp;
         Portfolio = port;
-        Balance = bal;
+        Wallet = wal;
+        Valutes = val;
     }
 }

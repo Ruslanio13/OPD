@@ -122,6 +122,9 @@ public class Graph : MonoBehaviour
             if (_maxY < currentPrice)
                 _maxY = currentPrice;
         }
-        _visualScale = 350f/(_maxY - _minY);
+        if(_maxY != _minY)
+            _visualScale = 350f/(_maxY - _minY);
+        else   
+            _visualScale = 1;
     }
 }
