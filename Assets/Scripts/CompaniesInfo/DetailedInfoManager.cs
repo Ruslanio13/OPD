@@ -27,6 +27,7 @@ public class DetailedInfoManager : MonoBehaviour
         
         UpdateAllInformation(Companies[0]);        
         SetMarket(Companies);
+        FindObjectOfType<NewsManager>().SpawnNews(Companies);
     }
 
 
