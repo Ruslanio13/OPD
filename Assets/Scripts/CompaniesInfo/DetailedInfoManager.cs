@@ -53,13 +53,16 @@ public class DetailedInfoManager : MonoBehaviour
             SetValute(BalanceManager._instance.Valutes[0]);
             SetSecuritiesMarket(BalanceManager._instance.Valutes);
         });
-        
+
         currentValute = BalanceManager._instance.Valutes[0];
 
         CreateSecuritiesMarket(new Share());
         SetSecuritiesMarket(SecMarket);
 
         UpdateAllInformation(SecMarket[0]);
+
+
+        FindObjectOfType<NewsManager>().SpawnNews(Companies);
     }
 
 
