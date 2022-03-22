@@ -18,15 +18,17 @@ public class PortfolioShortInfo : MonoBehaviour
 
     //DetailedInfoManager companies;
     Company company;
+    Securities securities;
     float deltaPrice;
     Color red = new Color(0.8f, 0.09f, 0.09f, 1);
     Color green = new Color(0.09f, 0.7f, 0.1f, 1f); 
     
 
-    public void SetInfo(Securities sec, float amount)
+    public void SetInfo(Securities sec, int amount)
     {
-        company = sec.ParentCompany;
-        myAmountOfSecurities.text = amount.ToString();
+        securities = sec;
+        company = securities.ParentCompany;
+        SetAmount(amount);
         UpdateInfo();        
     }
 
@@ -43,15 +45,14 @@ public class PortfolioShortInfo : MonoBehaviour
     {
         companyName.text = company.GetNameOfCompany();
         
-        price.text = company.GetSecurityPrice().ToString();
+        price.text = securities.Price.ToString("0.00");
         
-        if(company.GetSecurityDelta() > 0f)
+        if(securities.Delta > 0f)
             percentOfChange.color = green;
-        else if (company.GetSecurityDelta()<0f)
+        else if (securities.Delta<0f)
             percentOfChange.color = red;
         
-        percentOfChange.text =  Math.Abs(company.GetSecurityDelta()).ToString("0.00") + "%";
+        percentOfChange.text =  Math.Abs(securities.Delta).ToString("0.00") + "%";
         
-        price.text = company.GetSecurityPrice().ToString("0.00");
     }
 }

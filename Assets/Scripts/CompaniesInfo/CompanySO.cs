@@ -59,12 +59,12 @@ public class Company
     public float GetSecurityPrice()
     {
         if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Share))
-            return CompanyShare.GetPrice();
+            return CompanyShare.GetPriceInDollars();
         if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Obligation))
-            return CompanyObligation.GetPrice();
+            return CompanyObligation.GetPriceInDollars();
         if(DetailedInfoManager._instance.currentCompany.GetType() == typeof(Future))
-            return CompanyFuture.GetPrice();        
-        return CompanyShare.GetPrice();
+            return CompanyFuture.GetPriceInDollars();        
+        return CompanyShare.GetPriceInDollars();
     }
 
     public float GetSecurityDelta()

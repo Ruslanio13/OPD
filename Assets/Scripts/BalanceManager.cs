@@ -61,6 +61,16 @@ public class BalanceManager : MonoBehaviour
 
         return false;
     }
+    public bool SellIn(Valute val, float sum)
+    {
+        if(sum > 0)
+        {
+            Wallet[val] += sum;
+            return true;
+        }
+        
+        return false;
+    }
 
     public void UpdateAmountOfValuteOnGUI()
     {

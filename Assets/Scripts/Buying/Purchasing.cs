@@ -55,6 +55,8 @@ public class Purchasing : MonoBehaviour
             else
         PortfolioManager._instance.BuySecurities(DetailedInfoManager._instance.currentSecurity, amount);
 
+        BalanceManager._instance.UpdateAmountOfValuteOnGUI();
+
         Cancel();
     }
 

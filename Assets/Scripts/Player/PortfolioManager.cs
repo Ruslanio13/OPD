@@ -31,7 +31,7 @@ public class PortfolioManager : MonoBehaviour
             tempGO = Instantiate(_securitiesPrefab, _portfolioParentTForm);
             tempInfo = tempGO.GetComponent<PortfolioShortInfo>();
             tempInfo.SetInfo(sec.Key, sec.Value);
-
+            
             _portfolioInUI.Add(sec.Key, tempInfo);
         }
     }
@@ -39,10 +39,10 @@ public class PortfolioManager : MonoBehaviour
     public void BuySecurities(Securities securities, int amount)
     {
 
-        if (amount * securities.GetPrice() < BalanceManager._instance.Wallet[DetailedInfoManager._instance.currentValute])
+        Debug.Log(amount*securities.Price);
+        if (BalanceManager._instance.BuyWith(DetailedInfoManager._instance.currentValute,amount*securities.Price))
         {
             AddSecurities(securities, amount);
-            BalanceManager._instance.BuyWith(DetailedInfoManager._instance.currentValute,amount*securities.GetPrice());
         }
         else
             Debug.Log("Not Enough Money");
@@ -53,6 +53,7 @@ public class PortfolioManager : MonoBehaviour
         if (Portfolio[securities] >= amount)
         {
             RemoveSecurities(securities, amount);
+            BalanceManager._instance.SellIn(DetailedInfoManager._instance.currentValute, amount*securities.Price);
         }
         else
             Debug.Log("Not Enough Securities");

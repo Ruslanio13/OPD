@@ -38,7 +38,7 @@ public class ShortInfo : MonoBehaviour
     {
         deltaPrice = sec.Delta;
         if(sec.GetType() == typeof(Valute))
-            price.text = sec.GetPrice().ToString();
+            price.text = sec.GetPriceInDollars().ToString();
         else
             price.text = sec.Price.ToString();
 
