@@ -50,7 +50,10 @@ public class BalanceManager : MonoBehaviour
             }
     }
 
-
+    public void AddValuteToWallet(Valute val, float amount)
+    {
+        Wallet[val] += amount;
+    }
     public bool BuyWith(Valute val, float amount)
     {
         if (Wallet[val] >= amount)

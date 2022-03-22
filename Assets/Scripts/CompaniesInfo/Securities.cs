@@ -9,7 +9,6 @@ public class Securities
     public float Delta = 0;
     
     public float Price { get; protected set; }
-    public float PriceInSelValue{get; protected set;}
     float averagePrice2017;
     float averagePrice2018;
     float averagePrice2019;
@@ -21,7 +20,7 @@ public class Securities
     public float AveragePrice2020 { get => averagePrice2020; }
     public float AveragePrice2021 { get => averagePrice2021; }
 
-    public virtual float GetPriceInDollars(){
+    public virtual float GetPriceInCurrentValue(){
        return Price / DetailedInfoManager._instance.currentValute.Price;
     }
     public List<float> _priceHistory = new List<float>();
@@ -50,7 +49,8 @@ public class Securities
         {
             _priceHistory[i] *= val._priceHistory[j] / prevVal._priceHistory[j];
         }
-            Price *= val.Price/prevVal.Price;
+        
+        Price *= val.Price/prevVal.Price;
     }
 }
 

@@ -75,11 +75,19 @@ public class Graph : MonoBehaviour
     {
         int g = 0;
         int count = DetailedInfoManager._instance.currentSecurity._priceHistory.Count;
+        float currentPrice;
+        bool isValuteGraph = (DetailedInfoManager._instance.currentSecurity.GetType() == typeof(Valute));
+
         for (int i = count - _graph.positionCount * _timeScaleKoef; i < count; i = i + _timeScaleKoef, g++)
         {
-            float currentPrice = DetailedInfoManager._instance.currentSecurity._priceHistory[i];
+            if(isValuteGraph)
+                currentPrice = DetailedInfoManager._instance.currentSecurity._priceHistory[i]/DetailedInfoManager._instance.currentValute._priceHistory[i];
+            else
+                currentPrice = DetailedInfoManager._instance.currentSecurity._priceHistory[i];
+            
             _graph.SetPosition(g, new Vector2(g * _stepX, currentPrice * _visualScale));
         }
+
         _graph.transform.localPosition = new Vector2(-_graph.transform.position.x + _deltaX, -(_maxY + _minY) / 2f * _visualScale);
     }
 
@@ -110,11 +118,15 @@ public class Graph : MonoBehaviour
         _maxY = 0f;
         transform.localPosition = new Vector2(transform.localPosition.x, 0f);
         _visualScale = 3;
-        
+        float currentPrice;
+        bool isValuteGraph = (DetailedInfoManager._instance.currentSecurity.GetType() == typeof(Valute));
         int count = DetailedInfoManager._instance.currentSecurity._priceHistory.Count;
         for (int i = count - _graph.positionCount * _timeScaleKoef; i < count; i = i + _timeScaleKoef)
         {
-            float currentPrice = DetailedInfoManager._instance.currentSecurity._priceHistory[i];
+            if(isValuteGraph)
+                currentPrice = DetailedInfoManager._instance.currentSecurity._priceHistory[i]/DetailedInfoManager._instance.currentValute._priceHistory[i];
+            else
+                currentPrice = DetailedInfoManager._instance.currentSecurity._priceHistory[i];
             if (_minY > currentPrice)
 
                 _minY = currentPrice;

@@ -51,9 +51,9 @@ public class Purchasing : MonoBehaviour
     {
         amount = Convert.ToInt32(amountText.text);
         if(toSell)
-        PortfolioManager._instance.SellSecurities(DetailedInfoManager._instance.currentSecurity, amount);
-            else
-        PortfolioManager._instance.BuySecurities(DetailedInfoManager._instance.currentSecurity, amount);
+            PortfolioManager._instance.SellSecurities(DetailedInfoManager._instance.currentSecurity, amount);
+        else
+            PortfolioManager._instance.BuySecurities(DetailedInfoManager._instance.currentSecurity, amount);
 
         BalanceManager._instance.UpdateAmountOfValuteOnGUI();
 

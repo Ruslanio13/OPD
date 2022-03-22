@@ -38,9 +38,11 @@ public class PortfolioManager : MonoBehaviour
 
     public void BuySecurities(Securities securities, int amount)
     {
+        float totalSum;
+        
+        totalSum = (securities.GetType() == typeof(Valute)) ? amount*securities.GetPriceInCurrentValue() : amount*securities.Price;
 
-        Debug.Log(amount*securities.Price);
-        if (BalanceManager._instance.BuyWith(DetailedInfoManager._instance.currentValute,amount*securities.Price))
+        if (BalanceManager._instance.BuyWith(DetailedInfoManager._instance.currentValute,totalSum))
         {
             AddSecurities(securities, amount);
         }
@@ -61,7 +63,12 @@ public class PortfolioManager : MonoBehaviour
 
     private void AddSecurities(Securities securities, int amount)
     {
+        if(securities.GetType() == typeof(Valute))
+        {
+            BalanceManager._instance.AddValuteToWallet((Valute)securities, amount);
 
+            return;
+        }
         if (Portfolio.ContainsKey(securities))
         {
             Portfolio[securities] += amount;
@@ -105,7 +112,7 @@ public class PortfolioManager : MonoBehaviour
 
 
     public void UpdatePortfolio()
-    {
+    {            
         foreach (KeyValuePair<Securities, PortfolioShortInfo> sec in _portfolioInUI)
         {
             sec.Value.UpdateInfo();

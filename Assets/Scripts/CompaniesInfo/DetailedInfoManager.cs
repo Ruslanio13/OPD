@@ -114,19 +114,22 @@ public class DetailedInfoManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
+            PortfolioManager._instance.UpdatePortfolio();
+            BalanceManager._instance.UpdateBalance();
+            
             foreach (Company comp in Companies)
             {
                 comp.UpdatePrice();
-                PortfolioManager._instance.UpdatePortfolio();
-                BalanceManager._instance.UpdateBalance();
 
-                foreach (ShortInfo info in _displayedSecurities)
-                {
-                    info.UpdateInfo();
-                }
             }
+            
+            foreach (ShortInfo info in _displayedSecurities)
+            {
+                info.UpdateInfo();
+            }
+
             _graph.ResetPosition();
             _graph.UpdateGraph();
         }
@@ -165,18 +168,25 @@ public class DetailedInfoManager : MonoBehaviour
         {
             info.UpdateInfo();
         }
+        currentSecurity = market[0];
     }
 
     public void SetValute(Valute val)
     {
-        foreach (Securities sec in SecMarket)
-        {
-            sec.RecalculateHistoryForValute(val, currentValute);
-        }
-
         currentValute = val;
 
+        if(currentSecurity.GetType() == typeof(Valute))
+            {
+                Debug.Log(currentValute.GetName());
+                SetSecuritiesMarket(BalanceManager._instance.Valutes);
+            }
+        else
+            foreach (Securities sec in SecMarket)
+            {
+                sec.RecalculateHistoryForValute(val, currentValute);
+            }
         BalanceManager._instance.UpdateAmountOfValuteOnGUI();
+
         PortfolioManager._instance.UpdatePortfolio();
 
         UpdateAllInformation(currentSecurity);
