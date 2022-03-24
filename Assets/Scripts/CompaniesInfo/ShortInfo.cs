@@ -39,14 +39,7 @@ public class ShortInfo : MonoBehaviour
         Valute currentVal = DetailedInfoManager._instance.currentValute;
         if(DetailedInfoManager._instance.currentSecurity.GetType() == typeof(Valute))
         {
-            if(sec.Delta == 0f)
-                deltaPrice = 1 / currentVal.Delta;
-            else if(currentVal.Delta == 0f)
-                deltaPrice = sec.Delta;
-            else if(sec.Delta!=currentVal.Delta)
-                deltaPrice = -currentVal.Price/sec.Price * (sec.Delta - currentVal.Delta);
-            else
-                deltaPrice = sec.Price / currentVal.Price;
+            deltaPrice = (sec.GetPriceInCurrentValue() - sec.GetPreviousPriceInCurrentValue()) / sec.GetPreviousPriceInCurrentValue() * 100f;
         }
         else
             deltaPrice = sec.Delta;

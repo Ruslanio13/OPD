@@ -8,6 +8,9 @@ public class Valute : Securities
     public string Name { get; protected set; }
     public char Symbol { get; protected set; }
     private bool isUpdatable;
+    
+
+
     public Valute(string name, char sign, bool isUpdatable = true)
     {
         Price = UnityEngine.Random.Range(0.8f, 100f);

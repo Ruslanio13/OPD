@@ -23,6 +23,7 @@ public class Securities
     public virtual float GetPriceInCurrentValue(){
        return Price / DetailedInfoManager._instance.currentValute.Price;
     }
+    public float GetPreviousPriceInCurrentValue() => _priceHistory[_priceHistory.Count-2] / DetailedInfoManager._instance.currentValute._priceHistory[_priceHistory.Count-2];
     public List<float> _priceHistory = new List<float>();
 
     public Securities()

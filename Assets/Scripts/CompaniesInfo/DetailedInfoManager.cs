@@ -173,18 +173,22 @@ public class DetailedInfoManager : MonoBehaviour
 
     public void SetValute(Valute val)
     {
-        currentValute = val;
 
         if(currentSecurity.GetType() == typeof(Valute))
             {
+                currentValute = val;
                 Debug.Log(currentValute.GetName());
                 SetSecuritiesMarket(BalanceManager._instance.Valutes);
             }
         else
+        {
             foreach (Securities sec in SecMarket)
             {
                 sec.RecalculateHistoryForValute(val, currentValute);
             }
+            currentValute = val;
+        }
+            
         BalanceManager._instance.UpdateAmountOfValuteOnGUI();
 
         PortfolioManager._instance.UpdatePortfolio();
