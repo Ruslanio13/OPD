@@ -7642,7 +7642,6 @@ GameObject:
   - component: {fileID: 1038782296}
   - component: {fileID: 1038782298}
   - component: {fileID: 1038782297}
-  - component: {fileID: 1038782299}
   m_Layer: 5
   m_Name: News
   m_TagString: Untagged
@@ -7708,27 +7707,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038782295}
   m_CullTransparentMesh: 1
---- !u!114 &1038782299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1038782295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eff4008aa498294ea498cf0c7cf2a4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newsFeed: {fileID: 362827462}
-  newsPrefab: {fileID: 7495269449804996474, guid: 7b226c83fbcffa549bac90b966a8874e, type: 3}
-  newsPatterns:
-  - {fileID: 11400000, guid: 7d659e2adaf09fe41b8fc6eb972e4a42, type: 2}
-  - {fileID: 11400000, guid: ff28fac768e5c2c4b8297105a21d2a0d, type: 2}
-  - {fileID: 11400000, guid: a895f74eb882c7841b1efa124f59a8f2, type: 2}
-  - {fileID: 11400000, guid: f580a319082998f49a588b48d41651a8, type: 2}
-  - {fileID: 11400000, guid: e9c7e0aa6d90e0149b375936a44a742a, type: 2}
-  - {fileID: 11400000, guid: 0196cfd72482ebd4ca381ff5fc276666, type: 2}
 --- !u!1 &1070239720
 GameObject:
   m_ObjectHideFlags: 0
@@ -11345,6 +11323,7 @@ GameObject:
   - component: {fileID: 1602378474}
   - component: {fileID: 1602378475}
   - component: {fileID: 1602378476}
+  - component: {fileID: 1602378477}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -11428,6 +11407,8 @@ MonoBehaviour:
     profit: 0
     staff: 0
     credit: 0
+    _minPriceChange: 0
+    _maxPriceChange: 0
   currentSecurity:
     Delta: 0
     _priceHistory: []
@@ -11463,6 +11444,27 @@ MonoBehaviour:
   _balanceInMarket: {fileID: 2112610368}
   _balanceInPortfolio: {fileID: 310639225}
   Valutes: []
+--- !u!114 &1602378477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602378471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eff4008aa498294ea498cf0c7cf2a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newsFeed: {fileID: 362827462}
+  newsPrefab: {fileID: 7495269449804996474, guid: 7b226c83fbcffa549bac90b966a8874e, type: 3}
+  newsPatterns:
+  - {fileID: 11400000, guid: 0196cfd72482ebd4ca381ff5fc276666, type: 2}
+  - {fileID: 11400000, guid: f580a319082998f49a588b48d41651a8, type: 2}
+  - {fileID: 11400000, guid: 7d659e2adaf09fe41b8fc6eb972e4a42, type: 2}
+  - {fileID: 11400000, guid: a895f74eb882c7841b1efa124f59a8f2, type: 2}
+  - {fileID: 11400000, guid: ff28fac768e5c2c4b8297105a21d2a0d, type: 2}
+  - {fileID: 11400000, guid: e9c7e0aa6d90e0149b375936a44a742a, type: 2}
 --- !u!1 &1609578059
 GameObject:
   m_ObjectHideFlags: 0
