@@ -51,7 +51,18 @@ public class PortfolioManager : MonoBehaviour
     }
     public void SellSecurities(Securities securities, int amount)
     {
-
+        if(securities.GetType() == typeof(Valute))
+        {
+            if(BalanceManager._instance.Wallet[(Valute)securities] >= amount)
+            {
+                BalanceManager._instance.SellIn(DetailedInfoManager._instance.currentValute, amount*securities.GetPriceInCurrentValue());
+                BalanceManager._instance.RemoveValuteFromWallet((Valute)securities, amount);
+            }
+            else
+                Debug.Log("NotEnoughValute");
+            return;
+        }
+        
         if (Portfolio[securities] >= amount)
         {
             RemoveSecurities(securities, amount);

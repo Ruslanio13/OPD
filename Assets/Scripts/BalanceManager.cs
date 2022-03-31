@@ -54,6 +54,10 @@ public class BalanceManager : MonoBehaviour
     {
         Wallet[val] += amount;
     }
+    public void RemoveValuteFromWallet(Valute val, float amount)
+    {
+        Wallet[val] -= amount;
+    }
     public bool BuyWith(Valute val, float amount)
     {
         if (Wallet[val] >= amount)

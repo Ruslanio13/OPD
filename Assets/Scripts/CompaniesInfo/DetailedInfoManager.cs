@@ -47,11 +47,13 @@ public class DetailedInfoManager : MonoBehaviour
 
         _selSharesMarket.onClick.AddListener(() =>
         {
+            SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new Share());
             SetSecuritiesMarket(SecMarket);
         });
         _selValuteMarket.onClick.AddListener(() =>
         {
+            SetValute(BalanceManager._instance.Valutes[0]);
             SetSecuritiesMarket(BalanceManager._instance.Valutes);
         });
 
@@ -231,5 +233,6 @@ public class DetailedInfoManager : MonoBehaviour
             }
         }
     }
+
 
 }
