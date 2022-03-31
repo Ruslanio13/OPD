@@ -11,10 +11,8 @@ public class NewsSO : ScriptableObject
     
     [TextArea(6, 6)]
     [SerializeField] public string text;
-  
-  
 
-
-
-
+    public float minChange; 
+    public float maxChange; 
 }
+
