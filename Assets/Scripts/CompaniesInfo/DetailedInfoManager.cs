@@ -149,7 +149,7 @@ public class DetailedInfoManager : MonoBehaviour
         }
         _displayedSecurities.Clear();
 
-        table.SetTableActive(true);
+        currentSecurity = market[0];
 
         Debug.Log(market.Count);
         for (int i = 0; i < market.Count; i++)
@@ -166,7 +166,6 @@ public class DetailedInfoManager : MonoBehaviour
         {
             info.UpdateInfo();
         }
-        currentSecurity = market[0];
     }
 
     public void SetValute(Valute val)
