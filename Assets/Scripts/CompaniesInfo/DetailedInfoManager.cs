@@ -71,6 +71,7 @@ public class DetailedInfoManager : MonoBehaviour
 
     public void InitializeCompanies()
     {
+        Debug.Log(gameObject.name);
         Companies.Add(new Company("Sberbank"));
         Companies.Add(new Company("VTB"));
         Companies.Add(new Company("Tinkoff"));

@@ -17,16 +17,20 @@ public class NewsManager : MonoBehaviour
 
     public void SpawnNews(List<Company> companies)
     {
-        foreach(Company company in companies)
+        int i;
+        int numberOfRandomNew;
+        GameObject temp;
+        for (i = 0; i < companies.Count; i++)
         {
-            int numberOfRandomNew = UnityEngine.Random.Range(0, newsPatterns.Count);
-            GameObject temp;
+            numberOfRandomNew = UnityEngine.Random.Range(0, newsPatterns.Count);
+
             temp = Instantiate(newsPrefab, newsFeed.transform);
-            newsPrefab.GetComponent<NewsSetUp>().SetUpNews(company, newsPatterns[numberOfRandomNew]);
-            company.SetMaxPriceChange(newsPatterns[numberOfRandomNew].maxChange);
-            company.SetMinPriceChange(newsPatterns[numberOfRandomNew].minChange);
+            newsPrefab.GetComponent<NewsSetUp>().SetUpNews(companies[i], newsPatterns[numberOfRandomNew]);
+            companies[i].SetMaxPriceChange(newsPatterns[numberOfRandomNew].maxChange);
+            companies[i].SetMinPriceChange(newsPatterns[numberOfRandomNew].minChange);
+            Debug.Log(companies[i].GetNameOfCompany() + " " + numberOfRandomNew);
         }
-        
+
     }
     
         

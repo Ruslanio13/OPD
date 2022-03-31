@@ -31,23 +31,52 @@ public class Securities
         Price = 5f;
     }
 
+    bool needToSet = true;
+    int countOfChanges = 0;
+    float maxPrice = 2f;
+    float minPrice = -2f;
 
     public virtual void UpdatePrice()
     {
-        float maxPrice;
-        float minPrice;
-        if (ParentCompany != null)
+        
+
+        if (ParentCompany != null && needToSet == true)
         {
             maxPrice = ParentCompany.GetMaxPriceChange();
             minPrice = ParentCompany.GetMinPriceChange();
+            needToSet = false;
         }
-        else
+        else if (ParentCompany == null)
         {
             maxPrice = 2f;
             minPrice = -2f;
         }
-        
-        Delta = UnityEngine.Random.Range(minPrice, maxPrice + 1f);
+
+        if (maxPrice != 2f && ParentCompany != null)
+        {
+            if (countOfChanges < 10)
+            {
+                maxPrice *= 0.9f;
+                minPrice *= 0.9f;
+                countOfChanges += 1;
+            }
+            else
+            {
+                needToSet = true;
+                countOfChanges = 0;
+            }
+        }
+
+        if (maxPrice == 2f)
+        {
+            needToSet = true;
+            Debug.Log("я хуесос");
+        }
+
+        if (ParentCompany != null)
+            Debug.Log(ParentCompany.GetNameOfCompany() + " " + maxPrice + " " + minPrice);
+      
+        Delta = UnityEngine.Random.Range(minPrice, maxPrice);
         Price += Price * Delta / 100;
         _priceHistory.Add(Price);
     }

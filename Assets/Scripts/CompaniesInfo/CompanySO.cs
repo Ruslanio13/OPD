@@ -28,8 +28,8 @@ public class Company
     public float Capitalization { get => capitalization; }
     public int AmountOfSecurities { get => amountOfSecurities; }
 
-    private float _minPriceChange;
-    private float _maxPriceChange;
+    [SerializeField] private float _minPriceChange;
+    [SerializeField] private float _maxPriceChange;
 
     public void SetMinPriceChange(float price) => _minPriceChange = price;
     public void SetMaxPriceChange(float price) => _maxPriceChange = price;
