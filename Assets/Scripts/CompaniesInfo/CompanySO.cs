@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using System;
 
 [Serializable]
@@ -29,7 +28,14 @@ public class Company
     public float Capitalization { get => capitalization; }
     public int AmountOfSecurities { get => amountOfSecurities; }
 
+    private float _minPriceChange;
+    private float _maxPriceChange;
 
+    public void SetMinPriceChange(float price) => _minPriceChange = price;
+    public void SetMaxPriceChange(float price) => _maxPriceChange = price;
+
+    public float GetMinPriceChange() => _minPriceChange;
+    public float GetMaxPriceChange() => _maxPriceChange;
 
     public string GetNameOfCompany() => companyName;
 

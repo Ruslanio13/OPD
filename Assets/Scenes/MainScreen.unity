@@ -7725,6 +7725,10 @@ MonoBehaviour:
   newsPatterns:
   - {fileID: 11400000, guid: 7d659e2adaf09fe41b8fc6eb972e4a42, type: 2}
   - {fileID: 11400000, guid: ff28fac768e5c2c4b8297105a21d2a0d, type: 2}
+  - {fileID: 11400000, guid: a895f74eb882c7841b1efa124f59a8f2, type: 2}
+  - {fileID: 11400000, guid: f580a319082998f49a588b48d41651a8, type: 2}
+  - {fileID: 11400000, guid: e9c7e0aa6d90e0149b375936a44a742a, type: 2}
+  - {fileID: 11400000, guid: 0196cfd72482ebd4ca381ff5fc276666, type: 2}
 --- !u!1 &1070239720
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,7 +34,20 @@ public class Securities
 
     public virtual void UpdatePrice()
     {
-        Delta = UnityEngine.Random.Range(-2f, 2f);
+        float maxPrice;
+        float minPrice;
+        if (ParentCompany != null)
+        {
+            maxPrice = ParentCompany.GetMaxPriceChange();
+            minPrice = ParentCompany.GetMinPriceChange();
+        }
+        else
+        {
+            maxPrice = 2f;
+            minPrice = -2f;
+        }
+        
+        Delta = UnityEngine.Random.Range(minPrice, maxPrice + 1f);
         Price += Price * Delta / 100;
         _priceHistory.Add(Price);
     }

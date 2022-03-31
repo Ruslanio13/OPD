@@ -62,8 +62,7 @@ public class DetailedInfoManager : MonoBehaviour
 
         UpdateAllInformation(SecMarket[0]);
 
-
-        FindObjectOfType<NewsManager>().SpawnNews(Companies);
+        NewsManager._instance.SpawnNews(Companies);
     }
 
 
@@ -101,9 +100,6 @@ public class DetailedInfoManager : MonoBehaviour
         {
             info.UpdateInfo();
         }
-
-
-
 
         table.SetInfo(sec);
         _graph.ResetPosition();
