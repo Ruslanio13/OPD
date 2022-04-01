@@ -12,9 +12,9 @@ public class DetailedInfoManager : MonoBehaviour
     [SerializeField] public Graph _graph;
     [SerializeField] DetailedInfo table;
     [SerializeField] private GameObject _shortInfoPrefab;
-    [SerializeField] private Button[] _selRubButton;
-    [SerializeField] private Button[] _selEurButton;
-    [SerializeField] private Button[] _selDolButton;
+    [SerializeField] private Button _selRubButton;
+    [SerializeField] private Button _selEurButton;
+    [SerializeField] private Button _selDolButton;
 
     [SerializeField] private Button _selSharesMarket;
     [SerializeField] private Button _selValuteMarket;
@@ -37,12 +37,11 @@ public class DetailedInfoManager : MonoBehaviour
             comp.SetCompanyToSecurities();
         }
 
-        for(int i = 0; i<_selDolButton.Length; i++)
-        {
-            _selDolButton[i].onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[0]));
-            _selRubButton[i].onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[1]));
-            _selEurButton[i].onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[2]));
-        }
+        
+            _selDolButton.onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[0]));
+            _selRubButton.onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[1]));
+            _selEurButton.onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[2]));
+        
 
 
         _selSharesMarket.onClick.AddListener(() =>
