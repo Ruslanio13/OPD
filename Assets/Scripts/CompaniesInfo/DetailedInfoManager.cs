@@ -37,11 +37,11 @@ public class DetailedInfoManager : MonoBehaviour
             comp.SetCompanyToSecurities();
         }
 
-        
-            _selDolButton.onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[0]));
-            _selRubButton.onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[1]));
-            _selEurButton.onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[2]));
-        
+
+        _selDolButton.onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[0]));
+        _selRubButton.onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[1]));
+        _selEurButton.onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[2]));
+
 
 
         _selSharesMarket.onClick.AddListener(() =>
@@ -116,13 +116,13 @@ public class DetailedInfoManager : MonoBehaviour
         {
             PortfolioManager._instance.UpdatePortfolio();
             BalanceManager._instance.UpdateBalance();
-            
+
             foreach (Company comp in Companies)
             {
                 comp.UpdatePrice();
 
             }
-            
+
             foreach (ShortInfo info in _displayedSecurities)
             {
                 info.UpdateInfo();
@@ -155,7 +155,11 @@ public class DetailedInfoManager : MonoBehaviour
         for (int i = 0; i < market.Count; i++)
         {
             if (market[i].GetName() == currentValute.GetName())
+            {
+                if(i == 0)
+                    currentSecurity = market[1];
                 continue;
+            }
 
             temp = Instantiate(_shortInfoPrefab, _shortInfoListTransform);
             temp2 = temp.GetComponent<ShortInfo>();
@@ -171,12 +175,12 @@ public class DetailedInfoManager : MonoBehaviour
     public void SetValute(Valute val)
     {
 
-        if(currentSecurity.GetType() == typeof(Valute))
-            {
-                currentValute = val;
-                Debug.Log(currentValute.GetName());
-                SetSecuritiesMarket(BalanceManager._instance.Valutes);
-            }
+        if (currentSecurity.GetType() == typeof(Valute))
+        {
+            currentValute = val;
+            Debug.Log(currentValute.GetName());
+            SetSecuritiesMarket(BalanceManager._instance.Valutes);
+        }
         else
         {
             foreach (Securities sec in SecMarket)
@@ -185,7 +189,7 @@ public class DetailedInfoManager : MonoBehaviour
             }
             currentValute = val;
         }
-            
+
         BalanceManager._instance.UpdateAmountOfValuteOnGUI();
 
         PortfolioManager._instance.UpdatePortfolio();
