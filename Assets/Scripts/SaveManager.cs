@@ -55,6 +55,7 @@ public class SaveManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        DetailedInfoManager._instance.SetValute(BalanceManager._instance.Valutes[0]);
         Save();
     }
 }

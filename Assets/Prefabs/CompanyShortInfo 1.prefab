@@ -359,7 +359,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.9
+  m_fontSize: 28.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.9521017, b: 0.9622642, a: 0.392}
+  m_Color: {r: 0, g: 0.053650815, b: 0.38039216, a: 0.79607844}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -802,7 +802,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 526.92, y: 65.61052}
+  m_SizeDelta: {x: 526.92, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9113217387557799213
 CanvasRenderer:
@@ -859,3 +859,11 @@ MonoBehaviour:
   _securityName: {fileID: 559040093}
   percentOfChange: {fileID: 3166770096025274814}
   price: {fileID: 1894815919}
+  _buttonColors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.24313726, g: 0.35686275, b: 0.8235294, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.2431292, g: 0.353056, b: 0.8207547, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0

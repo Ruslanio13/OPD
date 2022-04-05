@@ -8,7 +8,7 @@ public class DetailedInfoManager : MonoBehaviour
 
     [SerializeField] public List<Company> Companies = new List<Company>();
     [SerializeField] private List<Securities> SecMarket = new List<Securities>();
-    [SerializeField] private Transform _shortInfoListTransform;
+    [SerializeField] private RectTransform _shortInfoListTransform;
     [SerializeField] public Graph _graph;
     [SerializeField] DetailedInfo table;
     [SerializeField] private GameObject _shortInfoPrefab;
@@ -23,6 +23,7 @@ public class DetailedInfoManager : MonoBehaviour
     public Company currentCompany;
     public Securities currentSecurity;
     public Valute currentValute;
+    private int _step;
 
     void Awake()
     {
@@ -32,6 +33,8 @@ public class DetailedInfoManager : MonoBehaviour
 
     private void Start()
     {
+        _step = 0;
+
         foreach (Company comp in Companies)
         {
             comp.SetCompanyToSecurities();
@@ -63,7 +66,6 @@ public class DetailedInfoManager : MonoBehaviour
 
         UpdateAllInformation(SecMarket[0]);
 
-        NewsManager._instance.SpawnNews(Companies);
     }
 
 
@@ -114,22 +116,22 @@ public class DetailedInfoManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
+            if (_step % 10 == 0)
+                NewsManager._instance.SpawnNews(Companies);
             PortfolioManager._instance.UpdatePortfolio();
             BalanceManager._instance.UpdateBalance();
 
-            foreach (Company comp in Companies)
-            {
-                comp.UpdatePrice();
-
-            }
-
-            foreach (ShortInfo info in _displayedSecurities)
-            {
-                info.UpdateInfo();
-            }
+            
+            foreach (Company comp in Companies)          
+                comp.UpdatePrice();       
+            
+            foreach (ShortInfo info in _displayedSecurities)          
+                info.UpdateInfo();           
 
             _graph.ResetPosition();
             _graph.UpdateGraph();
+
+            _step++;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             _graph.EnlargeScale();
@@ -150,7 +152,7 @@ public class DetailedInfoManager : MonoBehaviour
         _displayedSecurities.Clear();
 
         currentSecurity = market[0];
-
+        _shortInfoListTransform.sizeDelta = Vector2.zero;
         Debug.Log(market.Count);
         for (int i = 0; i < market.Count; i++)
         {
@@ -165,11 +167,9 @@ public class DetailedInfoManager : MonoBehaviour
             temp2 = temp.GetComponent<ShortInfo>();
             temp2.SetInfo(market[i]);
             _displayedSecurities.Add(temp.GetComponent<ShortInfo>());
+            _shortInfoListTransform.sizeDelta += new Vector2(0, 65f);
         }
-        foreach (ShortInfo info in _displayedSecurities)
-        {
-            info.UpdateInfo();
-        }
+        UpdateAllInformation(currentSecurity);
     }
 
     public void SetValute(Valute val)
