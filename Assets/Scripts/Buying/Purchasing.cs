@@ -60,22 +60,6 @@ public class Purchasing : MonoBehaviour
         Cancel();
     }
 
-    // private void AddInPortfolio()
-    // {
-        
-    //     GameObject temp;
-        
-    //     company = detailedInfoManager.currentCompany;
-        
-    //     if(company.GetSecurityMyAmount() == 0 )
-    //     {
-    //         temp = Instantiate(portfolioShortInfoPrefab, portfolioContent.transform);
-    //         temp.GetComponent<PortfolioShortInfo>().SetInfo(company, amount);  
-    //     }
-
-    //     company.UpdateMyAmount(amount);
-    // }
-
     public void Cancel()
     {
         amountText.text = "";
@@ -83,7 +67,7 @@ public class Purchasing : MonoBehaviour
         prePurchaseTable.SetActive(true); 
     }
 
-    void SearchForCompanyInPortfolio(Company company)
+    /*void SearchForCompanyInPortfolio(Company company)
     {
         foreach(PortfolioShortInfo portfolioShortInfo in portfolioContent.GetComponentsInChildren<PortfolioShortInfo>())
         {
@@ -92,5 +76,5 @@ public class Purchasing : MonoBehaviour
                target =  portfolioShortInfo.gameObject;
             }
         }
-    }
+    }*/
 }

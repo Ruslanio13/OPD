@@ -20,10 +20,6 @@ public class Securities
     public float AveragePrice2020 { get => averagePrice2020; }
     public float AveragePrice2021 { get => averagePrice2021; }
 
-    public virtual float GetPriceInCurrentValue(){
-       return Price / DetailedInfoManager._instance.currentValute.Price;
-    }
-    
     public List<float> _priceHistory = new List<float>();
 
     public Securities()
@@ -111,3 +107,6 @@ public class Future : Securities
 {
 
 }
+
+
+

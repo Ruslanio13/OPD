@@ -19,9 +19,9 @@ public class Valute : Securities
         Name = name;
         ParentCompany = null;
     }
-    public override float GetPriceInCurrentValue()
+    public float GetPriceInCurrentValue()
     {
-        return 1f/base.GetPriceInCurrentValue();
+        return DetailedInfoManager._instance.currentValute.Price/Price;
     }
     public float GetPreviousPriceInCurrentValue() => DetailedInfoManager._instance.currentValute._priceHistory[_priceHistory.Count-2] /_priceHistory[_priceHistory.Count-2];
     public override void UpdatePrice()

@@ -50,13 +50,13 @@ public class ShortInfo : MonoBehaviour
         Valute currentVal = DetailedInfoManager._instance.currentValute;
         if(DetailedInfoManager._instance.currentSecurity.GetType() == typeof(Valute))
         {
-            deltaPrice = (sec.GetPriceInCurrentValue() - (sec as Valute).GetPreviousPriceInCurrentValue()) / (sec as Valute).GetPreviousPriceInCurrentValue() * 100f;
+            deltaPrice = ((sec as Valute).GetPriceInCurrentValue() - (sec as Valute).GetPreviousPriceInCurrentValue()) / (sec as Valute).GetPreviousPriceInCurrentValue() * 100f;
         }
         else
             deltaPrice = sec.Delta;
 
         if(sec.GetType() == typeof(Valute))
-            price.text = sec.GetPriceInCurrentValue().ToString("0.00");
+            price.text = (sec as Valute).GetPriceInCurrentValue().ToString("0.00");
         else
             price.text = sec.Price.ToString("0.00");
 

@@ -30,8 +30,8 @@ public class PortfolioManager : MonoBehaviour
             Debug.Log("In Portfolio " + sec.Key.ParentCompany.GetNameOfCompany() + " " + sec.Value);
             tempGO = Instantiate(_securitiesPrefab, _portfolioParentTForm);
             tempInfo = tempGO.GetComponent<PortfolioShortInfo>();
-            tempInfo.SetInfo(sec.Key, sec.Value);
-            
+            tempInfo.SetInfo(sec.Key, sec.Value, tempInfo.SpendOnSecurity);
+
             _portfolioInUI.Add(sec.Key, tempInfo);
         }
     }
@@ -39,10 +39,10 @@ public class PortfolioManager : MonoBehaviour
     public void BuySecurities(Securities securities, int amount)
     {
         float totalSum;
-        
-        totalSum = (securities.GetType() == typeof(Valute)) ? amount*securities.GetPriceInCurrentValue() : amount*securities.Price;
 
-        if (BalanceManager._instance.BuyWith(DetailedInfoManager._instance.currentValute,totalSum))
+        totalSum = (securities.GetType() == typeof(Valute)) ? amount * (securities as Valute).GetPriceInCurrentValue() : amount * securities.Price;
+
+        if (BalanceManager._instance.BuyWith(DetailedInfoManager._instance.currentValute, totalSum))
         {
             AddSecurities(securities, amount);
         }
@@ -51,22 +51,22 @@ public class PortfolioManager : MonoBehaviour
     }
     public void SellSecurities(Securities securities, int amount)
     {
-        if(securities.GetType() == typeof(Valute))
+        if (securities.GetType() == typeof(Valute))
         {
-            if(BalanceManager._instance.Wallet[(Valute)securities] >= amount)
+            if (BalanceManager._instance.Wallet[(Valute)securities] >= amount)
             {
-                BalanceManager._instance.SellIn(DetailedInfoManager._instance.currentValute, amount*securities.GetPriceInCurrentValue());
+                BalanceManager._instance.SellIn(DetailedInfoManager._instance.currentValute, amount * (securities as Valute).GetPriceInCurrentValue());
                 BalanceManager._instance.RemoveValuteFromWallet((Valute)securities, amount);
             }
             else
                 Debug.Log("NotEnoughValute");
             return;
         }
-        
+
         if (Portfolio[securities] >= amount)
         {
             RemoveSecurities(securities, amount);
-            BalanceManager._instance.SellIn(DetailedInfoManager._instance.currentValute, amount*securities.Price);
+            BalanceManager._instance.SellIn(DetailedInfoManager._instance.currentValute, amount * securities.Price);
         }
         else
             Debug.Log("Not Enough Securities");
@@ -74,16 +74,16 @@ public class PortfolioManager : MonoBehaviour
 
     private void AddSecurities(Securities securities, int amount)
     {
-        if(securities.GetType() == typeof(Valute))
+        if (securities.GetType() == typeof(Valute))
         {
             BalanceManager._instance.AddValuteToWallet((Valute)securities, amount);
-
             return;
         }
         if (Portfolio.ContainsKey(securities))
         {
             Portfolio[securities] += amount;
             _portfolioInUI[securities].SetAmount(Portfolio[securities]);
+            _portfolioInUI[securities].AddTransaction(amount * securities.Price / DetailedInfoManager._instance.currentValute.Price);
         }
         else
         {
@@ -93,11 +93,12 @@ public class PortfolioManager : MonoBehaviour
             Portfolio.Add(securities, amount);
             temp = Instantiate(_securitiesPrefab, _portfolioParentTForm);
             tempInfo = temp.GetComponent<PortfolioShortInfo>();
-            tempInfo.SetInfo(securities, amount);
+            tempInfo.SetInfo(securities, amount, amount * securities.Price / DetailedInfoManager._instance.currentValute.Price);
 
             _portfolioInUI.Add(securities, tempInfo);
         }
     }
+
     private void RemoveSecurities(Securities securities, int amount)
     {
         if (Portfolio.ContainsKey(securities))
@@ -123,11 +124,10 @@ public class PortfolioManager : MonoBehaviour
 
 
     public void UpdatePortfolio()
-    {            
+    {
         foreach (KeyValuePair<Securities, PortfolioShortInfo> sec in _portfolioInUI)
         {
             sec.Value.UpdateInfo();
         }
     }
 }
-

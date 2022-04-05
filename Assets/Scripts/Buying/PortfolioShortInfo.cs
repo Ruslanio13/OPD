@@ -7,30 +7,30 @@ using System;
 
 public class PortfolioShortInfo : MonoBehaviour
 {
+    private List<List<float>> TransHistory = new List<List<float>>();
 
-    [SerializeField] Button button;
-    [SerializeField] int index;
     [SerializeField] public TextMeshProUGUI companyName;
     [SerializeField] TextMeshProUGUI additionalInfo;
     [SerializeField] TextMeshProUGUI myAmountOfSecurities;
-    [SerializeField] TextMeshProUGUI percentOfChange;  
+    [SerializeField] TextMeshProUGUI percentOfChange;
     [SerializeField] TextMeshProUGUI price;
 
-    //DetailedInfoManager companies;
-    Company company;
-    Securities securities;
-    float deltaPrice;
-    Color red = new Color(0.8f, 0.09f, 0.09f, 1);
-    Color green = new Color(0.09f, 0.7f, 0.1f, 1f); 
-    
 
-    public void SetInfo(Securities sec, int amount)
+    Securities securities;
+    Color red = new Color(0.8f, 0.09f, 0.09f, 1);
+    Color green = new Color(0.09f, 0.7f, 0.1f, 1f);
+    public float SpendOnSecurity { get; private set; }
+
+
+    public void SetInfo(Securities sec, int amount, float spend)
     {
         securities = sec;
-        company = securities.ParentCompany;
+        AddTransaction(spend);
+        ShowSpentInCurrentVal();
         SetAmount(amount);
-        UpdateInfo();        
+        UpdateInfo();
     }
+
 
 
     public void SetAmount(int amount)
@@ -43,11 +43,12 @@ public class PortfolioShortInfo : MonoBehaviour
 
     public void UpdateInfo()
     {
-        companyName.text = company.GetNameOfCompany();
+        companyName.text = securities.ParentCompany.GetNameOfCompany();
         
         price.text = securities.Price.ToString("0.00");
-        
-        if(securities.Delta > 0f)
+        ShowSpentInCurrentVal();
+
+        if (securities.Delta > 0f)
             percentOfChange.color = green;
         else if (securities.Delta<0f)
             percentOfChange.color = red;
@@ -55,4 +56,36 @@ public class PortfolioShortInfo : MonoBehaviour
         percentOfChange.text =  Math.Abs(securities.Delta).ToString("0.00") + "%";
         
     }
+    public void ShowSpentInCurrentVal()
+    {
+        float total = 0;
+        int valID = 0;
+        for (int i = 0; i < BalanceManager._instance.Valutes.Count; i++)
+            if (DetailedInfoManager._instance.currentValute == BalanceManager._instance.Valutes[i])
+            {
+                valID = i;
+                break;
+            }
+
+
+        for (int i = 0; i < TransHistory.Count; i++)
+            total += TransHistory[i][0] * TransHistory[i][valID + 1];
+        additionalInfo.text = total.ToString("0.00");
+    }
+
+
+    public void AddTransaction(float spend)
+    {
+        List<float> tempList = new List<float>();
+        tempList.Add(spend);
+
+        for (int i = 0; i < BalanceManager._instance.Valutes.Count; i++)
+        {
+            tempList.Add(BalanceManager._instance.Valutes[i].Price);
+        }
+
+        TransHistory.Add(tempList);
+        ShowSpentInCurrentVal();
+    }
+    
 }
