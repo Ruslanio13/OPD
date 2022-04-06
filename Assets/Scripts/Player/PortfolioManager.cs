@@ -113,7 +113,7 @@ public class PortfolioManager : MonoBehaviour
             if (amount == securities.Amount)
             {
                 Portfolio.Remove(securities);
-
+                securities.SetAmount(0);
                 Destroy(FindInUIList(securities).gameObject);
                 _portfolioInUI.Remove(FindInUIList(securities));
             }
@@ -126,6 +126,7 @@ public class PortfolioManager : MonoBehaviour
         {
             throw new System.Exception("Cannot remove sec-s due to their absense");
         }
+        UpdatePortfolio();
     }
 
 

@@ -68,7 +68,6 @@ public class Securities
         if (maxPrice == 2f)
         {
             needToSet = true;
-            Debug.Log("� ������");
         }
 
         if (ParentCompany != null)
@@ -95,7 +94,7 @@ public class Securities
     }
     public void SetAmount(int am)
     {
-        if(am > 0)
+        if(am >= 0)
             Amount = am;
         else
             throw new System.Exception("Wrong Amount Of Sec");
