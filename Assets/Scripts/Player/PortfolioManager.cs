@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PortfolioManager : MonoBehaviour
 {
     public static PortfolioManager _instance;
-    public Dictionary<Securities, int> Portfolio = new Dictionary<Securities, int>();
-    private Dictionary<Securities, PortfolioShortInfo> _portfolioInUI = new Dictionary<Securities, PortfolioShortInfo>();
+    public List<Securities> Portfolio = new List<Securities>();
+    private List<PortfolioShortInfo> _portfolioInUI = new List<PortfolioShortInfo>();
 
     [SerializeField] private GameObject _securitiesPrefab;
     [SerializeField] private Transform _portfolioParentTForm;
+    [SerializeField] private Button GoToPortfolio;
 
     private void Start()
     {
         InitializePortfolio();
+        GoToPortfolio.onClick.AddListener( () => UpdatePortfolio());
     }
 
     private void Awake()
@@ -25,14 +28,14 @@ public class PortfolioManager : MonoBehaviour
     {
         GameObject tempGO;
         PortfolioShortInfo tempInfo;
-        foreach (KeyValuePair<Securities, int> sec in Portfolio)
+        foreach (Securities sec in Portfolio)
         {
-            Debug.Log("In Portfolio " + sec.Key.ParentCompany.GetNameOfCompany() + " " + sec.Value);
+            Debug.Log("In Portfolio " + sec.ParentCompany.GetNameOfCompany() + " " + sec.Amount);
             tempGO = Instantiate(_securitiesPrefab, _portfolioParentTForm);
             tempInfo = tempGO.GetComponent<PortfolioShortInfo>();
-            tempInfo.SetInfo(sec.Key, sec.Value, tempInfo.SpendOnSecurity);
+            tempInfo.SetInfo(sec);
 
-            _portfolioInUI.Add(sec.Key, tempInfo);
+            _portfolioInUI.Add(tempInfo);
         }
     }
 
@@ -63,7 +66,7 @@ public class PortfolioManager : MonoBehaviour
             return;
         }
 
-        if (Portfolio[securities] >= amount)
+        if (securities.Amount >= amount)
         {
             RemoveSecurities(securities, amount);
             BalanceManager._instance.SellIn(DetailedInfoManager._instance.currentValute, amount * securities.Price);
@@ -79,41 +82,44 @@ public class PortfolioManager : MonoBehaviour
             BalanceManager._instance.AddValuteToWallet((Valute)securities, amount);
             return;
         }
-        if (Portfolio.ContainsKey(securities))
+        if (securities.Amount > 0)
         {
-            Portfolio[securities] += amount;
-            _portfolioInUI[securities].SetAmount(Portfolio[securities]);
-            _portfolioInUI[securities].AddTransaction(amount * securities.Price / DetailedInfoManager._instance.currentValute.Price);
+            securities.SetAmount(securities.Amount + amount);
+            securities.AddTransaction(amount * securities.Price / DetailedInfoManager._instance.currentValute.Price);
         }
         else
         {
             GameObject temp;
             PortfolioShortInfo tempInfo;
 
-            Portfolio.Add(securities, amount);
+            Portfolio.Add(securities);
+
             temp = Instantiate(_securitiesPrefab, _portfolioParentTForm);
             tempInfo = temp.GetComponent<PortfolioShortInfo>();
-            tempInfo.SetInfo(securities, amount, amount * securities.Price / DetailedInfoManager._instance.currentValute.Price);
+            tempInfo.SetInfo(securities);
 
-            _portfolioInUI.Add(securities, tempInfo);
+            securities.SetAmount(securities.Amount + amount);
+            securities.AddTransaction(amount * securities.Price / DetailedInfoManager._instance.currentValute.Price);
+
+            _portfolioInUI.Add(tempInfo);
         }
+        UpdatePortfolio();
     }
 
     private void RemoveSecurities(Securities securities, int amount)
     {
-        if (Portfolio.ContainsKey(securities))
+        if (securities.Amount > 0)
         {
-            if (amount == Portfolio[securities])
+            if (amount == securities.Amount)
             {
                 Portfolio.Remove(securities);
 
-                Destroy(_portfolioInUI[securities].gameObject);
-                _portfolioInUI.Remove(securities);
+                Destroy(FindInUIList(securities).gameObject);
+                _portfolioInUI.Remove(FindInUIList(securities));
             }
             else
             {
-                Portfolio[securities] -= amount;
-                _portfolioInUI[securities].SetAmount(Portfolio[securities]);
+                securities.SetAmount(securities.Amount - amount);
             }
         }
         else
@@ -125,9 +131,19 @@ public class PortfolioManager : MonoBehaviour
 
     public void UpdatePortfolio()
     {
-        foreach (KeyValuePair<Securities, PortfolioShortInfo> sec in _portfolioInUI)
+        foreach (PortfolioShortInfo sec in _portfolioInUI)
         {
-            sec.Value.UpdateInfo();
+            sec.UpdateInfo();
         }
     }
+
+    public PortfolioShortInfo FindInUIList(Securities sec)
+    {
+        foreach (PortfolioShortInfo info in _portfolioInUI)
+            if (info.securities == sec)
+                return info;
+
+        throw new System.Exception("Sec is not presented in UIList");
+    }
+
 }

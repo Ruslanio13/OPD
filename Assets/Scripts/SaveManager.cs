@@ -64,10 +64,10 @@ public class SaveManager : MonoBehaviour
 public class SaveData
 {
     public List<Company> Companies;
-    public Dictionary<Securities, int> Portfolio = new Dictionary<Securities, int>();
+    public List<Securities> Portfolio = new List<Securities>();
     public Dictionary<Valute, float> Wallet = new Dictionary<Valute, float>();
     public List<Valute> Valutes = new List<Valute>();
-    public SaveData(List<Company> comp, Dictionary<Securities, int> port, Dictionary<Valute, float> wal, List<Valute> val)
+    public SaveData(List<Company> comp, List<Securities> port, Dictionary<Valute, float> wal, List<Valute> val)
     {
         Companies = comp;
         Portfolio = port;
