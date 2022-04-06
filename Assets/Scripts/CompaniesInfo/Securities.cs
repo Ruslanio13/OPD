@@ -100,10 +100,11 @@ public class Securities
             throw new System.Exception("Wrong Amount Of Sec");
     }
 
-    public void AddTransaction(float spend)
+    public void AddTransaction(int amount, float pricePerOne)
     {
         List<float> tempList = new List<float>();
-        tempList.Add(spend);
+        tempList.Add(amount);
+        tempList.Add(pricePerOne);
 
         for (int i = 0; i < BalanceManager._instance.Valutes.Count; i++)
         {
