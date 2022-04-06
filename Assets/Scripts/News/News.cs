@@ -3,22 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class News : MonoBehaviour
+[System.Serializable]
+public class News
 {
-   
-    [SerializeField] TextMeshProUGUI titleText;
-    [SerializeField] TextMeshProUGUI mainText;
-    public Company Company { get; private set; }
- 
+    public Company comp { get; private set; }
+    public NewsSO template { get; private set; }
 
-    public void SetUpNews(Company comp, NewsSO newsPattern) 
+    public News(Company comp, NewsSO template)
     {
-        Company = comp;
-        titleText.text = "Компания " + comp.GetNameOfCompany() + " " + newsPattern.title;
-        mainText.text = newsPattern.text;
-        comp.SetMaxPriceChange(newsPattern.maxChange);
-        comp.SetMinPriceChange(newsPattern.minChange);
-    }
+        this.comp = comp;
+        this.template = template;
 
-    
+        comp.SetMaxPriceChange(template.maxChange);
+        comp.SetMinPriceChange(template.minChange);
+    }
 }
