@@ -62,7 +62,9 @@ public class DetailedInfoManager : MonoBehaviour
         currentValute = BalanceManager._instance.Valutes[0];
 
         CreateSecuritiesMarket(new Share());
-        SetSecuritiesMarket(SecMarket);
+        SetSecuritiesMarket(SecMarket); 
+
+
 
         UpdateAllInformation(SecMarket[0]);
 
@@ -97,8 +99,7 @@ public class DetailedInfoManager : MonoBehaviour
 
     public void UpdateAllInformation(Securities sec)
     {
-        currentCompany = sec.ParentCompany;
-        currentSecurity = sec;
+        SelectSecurity(sec);
 
         foreach (ShortInfo info in _displayedSecurities)
         {
@@ -151,7 +152,7 @@ public class DetailedInfoManager : MonoBehaviour
         }
         _displayedSecurities.Clear();
 
-        currentSecurity = SecMarket[0];
+        SelectSecurity(SecMarket[0]);
         _shortInfoListTransform.sizeDelta = Vector2.zero;
         Debug.Log(SecMarket.Count);
         for (int i = 0; i < SecMarket.Count; i++)
@@ -159,7 +160,7 @@ public class DetailedInfoManager : MonoBehaviour
             if (SecMarket[i].GetName() == currentValute.GetName())
             {
                 if (i == 0)
-                    currentSecurity = SecMarket[1];
+                    SelectSecurity(SecMarket[1]);
                 continue;
             }
 
@@ -182,7 +183,7 @@ public class DetailedInfoManager : MonoBehaviour
         }
         _displayedSecurities.Clear();
 
-        currentSecurity = market[0];
+        SelectSecurity(market[0]);
         _shortInfoListTransform.sizeDelta = Vector2.zero;
         Debug.Log(market.Count);
         for (int i = 0; i < market.Count; i++)
@@ -190,7 +191,7 @@ public class DetailedInfoManager : MonoBehaviour
             if (market[i].GetName() == currentValute.GetName())
             {
                 if(i == 0)
-                    currentSecurity = market[1];
+                    SelectSecurity(market[1]);
                 continue;
             }
 
@@ -206,6 +207,7 @@ public class DetailedInfoManager : MonoBehaviour
     {
         currentSecurity = sec;
         currentCompany = sec.ParentCompany;
+        NewsManager._instance.ShowCompanyNews(sec.ParentCompany);
     }
     public void SetValute(Valute val)
     {

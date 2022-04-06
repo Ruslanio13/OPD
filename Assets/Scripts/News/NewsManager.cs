@@ -9,7 +9,7 @@ public class NewsManager : MonoBehaviour
     [SerializeField] GameObject newsPrefab;
     [SerializeField] List<NewsSO> newsPatterns = new List<NewsSO>();
     public static NewsManager _instance;
-    private List<News> _allNews = new List<News>();
+    public List<News> AllNews = new List<News>();
     private List<NewsShortInfo> _newsInUI = new List<NewsShortInfo>();
 
 
@@ -25,13 +25,13 @@ public class NewsManager : MonoBehaviour
         int numberOfRandomNew;
         News temp;
         _newsFeedRT.sizeDelta += new Vector2(0, 375f);
-        for (i = companies.Count - 1; i >= 0; i--)
+        for (i = 0; i < companies.Count; i++)
         {
             numberOfRandomNew = UnityEngine.Random.Range(0, newsPatterns.Count);
             temp = new News(companies[i], newsPatterns[numberOfRandomNew]);
-            _allNews.Add(temp);
-            ShowCompanyNews(DetailedInfoManager._instance.currentCompany);
+            AllNews.Add(temp);
         }
+        ShowCompanyNews(DetailedInfoManager._instance.currentCompany);
     }
 
     public void ShowCompanyNews(Company company)
@@ -43,12 +43,12 @@ public class NewsManager : MonoBehaviour
         }
         _newsInUI.Clear();
 
-        foreach (News news in _allNews)
+        for(int i = AllNews.Count - 1 ; i >= 0; i--)
         {
-            if (news.comp == company)
+            if (AllNews[i].comp == company)
             {
                 temp = Instantiate(newsPrefab, newsFeed.transform);
-                temp.GetComponent<NewsShortInfo>().SetUpNews(news);
+                temp.GetComponent<NewsShortInfo>().SetUpNews(AllNews[i]);
                 _newsInUI.Add(temp.GetComponent<NewsShortInfo>());
             }
         }

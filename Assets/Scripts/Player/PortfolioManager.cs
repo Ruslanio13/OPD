@@ -16,10 +16,13 @@ public class PortfolioManager : MonoBehaviour
     private void Start()
     {
         InitializePortfolio();
-        GoToPortfolio.onClick.AddListener(() => {
-            UpdatePortfolio();
+        GoToPortfolio.onClick.AddListener(() =>
+        {
             DetailedInfoManager._instance.CreateSecuritiesMarket(new Share());
             DetailedInfoManager._instance.SetSecuritiesMarket();
+            if (Portfolio.Count != 0)
+                DetailedInfoManager._instance.SelectSecurity(Portfolio[0]);
+            UpdatePortfolio();
         });
     }
 

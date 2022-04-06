@@ -7,12 +7,19 @@ using TMPro;
 public class News
 {
     public Company comp { get; private set; }
-    public NewsSO template { get; private set; }
+
+    public string MainText{get; private set;}
+    public string TitleText{get; private set;}
+    public float maxChange{get; private set;}
+    public float minChange{get; private set;}
 
     public News(Company comp, NewsSO template)
     {
         this.comp = comp;
-        this.template = template;
+        TitleText = template.title;
+        MainText = template.text;
+        maxChange = template.maxChange;
+        minChange = template.minChange;
 
         comp.SetMaxPriceChange(template.maxChange);
         comp.SetMinPriceChange(template.minChange);
