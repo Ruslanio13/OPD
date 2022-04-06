@@ -6,8 +6,9 @@ using UnityEngine;
 public class Securities
 {
     [System.NonSerialized] public Company ParentCompany;
+    public List<List<float>> TransHistory = new List<List<float>>();
     public float Delta = 0;
-    
+    public int Amount{get; private set;}
     public float Price { get; protected set; }
     float averagePrice2017;
     float averagePrice2018;
@@ -25,6 +26,7 @@ public class Securities
     public Securities()
     {
         Price = 5f;
+        Amount = 0;
     }
 
     bool needToSet = true;
@@ -66,7 +68,7 @@ public class Securities
         if (maxPrice == 2f)
         {
             needToSet = true;
-            Debug.Log("я хуесос");
+            Debug.Log("пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
         }
 
         if (ParentCompany != null)
@@ -90,6 +92,26 @@ public class Securities
         }
         
         Price *= val.Price/prevVal.Price;
+    }
+    public void SetAmount(int am)
+    {
+        if(am > 0)
+            Amount = am;
+        else
+            throw new System.Exception("Wrong Amount Of Sec");
+    }
+
+    public void AddTransaction(float spend)
+    {
+        List<float> tempList = new List<float>();
+        tempList.Add(spend);
+
+        for (int i = 0; i < BalanceManager._instance.Valutes.Count; i++)
+        {
+            tempList.Add(BalanceManager._instance.Valutes[i].Price);
+        }
+
+        TransHistory.Add(tempList);
     }
 }
 
