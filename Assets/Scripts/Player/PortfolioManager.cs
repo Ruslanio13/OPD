@@ -16,7 +16,11 @@ public class PortfolioManager : MonoBehaviour
     private void Start()
     {
         InitializePortfolio();
-        GoToPortfolio.onClick.AddListener( () => UpdatePortfolio());
+        GoToPortfolio.onClick.AddListener(() => {
+            UpdatePortfolio();
+            DetailedInfoManager._instance.CreateSecuritiesMarket(new Share());
+            DetailedInfoManager._instance.SetSecuritiesMarket();
+        });
     }
 
     private void Awake()
@@ -85,7 +89,7 @@ public class PortfolioManager : MonoBehaviour
         if (securities.Amount > 0)
         {
             securities.SetAmount(securities.Amount + amount);
-            securities.AddTransaction(amount * securities.Price / DetailedInfoManager._instance.currentValute.Price);
+            securities.AddTransaction(amount, securities.Price / DetailedInfoManager._instance.currentValute.Price);
         }
         else
         {
@@ -99,7 +103,7 @@ public class PortfolioManager : MonoBehaviour
             tempInfo.SetInfo(securities);
 
             securities.SetAmount(securities.Amount + amount);
-            securities.AddTransaction(amount * securities.Price / DetailedInfoManager._instance.currentValute.Price);
+            securities.AddTransaction(amount, securities.Price / DetailedInfoManager._instance.currentValute.Price);
 
             _portfolioInUI.Add(tempInfo);
         }
@@ -113,13 +117,27 @@ public class PortfolioManager : MonoBehaviour
             if (amount == securities.Amount)
             {
                 Portfolio.Remove(securities);
-                securities.SetAmount(0);
                 Destroy(FindInUIList(securities).gameObject);
                 _portfolioInUI.Remove(FindInUIList(securities));
             }
-            else
+            securities.SetAmount(securities.Amount - amount);
+            int currentAmount = amount;
+            int j = securities.TransHistory.Count - 1;
+            while (currentAmount != 0)
             {
-                securities.SetAmount(securities.Amount - amount);
+                if (securities.TransHistory[j][0] >= currentAmount)
+                {
+                    securities.TransHistory[j][0] -= currentAmount;
+                    currentAmount = 0;
+                }
+                else
+                {
+                    currentAmount -= System.Convert.ToInt32(securities.TransHistory[j][0]);
+                    securities.TransHistory[j][0] = 0;
+                }
+                if (securities.TransHistory[j][0] == 0)
+                    securities.TransHistory.RemoveAt(j);
+                j--;
             }
         }
         else
@@ -146,5 +164,4 @@ public class PortfolioManager : MonoBehaviour
 
         throw new System.Exception("Sec is not presented in UIList");
     }
-
 }
