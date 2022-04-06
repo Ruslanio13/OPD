@@ -16,7 +16,11 @@ public class PortfolioManager : MonoBehaviour
     private void Start()
     {
         InitializePortfolio();
-        GoToPortfolio.onClick.AddListener(() => UpdatePortfolio());
+        GoToPortfolio.onClick.AddListener(() => {
+            UpdatePortfolio();
+            DetailedInfoManager._instance.CreateSecuritiesMarket(new Share());
+            DetailedInfoManager._instance.SetSecuritiesMarket();
+        });
     }
 
     private void Awake()
@@ -126,6 +130,8 @@ public class PortfolioManager : MonoBehaviour
                     securities.TransHistory[j][0] -= 1;
                     currentAmount -= 1;
                 }
+                if (securities.TransHistory[j][0] == 0)
+                    securities.TransHistory.RemoveAt(j);
                 j--;
             }
         }

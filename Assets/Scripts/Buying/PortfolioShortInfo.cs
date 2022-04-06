@@ -14,6 +14,9 @@ public class PortfolioShortInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI myAmountOfSecurities;
     [SerializeField] private TextMeshProUGUI _profitPercent;
     [SerializeField] private TextMeshProUGUI price;
+    [SerializeField] private Button SelectSecurityButton;
+
+    [SerializeField] private ColorBlock _buttonColors;
 
 
     public Securities securities { get; private set; }
@@ -25,9 +28,27 @@ public class PortfolioShortInfo : MonoBehaviour
     public void SetInfo(Securities sec)
     {
         securities = sec;
+        SelectSecurityButton.onClick.AddListener(() =>
+       {
+           DetailedInfoManager._instance.SelectSecurity(sec);
+           PortfolioManager._instance.UpdatePortfolio();
+       });
     }
     public void UpdateInfo()
     {
+        if (DetailedInfoManager._instance.currentSecurity == securities)
+        {
+            _buttonColors.normalColor = new Color32(0x3E, 0x5B, 0xD2, 255);
+            _buttonColors.selectedColor = new Color32(0x3E, 0x5B, 0xD2, 255);
+            SelectSecurityButton.colors = _buttonColors;
+        }
+        else
+        {
+            _buttonColors.selectedColor = Color.white;
+            _buttonColors.normalColor = Color.white;
+            SelectSecurityButton.colors = _buttonColors;
+        }
+
         float profitPercentFloat = ((securities.Amount * securities.Price) / ShowSpentInCurrentVal(securities) - 1) * 100;
         companyName.text = securities.ParentCompany.GetNameOfCompany();
 

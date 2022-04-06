@@ -141,6 +141,37 @@ public class DetailedInfoManager : MonoBehaviour
 
     }
 
+    public void SetSecuritiesMarket()
+    {
+        GameObject temp;
+        ShortInfo temp2;
+        foreach (ShortInfo info in _displayedSecurities)
+        {
+            Destroy(info.gameObject);
+        }
+        _displayedSecurities.Clear();
+
+        currentSecurity = SecMarket[0];
+        _shortInfoListTransform.sizeDelta = Vector2.zero;
+        Debug.Log(SecMarket.Count);
+        for (int i = 0; i < SecMarket.Count; i++)
+        {
+            if (SecMarket[i].GetName() == currentValute.GetName())
+            {
+                if (i == 0)
+                    currentSecurity = SecMarket[1];
+                continue;
+            }
+
+            temp = Instantiate(_shortInfoPrefab, _shortInfoListTransform);
+            temp2 = temp.GetComponent<ShortInfo>();
+            temp2.SetInfo(SecMarket[i]);
+            _displayedSecurities.Add(temp.GetComponent<ShortInfo>());
+            _shortInfoListTransform.sizeDelta += new Vector2(0, 65f);
+        }
+        UpdateAllInformation(currentSecurity);
+    }
+
     public void SetSecuritiesMarket<T>(List<T> market) where T : Securities
     {
         GameObject temp;
@@ -171,7 +202,11 @@ public class DetailedInfoManager : MonoBehaviour
         }
         UpdateAllInformation(currentSecurity);
     }
-
+    public void SelectSecurity(Securities sec)
+    {
+        currentSecurity = sec;
+        currentCompany = sec.ParentCompany;
+    }
     public void SetValute(Valute val)
     {
 
