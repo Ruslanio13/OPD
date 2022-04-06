@@ -125,10 +125,15 @@ public class PortfolioManager : MonoBehaviour
             int j = securities.TransHistory.Count - 1;
             while (currentAmount != 0)
             {
-                while (securities.TransHistory[j][0] != 0 && currentAmount != 0)
+                if (securities.TransHistory[j][0] >= currentAmount)
                 {
-                    securities.TransHistory[j][0] -= 1;
-                    currentAmount -= 1;
+                    securities.TransHistory[j][0] -= currentAmount;
+                    currentAmount = 0;
+                }
+                else
+                {
+                    currentAmount -= System.Convert.ToInt32(securities.TransHistory[j][0]);
+                    securities.TransHistory[j][0] = 0;
                 }
                 if (securities.TransHistory[j][0] == 0)
                     securities.TransHistory.RemoveAt(j);
