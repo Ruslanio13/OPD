@@ -9,7 +9,7 @@ public class BalanceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _balanceInMarket;
     [SerializeField] private TextMeshProUGUI _balanceInPortfolio;
     public List<Valute> Valutes = new List<Valute>();
-    public Dictionary<Valute, float> Wallet = new Dictionary<Valute, float>();
+    public float RublesWallet;
     public static BalanceManager _instance;
 
     private void Awake()
@@ -25,9 +25,7 @@ public class BalanceManager : MonoBehaviour
 
     public void CreateNewWallet()
     {
-        Wallet.Add(Valutes[0], 0);
-        Wallet.Add(Valutes[1], 20000);
-        Wallet.Add(Valutes[2], 0);
+        RublesWallet = 20000f;
     }
 
     public void UpdateBalance()
@@ -44,25 +42,17 @@ public class BalanceManager : MonoBehaviour
         Valutes.Add(new Valute("Rubles", 'P'));
         Valutes.Add(new Valute("Euros", '€'));
 
-            for (int i = 0; i < 1500; i++)
-            {
-                UpdateBalance();
-            }
+        for (int i = 0; i < 1500; i++)
+        {
+            UpdateBalance();
+        }
     }
 
-    public void AddValuteToWallet(Valute val, float amount)
-    {
-        Wallet[val] += amount;
-    }
-    public void RemoveValuteFromWallet(Valute val, float amount)
-    {
-        Wallet[val] -= amount;
-    }
     public bool BuyWith(Valute val, float amount)
     {
-        if (Wallet[val] >= amount)
+        if (RublesWallet>= amount  * val.GetPriceInCurrentValue() )
         {
-            Wallet[val] -= amount;
+            RublesWallet -= val.GetPriceInCurrentValue()/ Valutes[1].GetPriceInCurrentValue() * amount;
             return true;
         }
 
@@ -70,19 +60,21 @@ public class BalanceManager : MonoBehaviour
     }
     public bool SellIn(Valute val, float sum)
     {
-        if(sum > 0)
+        if (sum > 0)
         {
-            Wallet[val] += sum;
+            RublesWallet += val.GetPriceInCurrentValue()/ Valutes[1].GetPriceInCurrentValue() * sum;
             return true;
         }
-        
+
         return false;
     }
 
     public void UpdateAmountOfValuteOnGUI()
     {
         Valute val = DetailedInfoManager._instance.currentValute;
-        float onHands = Wallet[val];
+
+
+        float onHands = RublesWallet *Valutes[1].GetPriceInCurrentValue()/val.GetPriceInCurrentValue() ;
         _balanceInMarket.text = onHands.ToString("00.00") + val.Symbol;
         _balanceInPortfolio.text = onHands.ToString("00.00") + val.Symbol;
     }

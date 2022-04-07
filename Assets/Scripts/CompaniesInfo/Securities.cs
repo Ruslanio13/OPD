@@ -75,6 +75,9 @@ public class Securities
       
         Delta = UnityEngine.Random.Range(minPrice, maxPrice);
         Price += Price * Delta / 100;
+
+        Price = Mathf.Round(Price * 10000f)/10000f;
+        
         _priceHistory.Add(Price);
     }
 

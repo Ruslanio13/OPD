@@ -42,11 +42,13 @@ public class NewsManager : MonoBehaviour
             Destroy(newsShortInfo.gameObject);
         }
         _newsInUI.Clear();
+        _newsFeedRT.sizeDelta = Vector2.zero;
 
         for(int i = AllNews.Count - 1 ; i >= 0; i--)
         {
             if (AllNews[i].comp == company)
             {
+                _newsFeedRT.sizeDelta += new Vector2(0, 375);
                 temp = Instantiate(newsPrefab, newsFeed.transform);
                 temp.GetComponent<NewsShortInfo>().SetUpNews(AllNews[i]);
                 _newsInUI.Add(temp.GetComponent<NewsShortInfo>());

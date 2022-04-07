@@ -109,6 +109,7 @@ public class DetailedInfoManager : MonoBehaviour
         table.SetInfo(sec);
         _graph.ResetPosition();
         _graph.UpdateGraph();
+        BalanceManager._instance.UpdateAmountOfValuteOnGUI();
     }
 
 
@@ -129,11 +130,10 @@ public class DetailedInfoManager : MonoBehaviour
             foreach (ShortInfo info in _displayedSecurities)          
                 info.UpdateInfo();           
 
-            _graph.ResetPosition();
-            _graph.UpdateGraph();
-
+            UpdateAllInformation(currentSecurity);
             _step++;
         }
+        
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             _graph.EnlargeScale();
 

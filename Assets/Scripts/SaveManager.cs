@@ -23,7 +23,7 @@ public class SaveManager : MonoBehaviour
     public void Save()
     {
         Debug.Log("Game Saved!");
-        SaveData save = new SaveData(DetailedInfoManager._instance.Companies, PortfolioManager._instance.Portfolio, BalanceManager._instance.Wallet, BalanceManager._instance.Valutes, NewsManager._instance.AllNews);
+        SaveData save = new SaveData(DetailedInfoManager._instance.Companies, PortfolioManager._instance.Portfolio, BalanceManager._instance.RublesWallet, BalanceManager._instance.Valutes, NewsManager._instance.AllNews);
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
@@ -48,7 +48,7 @@ public class SaveManager : MonoBehaviour
 
         DetailedInfoManager._instance.Companies = save.Companies;
         PortfolioManager._instance.Portfolio = save.Portfolio;
-        BalanceManager._instance.Wallet = save.Wallet;
+        BalanceManager._instance.RublesWallet = save.Wallet;
         BalanceManager._instance.Valutes = save.Valutes;
         NewsManager._instance.AllNews = save.News;
 
@@ -66,10 +66,10 @@ public class SaveData
 {
     public List<Company> Companies;
     public List<Securities> Portfolio = new List<Securities>();
-    public Dictionary<Valute, float> Wallet = new Dictionary<Valute, float>();
+    public float Wallet;
     public List<Valute> Valutes = new List<Valute>();
     public List<News> News = new List<News>();
-    public SaveData(List<Company> comp, List<Securities> port, Dictionary<Valute, float> wal, List<Valute> val, List<News> news)
+    public SaveData(List<Company> comp, List<Securities> port, float wal, List<Valute> val, List<News> news)
     {
         Companies = comp;
         Portfolio = port;
