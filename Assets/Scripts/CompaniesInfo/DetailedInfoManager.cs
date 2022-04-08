@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DetailedInfoManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class DetailedInfoManager : MonoBehaviour
     [SerializeField] private Button _selRubButton;
     [SerializeField] private Button _selEurButton;
     [SerializeField] private Button _selDolButton;
+    [SerializeField] private TextMeshProUGUI _calendarTxt;
 
     [SerializeField] private Button _selSharesMarket;
     [SerializeField] private Button _selValuteMarket;
@@ -24,7 +26,7 @@ public class DetailedInfoManager : MonoBehaviour
     public Company currentCompany;
     public Securities currentSecurity;
     public Valute currentValute;
-    private int _step;
+    public Calendar Calendar;
 
     void Awake()
     {
@@ -34,8 +36,6 @@ public class DetailedInfoManager : MonoBehaviour
 
     private void Start()
     {
-        _step = 0;
-
         foreach (Company comp in Companies)
         {
             comp.SetCompanyToSecurities();
@@ -75,7 +75,8 @@ public class DetailedInfoManager : MonoBehaviour
 
     public void InitializeCompanies()
     {
-        Debug.Log(gameObject.name);
+        Calendar = new Calendar(1, 1, 2022);
+
         Companies.Add(new Company("Sberbank"));
         Companies.Add(new Company("VTB"));
         Companies.Add(new Company("Tinkoff"));
@@ -100,6 +101,7 @@ public class DetailedInfoManager : MonoBehaviour
 
     public void UpdateAllInformation(Securities sec)
     {
+        _calendarTxt.text = Calendar.GetStrDate();
         SelectSecurity(sec);
 
         foreach (ShortInfo info in _displayedSecurities)
@@ -119,7 +121,7 @@ public class DetailedInfoManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if (_step % 10 == 0)
+            if (Calendar.AllDays % 10 == 0)
                 NewsManager._instance.SpawnNews(Companies);
             PortfolioManager._instance.UpdatePortfolio();
             BalanceManager._instance.UpdateBalance();
@@ -130,11 +132,12 @@ public class DetailedInfoManager : MonoBehaviour
             
             foreach (ShortInfo info in _displayedSecurities)          
                 info.UpdateInfo();           
+            Calendar.UpdateDate();
+            if (Calendar.IsTimeToDividends())
+                Instantiate(_notification);
 
             UpdateAllInformation(currentSecurity);
-            _step++;
-            if (_step % 10 == 0)
-                Instantiate(_notification);
+
 
         }
 
