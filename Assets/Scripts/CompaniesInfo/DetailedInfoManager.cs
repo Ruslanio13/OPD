@@ -12,6 +12,7 @@ public class DetailedInfoManager : MonoBehaviour
     [SerializeField] public Graph _graph;
     [SerializeField] DetailedInfo table;
     [SerializeField] private GameObject _shortInfoPrefab;
+    [SerializeField] private GameObject _notification;
     [SerializeField] private Button _selRubButton;
     [SerializeField] private Button _selEurButton;
     [SerializeField] private Button _selDolButton;
@@ -132,8 +133,11 @@ public class DetailedInfoManager : MonoBehaviour
 
             UpdateAllInformation(currentSecurity);
             _step++;
+            if (_step % 10 == 0)
+                Instantiate(_notification);
+
         }
-        
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             _graph.EnlargeScale();
 
