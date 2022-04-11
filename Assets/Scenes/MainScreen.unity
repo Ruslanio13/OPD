@@ -3055,7 +3055,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1930865377}
   m_HandleRect: {fileID: 1930865376}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4377,7 +4377,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 757677503}
   m_HandleRect: {fileID: 757677502}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -11985,7 +11985,6 @@ MonoBehaviour:
   _graph: {fileID: 2041709490}
   table: {fileID: 1560343243}
   _shortInfoPrefab: {fileID: 8873377605450158406, guid: 5b4784474694f9d499d2e19525729192, type: 3}
-  _notification: {fileID: 5562727486297806772, guid: 740d4f94ff7a0ba4aa30d1e7cf7224d5, type: 3}
   _selRubButton: {fileID: 596670225}
   _selEurButton: {fileID: 1883354900}
   _selDolButton: {fileID: 999271282}
