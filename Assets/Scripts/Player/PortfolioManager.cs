@@ -37,7 +37,7 @@ public class PortfolioManager : MonoBehaviour
         PortfolioShortInfo tempInfo;
         foreach (Securities sec in Portfolio)
         {
-            Debug.Log("In Portfolio " + sec.ParentCompany.GetNameOfCompany() + " " + sec.Amount);
+            Debug.Log("In Portfolio " + sec.ParentCompany.GetNameOfCompany() + " " + sec.AmountInPortolio);
             tempGO = Instantiate(_securitiesPrefab, _portfolioParentTForm);
             tempInfo = tempGO.GetComponent<PortfolioShortInfo>();
             tempInfo.SetInfo(sec);
@@ -61,7 +61,7 @@ public class PortfolioManager : MonoBehaviour
     }
     public void SellSecurities(Securities securities, int amount)
     {
-        if (securities.Amount >= amount)
+        if (securities.AmountInPortolio >= amount)
         {
             RemoveSecurities(securities, amount);
             BalanceManager._instance.SellIn(DetailedInfoManager._instance.currentValute, amount * securities.Price);
@@ -72,9 +72,9 @@ public class PortfolioManager : MonoBehaviour
 
     private void AddSecurities(Securities securities, int amount)
     {
-        if (securities.Amount > 0)
+        if (securities.AmountInPortolio > 0)
         {
-            securities.SetAmount(securities.Amount + amount);
+            securities.SetAmount(securities.AmountInPortolio + amount);
             securities.AddTransaction(amount, securities.Price / DetailedInfoManager._instance.currentValute.Price);
         }
         else
@@ -88,7 +88,7 @@ public class PortfolioManager : MonoBehaviour
             tempInfo = temp.GetComponent<PortfolioShortInfo>();
             tempInfo.SetInfo(securities);
 
-            securities.SetAmount(securities.Amount + amount);
+            securities.SetAmount(securities.AmountInPortolio + amount);
             securities.AddTransaction(amount, securities.Price / DetailedInfoManager._instance.currentValute.Price);
 
             _portfolioInUI.Add(tempInfo);
@@ -98,15 +98,15 @@ public class PortfolioManager : MonoBehaviour
 
     private void RemoveSecurities(Securities securities, int amount)
     {
-        if (securities.Amount > 0)
+        if (securities.AmountInPortolio > 0)
         {
-            if (amount == securities.Amount)
+            if (amount == securities.AmountInPortolio)
             {
                 Portfolio.Remove(securities);
                 Destroy(FindInUIList(securities).gameObject);
                 _portfolioInUI.Remove(FindInUIList(securities));
             }
-            securities.SetAmount(securities.Amount - amount);
+            securities.SetAmount(securities.AmountInPortolio - amount);
             int currentAmount = amount;
             int j = securities.TransHistory.Count - 1;
             while (currentAmount != 0)

@@ -49,11 +49,11 @@ public class PortfolioShortInfo : MonoBehaviour
             SelectSecurityButton.colors = _buttonColors;
         }
 
-        float profitPercentFloat = ((securities.Amount * securities.Price) / ShowSpentInCurrentVal(securities) - 1) * 100;
+        float profitPercentFloat = ((securities.AmountInPortolio * securities.Price) / ShowSpentInCurrentVal(securities) - 1) * 100;
         companyName.text = securities.ParentCompany.GetNameOfCompany();
 
         price.text = securities.Price.ToString("0.00");
-        myAmountOfSecurities.text = securities.Amount.ToString();
+        myAmountOfSecurities.text = securities.AmountInPortolio.ToString();
         _spendMoney.text = ShowSpentInCurrentVal(securities).ToString("0.00");
 
         if (profitPercentFloat > 0f)
@@ -63,7 +63,7 @@ public class PortfolioShortInfo : MonoBehaviour
 
         _profitPercent.text = Math.Abs(securities.Delta).ToString("0.00") + "%";
         _profitPercent.text = profitPercentFloat.ToString("0.00") + "%";
-        _currentPrice.text = (securities.Amount * securities.Price).ToString("0.00");
+        _currentPrice.text = (securities.AmountInPortolio * securities.Price).ToString("0.00");
 
     }
     public float ShowSpentInCurrentVal(Securities sec)

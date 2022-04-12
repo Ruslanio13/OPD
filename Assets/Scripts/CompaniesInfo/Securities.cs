@@ -8,7 +8,7 @@ public class Securities
     [System.NonSerialized] public Company ParentCompany;
     public List<List<float>> TransHistory = new List<List<float>>();
     public float Delta = 0;
-    public int Amount{get; private set;}
+    public int AmountInPortolio{get; protected set;}
     public float Price { get; protected set; }
     float averagePrice2017;
     float averagePrice2018;
@@ -23,21 +23,43 @@ public class Securities
 
     public List<float> _priceHistory = new List<float>();
 
+
+    
+    
+    protected float maxPrice = 2f;
+    protected float minPrice = -2f;
+
     public Securities()
     {
         Price = 5f;
-        Amount = 0;
+        AmountInPortolio = 0;
     }
-
-    bool needToSet = true;
-    int countOfChanges = 0;
-    float maxPrice = 2f;
-    float minPrice = -2f;
-
     public virtual void UpdatePrice()
     {
-        
+    }
 
+    public virtual string GetName() => ParentCompany.GetNameOfCompany();
+
+    public virtual void RecalculateHistoryForValute(Valute val, Valute prevVal)
+    {
+    }
+    public virtual void SetAmount(int am)
+    {
+    }
+
+    public virtual void AddTransaction(int amount, float pricePerOne)
+    {
+    
+    }
+}
+
+[System.Serializable]
+public class Share : Securities
+{
+    private int countOfChanges = 0;
+    private bool needToSet = true;
+    public override void UpdatePrice()
+    {
         if (ParentCompany != null && needToSet == true)
         {
             maxPrice = ParentCompany.GetMaxPriceChange();
@@ -81,12 +103,12 @@ public class Securities
         _priceHistory.Add(Price);
     }
 
-    public virtual string GetName()
+    public override string GetName()
     {
         return ParentCompany.GetNameOfCompany();
     }
 
-    public void RecalculateHistoryForValute(Valute val, Valute prevVal)
+    public override void RecalculateHistoryForValute(Valute val, Valute prevVal)
     {
         for(int i = _priceHistory.Count - 1500, j = val._priceHistory.Count - 1500; i < _priceHistory.Count; i++, j++)
         {
@@ -95,15 +117,15 @@ public class Securities
         
         Price *= val.Price/prevVal.Price;
     }
-    public void SetAmount(int am)
+    public override void SetAmount(int am)
     {
         if(am >= 0)
-            Amount = am;
+            AmountInPortolio += am;
         else
             throw new System.Exception("Wrong Amount Of Sec");
     }
 
-    public void AddTransaction(int amount, float pricePerOne)
+    public override void AddTransaction(int amount, float pricePerOne)
     {
         List<float> tempList = new List<float>();
         tempList.Add(amount);
@@ -116,11 +138,7 @@ public class Securities
 
         TransHistory.Add(tempList);
     }
-}
 
-[System.Serializable]
-public class Share : Securities
-{
 }
 [System.Serializable]
 public class Obligation : Securities
@@ -133,5 +151,49 @@ public class Future : Securities
 
 }
 
+[System.Serializable]
+public class Valute : Securities
+{
+    public string Name { get; protected set; }
+    public char Symbol { get; protected set; }
+    private bool isUpdatable;
+    
+
+
+    public Valute(string name, char sign, bool isUpdatable = true)
+    {
+        Price = UnityEngine.Random.Range(0.8f, 100f);
+        this.isUpdatable = isUpdatable;
+        Symbol = sign;
+        Name = name;
+        ParentCompany = null;
+    }
+    public float GetPriceInCurrentValue()
+    {
+        return DetailedInfoManager._instance.currentValute.Price/Price;
+    }
+    public float GetPreviousPriceInCurrentValue() => DetailedInfoManager._instance.currentValute._priceHistory[_priceHistory.Count-2] /_priceHistory[_priceHistory.Count-2];
+    public override void UpdatePrice()
+    {
+
+        if (!isUpdatable)
+        {
+            Delta = 0;
+            Price = 1;
+            _priceHistory.Add(Price);
+            return;
+        }
+
+        Delta = UnityEngine.Random.Range(-2f, 2f);
+        Price += Price * Delta / 100;
+        _priceHistory.Add(Price);
+    }
+    public override string GetName()
+    {
+        return Name;
+    }
+
+
+}
 
 
