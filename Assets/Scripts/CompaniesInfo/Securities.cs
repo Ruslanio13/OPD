@@ -10,21 +10,14 @@ public class Securities
     public float Delta = 0;
     public int AmountInPortolio{get; protected set;}
     public float Price { get; protected set; }
-    float averagePrice2017;
-    float averagePrice2018;
-    float averagePrice2019;
-    float averagePrice2020;
-    float averagePrice2021;
-    public float AveragePrice2017 { get => averagePrice2017; }
-    public float AveragePrice2018 { get => averagePrice2018; }
-    public float AveragePrice2019 { get => averagePrice2019; }
-    public float AveragePrice2020 { get => averagePrice2020; }
-    public float AveragePrice2021 { get => averagePrice2021; }
+
+    public float AveragePrice2017 { get; protected set; }
+    public float AveragePrice2018 { get; protected set; }
+    public float AveragePrice2019 { get; protected set; }
+    public float AveragePrice2020 { get; protected set; }
+    public float AveragePrice2021 { get; protected set; }
 
     public List<float> _priceHistory = new List<float>();
-
-
-    
     
     protected float maxPrice = 2f;
     protected float minPrice = -2f;
@@ -138,12 +131,37 @@ public class Share : Securities
 
         TransHistory.Add(tempList);
     }
-
+    
+    public void CalculateAveragePrice()
+    {
+        for (int i = 0; i < 300; i++)
+        {
+            AveragePrice2017 += _priceHistory[i];
+            AveragePrice2018 += _priceHistory[i + 300];
+            AveragePrice2019 += _priceHistory[i + 600];
+            AveragePrice2020 += _priceHistory[i + 900];
+            AveragePrice2021 += _priceHistory[i + 1200];
+        }
+        AveragePrice2017 /= 300f;
+        AveragePrice2018 /= 300f;
+        AveragePrice2019 /= 300f;
+        AveragePrice2020 /= 300f;
+        AveragePrice2021 /= 300f;
+    }
 }
 [System.Serializable]
 public class Obligation : Securities
 {
-
+    private float percent { get; set; }
+    public Obligation()
+    {
+        Price = Random.Range(950f, 1050f);
+        percent = Random.Range(1f, 10f);
+    }
+    public override void UpdatePrice()
+    {
+        percent += percent * Random.Range(-2f, 2f) / 100;        
+    }
 }
 [System.Serializable]
 public class Future : Securities

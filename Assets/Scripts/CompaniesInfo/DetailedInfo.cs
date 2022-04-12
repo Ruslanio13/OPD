@@ -24,13 +24,13 @@ public class DetailedInfo : MonoBehaviour
 
     public void SetInfo(Securities sec)
     {
-        averagePrice2017.text = sec.AveragePrice2017.ToString();
-        averagePrice2018.text = sec.AveragePrice2018.ToString();
-        averagePrice2019.text = sec.AveragePrice2019.ToString();
-        averagePrice2020.text = sec.AveragePrice2020.ToString();
-        averagePrice2021.text = sec.AveragePrice2021.ToString();
+        averagePrice2017.text = sec.AveragePrice2017.ToString("0.00") + "$";
+        averagePrice2018.text = sec.AveragePrice2018.ToString("0.00") + "$";
+        averagePrice2019.text = sec.AveragePrice2019.ToString("0.00") + "$";
+        averagePrice2020.text = sec.AveragePrice2020.ToString("0.00") + "$";
+        averagePrice2021.text = sec.AveragePrice2021.ToString("0.00") + "$";
 
-        if(sec.ParentCompany == null)
+        if (sec.ParentCompany == null)
             return;
         
         capitalization.text = sec.ParentCompany.Capitalization.ToString();

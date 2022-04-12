@@ -53,6 +53,7 @@ public class Company
         CompanyFuture = new Future();
         
         GeneratePreGameHistory();
+        CompanyShare.CalculateAveragePrice();
     }
 
     public void UpdatePrice()
