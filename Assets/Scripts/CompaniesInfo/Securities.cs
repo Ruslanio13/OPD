@@ -7,8 +7,8 @@ public class Securities
 {
     [System.NonSerialized] public Company ParentCompany;
     public List<List<float>> TransHistory = new List<List<float>>();
-    public float Delta = 0;
-    public int AmountInPortolio{get; protected set;}
+    public float DeltaPrice = 0;
+    public int AmountInPortolio { get; protected set; }
     public float Price { get; protected set; }
 
     public float AveragePrice2017 { get; protected set; }
@@ -18,7 +18,7 @@ public class Securities
     public float AveragePrice2021 { get; protected set; }
 
     public List<float> _priceHistory = new List<float>();
-    
+
     protected float maxPrice = 2f;
     protected float minPrice = -2f;
 
@@ -35,6 +35,12 @@ public class Securities
 
     public virtual void RecalculateHistoryForValute(Valute val, Valute prevVal)
     {
+        for (int i = _priceHistory.Count - 1500, j = val._priceHistory.Count - 1500; i < _priceHistory.Count; i++, j++)
+        {
+            _priceHistory[i] *= val._priceHistory[j] / prevVal._priceHistory[j];
+        }
+
+        Price *= val.Price / prevVal.Price;
     }
     public virtual void SetAmount(int am)
     {
@@ -42,7 +48,7 @@ public class Securities
 
     public virtual void AddTransaction(int amount, float pricePerOne)
     {
-    
+
     }
 }
 
@@ -87,12 +93,12 @@ public class Share : Securities
 
         if (ParentCompany != null)
             Debug.Log(ParentCompany.GetNameOfCompany() + " " + maxPrice + " " + minPrice);
-      
-        Delta = UnityEngine.Random.Range(minPrice, maxPrice);
-        Price += Price * Delta / 100;
 
-        Price = Mathf.Round(Price * 10000f)/10000f;
-        
+        DeltaPrice = UnityEngine.Random.Range(minPrice, maxPrice);
+        Price += Price * DeltaPrice / 100;
+
+        Price = Mathf.Round(Price * 10000f) / 10000f;
+
         _priceHistory.Add(Price);
     }
 
@@ -100,19 +106,9 @@ public class Share : Securities
     {
         return ParentCompany.GetNameOfCompany();
     }
-
-    public override void RecalculateHistoryForValute(Valute val, Valute prevVal)
-    {
-        for(int i = _priceHistory.Count - 1500, j = val._priceHistory.Count - 1500; i < _priceHistory.Count; i++, j++)
-        {
-            _priceHistory[i] *= val._priceHistory[j] / prevVal._priceHistory[j];
-        }
-        
-        Price *= val.Price/prevVal.Price;
-    }
     public override void SetAmount(int am)
     {
-        if(am >= 0)
+        if (am >= 0)
             AmountInPortolio += am;
         else
             throw new System.Exception("Wrong Amount Of Sec");
@@ -131,7 +127,7 @@ public class Share : Securities
 
         TransHistory.Add(tempList);
     }
-    
+
     public void CalculateAveragePrice()
     {
         for (int i = 0; i < 300; i++)
@@ -152,15 +148,63 @@ public class Share : Securities
 [System.Serializable]
 public class Obligation : Securities
 {
-    private float percent { get; set; }
+    public string ParentCompanyName{get; private set;}
+    public float DeltaPaybackPercent{get; private set;}
+    public int DueTo { get; private set; }
+    private int _paybackTime;
+    public float PercentOfPayback { get; private set; }
+
+    public float PaybackCost { get; private set; }
     public Obligation()
     {
-        Price = Random.Range(950f, 1050f);
-        percent = Random.Range(1f, 10f);
+        _paybackTime = 100;
+        DueTo = -1;
+        PercentOfPayback = 5f;
+        Price = 50f;
     }
+
+    public Obligation(Obligation copied, string compName, int amount)
+    {
+        this.ParentCompanyName = compName;
+
+        this._paybackTime = copied._paybackTime;
+
+        this.DueTo = copied._paybackTime;
+        
+        this.PercentOfPayback = copied.PercentOfPayback;
+        
+        this._priceHistory = copied._priceHistory;
+
+        this.PaybackCost = copied.Price * (1 + copied.PercentOfPayback / 100f) / BalanceManager._instance.Valutes[1].GetPriceInCurrentValue() * amount;
+
+        this.AmountInPortolio = amount;
+
+    }
+
     public override void UpdatePrice()
     {
-        percent += percent * Random.Range(-2f, 2f) / 100;        
+        Price += Price * DeltaPrice / 100;
+        DeltaPrice = Random.Range(-0.1f, 0.1f);
+
+        DeltaPaybackPercent = Random.Range(-2f, 2f);
+        PercentOfPayback += PercentOfPayback * DeltaPaybackPercent / 100f;
+
+
+        _priceHistory.Add(Price);
+    }
+
+    public void DecreaseDueTo()
+    {
+        DueTo--;
+        if (DueTo == (_paybackTime / 2))
+        {
+            BalanceManager._instance.AddMoney(PaybackCost / 2);
+        }
+        else if (DueTo == 0)
+        {
+            BalanceManager._instance.AddMoney(PaybackCost / 2);
+            PortfolioManager._instance.RemoveSecurities(this, AmountInPortolio);
+        }
     }
 }
 [System.Serializable]
@@ -175,7 +219,7 @@ public class Valute : Securities
     public string Name { get; protected set; }
     public char Symbol { get; protected set; }
     private bool isUpdatable;
-    
+
 
 
     public Valute(string name, char sign, bool isUpdatable = true)
@@ -188,22 +232,22 @@ public class Valute : Securities
     }
     public float GetPriceInCurrentValue()
     {
-        return DetailedInfoManager._instance.currentValute.Price/Price;
+        return DetailedInfoManager._instance.currentValute.Price / Price;
     }
-    public float GetPreviousPriceInCurrentValue() => DetailedInfoManager._instance.currentValute._priceHistory[_priceHistory.Count-2] /_priceHistory[_priceHistory.Count-2];
+    public float GetPreviousPriceInCurrentValue() => DetailedInfoManager._instance.currentValute._priceHistory[_priceHistory.Count - 2] / _priceHistory[_priceHistory.Count - 2];
     public override void UpdatePrice()
     {
 
         if (!isUpdatable)
         {
-            Delta = 0;
+            DeltaPrice = 0;
             Price = 1;
             _priceHistory.Add(Price);
             return;
         }
 
-        Delta = UnityEngine.Random.Range(-2f, 2f);
-        Price += Price * Delta / 100;
+        DeltaPrice = UnityEngine.Random.Range(-2f, 2f);
+        Price += Price * DeltaPrice / 100;
         _priceHistory.Add(Price);
     }
     public override string GetName()

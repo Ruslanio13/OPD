@@ -12,7 +12,8 @@ public class DetailedInfoManager : MonoBehaviour
     [SerializeField] private RectTransform _shortInfoListTransform;
     [SerializeField] public Graph _graph;
     [SerializeField] DetailedInfo table;
-    [SerializeField] private GameObject _shortInfoPrefab;
+    [SerializeField] private GameObject _shareInfoPrefab;
+    [SerializeField] private GameObject _obligationInfoPrefab;
     [SerializeField] private GameObject _notification;
     [SerializeField] private Button _selRubButton;
     [SerializeField] private Button _selEurButton;
@@ -20,6 +21,7 @@ public class DetailedInfoManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _calendarTxt;
 
     [SerializeField] private Button _selSharesMarket;
+    [SerializeField] private Button _selObligationMarket;
     [SerializeField] private Button _selValuteMarket;
     private List<ShortInfo> _displayedSecurities = new List<ShortInfo>();
     public int currentIndex;
@@ -52,6 +54,12 @@ public class DetailedInfoManager : MonoBehaviour
         {
             SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new Share());
+            SetSecuritiesMarket(SecMarket);
+        });
+        _selObligationMarket.onClick.AddListener(() =>
+        {
+            SetValute(BalanceManager._instance.Valutes[0]);
+            CreateSecuritiesMarket(new Obligation());
             SetSecuritiesMarket(SecMarket);
         });
         _selValuteMarket.onClick.AddListener(() =>
@@ -123,17 +131,20 @@ public class DetailedInfoManager : MonoBehaviour
         {
             if (Calendar.AllDays % 10 == 0)
                 NewsManager._instance.SpawnNews(Companies);
-                
+
+            PortfolioManager._instance.UpdateObligations();
             PortfolioManager._instance.UpdatePortfolio();
             BalanceManager._instance.UpdateBalance();
+            Calendar.UpdateDate();
 
             
             foreach (Company comp in Companies)          
                 comp.UpdatePrice();       
             
             foreach (ShortInfo info in _displayedSecurities)          
-                info.UpdateInfo();           
-            Calendar.UpdateDate();
+                info.UpdateInfo();   
+
+
 
             if (Calendar.IsTimeToDividends())
                 Instantiate(_notification);
@@ -150,42 +161,21 @@ public class DetailedInfoManager : MonoBehaviour
             _graph.LessenScale();
 
     }
-
-    public void SetSecuritiesMarket()
-    {
-        GameObject temp;
-        ShortInfo temp2;
-        foreach (ShortInfo info in _displayedSecurities)
-        {
-            Destroy(info.gameObject);
-        }
-        _displayedSecurities.Clear();
-
-        SelectSecurity(SecMarket[0]);
-        _shortInfoListTransform.sizeDelta = Vector2.zero;
-        Debug.Log(SecMarket.Count);
-        for (int i = 0; i < SecMarket.Count; i++)
-        {
-            if (SecMarket[i].GetName() == currentValute.GetName())
-            {
-                if (i == 0)
-                    SelectSecurity(SecMarket[1]);
-                continue;
-            }
-
-            temp = Instantiate(_shortInfoPrefab, _shortInfoListTransform);
-            temp2 = temp.GetComponent<ShortInfo>();
-            temp2.SetInfo(SecMarket[i]);
-            _displayedSecurities.Add(temp.GetComponent<ShortInfo>());
-            _shortInfoListTransform.sizeDelta += new Vector2(0, 65f);
-        }
-        UpdateAllInformation(currentSecurity);
-    }
-
     public void SetSecuritiesMarket<T>(List<T> market) where T : Securities
     {
         GameObject temp;
+        GameObject infoPrefab;
+
         ShortInfo temp2;
+        
+        if(market[0].GetType() == typeof(Share))
+            infoPrefab = _shareInfoPrefab;
+        else if(market[0].GetType() == typeof(Obligation))
+            infoPrefab = _obligationInfoPrefab;
+        else
+            throw new System.Exception("Wrong market type");
+        
+        
         foreach (ShortInfo info in _displayedSecurities)
         {
             Destroy(info.gameObject);
@@ -193,6 +183,8 @@ public class DetailedInfoManager : MonoBehaviour
         _displayedSecurities.Clear();
 
         SelectSecurity(market[0]);
+
+
         _shortInfoListTransform.sizeDelta = Vector2.zero;
         Debug.Log(market.Count);
         for (int i = 0; i < market.Count; i++)
@@ -204,7 +196,7 @@ public class DetailedInfoManager : MonoBehaviour
                 continue;
             }
 
-            temp = Instantiate(_shortInfoPrefab, _shortInfoListTransform);
+            temp = Instantiate(infoPrefab, _shortInfoListTransform);
             temp2 = temp.GetComponent<ShortInfo>();
             temp2.SetInfo(market[i]);
             _displayedSecurities.Add(temp.GetComponent<ShortInfo>());

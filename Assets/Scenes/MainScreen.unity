@@ -3055,7 +3055,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1930865377}
   m_HandleRect: {fileID: 1930865376}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4377,7 +4377,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 757677503}
   m_HandleRect: {fileID: 757677502}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5370,6 +5370,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c746486346479a4f84f51b54aad08d6, type: 3}
+--- !u!114 &736371409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1727359853662463700, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+  m_PrefabInstance: {fileID: 850439933}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &738046443
 GameObject:
   m_ObjectHideFlags: 0
@@ -11984,29 +11995,31 @@ MonoBehaviour:
   _shortInfoListTransform: {fileID: 1401483426}
   _graph: {fileID: 2041709490}
   table: {fileID: 1560343243}
-  _shortInfoPrefab: {fileID: 8873377605450158406, guid: 5b4784474694f9d499d2e19525729192, type: 3}
+  _shareInfoPrefab: {fileID: 8873377605450158406, guid: 5b4784474694f9d499d2e19525729192, type: 3}
+  _obligationInfoPrefab: {fileID: 3773879377619413760, guid: 72d74f0bc9da142a8811f8dfbb5fac60, type: 3}
   _notification: {fileID: 5562727486297806772, guid: 740d4f94ff7a0ba4aa30d1e7cf7224d5, type: 3}
   _selRubButton: {fileID: 596670225}
   _selEurButton: {fileID: 1883354900}
   _selDolButton: {fileID: 999271282}
   _calendarTxt: {fileID: 1771079722}
   _selSharesMarket: {fileID: 491906018}
+  _selObligationMarket: {fileID: 736371409}
   _selValuteMarket: {fileID: 1101946123}
   currentIndex: 0
   currentCompany:
     companyName: Enter new company name here
     _shareHistory: []
     DisplayedSec:
-      Delta: 0
+      DeltaPrice: 0
       _priceHistory: []
     CompanyShare:
-      Delta: 0
+      DeltaPrice: 0
       _priceHistory: []
     CompanyObligation:
-      Delta: 0
+      DeltaPrice: 0
       _priceHistory: []
     CompanyFuture:
-      Delta: 0
+      DeltaPrice: 0
       _priceHistory: []
     capitalization: 0
     amountOfSecurities: 0
@@ -12016,10 +12029,10 @@ MonoBehaviour:
     _minPriceChange: 0
     _maxPriceChange: 0
   currentSecurity:
-    Delta: 0
+    DeltaPrice: 0
     _priceHistory: []
   currentValute:
-    Delta: 0
+    DeltaPrice: 0
     _priceHistory: []
 --- !u!114 &1602378475
 MonoBehaviour:
@@ -12034,9 +12047,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Portfolio: []
-  _securitiesPrefab: {fileID: 4758358254364218467, guid: 142335b02e52bd34e87b1bab42f9ff4a, type: 3}
+  _shareInfoPrefab: {fileID: 4758358254364218467, guid: 142335b02e52bd34e87b1bab42f9ff4a, type: 3}
+  _obligationInfoPrefab: {fileID: 3870856899307472230, guid: df13f9dd1edf0987bb24ba2a45a3fbfa, type: 3}
   _portfolioParentTForm: {fileID: 885298249}
   GoToPortfolio: {fileID: 1621137800}
+  _selShareButton: {fileID: 1669156783}
+  _selObligationsButton: {fileID: 2026334542}
 --- !u!114 &1602378476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12285,6 +12301,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621137798}
   m_CullTransparentMesh: 1
+--- !u!114 &1669156783 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1727359853662463700, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+  m_PrefabInstance: {fileID: 950961426}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1675734204
 GameObject:
   m_ObjectHideFlags: 0
@@ -14533,6 +14560,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018038424}
   m_CullTransparentMesh: 1
+--- !u!114 &2026334542 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1727359853662463700, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+  m_PrefabInstance: {fileID: 2033884008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2033884008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14541,8 +14579,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 822525890}
     m_Modifications:
     - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_text
+      value: Obligations
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
       propertyPath: m_fontSize
-      value: 43.4
+      value: 42.6
       objectReference: {fileID: 0}
     - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
       propertyPath: m_fontSizeBase

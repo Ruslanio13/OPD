@@ -14,6 +14,8 @@ public class PortfolioShortInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI myAmountOfSecurities;
     [SerializeField] private TextMeshProUGUI _profitPercent;
     [SerializeField] private TextMeshProUGUI price;
+    [SerializeField] private TextMeshProUGUI dueTo;
+    [SerializeField] private TextMeshProUGUI PaybackCost;
     [SerializeField] private Button SelectSecurityButton;
 
     [SerializeField] private ColorBlock _buttonColors;
@@ -49,22 +51,33 @@ public class PortfolioShortInfo : MonoBehaviour
             SelectSecurityButton.colors = _buttonColors;
         }
 
-        float profitPercentFloat = ((securities.AmountInPortolio * securities.Price) / ShowSpentInCurrentVal(securities) - 1) * 100;
-        companyName.text = securities.ParentCompany.GetNameOfCompany();
+        if (securities.GetType() == typeof(Share))
+        {
+            companyName.text = securities.ParentCompany.GetNameOfCompany();
+            price.text = securities.Price.ToString("0.00");
+            myAmountOfSecurities.text = securities.AmountInPortolio.ToString();
+            _spendMoney.text = ShowSpentInCurrentVal(securities).ToString("0.00");
 
-        price.text = securities.Price.ToString("0.00");
-        myAmountOfSecurities.text = securities.AmountInPortolio.ToString();
-        _spendMoney.text = ShowSpentInCurrentVal(securities).ToString("0.00");
 
-        if (profitPercentFloat > 0f)
-            _profitPercent.color = green;
-        else if (profitPercentFloat < 0f)
-            _profitPercent.color = red;
 
-        _profitPercent.text = Math.Abs(securities.Delta).ToString("0.00") + "%";
-        _profitPercent.text = profitPercentFloat.ToString("0.00") + "%";
-        _currentPrice.text = (securities.AmountInPortolio * securities.Price).ToString("0.00");
 
+            float profitPercentFloat = ((securities.AmountInPortolio * securities.Price) / ShowSpentInCurrentVal(securities) - 1) * 100;
+            if (profitPercentFloat > 0f)
+                _profitPercent.color = green;
+            else if (profitPercentFloat < 0f)
+                _profitPercent.color = red;
+
+            _profitPercent.text = Math.Abs(securities.DeltaPrice).ToString("0.00") + "%";
+            _profitPercent.text = profitPercentFloat.ToString("0.00") + "%";
+            _currentPrice.text = (securities.AmountInPortolio * securities.Price).ToString("0.00");
+
+        }
+        else if (securities.GetType() == typeof(Obligation))
+        {
+            companyName.text = (securities as Obligation).ParentCompanyName;
+            PaybackCost.text = "Будет выплачено: "+(securities as Obligation).PaybackCost.ToString("0.00") + "P";
+            dueTo.text = "через: " + (securities as Obligation).DueTo.ToString() + " дней ";
+        }
     }
     public float ShowSpentInCurrentVal(Securities sec)
     {

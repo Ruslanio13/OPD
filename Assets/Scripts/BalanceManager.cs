@@ -48,11 +48,11 @@ public class BalanceManager : MonoBehaviour
         }
     }
 
-    public bool BuyWith(Valute val, float amount)
+    public bool BuyWith(Valute val, float price)
     {
-        if (RublesWallet>= amount  * val.GetPriceInCurrentValue() )
+        if (RublesWallet>= price  * val.GetPriceInCurrentValue() )
         {
-            RublesWallet -= val.GetPriceInCurrentValue()/ Valutes[1].GetPriceInCurrentValue() * amount;
+            RublesWallet -= val.GetPriceInCurrentValue()/ Valutes[1].GetPriceInCurrentValue() * price;
             return true;
         }
 
@@ -77,6 +77,12 @@ public class BalanceManager : MonoBehaviour
         float onHands = RublesWallet *Valutes[1].GetPriceInCurrentValue()/val.GetPriceInCurrentValue() ;
         _balanceInMarket.text = onHands.ToString("00.00") + val.Symbol;
         _balanceInPortfolio.text = onHands.ToString("00.00") + val.Symbol;
+    }
+
+    public void AddMoney(float amount)
+    {
+        if(amount > 0f)
+            RublesWallet += amount;
     }
 }
 

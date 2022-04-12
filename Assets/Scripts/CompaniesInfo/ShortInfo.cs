@@ -14,6 +14,7 @@ public class ShortInfo : MonoBehaviour
     [SerializeField] TextMeshProUGUI _securityName;
     [SerializeField] TextMeshProUGUI percentOfChange;
     [SerializeField] TextMeshProUGUI price;
+    [SerializeField] TextMeshProUGUI percentOfPayback;
     Securities sec;
     Color red = new Color(0.8f, 0.09f, 0.09f, 1);
     Color green = new Color(0.09f, 0.7f, 0.1f, 1f);
@@ -25,6 +26,9 @@ public class ShortInfo : MonoBehaviour
     {
         sec = securities;
         _securityName.text = securities.GetName();
+        
+        if(sec.GetType() == typeof(Obligation))
+            percentOfPayback.text = (securities as Obligation).PercentOfPayback.ToString("0.00");
 
         button.onClick.AddListener(() => { DetailedInfoManager._instance.UpdateAllInformation(securities); NewsManager._instance.ShowCompanyNews(securities.ParentCompany); });
 
@@ -48,22 +52,29 @@ public class ShortInfo : MonoBehaviour
         }
 
         Valute currentVal = DetailedInfoManager._instance.currentValute;
+
         if(DetailedInfoManager._instance.currentSecurity.GetType() == typeof(Valute))
-        {
             deltaPrice = ((sec as Valute).GetPriceInCurrentValue() - (sec as Valute).GetPreviousPriceInCurrentValue()) / (sec as Valute).GetPreviousPriceInCurrentValue() * 100f;
-        }
+        else if (sec.GetType() == typeof(Obligation))
+            deltaPrice = (sec as Obligation).DeltaPaybackPercent;
         else
-            deltaPrice = sec.Delta;
+            deltaPrice = sec.DeltaPrice;
 
         if(sec.GetType() == typeof(Valute))
             price.text = (sec as Valute).GetPriceInCurrentValue().ToString("0.00");
         else
             price.text = sec.Price.ToString("0.00");
 
+        if(sec.GetType() == typeof(Obligation))
+            percentOfPayback.text = (sec as Obligation).PercentOfPayback.ToString("0.00");
+
+
         if (deltaPrice > 0)
             percentOfChange.color = green;
         else if (deltaPrice < 0)
             percentOfChange.color = red;
+
+
 
         percentOfChange.text = Math.Abs(deltaPrice).ToString("0.00") + "%";
     }

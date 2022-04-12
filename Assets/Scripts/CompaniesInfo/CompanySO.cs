@@ -67,12 +67,12 @@ public class Company
     public float GetSecurityDelta()
     {
         if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(Share))
-            return CompanyShare.Delta;
+            return CompanyShare.DeltaPrice;
         if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(Obligation))
-            return CompanyObligation.Delta;
+            return CompanyObligation.DeltaPrice;
         if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(Future))
-            return CompanyFuture.Delta;
-        return CompanyShare.Delta;
+            return CompanyFuture.DeltaPrice;
+        return CompanyShare.DeltaPrice;
     }
 
     public void GeneratePreGameHistory()

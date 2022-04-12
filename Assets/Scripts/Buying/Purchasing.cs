@@ -36,7 +36,7 @@ public class Purchasing : MonoBehaviour
             toSell=false;
         }
     }
-     public void Sell()
+    public void Sell()
     {
         if(amountText.text != "")
         {
@@ -50,6 +50,7 @@ public class Purchasing : MonoBehaviour
     public void ConfirmAmount()
     {
         amount = Convert.ToInt32(amountText.text);
+        
         if(toSell)
             PortfolioManager._instance.SellSecurities(DetailedInfoManager._instance.currentSecurity, amount);
         else
