@@ -44,7 +44,8 @@ public class NewsManager : MonoBehaviour
         _newsInUI.Clear();
         _newsFeedRT.sizeDelta = Vector2.zero;
 
-        for(int i = AllNews.Count - 1 ; i >= 0; i--)
+        int numberOfNews = 0;
+        for(int i = AllNews.Count - 1 ; (i >= 0) && (numberOfNews <= 15); i--)
         {
             if (AllNews[i].comp == company)
             {
@@ -52,6 +53,7 @@ public class NewsManager : MonoBehaviour
                 temp = Instantiate(newsPrefab, newsFeed.transform);
                 temp.GetComponent<NewsShortInfo>().SetUpNews(AllNews[i]);
                 _newsInUI.Add(temp.GetComponent<NewsShortInfo>());
+                numberOfNews++;
             }
         }
     }

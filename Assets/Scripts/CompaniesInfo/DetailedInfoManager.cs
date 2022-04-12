@@ -123,6 +123,7 @@ public class DetailedInfoManager : MonoBehaviour
         {
             if (Calendar.AllDays % 10 == 0)
                 NewsManager._instance.SpawnNews(Companies);
+                
             PortfolioManager._instance.UpdatePortfolio();
             BalanceManager._instance.UpdateBalance();
 
@@ -133,6 +134,7 @@ public class DetailedInfoManager : MonoBehaviour
             foreach (ShortInfo info in _displayedSecurities)          
                 info.UpdateInfo();           
             Calendar.UpdateDate();
+
             if (Calendar.IsTimeToDividends())
                 Instantiate(_notification);
 
