@@ -168,13 +168,11 @@ public class DetailedInfoManager : MonoBehaviour
 
         ShortInfo temp2;
         
-        if(market[0].GetType() == typeof(Share))
-            infoPrefab = _shareInfoPrefab;
-        else if(market[0].GetType() == typeof(Obligation))
+        if(market[0].GetType() == typeof(Obligation))
             infoPrefab = _obligationInfoPrefab;
         else
-            throw new System.Exception("Wrong market type");
-        
+            infoPrefab = _shareInfoPrefab;
+
         
         foreach (ShortInfo info in _displayedSecurities)
         {
