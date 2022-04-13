@@ -147,8 +147,15 @@ public class DetailedInfoManager : MonoBehaviour
 
 
             if (Calendar.IsTimeToDividends())
-                Instantiate(_notification);
-
+                {
+                    GameObject notification;
+                    foreach(Share share in PortfolioManager._instance.Portfolio)
+                    {
+                        notification = Instantiate(_notification);
+                        notification.GetComponent<OkButton>().SetInfo(share.ParentCompany.GetNameOfCompany(), share.GetSumOfDividends());
+                        share.PayDividends();
+                    }
+                }
             UpdateAllInformation(currentSecurity);
 
 

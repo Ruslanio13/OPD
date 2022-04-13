@@ -22,7 +22,7 @@ public class Calendar
         AllDays = 0;
     }
 
-    public bool IsTimeToDividends() => _month == 12 && _day == 31;
+    public bool IsTimeToDividends() => _month == 1 && _day == 10;
 
     public string GetStrDate()
     {

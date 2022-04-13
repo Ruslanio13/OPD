@@ -22,6 +22,10 @@ public class Securities
     protected float maxPrice = 2f;
     protected float minPrice = -2f;
 
+    protected float GetPriceInRubles()
+    {
+        return Price / BalanceManager._instance.Valutes[1].GetPriceInCurrentValue();
+    }
     public Securities()
     {
         Price = 5f;
@@ -57,6 +61,12 @@ public class Share : Securities
 {
     private int countOfChanges = 0;
     private bool needToSet = true;
+    private float _dividendsPercent;
+
+    public Share()
+    {
+        _dividendsPercent = 4f;
+    }
     public override void UpdatePrice()
     {
         if (ParentCompany != null && needToSet == true)
@@ -143,6 +153,16 @@ public class Share : Securities
         AveragePrice2019 /= 300f;
         AveragePrice2020 /= 300f;
         AveragePrice2021 /= 300f;
+    }
+
+    public void PayDividends()
+    {
+        
+        BalanceManager._instance.AddMoney(GetSumOfDividends());
+    }
+    public float GetSumOfDividends()
+    {
+        return GetPriceInRubles() * AmountInPortolio * _dividendsPercent /100f;
     }
 }
 [System.Serializable]
