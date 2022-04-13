@@ -59,8 +59,8 @@ public class PortfolioManager : MonoBehaviour
         for (int i = 0; i < _portfolioInUI.Count; i++)
         {
             Destroy(_portfolioInUI[i].gameObject);
-            _portfolioInUI.RemoveAt(i);
         }
+        _portfolioInUI.Clear();
         foreach (Securities sec in Portfolio)
         {
             if (sec.GetType() == reqSecType)

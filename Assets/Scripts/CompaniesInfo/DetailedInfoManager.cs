@@ -182,8 +182,8 @@ public class DetailedInfoManager : MonoBehaviour
 
         SelectSecurity(market[0]);
 
-
         _shortInfoListTransform.sizeDelta = Vector2.zero;
+
         Debug.Log(market.Count);
         for (int i = 0; i < market.Count; i++)
         {
