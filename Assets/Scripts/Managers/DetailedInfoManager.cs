@@ -15,13 +15,10 @@ public class DetailedInfoManager : MonoBehaviour
     [SerializeField] private GameObject _shareInfoPrefab;
     [SerializeField] private GameObject _obligationInfoPrefab;
     [SerializeField] private GameObject _notification;
-    [SerializeField] private GameObject _notificationPanel;
-
     [SerializeField] private Button _selRubButton;
     [SerializeField] private Button _selEurButton;
     [SerializeField] private Button _selDolButton;
-    [SerializeField] private TextMeshProUGUI _marketCalendarTxt;
-    [SerializeField] private TextMeshProUGUI _portfolioCalendarTxt;
+    [SerializeField] private TextMeshProUGUI _calendarTxt;
 
     [SerializeField] private Button _selSharesMarket;
     [SerializeField] private Button _selObligationMarket;
@@ -112,8 +109,7 @@ public class DetailedInfoManager : MonoBehaviour
 
     public void UpdateAllInformation(Securities sec)
     {
-        _marketCalendarTxt.text = Calendar.GetStrDate();
-        _portfolioCalendarTxt.text = Calendar.GetStrDate();
+        _calendarTxt.text = Calendar.GetStrDate();
         SelectSecurity(sec);
 
         foreach (ShortInfo info in _displayedSecurities)
@@ -153,16 +149,11 @@ public class DetailedInfoManager : MonoBehaviour
             if (Calendar.IsTimeToDividends())
                 {
                     GameObject notification;
-                    GameObject notificationPanel;
-                    int i = 0;
                     foreach(Share share in PortfolioManager._instance.Portfolio)
                     {
-                        
                         notification = Instantiate(_notification);
-                        notification.GetComponent<OkButton>().SetInfo(share.ParentCompany.GetNameOfCompany(), share.GetSumOfDividends());
+                        notification.GetComponent<DividendsNotification>().SetInfo(share.ParentCompany.GetNameOfCompany(), share.GetSumOfDividends());
                         share.PayDividends();
-                        if(0 == i) notificationPanel = Instantiate(_notificationPanel, notification.transform);
-                        i++;
                     }
                 }
             UpdateAllInformation(currentSecurity);
