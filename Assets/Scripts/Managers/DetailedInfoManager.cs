@@ -152,7 +152,7 @@ public class DetailedInfoManager : MonoBehaviour
                     foreach(Share share in PortfolioManager._instance.Portfolio)
                     {
                         notification = Instantiate(_notification);
-                        notification.GetComponent<OkButton>().SetInfo(share.ParentCompany.GetNameOfCompany(), share.GetSumOfDividends());
+                        notification.GetComponent<DividendsNotification>().SetInfo(share.ParentCompany.GetNameOfCompany(), share.GetSumOfDividends());
                         share.PayDividends();
                     }
                 }

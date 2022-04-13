@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OkButton : MonoBehaviour
+public class DividendsNotification : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _dividendsInfo;
     public void DeleteNot() => Destroy(gameObject);

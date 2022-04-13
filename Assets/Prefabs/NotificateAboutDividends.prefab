@@ -186,7 +186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3998830276736049079}
-  - component: {fileID: 5076672473484733705}
+  - component: {fileID: 3791128644901159306}
   m_Layer: 0
   m_Name: NotificateAboutDividends
   m_TagString: Untagged
@@ -209,7 +209,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5076672473484733705
+--- !u!114 &3791128644901159306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -422,8 +422,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5076672473484733705}
-        m_TargetAssemblyTypeName: OkButton, Assembly-CSharp
+      - m_Target: {fileID: 3791128644901159306}
+        m_TargetAssemblyTypeName: DividendsNotification, Assembly-CSharp
         m_MethodName: DeleteNot
         m_Mode: 1
         m_Arguments:
