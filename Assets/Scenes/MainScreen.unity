@@ -3196,7 +3196,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
       propertyPath: m_fontSize
-      value: 20.95
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8322678563266725715, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
       propertyPath: m_Pivot.x
@@ -4877,6 +4885,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1906434938}
     m_Modifications:
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_text
+      value: 'ETF '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8322678563266725715, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6366,6 +6390,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1906434938}
     m_Modifications:
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_text
+      value: "O\u0431\u043B\u0438\u0433\u0430\u0446\u0438\u0438"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8322678563266725715, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8766,6 +8806,18 @@ PrefabInstance:
     - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
       propertyPath: m_text
       value: "\u0410\u043A\u0446\u0438\u0438\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833852625295963441, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8322678563266725715, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
       propertyPath: m_Pivot.x
@@ -13500,7 +13552,7 @@ LineRenderer:
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 0
+      m_Mode: 1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
