@@ -169,13 +169,6 @@ public class DetailedInfoManager : MonoBehaviour
 
 
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            _graph.EnlargeScale();
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            _graph.LessenScale();
-
     }
     public void SetSecuritiesMarket<T>(List<T> market) where T : Securities
     {
