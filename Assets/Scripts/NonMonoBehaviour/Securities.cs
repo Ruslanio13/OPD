@@ -179,7 +179,6 @@ public class Obligation : Securities
         PercentOfPayback = 5f;
         Price = 50f;
     }
-
     public Obligation(Obligation copied, string compName, int amount)
     {
         this.ParentCompanyName = compName;
@@ -243,6 +242,7 @@ public class Valute : Securities
     {
         Price = UnityEngine.Random.Range(0.8f, 100f);
         this.isUpdatable = isUpdatable;
+        Price = 1f;
         Symbol = sign;
         Name = name;
         ParentCompany = null;
@@ -266,6 +266,26 @@ public class Valute : Securities
         DeltaPrice = UnityEngine.Random.Range(-2f, 2f);
         Price += Price * DeltaPrice / 100;
         _priceHistory.Add(Price);
+    }
+    public override void AddTransaction(int amount, float pricePerOne)
+    {
+        List<float> tempList = new List<float>();
+        tempList.Add(amount);
+        tempList.Add(pricePerOne);
+
+        for (int i = 0; i < BalanceManager._instance.Valutes.Count; i++)
+        {
+            tempList.Add(BalanceManager._instance.Valutes[i].Price);
+        }
+
+        TransHistory.Add(tempList);
+    }
+    public override void SetAmount(int am)
+    {
+        if (am >= 0)
+            AmountInPortolio += am;
+        else
+            throw new System.Exception("Wrong Amount Of Sec");
     }
     public override string GetName()
     {

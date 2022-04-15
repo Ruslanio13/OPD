@@ -8,7 +8,7 @@ using System;
 public class PortfolioShortInfo : MonoBehaviour
 {
 
-    [SerializeField] private TextMeshProUGUI companyName;
+    [SerializeField] private TextMeshProUGUI _name;
     [SerializeField] private TextMeshProUGUI _spendMoney;
     [SerializeField] private TextMeshProUGUI _currentSellPrice;
     [SerializeField] private TextMeshProUGUI myAmountOfSecurities;
@@ -53,7 +53,8 @@ public class PortfolioShortInfo : MonoBehaviour
 
         if (securities.GetType() == typeof(Share))
         {
-            companyName.text = securities.ParentCompany.GetNameOfCompany();
+            _name.text = securities.GetName();
+
             price.text = securities.Price.ToString("0.00");
             myAmountOfSecurities.text = securities.AmountInPortolio.ToString();
             _spendMoney.text = ShowSpentInCurrentVal(securities).ToString("0.00");
@@ -67,16 +68,35 @@ public class PortfolioShortInfo : MonoBehaviour
             else if (profitPercentFloat < 0f)
                 _profitPercent.color = red;
 
-            _profitPercent.text = Math.Abs(securities.DeltaPrice).ToString("0.00") + "%";
             _profitPercent.text = profitPercentFloat.ToString("0.00") + "%";
             _currentSellPrice.text = (securities.AmountInPortolio * securities.Price).ToString("0.00");
 
         }
         else if (securities.GetType() == typeof(Obligation))
         {
-            companyName.text = (securities as Obligation).ParentCompanyName;
+            _name.text = (securities as Obligation).ParentCompanyName;
             PaybackCost.text = "Будет выплачено: "+(securities as Obligation).PaybackCost.ToString("0.00") + "P";
             dueTo.text = "через: " + (securities as Obligation).DueTo.ToString() + " дней ";
+        }
+        else if(securities.GetType() == typeof(Valute))
+        {
+
+            _name.text = (securities as Valute).GetName();
+            price.text = (securities as Valute).GetPriceInCurrentValue().ToString("0.00");
+            myAmountOfSecurities.text = securities.AmountInPortolio.ToString();
+            _spendMoney.text = ShowSpentInCurrentVal(securities).ToString("0.00");
+
+
+
+
+            float profitPercentFloat = ((securities.AmountInPortolio * (securities as Valute).GetPriceInCurrentValue()) / ShowSpentInCurrentVal(securities) - 1) * 100;
+            if (profitPercentFloat > 0f)
+                _profitPercent.color = green;
+            else if (profitPercentFloat < 0f)
+                _profitPercent.color = red;
+
+            _profitPercent.text = profitPercentFloat.ToString("0.00") + "%";
+            _currentSellPrice.text = (securities.AmountInPortolio * (securities as Valute).GetPriceInCurrentValue()).ToString("0.00");
         }
     }
     public float GetSpendMoney()
@@ -94,9 +114,19 @@ public class PortfolioShortInfo : MonoBehaviour
                 break;
             }
 
-
-        for (int i = 0; i < sec.TransHistory.Count; i++)
-            total += sec.TransHistory[i][0] * sec.TransHistory[i][1] * sec.TransHistory[i][valID + 2];
+        if(sec.GetType() == typeof(Share))
+            for (int i = 0; i < sec.TransHistory.Count; i++)
+                total += sec.TransHistory[i][0] * sec.TransHistory[i][1] * sec.TransHistory[i][valID + 2];
+        
+        else if(sec.GetType() == typeof(Valute))
+            for (int i = 0; i < sec.TransHistory.Count; i++)
+                total += sec.TransHistory[i][0] / sec.TransHistory[i][1] * sec.TransHistory[i][valID + 2];
+            
         return total;
+    }
+    public void SelectSecurity()
+    {
+        if(securities.GetType() != typeof(Obligation))
+            DetailedInfoManager._instance.SelectSecurity(securities);
     }
 }

@@ -16,27 +16,36 @@ public class PortfolioManager : MonoBehaviour
     [SerializeField] private Button GoToPortfolio;
     [SerializeField] private Button _selShareButton;
     [SerializeField] private Button _selObligationsButton;
+    [SerializeField] private Button _selValutesButton;
     [SerializeField] private TextMeshProUGUI _totalProfit;
+    Color red = new Color(0.8f, 0.09f, 0.09f, 1);
+    Color green = new Color(0.09f, 0.7f, 0.1f, 1f);
 
     private void Start()
     {
         GoToPortfolio.onClick.AddListener(() =>
         {
             InitializePortfolio(DetailedInfoManager._instance.currentSecurity.GetType());
-            if (Portfolio.Count != 0)
-                DetailedInfoManager._instance.SelectSecurity(Portfolio[0]);
-
             UpdatePortfolio();
+            _portfolioInUI[0]?.SelectSecurity();
         });
         _selShareButton.onClick.AddListener(() =>
         {
             InitializePortfolio(typeof(Share));
             UpdatePortfolio();
+            _portfolioInUI[0]?.SelectSecurity();
         });
         _selObligationsButton.onClick.AddListener(() =>
         {
             InitializePortfolio(typeof(Obligation));
             UpdatePortfolio();
+            _portfolioInUI[0]?.SelectSecurity();
+        });
+        _selValutesButton.onClick.AddListener(() =>
+        {
+            InitializePortfolio(typeof(Valute));
+            UpdatePortfolio();
+            _portfolioInUI[0]?.SelectSecurity();
         });
     }
 
@@ -51,12 +60,11 @@ public class PortfolioManager : MonoBehaviour
         PortfolioShortInfo tempInfo;
         GameObject infoPrefab;
 
-        if (reqSecType == typeof(Share))
-            infoPrefab = _shareInfoPrefab;
-        else if (reqSecType == typeof(Obligation))
+      
+        if (reqSecType == typeof(Obligation))
             infoPrefab = _obligationInfoPrefab;
         else
-            throw new System.Exception("Wrong sec type in portfolio");
+            infoPrefab = _shareInfoPrefab;
 
         for (int i = 0; i < _portfolioInUI.Count; i++)
         {
@@ -93,8 +101,14 @@ public class PortfolioManager : MonoBehaviour
     {
         if (securities.AmountInPortolio >= amount)
         {
+            float sum;
+            if(securities.GetType() == typeof(Share))
+                sum = amount * securities.Price;
+            else
+                sum = (securities as Valute).GetPriceInCurrentValue() * amount;
             RemoveSecurities(securities, amount);
-            BalanceManager._instance.SellIn(DetailedInfoManager._instance.currentValute, amount * securities.Price);
+            BalanceManager._instance.SellIn(securities, sum);
+
         }
         else
             Debug.Log("Not Enough Securities");
@@ -104,14 +118,10 @@ public class PortfolioManager : MonoBehaviour
     {
         GameObject infoPrefab;
 
-        if (securities.GetType() == typeof(Share))
-            infoPrefab = _shareInfoPrefab;
-        else if (securities.GetType() == typeof(Obligation))
-            infoPrefab = _obligationInfoPrefab;
-        else
-            throw new System.Exception("Wrong sec type in portfolio");
-        if (securities.GetType() == typeof(Share))
+
+        if (securities.GetType() == typeof(Share) || securities.GetType() == typeof(Valute))
         {
+            infoPrefab = _shareInfoPrefab;
             if (securities.AmountInPortolio > 0)
             {
                 securities.SetAmount(securities.AmountInPortolio + amount);
@@ -119,25 +129,18 @@ public class PortfolioManager : MonoBehaviour
             }
             else
             {
-                GameObject temp;
-                PortfolioShortInfo tempInfo;
-
                 Portfolio.Add(securities);
-
-                temp = Instantiate(infoPrefab, _portfolioParentTForm);
-                tempInfo = temp.GetComponent<PortfolioShortInfo>();
-                tempInfo.SetInfo(securities);
-
                 securities.SetAmount(securities.AmountInPortolio + amount);
                 securities.AddTransaction(amount, securities.Price / DetailedInfoManager._instance.currentValute.Price);
-
-                _portfolioInUI.Add(tempInfo);
             }
         }
         else if (securities.GetType() == typeof(Obligation))
         {
+            infoPrefab = _obligationInfoPrefab;
             Portfolio.Add(new Obligation(securities as Obligation, securities.ParentCompany.GetNameOfCompany(), amount));
         }
+        else
+            throw new System.Exception("Wrong sec type added to Portfolio");
 
 
         UpdatePortfolio();
@@ -145,7 +148,7 @@ public class PortfolioManager : MonoBehaviour
 
     public void RemoveSecurities(Securities securities, int amount)
     {
-        if (securities.GetType() == typeof(Share))
+        if (securities.GetType() == typeof(Share) || securities.GetType() == typeof(Valute))
         {
             if (securities.AmountInPortolio > 0)
             {
@@ -202,7 +205,15 @@ public class PortfolioManager : MonoBehaviour
             spendTotal += sec.GetSpendMoney();
             sellNowTotal += (sec.securities.AmountInPortolio * sec.securities.Price);
         }
-        _totalProfit.text = ((sellNowTotal - spendTotal) / (BalanceManager._instance.RublesWallet + spendTotal) * 100f).ToString("0.00")+"%"; 
+        Debug.Log(spendTotal);
+        Debug.Log(sellNowTotal);
+        Debug.Log(BalanceManager._instance.GetWalletInCurrentValute());
+        float _total = ((sellNowTotal - spendTotal) / (BalanceManager._instance.GetWalletInCurrentValute() + spendTotal) * 100f);
+        _totalProfit.text = _total.ToString("0.00")+"%";
+        if (_total > 0f)
+            _totalProfit.color = green;
+        else if (_total < 0f)
+            _totalProfit.color = red;
     }
 
     public PortfolioShortInfo FindInUIList(Securities sec)

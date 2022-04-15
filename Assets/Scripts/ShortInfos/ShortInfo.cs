@@ -61,7 +61,7 @@ public class ShortInfo : MonoBehaviour
             deltaPrice = sec.DeltaPrice;
 
         if(sec.GetType() == typeof(Valute))
-            price.text = (sec as Valute).GetPriceInCurrentValue().ToString("0.00");
+            price.text = (sec as Valute).GetPriceInCurrentValue().ToString("0.000");
         else
             price.text = sec.Price.ToString("0.00");
 

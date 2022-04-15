@@ -36,6 +36,8 @@ public class BalanceManager : MonoBehaviour
         }
     }
 
+    public float GetWalletInCurrentValute() => Valutes[1].GetPriceInCurrentValue() * RublesWallet;
+
     public void GenerateValutesList()
     {
         Valutes.Add(new Valute("доллар", '$', false));
@@ -60,19 +62,19 @@ public class BalanceManager : MonoBehaviour
 
     public bool BuyWith(Valute val, float price)
     {
-        if (RublesWallet>= price  * val.GetPriceInCurrentValue() )
+        if (RublesWallet >= price * val.GetPriceInCurrentValue())
         {
-            RublesWallet -= val.GetPriceInCurrentValue()/ Valutes[1].GetPriceInCurrentValue() * price;
+            RublesWallet -= val.GetPriceInCurrentValue() / Valutes[1].GetPriceInCurrentValue() * price;
             return true;
         }
 
         return false;
     }
-    public bool SellIn(Valute val, float sum)
+    public bool SellIn(Securities sec, float sum)
     {
         if (sum > 0)
         {
-            RublesWallet += val.GetPriceInCurrentValue()/ Valutes[1].GetPriceInCurrentValue() * sum;
+            RublesWallet += DetailedInfoManager._instance.currentValute.GetPriceInCurrentValue() / Valutes[1].GetPriceInCurrentValue() * sum;
             return true;
         }
 
@@ -84,14 +86,14 @@ public class BalanceManager : MonoBehaviour
         Valute val = DetailedInfoManager._instance.currentValute;
 
 
-        float onHands = RublesWallet *Valutes[1].GetPriceInCurrentValue()/val.GetPriceInCurrentValue() ;
+        float onHands = RublesWallet * Valutes[1].GetPriceInCurrentValue() / val.GetPriceInCurrentValue();
         _balanceInMarket.text = onHands.ToString("00.00") + val.Symbol;
         _balanceInPortfolio.text = onHands.ToString("00.00") + val.Symbol;
     }
 
     public void AddMoney(float amount)
     {
-        if(amount > 0f)
+        if (amount > 0f)
             RublesWallet += amount;
     }
 }

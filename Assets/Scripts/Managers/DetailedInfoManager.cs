@@ -74,7 +74,7 @@ public class DetailedInfoManager : MonoBehaviour
         currentValute = BalanceManager._instance.Valutes[0];
 
         CreateSecuritiesMarket(new Share());
-        SetSecuritiesMarket(SecMarket); 
+        SetSecuritiesMarket(SecMarket);
 
 
 
@@ -141,30 +141,33 @@ public class DetailedInfoManager : MonoBehaviour
             BalanceManager._instance.UpdateBalance();
             Calendar.UpdateDate();
 
-            
-            foreach (Company comp in Companies)          
-                comp.UpdatePrice();       
-            
-            foreach (ShortInfo info in _displayedSecurities)          
-                info.UpdateInfo();   
+
+            foreach (Company comp in Companies)
+                comp.UpdatePrice();
+
+            foreach (ShortInfo info in _displayedSecurities)
+                info.UpdateInfo();
 
 
 
+            Debug.Log(currentSecurity.GetName());
             if (Calendar.IsTimeToDividends())
+            {
+                GameObject notification;
+                GameObject notificationPanel;
+                List<Securities> portfolio = PortfolioManager._instance.Portfolio;
+                for (int i = 0; i < PortfolioManager._instance.Portfolio.Count; i++)
                 {
-                    GameObject notification;
-                    GameObject notificationPanel;
-                    int i = 0;
-                    foreach(Share share in PortfolioManager._instance.Portfolio)
+                    if (portfolio[i].GetType() == typeof(Share))
                     {
-                        
                         notification = Instantiate(_notification);
-                        notification.GetComponent<OkButton>().SetInfo(share.ParentCompany.GetNameOfCompany(), share.GetSumOfDividends());
-                        share.PayDividends();
-                        if(0 == i) notificationPanel = Instantiate(_notificationPanel, notification.transform);
-                        i++;
+                        notification.GetComponent<OkButton>().SetInfo(portfolio[i].ParentCompany.GetNameOfCompany(), (portfolio[i] as Share).GetSumOfDividends());
+                        (portfolio[i] as Share).PayDividends();
+                        if (i == 0) 
+                            notificationPanel = Instantiate(_notificationPanel, notification.transform);
                     }
                 }
+            }
             UpdateAllInformation(currentSecurity);
 
 
@@ -176,13 +179,13 @@ public class DetailedInfoManager : MonoBehaviour
         GameObject infoPrefab;
 
         ShortInfo temp2;
-        
-        if(market[0].GetType() == typeof(Obligation))
+
+        if (market[0].GetType() == typeof(Obligation))
             infoPrefab = _obligationInfoPrefab;
         else
             infoPrefab = _shareInfoPrefab;
 
-        
+
         foreach (ShortInfo info in _displayedSecurities)
         {
             Destroy(info.gameObject);
@@ -198,7 +201,7 @@ public class DetailedInfoManager : MonoBehaviour
         {
             if (market[i].GetName() == currentValute.GetName())
             {
-                if(i == 0)
+                if (i == 0)
                     SelectSecurity(market[1]);
                 continue;
             }
