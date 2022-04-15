@@ -104,27 +104,6 @@ public class Graph : MonoBehaviour
         _minPriceTxt.transform.localPosition = new Vector2(_minPriceTxt.transform.localPosition.x, (_minY * _visualScale + 15f));
     }
 
-    private void OnGUI() {
-        if(Input.mouseScrollDelta.y != 0)
-        {
-            if(_visualScale>=1)
-            {
-                _visualScale += Input.mouseScrollDelta.y;    
-                UpdateGraph();
-            }
-            else
-            {
-                _visualScale = 1;
-            }
-        }
-    }
-    private void OnMouseDrag() {
-        Vector2 curScreenPoint = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
- 
-        Vector2 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint);
-        transform.position = new Vector2(transform.position.x, curPosition.y);
-    }
-
     public void ResetPosition()
     {
         _minY = 1000000f;
