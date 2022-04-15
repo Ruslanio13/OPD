@@ -10,7 +10,7 @@ public class PortfolioShortInfo : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI companyName;
     [SerializeField] private TextMeshProUGUI _spendMoney;
-    [SerializeField] private TextMeshProUGUI _currentPrice;
+    [SerializeField] private TextMeshProUGUI _currentSellPrice;
     [SerializeField] private TextMeshProUGUI myAmountOfSecurities;
     [SerializeField] private TextMeshProUGUI _profitPercent;
     [SerializeField] private TextMeshProUGUI price;
@@ -69,7 +69,7 @@ public class PortfolioShortInfo : MonoBehaviour
 
             _profitPercent.text = Math.Abs(securities.DeltaPrice).ToString("0.00") + "%";
             _profitPercent.text = profitPercentFloat.ToString("0.00") + "%";
-            _currentPrice.text = (securities.AmountInPortolio * securities.Price).ToString("0.00");
+            _currentSellPrice.text = (securities.AmountInPortolio * securities.Price).ToString("0.00");
 
         }
         else if (securities.GetType() == typeof(Obligation))
@@ -78,6 +78,10 @@ public class PortfolioShortInfo : MonoBehaviour
             PaybackCost.text = "Будет выплачено: "+(securities as Obligation).PaybackCost.ToString("0.00") + "P";
             dueTo.text = "через: " + (securities as Obligation).DueTo.ToString() + " дней ";
         }
+    }
+    public float GetSpendMoney()
+    {
+       return ShowSpentInCurrentVal(securities);
     }
     public float ShowSpentInCurrentVal(Securities sec)
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public class PortfolioManager : MonoBehaviour
     [SerializeField] private Button GoToPortfolio;
     [SerializeField] private Button _selShareButton;
     [SerializeField] private Button _selObligationsButton;
+    [SerializeField] private TextMeshProUGUI _totalProfit;
 
     private void Start()
     {
@@ -190,11 +192,17 @@ public class PortfolioManager : MonoBehaviour
 
     public void UpdatePortfolio()
     {
+        float sellNowTotal = 0f;
+        float spendTotal = 0f;
 
         foreach (PortfolioShortInfo sec in _portfolioInUI)
         {
             sec.UpdateInfo();
+
+            spendTotal += sec.GetSpendMoney();
+            sellNowTotal += (sec.securities.AmountInPortolio * sec.securities.Price);
         }
+        _totalProfit.text = ((sellNowTotal - spendTotal) / (BalanceManager._instance.RublesWallet + spendTotal) * 100f).ToString("0.00")+"%"; 
     }
 
     public PortfolioShortInfo FindInUIList(Securities sec)

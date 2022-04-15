@@ -22,7 +22,7 @@ public class Securities
     protected float maxPrice = 2f;
     protected float minPrice = -2f;
 
-    protected float GetPriceInRubles()
+    public float GetPriceInRubles()
     {
         return Price / BalanceManager._instance.Valutes[1].GetPriceInCurrentValue();
     }
@@ -100,9 +100,6 @@ public class Share : Securities
         {
             needToSet = true;
         }
-
-        if (ParentCompany != null)
-            Debug.Log(ParentCompany.GetNameOfCompany() + " " + maxPrice + " " + minPrice);
 
         DeltaPrice = UnityEngine.Random.Range(minPrice, maxPrice);
         Price += Price * DeltaPrice / 100;
