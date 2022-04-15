@@ -17,6 +17,8 @@ public class PortfolioManager : MonoBehaviour
     [SerializeField] private Button _selShareButton;
     [SerializeField] private Button _selObligationsButton;
     [SerializeField] private TextMeshProUGUI _totalProfit;
+    Color red = new Color(0.8f, 0.09f, 0.09f, 1);
+    Color green = new Color(0.09f, 0.7f, 0.1f, 1f);
 
     private void Start()
     {
@@ -202,7 +204,15 @@ public class PortfolioManager : MonoBehaviour
             spendTotal += sec.GetSpendMoney();
             sellNowTotal += (sec.securities.AmountInPortolio * sec.securities.Price);
         }
-        _totalProfit.text = ((sellNowTotal - spendTotal) / (BalanceManager._instance.RublesWallet + spendTotal) * 100f).ToString("0.00")+"%"; 
+        Debug.Log(spendTotal);
+        Debug.Log(sellNowTotal);
+        Debug.Log(BalanceManager._instance.GetWalletInCurrentValute());
+        float _total = ((sellNowTotal - spendTotal) / (BalanceManager._instance.GetWalletInCurrentValute() + spendTotal) * 100f);
+        _totalProfit.text = _total.ToString("0.00")+"%";
+        if (_total > 0f)
+            _totalProfit.color = green;
+        else if (_total < 0f)
+            _totalProfit.color = red;
     }
 
     public PortfolioShortInfo FindInUIList(Securities sec)

@@ -36,6 +36,8 @@ public class BalanceManager : MonoBehaviour
         }
     }
 
+    public float GetWalletInCurrentValute() => Valutes[1].GetPriceInCurrentValue() * RublesWallet;
+   
     public void GenerateValutesList()
     {
         Valutes.Add(new Valute("Dollars", '$', false));
