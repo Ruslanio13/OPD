@@ -27,25 +27,29 @@ public class PortfolioManager : MonoBehaviour
         {
             InitializePortfolio(DetailedInfoManager._instance.currentSecurity.GetType());
             UpdatePortfolio();
-            _portfolioInUI[0]?.SelectSecurity();
+            if (_portfolioInUI.Count != 0)
+                _portfolioInUI[0].SelectSecurity();
         });
         _selShareButton.onClick.AddListener(() =>
         {
             InitializePortfolio(typeof(Share));
             UpdatePortfolio();
-            _portfolioInUI[0]?.SelectSecurity();
+            if (_portfolioInUI.Count != 0)
+                _portfolioInUI[0]?.SelectSecurity();
         });
         _selObligationsButton.onClick.AddListener(() =>
         {
             InitializePortfolio(typeof(Obligation));
             UpdatePortfolio();
-            _portfolioInUI[0]?.SelectSecurity();
+            if (_portfolioInUI.Count != 0)
+                _portfolioInUI[0]?.SelectSecurity();
         });
         _selValutesButton.onClick.AddListener(() =>
         {
             InitializePortfolio(typeof(Valute));
             UpdatePortfolio();
-            _portfolioInUI[0]?.SelectSecurity();
+            if (_portfolioInUI.Count != 0)
+                _portfolioInUI[0]?.SelectSecurity();
         });
     }
 
@@ -60,7 +64,7 @@ public class PortfolioManager : MonoBehaviour
         PortfolioShortInfo tempInfo;
         GameObject infoPrefab;
 
-      
+
         if (reqSecType == typeof(Obligation))
             infoPrefab = _obligationInfoPrefab;
         else
@@ -102,7 +106,7 @@ public class PortfolioManager : MonoBehaviour
         if (securities.AmountInPortolio >= amount)
         {
             float sum;
-            if(securities.GetType() == typeof(Share))
+            if (securities.GetType() == typeof(Share))
                 sum = amount * securities.Price;
             else
                 sum = (securities as Valute).GetPriceInCurrentValue() * amount;
@@ -209,7 +213,7 @@ public class PortfolioManager : MonoBehaviour
         Debug.Log(sellNowTotal);
         Debug.Log(BalanceManager._instance.GetWalletInCurrentValute());
         float _total = ((sellNowTotal - spendTotal) / (BalanceManager._instance.GetWalletInCurrentValute() + spendTotal) * 100f);
-        _totalProfit.text = _total.ToString("0.00")+"%";
+        _totalProfit.text = _total.ToString("0.00") + "%";
         if (_total > 0f)
             _totalProfit.color = green;
         else if (_total < 0f)
