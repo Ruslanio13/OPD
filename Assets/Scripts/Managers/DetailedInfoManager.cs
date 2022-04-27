@@ -8,6 +8,7 @@ public class DetailedInfoManager : MonoBehaviour
 {
 
     [SerializeField] public List<Company> Companies = new List<Company>();
+    [SerializeField] public List<Country> Countries = new List<Country>();
     [SerializeField] private List<Securities> SecMarket = new List<Securities>();
     [SerializeField] private RectTransform _shortInfoListTransform;
     [SerializeField] public Graph _graph;
@@ -96,27 +97,44 @@ public class DetailedInfoManager : MonoBehaviour
 
 
 
+
+    public void InitializeCountries()
+    {
+        Countries.Add(new Country("Russia"));                           //0
+        Countries.Add(new Country("USA"));              //1
+        Countries.Add(new Country("Ukraine"));              //2
+        Countries.Add(new Country("China"));                //3
+        Countries.Add(new Country("Tajikistan"));               //4
+        Countries.Add(new Country("Germany"));              //5
+        Countries.Add(new Country("Czech Republic"));               //6
+        Countries.Add(new Country("Switzerland"));              //7
+        Countries.Add(new Country("Kazakhstan"));               //8
+        Countries.Add(new Country("Sweden"));               //9
+        Countries.Add(new Country("Japan"));                //10
+        Countries.Add(new Country("United Kingdom"));               //11
+        Countries.Add(new Country("South Korea"));              //12
+    }
     public void InitializeCompanies()
     {
         Calendar = new Calendar(1, 1, 2022);
 
-        Companies.Add(new Company("Sberbank"));
-        Companies.Add(new Company("VTB"));
-        Companies.Add(new Company("Tinkoff"));
-        Companies.Add(new Company("Raiffaizen"));
-        Companies.Add(new Company("Amazon"));
-        Companies.Add(new Company("Asos"));
-        Companies.Add(new Company("DNS"));
-        Companies.Add(new Company("Samsung"));
-        Companies.Add(new Company("Apple"));
-        Companies.Add(new Company("Xiaomi"));
-        Companies.Add(new Company("Meizu"));
-        Companies.Add(new Company("LG"));
-        Companies.Add(new Company("Lenovo"));
-        Companies.Add(new Company("JBL"));
-        Companies.Add(new Company("Oppo"));
-        Companies.Add(new Company("Phillips"));
-        Companies.Add(new Company("Sony"));
+        Companies.Add(new Company("Sberbank", Countries[4]));
+        Companies.Add(new Company("VTB", Countries[0]));
+        Companies.Add(new Company("Tinkoff", Countries[0]));
+        Companies.Add(new Company("Raiffaizen", Countries[5]));
+        Companies.Add(new Company("Amazon", Countries[1]));
+        Companies.Add(new Company("Asos", Countries[1]));
+        Companies.Add(new Company("DNS", Countries[0]));
+        Companies.Add(new Company("Samsung", Countries[12]));
+        Companies.Add(new Company("Apple", Countries[1]));
+        Companies.Add(new Company("Xiaomi", Countries[3]));
+        Companies.Add(new Company("Meizu", Countries[3]));
+        Companies.Add(new Company("LG", Countries[12]));
+        Companies.Add(new Company("Lenovo", Countries[3]));
+        Companies.Add(new Company("JBL", Countries[1]));
+        Companies.Add(new Company("Oppo", Countries[3]));
+        Companies.Add(new Company("Phillips", Countries[5]));
+        Companies.Add(new Company("Sony", Countries[10]));
 
         foreach (var comp in Companies)
         {
@@ -151,7 +169,9 @@ public class DetailedInfoManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             if (Calendar.AllDays % 10 == 0)
-                NewsManager._instance.SpawnNews(Companies);
+                NewsManager._instance.SpawnCompanyNews(Companies);
+            if (Calendar.AllDays % 21 == 0)
+                NewsManager._instance.SpawnGlobalNews(Countries);
 
             PortfolioManager._instance.UpdateObligations();
             BalanceManager._instance.UpdateBalance();

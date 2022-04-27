@@ -9,7 +9,7 @@ public class Company
     [SerializeField] string companyName = "Enter new company name here";
     [SerializeField] private List<float> _shareHistory;
     public Securities DisplayedSec;
-
+    public Country Country{get; private set;}
     public Share CompanyShare;
     public Obligation CompanyObligation;
     public ETF CompanyETF;
@@ -31,16 +31,17 @@ public class Company
     [SerializeField] private float _minPriceChange;
     [SerializeField] private float _maxPriceChange;
 
-    public void SetMinPriceChange(float price) => _minPriceChange = price;
-    public void SetMaxPriceChange(float price) => _maxPriceChange = price;
+    public void ChangeMinPriceChange(float price) => _minPriceChange += price;
+    public void ChangeMaxPriceChange(float price) => _maxPriceChange += price;
 
     public float GetMinPriceChange() => _minPriceChange;
     public float GetMaxPriceChange() => _maxPriceChange;
 
     public string GetNameOfCompany() => companyName;
 
-    public Company(string name)
+    public Company(string name, Country country)
     {
+        Country = country;
         companyName = name;
         capitalization = UnityEngine.Random.Range(150f, 1000f);
         amountOfSecurities = UnityEngine.Random.Range(150, 1000);

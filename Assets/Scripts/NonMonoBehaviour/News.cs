@@ -8,18 +8,21 @@ public class News
     public float maxChange { get; private set; }
     public float minChange { get; private set; }
 
-    public News(Company comp, NewsSO template)
+    public void SetUpNews<T>(T obj, NewsSO template)
     {
-        TitleText = template.title;
-        MainText = template.text;
-        if (comp != null)
+        if(obj.GetType() == typeof(Company))
         {
-            this.comp = comp;
-            maxChange = template.maxChange;
-            minChange = template.minChange;
-
-            comp.SetMaxPriceChange(template.maxChange);
-            comp.SetMinPriceChange(template.minChange);
+            comp = (obj as Company);
+            TitleText = "Компания " + (obj as Company).GetNameOfCompany() + " " + template.title;
+            (obj as Company).ChangeMaxPriceChange(template.maxChange);
+            (obj as Company).ChangeMinPriceChange(template.minChange);
         }
+        else
+        {
+            TitleText = "Страна " + (obj as Country).Name + " " + template.title;
+        }       
+       
+        MainText = template.text;
+    
     }
 }

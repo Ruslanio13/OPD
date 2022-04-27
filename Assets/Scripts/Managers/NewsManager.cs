@@ -16,7 +16,7 @@ public class NewsManager : MonoBehaviour
     [SerializeField] List<NewsSO> localNewsPatterns = new List<NewsSO>();
     [SerializeField] List<NewsSO> globalNewsPatterns = new List<NewsSO>();
     [SerializeField] private ScrollRect _scrollbar;
-    
+
     public static NewsManager _instance;
     public List<News> AllLocalNews = new List<News>();
     public List<News> AllGlobalNews = new List<News>();
@@ -31,28 +31,42 @@ public class NewsManager : MonoBehaviour
         _isGlobalNews = false;
     }
 
-    public void SpawnNews(List<Company> companies)
+    public void SpawnCompanyNews(List<Company> companies)
     {
         int i;
         int numberOfRandomNew;
         News temp;
-        if (!_isGlobalNews)
-            _localNewsFeedRT.sizeDelta += new Vector2(0, 375f);
-       
+
+        _localNewsFeedRT.sizeDelta += new Vector2(0, 375f);
+        
         for (i = 0; i < companies.Count; i++)
         {
             numberOfRandomNew = UnityEngine.Random.Range(0, localNewsPatterns.Count);
-            temp = new News(companies[i], localNewsPatterns[numberOfRandomNew]);
+            temp = new News();
+            temp.SetUpNews<Company>(companies[i], localNewsPatterns[numberOfRandomNew]);
             AllLocalNews.Add(temp);
         }
         ShowCompanyNews(DetailedInfoManager._instance.currentCompany);
 
 
-        int numberOfRandomGlobalNew = UnityEngine.Random.Range(0, globalNewsPatterns.Count);
+    }
+    public void SpawnGlobalNews(List<Country> countries)
+    {
+        int countryID;
+        int numberOfPattern;
+        GameObject tempg;
+        News temp;
+
         _globalNewsFeedRT.sizeDelta += new Vector2(0, 375f);
-        temp = new News(null, globalNewsPatterns[numberOfRandomGlobalNew]);
+
+        countryID = UnityEngine.Random.Range(0, countries.Count);
+        numberOfPattern = UnityEngine.Random.Range(0, globalNewsPatterns.Count);
+
+        temp = new News();
+
+        temp.SetUpNews<Country>(countries[countryID], globalNewsPatterns[numberOfPattern]);
         AllGlobalNews.Add(temp);
-        GameObject tempg = Instantiate(newsPrefab, globalNewsFeed.transform);
+        tempg = Instantiate(newsPrefab, globalNewsFeed.transform);
         tempg.GetComponent<NewsShortInfo>().SetUpNews(AllGlobalNews[AllGlobalNews.Count - 1], true);
     }
 
@@ -86,7 +100,7 @@ public class NewsManager : MonoBehaviour
         if (!_isGlobalNews)
         {
             _newsButtonText.text = "Global news";
-            _scrollbar.content = _localNewsFeedRT; 
+            _scrollbar.content = _localNewsFeedRT;
         }
         else
         {
