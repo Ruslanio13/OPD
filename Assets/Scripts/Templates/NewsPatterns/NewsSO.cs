@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 [CreateAssetMenu(fileName = "News", menuName = "NewsPattern", order = 1)]
 public class NewsSO : ScriptableObject
@@ -13,6 +10,7 @@ public class NewsSO : ScriptableObject
     [SerializeField] public string text;
 
     public float minChange; 
-    public float maxChange; 
+    public float maxChange;
+    public bool isGlobal;
 }
 
