@@ -46,13 +46,26 @@ public class Securities
 
         Price *= val.Price / prevVal.Price;
     }
-    public virtual void SetAmount(int am)
+    public void SetAmount(int am)
     {
+        if (am >= 0)
+            AmountInPortolio = am;
+        else
+            throw new System.Exception("Wrong Amount Of Sec");
     }
 
     public virtual void AddTransaction(int amount, float pricePerOne)
     {
+        List<float> tempList = new List<float>();
+        tempList.Add(amount);
+        tempList.Add(pricePerOne);
 
+        for (int i = 0; i < BalanceManager._instance.Valutes.Count; i++)
+        {
+            tempList.Add(BalanceManager._instance.Valutes[i].Price);
+        }
+
+        TransHistory.Add(tempList);
     }
 }
 
@@ -113,28 +126,6 @@ public class Share : Securities
     {
         return ParentCompany.GetNameOfCompany();
     }
-    public override void SetAmount(int am)
-    {
-        if (am >= 0)
-            AmountInPortolio += am;
-        else
-            throw new System.Exception("Wrong Amount Of Sec");
-    }
-
-    public override void AddTransaction(int amount, float pricePerOne)
-    {
-        List<float> tempList = new List<float>();
-        tempList.Add(amount);
-        tempList.Add(pricePerOne);
-
-        for (int i = 0; i < BalanceManager._instance.Valutes.Count; i++)
-        {
-            tempList.Add(BalanceManager._instance.Valutes[i].Price);
-        }
-
-        TransHistory.Add(tempList);
-    }
-
     public void CalculateAveragePrice()
     {
         for (int i = 0; i < 300; i++)
@@ -154,19 +145,19 @@ public class Share : Securities
 
     public void PayDividends()
     {
-        
+
         BalanceManager._instance.AddMoney(GetSumOfDividends());
     }
     public float GetSumOfDividends()
     {
-        return GetPriceInRubles() * AmountInPortolio * _dividendsPercent /100f;
+        return GetPriceInRubles() * AmountInPortolio * _dividendsPercent / 100f;
     }
 }
 [System.Serializable]
 public class Obligation : Securities
 {
-    public string ParentCompanyName{get; private set;}
-    public float DeltaPaybackPercent{get; private set;}
+    public string ParentCompanyName { get; private set; }
+    public float DeltaPaybackPercent { get; private set; }
     public int DueTo { get; private set; }
     private int _paybackTime;
     public float PercentOfPayback { get; private set; }
@@ -186,9 +177,9 @@ public class Obligation : Securities
         this._paybackTime = copied._paybackTime;
 
         this.DueTo = copied._paybackTime;
-        
+
         this.PercentOfPayback = copied.PercentOfPayback;
-        
+
         this._priceHistory = copied._priceHistory;
 
         this.PaybackCost = copied.Price * (1 + copied.PercentOfPayback / 100f) / BalanceManager._instance.Valutes[1].GetPriceInCurrentValue() * amount;
@@ -233,31 +224,32 @@ public class ETF : Securities
     {
         Price = 0;
     }
-    
+
     public void AddShareToFond(Share share, int amount)
     {
         _fond.Add((share, amount));
-        Price += share.Price * amount * percentageOfFondPrice;
+        Price += share.Price * amount * percentageOfFondPrice/100f;
     }
     public override void UpdatePrice()
     {
         Price = 0;
-        foreach(var ShareCortage in _fond)
+        foreach (var ShareCortage in _fond)
         {
-            Price += ShareCortage.Item1.Price * ShareCortage.Item2 * percentageOfFondPrice/100f; 
+            Price += ShareCortage.Item1.Price * ShareCortage.Item2 * percentageOfFondPrice / 100f;
         }
-        DeltaPrice = (Price -_priceHistory[_priceHistory.Count-1])/Price * 100f;
         _priceHistory.Add(Price);
+        DeltaPrice = (Price - _priceHistory[_priceHistory.Count - 2]) / Price * 100f;
     }
 
     public void GeneratePriceHistory()
     {
-        for(int i = 0; i < 1500; i++)
+        for (int i = 0; i < 1500; i++)
         {
             _priceHistory.Add(0);
-            foreach(var Share in _fond)
-            _priceHistory[i] += Share.Item1._priceHistory[i]*Share.Item2*percentageOfFondPrice/100f; 
+            foreach (var Share in _fond)
+                _priceHistory[i] += Share.Item1._priceHistory[i] * Share.Item2 * percentageOfFondPrice / 100f;
         }
+        DeltaPrice = (_priceHistory[1499] - _priceHistory[1498])/_priceHistory[1499]*100f;
     }
 }
 
@@ -312,13 +304,7 @@ public class Valute : Securities
 
         TransHistory.Add(tempList);
     }
-    public override void SetAmount(int am)
-    {
-        if (am >= 0)
-            AmountInPortolio += am;
-        else
-            throw new System.Exception("Wrong Amount Of Sec");
-    }
+
     public override string GetName()
     {
         return Name;

@@ -154,7 +154,6 @@ public class DetailedInfoManager : MonoBehaviour
                 NewsManager._instance.SpawnNews(Companies);
 
             PortfolioManager._instance.UpdateObligations();
-            PortfolioManager._instance.UpdatePortfolio();
             BalanceManager._instance.UpdateBalance();
             Calendar.UpdateDate();
 
@@ -165,6 +164,7 @@ public class DetailedInfoManager : MonoBehaviour
             foreach (ShortInfo info in _displayedSecurities)
                 info.UpdateInfo();
 
+            PortfolioManager._instance.UpdatePortfolio();
 
 
             Debug.Log(currentSecurity.GetName());

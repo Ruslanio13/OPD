@@ -114,10 +114,10 @@ public class PortfolioManager : MonoBehaviour
         if (securities.AmountInPortolio >= amount)
         {
             float sum;
-            if (securities.GetType() == typeof(Share))
-                sum = amount * securities.Price;
-            else
+            if(securities.GetType() == typeof(Valute))
                 sum = (securities as Valute).GetPriceInCurrentValue() * amount;
+            else
+                sum = amount * securities.Price;
             RemoveSecurities(securities, amount);
             BalanceManager._instance.SellIn(securities, sum);
 
@@ -156,7 +156,13 @@ public class PortfolioManager : MonoBehaviour
 
     public void RemoveSecurities(Securities securities, int amount)
     {
-        if (securities.GetType() == typeof(Share) || securities.GetType() == typeof(Valute))
+        if (securities.GetType() == typeof(Obligation))
+        {
+            Portfolio.Remove(securities);
+            Destroy(FindInUIList(securities).gameObject);
+            _portfolioInUI.Remove(FindInUIList(securities));
+        }
+        else
         {
             if (securities.AmountInPortolio > 0)
             {
@@ -165,8 +171,11 @@ public class PortfolioManager : MonoBehaviour
                     Portfolio.Remove(securities);
                     Destroy(FindInUIList(securities).gameObject);
                     _portfolioInUI.Remove(FindInUIList(securities));
+                    securities.SetAmount(0);
                 }
-                securities.SetAmount(securities.AmountInPortolio - amount);
+                else
+                    securities.SetAmount(securities.AmountInPortolio - amount);
+                
                 int currentAmount = amount;
                 int j = securities.TransHistory.Count - 1;
                 while (currentAmount != 0)
@@ -190,12 +199,6 @@ public class PortfolioManager : MonoBehaviour
             {
                 throw new System.Exception("Cannot remove sec-s due to their absense");
             }
-        }
-        else if (securities.GetType() == typeof(Obligation))
-        {
-            Portfolio.Remove(securities);
-            Destroy(FindInUIList(securities).gameObject);
-            _portfolioInUI.Remove(FindInUIList(securities));
         }
         UpdatePortfolio();
     }

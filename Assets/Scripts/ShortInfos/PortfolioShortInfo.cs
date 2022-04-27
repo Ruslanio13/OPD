@@ -114,7 +114,7 @@ public class PortfolioShortInfo : MonoBehaviour
                 break;
             }
 
-        if(sec.GetType() == typeof(Share))
+        if(sec.GetType() == typeof(Share) || sec.GetType() == typeof(ETF))
             for (int i = 0; i < sec.TransHistory.Count; i++)
                 total += sec.TransHistory[i][0] * sec.TransHistory[i][1] * sec.TransHistory[i][valID + 2];
         
