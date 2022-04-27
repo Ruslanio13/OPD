@@ -6347,6 +6347,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8322678563266725715, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
   m_PrefabInstance: {fileID: 685725969}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &757576282 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1727359853662463700, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+  m_PrefabInstance: {fileID: 685725969}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &757677501
 GameObject:
   m_ObjectHideFlags: 0
@@ -10711,6 +10722,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1904233755}
   m_RootOrder: 1
@@ -14315,6 +14327,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545737230}
   m_CullTransparentMesh: 1
+--- !u!114 &1555945855 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1727359853662463700, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
+  m_PrefabInstance: {fileID: 2099827513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1557052255 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8322678563266725715, guid: 8c746486346479a4f84f51b54aad08d6, type: 3}
@@ -14850,6 +14873,7 @@ MonoBehaviour:
   _selSharesMarket: {fileID: 491906018}
   _selObligationMarket: {fileID: 736371409}
   _selValuteMarket: {fileID: 1101946123}
+  _selETFMarket: {fileID: 757576282}
   currentIndex: 0
   currentCompany:
     companyName: Enter new company name here
@@ -14863,7 +14887,7 @@ MonoBehaviour:
     CompanyObligation:
       DeltaPrice: 0
       _priceHistory: []
-    CompanyFuture:
+    CompanyETF:
       DeltaPrice: 0
       _priceHistory: []
     capitalization: 0
@@ -14899,6 +14923,7 @@ MonoBehaviour:
   _selShareButton: {fileID: 1669156783}
   _selObligationsButton: {fileID: 2026334542}
   _selValutesButton: {fileID: 636950417}
+  _selETFButton: {fileID: 1555945855}
   _totalProfit: {fileID: 1510438837}
 --- !u!114 &1602378476
 MonoBehaviour:

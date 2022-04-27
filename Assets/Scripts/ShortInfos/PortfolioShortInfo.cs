@@ -51,7 +51,7 @@ public class PortfolioShortInfo : MonoBehaviour
             SelectSecurityButton.colors = _buttonColors;
         }
 
-        if (securities.GetType() == typeof(Share))
+        if (securities.GetType() == typeof(Share) | )
         {
             _name.text = securities.GetName();
 
