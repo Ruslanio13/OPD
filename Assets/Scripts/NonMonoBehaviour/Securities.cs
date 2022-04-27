@@ -224,9 +224,31 @@ public class Obligation : Securities
     }
 }
 [System.Serializable]
-public class Future : Securities
+public class ETF : Securities
 {
+    private List<(Share, int)> _fond = new List<(Share, int)>();
+    private float percentageOfFondPrice = 5f;
 
+    public ETF()
+    {
+        Price = 0;
+    }
+    
+    public void AddShareToFond(Share share, int amount)
+    {
+        _fond.Add((share, amount));
+        Price += share.Price * amount * percentageOfFondPrice;
+    }
+    public override void UpdatePrice()
+    {
+        float prevPrice = Price;
+        Price = 0;
+        foreach(var ShareCortage in _fond)
+        {
+            Price += ShareCortage.Item1.Price * ShareCortage.Item2 * percentageOfFondPrice; 
+        }
+        DeltaPrice = (Price -prevPrice)/Price * 100f;
+    }
 }
 
 [System.Serializable]

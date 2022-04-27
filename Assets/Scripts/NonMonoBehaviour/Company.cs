@@ -12,7 +12,7 @@ public class Company
 
     public Share CompanyShare;
     public Obligation CompanyObligation;
-    public Future CompanyFuture;
+    public ETF CompanyETF;
 
     [SerializeField] float capitalization;
     [SerializeField] int amountOfSecurities;
@@ -50,7 +50,7 @@ public class Company
 
         CompanyObligation = new Obligation();
         CompanyShare = new Share();
-        CompanyFuture = new Future();
+        CompanyETF = new ETF();
         
         GeneratePreGameHistory();
         CompanyShare.CalculateAveragePrice();
@@ -60,7 +60,7 @@ public class Company
     {
         CompanyShare.UpdatePrice();
         CompanyObligation.UpdatePrice();
-        CompanyFuture.UpdatePrice();
+        CompanyETF.UpdatePrice();
     }
     
 
@@ -70,8 +70,8 @@ public class Company
             return CompanyShare.DeltaPrice;
         if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(Obligation))
             return CompanyObligation.DeltaPrice;
-        if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(Future))
-            return CompanyFuture.DeltaPrice;
+        if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(ETF))
+            return CompanyETF.DeltaPrice;
         return CompanyShare.DeltaPrice;
     }
 
@@ -87,7 +87,16 @@ public class Company
     {
         CompanyShare.ParentCompany = this;
         CompanyObligation.ParentCompany = this;
-        CompanyFuture.ParentCompany = this;
+        CompanyETF.ParentCompany = this;
     }
 
+    public void InitializeETF()
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            var randShare = UnityEngine.Random.Range(0, DetailedInfoManager._instance.Companies.Count);
+            var randAmount = UnityEngine.Random.Range(0, 20);
+            CompanyETF.AddShareToFond(DetailedInfoManager._instance.Companies[randShare].CompanyShare, randAmount);
+        }
+    }
 }

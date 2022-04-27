@@ -27,6 +27,7 @@ public class DetailedInfoManager : MonoBehaviour
     [SerializeField] private Button _selSharesMarket;
     [SerializeField] private Button _selObligationMarket;
     [SerializeField] private Button _selValuteMarket;
+    [SerializeField] private Button _selETFMarket;
     private List<ShortInfo> _displayedSecurities = new List<ShortInfo>();
     public int currentIndex;
     public Company currentCompany;
@@ -74,6 +75,13 @@ public class DetailedInfoManager : MonoBehaviour
             SetSecuritiesMarket(BalanceManager._instance.Valutes);
             _tableGameObject.SetActive(false);
         });
+        _selETFMarket.onClick.AddListener(() =>
+        {
+            SetValute(BalanceManager._instance.Valutes[0]);
+            CreateSecuritiesMarket(new ETF());
+            SetSecuritiesMarket(SecMarket);
+        });
+
 
         currentValute = BalanceManager._instance.Valutes[0];
 
@@ -109,6 +117,13 @@ public class DetailedInfoManager : MonoBehaviour
         Companies.Add(new Company("Oppo"));
         Companies.Add(new Company("Phillips"));
         Companies.Add(new Company("Sony"));
+
+        foreach (var comp in Companies)
+        {
+            comp.InitializeETF();
+            comp.GeneratePreGameHistory();
+            comp.CompanyShare.CalculateAveragePrice();
+        }
 
     }
 
@@ -167,7 +182,7 @@ public class DetailedInfoManager : MonoBehaviour
                         notification = Instantiate(_notification);
                         notification.GetComponent<OkButton>().SetInfo(portfolio[i].ParentCompany.GetNameOfCompany(), (portfolio[i] as Share).GetSumOfDividends());
                         (portfolio[i] as Share).PayDividends();
-                        if (i == 0) 
+                        if (i == 0)
                             notificationPanel = Instantiate(_notificationPanel, notification.transform);
                     }
                 }
@@ -277,9 +292,9 @@ public class DetailedInfoManager : MonoBehaviour
                 SecMarket.Add(comp.CompanyObligation);
                 continue;
             }
-            if (reqType == typeof(Future))
+            if (reqType == typeof(ETF))
             {
-                SecMarket.Add(comp.CompanyFuture);
+                SecMarket.Add(comp.CompanyETF);
                 continue;
             }
         }
