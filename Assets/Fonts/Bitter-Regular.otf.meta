@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4cbb189961f0d73498d6a568a019c4a2
+guid: 105747f55395c3546ad1ba23a25c8e84
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - KyrillaSansSerif-Black
+  - Bitter
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
