@@ -121,8 +121,6 @@ public class DetailedInfoManager : MonoBehaviour
         foreach (var comp in Companies)
         {
             comp.InitializeETF();
-            comp.GeneratePreGameHistory();
-            comp.CompanyShare.CalculateAveragePrice();
         }
 
     }

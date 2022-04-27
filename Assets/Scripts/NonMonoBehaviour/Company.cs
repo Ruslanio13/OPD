@@ -51,7 +51,6 @@ public class Company
         CompanyObligation = new Obligation();
         CompanyShare = new Share();
         CompanyETF = new ETF();
-        
         GeneratePreGameHistory();
         CompanyShare.CalculateAveragePrice();
     }
@@ -62,7 +61,6 @@ public class Company
         CompanyObligation.UpdatePrice();
         CompanyETF.UpdatePrice();
     }
-    
 
     public float GetSecurityDelta()
     {
@@ -79,7 +77,8 @@ public class Company
     {
         for (int i = 0; i < 1500; i++)
         {
-            UpdatePrice();
+            CompanyShare.UpdatePrice();
+            CompanyObligation.UpdatePrice();
         }
     }
 
@@ -98,5 +97,6 @@ public class Company
             var randAmount = UnityEngine.Random.Range(0, 20);
             CompanyETF.AddShareToFond(DetailedInfoManager._instance.Companies[randShare].CompanyShare, randAmount);
         }
+        CompanyETF.GeneratePriceHistory();
     }
 }

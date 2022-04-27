@@ -226,7 +226,7 @@ public class Obligation : Securities
 [System.Serializable]
 public class ETF : Securities
 {
-    private List<(Share, int)> _fond = new List<(Share, int)>();
+    public List<(Share, int)> _fond = new List<(Share, int)>();
     private float percentageOfFondPrice = 5f;
 
     public ETF()
@@ -241,13 +241,23 @@ public class ETF : Securities
     }
     public override void UpdatePrice()
     {
-        float prevPrice = Price;
         Price = 0;
         foreach(var ShareCortage in _fond)
         {
-            Price += ShareCortage.Item1.Price * ShareCortage.Item2 * percentageOfFondPrice; 
+            Price += ShareCortage.Item1.Price * ShareCortage.Item2 * percentageOfFondPrice/100f; 
         }
-        DeltaPrice = (Price -prevPrice)/Price * 100f;
+        DeltaPrice = (Price -_priceHistory[_priceHistory.Count-1])/Price * 100f;
+        _priceHistory.Add(Price);
+    }
+
+    public void GeneratePriceHistory()
+    {
+        for(int i = 0; i < 1500; i++)
+        {
+            _priceHistory.Add(0);
+            foreach(var Share in _fond)
+            _priceHistory[i] += Share.Item1._priceHistory[i]*Share.Item2*percentageOfFondPrice/100f; 
+        }
     }
 }
 
