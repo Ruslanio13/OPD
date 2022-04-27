@@ -17,6 +17,7 @@ public class PortfolioManager : MonoBehaviour
     [SerializeField] private Button _selShareButton;
     [SerializeField] private Button _selObligationsButton;
     [SerializeField] private Button _selValutesButton;
+    [SerializeField] private Button _selETFButton;
     [SerializeField] private TextMeshProUGUI _totalProfit;
     Color red = new Color(0.8f, 0.09f, 0.09f, 1);
     Color green = new Color(0.09f, 0.7f, 0.1f, 1f);
@@ -47,6 +48,13 @@ public class PortfolioManager : MonoBehaviour
         _selValutesButton.onClick.AddListener(() =>
         {
             InitializePortfolio(typeof(Valute));
+            UpdatePortfolio();
+            if (_portfolioInUI.Count != 0)
+                _portfolioInUI[0]?.SelectSecurity();
+        });
+        _selETFButton.onClick.AddListener(() =>
+        {
+            InitializePortfolio(typeof(ETF));
             UpdatePortfolio();
             if (_portfolioInUI.Count != 0)
                 _portfolioInUI[0]?.SelectSecurity();
@@ -123,7 +131,12 @@ public class PortfolioManager : MonoBehaviour
         GameObject infoPrefab;
 
 
-        if (securities.GetType() == typeof(Share) || securities.GetType() == typeof(Valute))
+        if (securities.GetType() == typeof(Obligation))
+        {
+            infoPrefab = _obligationInfoPrefab;
+            Portfolio.Add(new Obligation(securities as Obligation, securities.ParentCompany.GetNameOfCompany(), amount));
+        }
+        else
         {
             infoPrefab = _shareInfoPrefab;
             if (securities.AmountInPortolio > 0)
@@ -138,15 +151,6 @@ public class PortfolioManager : MonoBehaviour
                 securities.AddTransaction(amount, securities.Price / DetailedInfoManager._instance.currentValute.Price);
             }
         }
-        else if (securities.GetType() == typeof(Obligation))
-        {
-            infoPrefab = _obligationInfoPrefab;
-            Portfolio.Add(new Obligation(securities as Obligation, securities.ParentCompany.GetNameOfCompany(), amount));
-        }
-        else
-            throw new System.Exception("Wrong sec type added to Portfolio");
-
-
         UpdatePortfolio();
     }
 
