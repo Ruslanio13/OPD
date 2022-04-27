@@ -12,6 +12,7 @@ public class DetailedInfoManager : MonoBehaviour
     [SerializeField] private RectTransform _shortInfoListTransform;
     [SerializeField] public Graph _graph;
     [SerializeField] DetailedInfo table;
+    [SerializeField] GameObject _tableGameObject;
     [SerializeField] private GameObject _shareInfoPrefab;
     [SerializeField] private GameObject _obligationInfoPrefab;
     [SerializeField] private GameObject _notification;
@@ -58,17 +59,20 @@ public class DetailedInfoManager : MonoBehaviour
             SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new Share());
             SetSecuritiesMarket(SecMarket);
+            _tableGameObject.SetActive(true);
         });
         _selObligationMarket.onClick.AddListener(() =>
         {
             SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new Obligation());
             SetSecuritiesMarket(SecMarket);
+            _tableGameObject.SetActive(false);
         });
         _selValuteMarket.onClick.AddListener(() =>
         {
             SetValute(BalanceManager._instance.Valutes[0]);
             SetSecuritiesMarket(BalanceManager._instance.Valutes);
+            _tableGameObject.SetActive(false);
         });
 
         currentValute = BalanceManager._instance.Valutes[0];
