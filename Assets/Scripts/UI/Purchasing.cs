@@ -28,23 +28,27 @@ public class Purchasing : MonoBehaviour
 
     public void Buy()
     {
-        if(amountText.text != "")
+        if (int.TryParse(amountText.text, out amount))
         {
             confirmationTable.SetActive(true);
             prePurchaseTable.SetActive(false);
-            question.text = "Do you want to buy " + Convert.ToInt32(amountText.text) + " ?" ;
-            toSell=false;
+            question.text = "Do you want to buy " + Convert.ToInt32(amountText.text) + " ?";
+            toSell = false;
         }
+        else
+            amountText.text = "";
     }
     public void Sell()
     {
-        if(amountText.text != "")
+        if (int.TryParse(amountText.text, out amount))
         {
             confirmationTable.SetActive(true);
             prePurchaseTable.SetActive(false);
-            question.text = "Do you want to sell " + Convert.ToInt32(amountText.text) + " ?" ;
-            toSell=true;
+            question.text = "Do you want to sell " + Convert.ToInt32(amountText.text) + " ?";
+            toSell = true;
         }
+        amountText.text = "";
+
     }
 
     public void ConfirmAmount()
