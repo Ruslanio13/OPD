@@ -47,7 +47,8 @@ public class Purchasing : MonoBehaviour
             question.text = "Do you want to sell " + Convert.ToInt32(amountText.text) + " ?";
             toSell = true;
         }
-        amountText.text = "";
+        else
+            amountText.text = "";
 
     }
 

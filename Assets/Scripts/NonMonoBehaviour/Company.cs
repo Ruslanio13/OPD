@@ -31,8 +31,17 @@ public class Company
     [SerializeField] private float _minPriceChange;
     [SerializeField] private float _maxPriceChange;
 
-    public void ChangeMinPriceChange(float price) => _minPriceChange += price;
-    public void ChangeMaxPriceChange(float price) => _maxPriceChange += price;
+    public void ChangeMinPriceChange(float price)
+    {
+        if (_minPriceChange + price > -5f && _minPriceChange + price < 0f)
+            _minPriceChange += price;
+    }
+    public void ChangeMaxPriceChange(float price)
+    {
+        if (_maxPriceChange + price < 5f && _maxPriceChange + price > 0f)
+            _maxPriceChange += price;
+    }
+    
 
     public float GetMinPriceChange() => _minPriceChange;
     public float GetMaxPriceChange() => _maxPriceChange;
