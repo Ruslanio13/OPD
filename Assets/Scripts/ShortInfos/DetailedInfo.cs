@@ -33,11 +33,11 @@ public class DetailedInfo : MonoBehaviour
         if (sec.ParentCompany == null)
             return;
         
-        capitalization.text = sec.ParentCompany.Capitalization.ToString();
-        amountOfSecurities.text = sec.ParentCompany.AmountOfSecurities.ToString();
-        profit.text = sec.ParentCompany.Profit.ToString();
-        staff.text = sec.ParentCompany.Staff.ToString();
-        credit.text = sec.ParentCompany.Credit.ToString();
+        capitalization.text = sec.ParentCompany.Capitalization.ToString("0.00");
+        amountOfSecurities.text = sec.ParentCompany.AmountOfSecurities.ToString("0.00");
+        profit.text = sec.ParentCompany.Profit.ToString("0.00");
+        staff.text = sec.ParentCompany.Staff.ToString("0.00");
+        credit.text = sec.ParentCompany.Credit.ToString("0.00");
     }
     public void SetTableActive(bool isActive) => _allTable.SetActive(isActive);
 }

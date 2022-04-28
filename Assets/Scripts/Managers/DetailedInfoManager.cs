@@ -81,6 +81,7 @@ public class DetailedInfoManager : MonoBehaviour
             SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new ETF());
             SetSecuritiesMarket(SecMarket);
+            _tableGameObject.SetActive(false);
         });
 
 
