@@ -34,6 +34,7 @@ public class DetailedShareInfo: DetailedInfo
 
         if (sec.ParentCompany == null)
             return;
+<<<<<<< HEAD:Assets/Scripts/ShortInfos/DetailedShareInfo.cs
 
         capitalization.text = sec.ParentCompany.Capitalization.ToString();
         amountOfSecurities.text = sec.ParentCompany.AmountOfSecurities.ToString();
@@ -41,5 +42,13 @@ public class DetailedShareInfo: DetailedInfo
         staff.text = sec.ParentCompany.Staff.ToString();
         credit.text = sec.ParentCompany.Credit.ToString();
 
+=======
+        
+        capitalization.text = sec.ParentCompany.Capitalization.ToString("0.00");
+        amountOfSecurities.text = sec.ParentCompany.AmountOfSecurities.ToString("0.00");
+        profit.text = sec.ParentCompany.Profit.ToString("0.00");
+        staff.text = sec.ParentCompany.Staff.ToString("0.00");
+        credit.text = sec.ParentCompany.Credit.ToString("0.00");
+>>>>>>> 90b14344ee0d806f20dc496f6b2ad150488d6b63:Assets/Scripts/ShortInfos/DetailedInfo.cs
     }
 }
