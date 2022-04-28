@@ -15,6 +15,7 @@ public class ShortInfo : MonoBehaviour
     [SerializeField] TextMeshProUGUI percentOfChange;
     [SerializeField] TextMeshProUGUI price;
     [SerializeField] TextMeshProUGUI percentOfPayback;
+    [SerializeField] TextMeshProUGUI ETFAmount;
     Securities sec;
     Color red = new Color(0.8f, 0.09f, 0.09f, 1);
     Color green = new Color(0.09f, 0.7f, 0.1f, 1f);
@@ -22,7 +23,7 @@ public class ShortInfo : MonoBehaviour
     [SerializeField] private ColorBlock _buttonColors;
 
 
-    public void SetInfo(Securities securities)
+    public void SetInfo(Securities securities, int etfAmount = 0)
     {
         sec = securities;
         _securityName.text = securities.GetName();
@@ -30,7 +31,10 @@ public class ShortInfo : MonoBehaviour
         if(sec.GetType() == typeof(Obligation))
             percentOfPayback.text = (securities as Obligation).PercentOfPayback.ToString("0.00");
 
-        button.onClick.AddListener(() => { DetailedInfoManager._instance.UpdateAllInformation(securities); NewsManager._instance.ShowCompanyNews(securities.ParentCompany); });
+        button.onClick.AddListener(() => { GameManager._instance.UpdateAllInformation(securities); NewsManager._instance.ShowCompanyNews(securities.ParentCompany); });
+
+        if(ETFAmount != null)
+            ETFAmount.text = etfAmount.ToString();
 
         UpdateInfo();
     }
@@ -38,7 +42,7 @@ public class ShortInfo : MonoBehaviour
 
     public void UpdateInfo()
     {
-        if (DetailedInfoManager._instance.currentSecurity == sec)
+        if (GameManager._instance.currentSecurity == sec)
         {
             _buttonColors.normalColor = new Color32(0x3E, 0x5B, 0xD2, 255);
             _buttonColors.selectedColor = new Color32(0x3E, 0x5B, 0xD2, 255);
@@ -51,9 +55,9 @@ public class ShortInfo : MonoBehaviour
             button.colors = _buttonColors;
         }
 
-        Valute currentVal = DetailedInfoManager._instance.currentValute;
+        Valute currentVal = GameManager._instance.currentValute;
 
-        if(DetailedInfoManager._instance.currentSecurity.GetType() == typeof(Valute))
+        if(GameManager._instance.currentSecurity.GetType() == typeof(Valute))
             deltaPrice = ((sec as Valute).GetPriceInCurrentValue() - (sec as Valute).GetPreviousPriceInCurrentValue()) / (sec as Valute).GetPreviousPriceInCurrentValue() * 100f;
         else if (sec.GetType() == typeof(Obligation))
             deltaPrice = (sec as Obligation).DeltaPaybackPercent;

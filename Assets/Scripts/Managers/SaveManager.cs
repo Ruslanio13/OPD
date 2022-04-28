@@ -23,10 +23,10 @@ public class SaveManager : MonoBehaviour
     public void Save()
     {
         Debug.Log("Game Saved!");
-        SaveData save = new SaveData(DetailedInfoManager._instance.Companies,DetailedInfoManager._instance.Countries, PortfolioManager._instance.Portfolio, 
+        SaveData save = new SaveData(GameManager._instance.Companies,GameManager._instance.Countries, PortfolioManager._instance.Portfolio, 
         BalanceManager._instance.RublesWallet, BalanceManager._instance.Valutes, 
         NewsManager._instance.AllLocalNews, NewsManager._instance.AllLocalNews,
-        DetailedInfoManager._instance.Calendar);
+        GameManager._instance.Calendar);
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
@@ -38,8 +38,8 @@ public class SaveManager : MonoBehaviour
         if (!File.Exists(Application.persistentDataPath + "/gamesave.save"))
         {
             Debug.Log("No save file. Creating New!");
-            DetailedInfoManager._instance.InitializeCountries();
-            DetailedInfoManager._instance.InitializeCompanies();
+            GameManager._instance.InitializeCountries();
+            GameManager._instance.InitializeCompanies();
             BalanceManager._instance.GenerateValutesList();
             BalanceManager._instance.CreateNewWallet();
             return;
@@ -49,19 +49,20 @@ public class SaveManager : MonoBehaviour
         SaveData save = (SaveData)bf.Deserialize(file);
         file.Close();
 
-        DetailedInfoManager._instance.Companies = save.Companies;
+        GameManager._instance.Countries = save.Countries;
+        GameManager._instance.Companies = save.Companies;
         PortfolioManager._instance.Portfolio = save.Portfolio;
         BalanceManager._instance.RublesWallet = save.Wallet;
         BalanceManager._instance.Valutes = save.Valutes;
         NewsManager._instance.AllLocalNews = save.LocalNews;
         NewsManager._instance.AllGlobalNews = save.LocalNews;
-        DetailedInfoManager._instance.Calendar = save.Calendar;
+        GameManager._instance.Calendar = save.Calendar;
 
     }
 
     private void OnApplicationQuit()
     {
-        DetailedInfoManager._instance.SetValute(BalanceManager._instance.Valutes[0]);
+        GameManager._instance.SetValute(BalanceManager._instance.Valutes[0]);
         Save();
     }
 }

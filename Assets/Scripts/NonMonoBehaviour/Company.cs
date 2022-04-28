@@ -65,11 +65,11 @@ public class Company
 
     public float GetSecurityDelta()
     {
-        if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(Share))
+        if (GameManager._instance.currentCompany.GetType() == typeof(Share))
             return CompanyShare.DeltaPrice;
-        if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(Obligation))
+        if (GameManager._instance.currentCompany.GetType() == typeof(Obligation))
             return CompanyObligation.DeltaPrice;
-        if (DetailedInfoManager._instance.currentCompany.GetType() == typeof(ETF))
+        if (GameManager._instance.currentCompany.GetType() == typeof(ETF))
             return CompanyETF.DeltaPrice;
         return CompanyShare.DeltaPrice;
     }
@@ -92,11 +92,19 @@ public class Company
 
     public void InitializeETF()
     {
-        for(int i = 0; i < 4; i++)
+        List<int> allowedNumbers = new List<int>();
+        for(int i = 0; i< GameManager._instance.Companies.Count; i++)
         {
-            var randShare = UnityEngine.Random.Range(0, DetailedInfoManager._instance.Companies.Count);
+            allowedNumbers.Add(i);
+        }
+        
+        for(int i = 0; i < UnityEngine.Random.Range(10, 16); i++)
+        {
+            var randShare = UnityEngine.Random.Range(0, allowedNumbers.Count);
             var randAmount = UnityEngine.Random.Range(0, 20);
-            CompanyETF.AddShareToFond(DetailedInfoManager._instance.Companies[randShare].CompanyShare, randAmount);
+            CompanyETF.AddShareToFond(GameManager._instance.Companies[allowedNumbers[randShare]].CompanyShare, randAmount);
+
+            allowedNumbers.RemoveAt(randShare);
         }
         CompanyETF.GeneratePriceHistory();
     }

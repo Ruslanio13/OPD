@@ -14,7 +14,7 @@ public class Purchasing : MonoBehaviour
     [SerializeField] TextMeshProUGUI question;
     [SerializeField] GameObject portfolioContent;
  
-    DetailedInfoManager detailedInfoManager;
+    GameManager detailedInfoManager;
     Company company;
     bool toSell;
     [SerializeField] GameObject portfolioShortInfoPrefab;
@@ -23,7 +23,7 @@ public class Purchasing : MonoBehaviour
 
     void Awake() 
     {
-        detailedInfoManager = FindObjectOfType<DetailedInfoManager>();
+        detailedInfoManager = FindObjectOfType<GameManager>();
     }
 
     public void Buy()
@@ -52,9 +52,9 @@ public class Purchasing : MonoBehaviour
         amount = Convert.ToInt32(amountText.text);
         
         if(toSell)
-            PortfolioManager._instance.SellSecurities(DetailedInfoManager._instance.currentSecurity, amount);
+            PortfolioManager._instance.SellSecurities(GameManager._instance.currentSecurity, amount);
         else
-            PortfolioManager._instance.BuySecurities(DetailedInfoManager._instance.currentSecurity, amount);
+            PortfolioManager._instance.BuySecurities(GameManager._instance.currentSecurity, amount);
 
         BalanceManager._instance.UpdateAmountOfValuteOnGUI();
 

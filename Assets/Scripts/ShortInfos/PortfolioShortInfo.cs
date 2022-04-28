@@ -32,13 +32,13 @@ public class PortfolioShortInfo : MonoBehaviour
         securities = sec;
         SelectSecurityButton.onClick.AddListener(() =>
        {
-           DetailedInfoManager._instance.SelectSecurity(sec);
+           GameManager._instance.SelectSecurity(sec);
            PortfolioManager._instance.UpdatePortfolio();
        });
     }
     public void UpdateInfo()
     {
-        if (DetailedInfoManager._instance.currentSecurity == securities)
+        if (GameManager._instance.currentSecurity == securities)
         {
             _buttonColors.normalColor = new Color32(0x3E, 0x5B, 0xD2, 255);
             _buttonColors.selectedColor = new Color32(0x3E, 0x5B, 0xD2, 255);
@@ -108,7 +108,7 @@ public class PortfolioShortInfo : MonoBehaviour
         float total = 0;
         int valID = 0;
         for (int i = 0; i < BalanceManager._instance.Valutes.Count; i++)
-            if (DetailedInfoManager._instance.currentValute == BalanceManager._instance.Valutes[i])
+            if (GameManager._instance.currentValute == BalanceManager._instance.Valutes[i])
             {
                 valID = i;
                 break;
@@ -127,6 +127,6 @@ public class PortfolioShortInfo : MonoBehaviour
     public void SelectSecurity()
     {
         if(securities.GetType() != typeof(Obligation))
-            DetailedInfoManager._instance.SelectSecurity(securities);
+            GameManager._instance.SelectSecurity(securities);
     }
 }

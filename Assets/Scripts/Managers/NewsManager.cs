@@ -46,7 +46,7 @@ public class NewsManager : MonoBehaviour
             temp.SetUpNews<Company>(companies[i], localNewsPatterns[numberOfRandomNew]);
             AllLocalNews.Add(temp);
         }
-        ShowCompanyNews(DetailedInfoManager._instance.currentCompany);
+        ShowCompanyNews(GameManager._instance.currentCompany);
 
 
     }
@@ -67,7 +67,7 @@ public class NewsManager : MonoBehaviour
         temp.SetUpNews<Country>(countries[countryID], globalNewsPatterns[numberOfPattern]);
         AllGlobalNews.Add(temp);
         tempg = Instantiate(newsPrefab, globalNewsFeed.transform);
-        tempg.GetComponent<NewsShortInfo>().SetUpNews(AllGlobalNews[AllGlobalNews.Count - 1], true);
+        tempg.GetComponent<NewsShortInfo>().SetUpNews(AllGlobalNews[AllGlobalNews.Count - 1]);
     }
 
     public void ShowCompanyNews(Company company)
@@ -87,7 +87,7 @@ public class NewsManager : MonoBehaviour
             {
                 _localNewsFeedRT.sizeDelta += new Vector2(0, 375);
                 temp = Instantiate(newsPrefab, localNewsFeed.transform);
-                temp.GetComponent<NewsShortInfo>().SetUpNews(AllLocalNews[i], false);
+                temp.GetComponent<NewsShortInfo>().SetUpNews(AllLocalNews[i]);
                 _newsInUI.Add(temp.GetComponent<NewsShortInfo>());
                 numberOfNews++;
             }

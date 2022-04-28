@@ -217,7 +217,7 @@ public class Obligation : Securities
 [System.Serializable]
 public class ETF : Securities
 {
-    public List<(Share, int)> _fond = new List<(Share, int)>();
+    public List<(Share, int)> Fond = new List<(Share, int)>();
     private float percentageOfFondPrice = 5f;
 
     public ETF()
@@ -227,13 +227,13 @@ public class ETF : Securities
 
     public void AddShareToFond(Share share, int amount)
     {
-        _fond.Add((share, amount));
+        Fond.Add((share, amount));
         Price += share.Price * amount * percentageOfFondPrice/100f;
     }
     public override void UpdatePrice()
     {
         Price = 0;
-        foreach (var ShareCortage in _fond)
+        foreach (var ShareCortage in Fond)
         {
             Price += ShareCortage.Item1.Price * ShareCortage.Item2 * percentageOfFondPrice / 100f;
         }
@@ -246,7 +246,7 @@ public class ETF : Securities
         for (int i = 0; i < 1500; i++)
         {
             _priceHistory.Add(0);
-            foreach (var Share in _fond)
+            foreach (var Share in Fond)
                 _priceHistory[i] += Share.Item1._priceHistory[i] * Share.Item2 * percentageOfFondPrice / 100f;
         }
         DeltaPrice = (_priceHistory[1499] - _priceHistory[1498])/_priceHistory[1499]*100f;
@@ -273,9 +273,9 @@ public class Valute : Securities
     }
     public float GetPriceInCurrentValue()
     {
-        return DetailedInfoManager._instance.currentValute.Price / Price;
+        return GameManager._instance.currentValute.Price / Price;
     }
-    public float GetPreviousPriceInCurrentValue() => DetailedInfoManager._instance.currentValute._priceHistory[_priceHistory.Count - 2] / _priceHistory[_priceHistory.Count - 2];
+    public float GetPreviousPriceInCurrentValue() => GameManager._instance.currentValute._priceHistory[_priceHistory.Count - 2] / _priceHistory[_priceHistory.Count - 2];
     public override void UpdatePrice()
     {
 
