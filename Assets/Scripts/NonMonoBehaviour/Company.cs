@@ -46,6 +46,8 @@ public class Company
 
     public Company(string name, Country country)
     {
+        _minPriceChange = -2f;
+        _maxPriceChange = 2f;
         Country = country;
         companyName = name;
         capitalization = UnityEngine.Random.Range(150f, 1000f);
