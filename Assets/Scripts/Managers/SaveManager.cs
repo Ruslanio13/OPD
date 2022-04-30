@@ -26,7 +26,9 @@ public class SaveManager : MonoBehaviour
         SaveData save = new SaveData(GameManager._instance.Companies,GameManager._instance.Countries, PortfolioManager._instance.Portfolio, 
         BalanceManager._instance.RublesWallet, BalanceManager._instance.Valutes, 
         NewsManager._instance.AllLocalNews, NewsManager._instance.AllLocalNews,
-        GameManager._instance.Calendar);
+        GameManager._instance.Calendar,
+        PreGameManager._instance.CurrentBroker, PreGameManager._instance.CurrentDifficulty
+        );
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
@@ -42,6 +44,7 @@ public class SaveManager : MonoBehaviour
             GameManager._instance.InitializeCompanies();
             BalanceManager._instance.GenerateValutesList();
             BalanceManager._instance.CreateNewWallet();
+
             return;
         }
         BinaryFormatter bf = new BinaryFormatter();
@@ -57,7 +60,8 @@ public class SaveManager : MonoBehaviour
         NewsManager._instance.AllLocalNews = save.LocalNews;
         NewsManager._instance.AllGlobalNews = save.LocalNews;
         GameManager._instance.Calendar = save.Calendar;
-
+        PreGameManager._instance.SetBroker(save.Broker);
+        PreGameManager._instance.SetDifficulty(save.Difficulty);
     }
 
     private void OnApplicationQuit()
@@ -78,7 +82,9 @@ public class SaveData
     public List<News> LocalNews = new List<News>();
     public List<News> GlobalNews = new List<News>();
     public Calendar Calendar;
-    public SaveData(List<Company> comp,List<Country> countries, List<Securities> port, float wal, List<Valute> val, List<News> localNews,List<News> globalNews, Calendar cal)
+    public Broker Broker;
+    public Difficulty Difficulty;
+    public SaveData(List<Company> comp,List<Country> countries, List<Securities> port, float wal, List<Valute> val, List<News> localNews,List<News> globalNews, Calendar cal, Broker broker, Difficulty diff)
     {
         Companies = comp;
         Countries = countries;
@@ -88,5 +94,7 @@ public class SaveData
         LocalNews = localNews;
         GlobalNews = globalNews;
         Calendar = cal;
+        Broker = broker;
+        Difficulty = diff;
     }
 }

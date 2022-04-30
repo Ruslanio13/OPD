@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6563870237329733240}
   - component: {fileID: 7876979685437878463}
   - component: {fileID: 5937825723112679115}
+  - component: {fileID: 1085369999257283497}
   m_Layer: 5
   m_Name: Broker
   m_TagString: Untagged
@@ -29,6 +30,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4707724148743269492}
   m_Father: {fileID: 0}
@@ -121,6 +123,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1085369999257283497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42535641313599417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b4a358b26010754b87dc6ab7abd7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: {fileID: 7423994885331433947}
+  _selectBroker: {fileID: 5937825723112679115}
 --- !u!1 &7803748592299230465
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +165,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3048375210632242211}
   m_RootOrder: 0

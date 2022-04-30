@@ -60,16 +60,14 @@ public class PortfolioShortInfo : MonoBehaviour
             _spendMoney.text = ShowSpentInCurrentVal(securities).ToString("0.00");
 
 
-
-
-            float profitPercentFloat = ((securities.AmountInPortolio * securities.Price) / ShowSpentInCurrentVal(securities) - 1) * 100;
+            float profitPercentFloat = ((securities.AmountInPortolio * securities.SellPrice) / ShowSpentInCurrentVal(securities) - 1) * 100;
             if (profitPercentFloat > 0f)
                 _profitPercent.color = green;
             else if (profitPercentFloat < 0f)
                 _profitPercent.color = red;
 
             _profitPercent.text = profitPercentFloat.ToString("0.00") + "%";
-            _currentSellPrice.text = (securities.AmountInPortolio * securities.Price).ToString("0.00");
+            _currentSellPrice.text = (securities.AmountInPortolio * securities.SellPrice).ToString("0.00");
 
         }
         else if (securities.GetType() == typeof(Obligation))
@@ -89,7 +87,7 @@ public class PortfolioShortInfo : MonoBehaviour
 
 
 
-            float profitPercentFloat = ((securities.AmountInPortolio * (securities as Valute).GetPriceInCurrentValue()) / ShowSpentInCurrentVal(securities) - 1) * 100;
+            float profitPercentFloat = ((securities.AmountInPortolio * (securities as Valute).GetSellPriceInCurrentValue()) / ShowSpentInCurrentVal(securities) - 1) * 100;
             if (profitPercentFloat > 0f)
                 _profitPercent.color = green;
             else if (profitPercentFloat < 0f)

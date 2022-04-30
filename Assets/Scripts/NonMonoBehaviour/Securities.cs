@@ -10,6 +10,7 @@ public class Securities
     public float DeltaPrice = 0;
     public int AmountInPortolio { get; protected set; }
     public float Price { get; protected set; }
+    public float SellPrice => Price * (100f - PreGameManager._instance.CurrentBroker.Commision) / 100f;
 
     public float AveragePrice2017 { get; protected set; }
     public float AveragePrice2018 { get; protected set; }
@@ -271,10 +272,8 @@ public class Valute : Securities
         Name = name;
         ParentCompany = null;
     }
-    public float GetPriceInCurrentValue()
-    {
-        return GameManager._instance.currentValute.Price / Price;
-    }
+    public float GetPriceInCurrentValue() => GameManager._instance.currentValute.Price / Price;
+    public float GetSellPriceInCurrentValue() => GameManager._instance.currentValute.Price / Price * (100f - PreGameManager._instance.CurrentBroker.Commision) / 100f;
     public float GetPreviousPriceInCurrentValue() => GameManager._instance.currentValute._priceHistory[_priceHistory.Count - 2] / _priceHistory[_priceHistory.Count - 2];
     public override void UpdatePrice()
     {

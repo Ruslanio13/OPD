@@ -117,7 +117,7 @@ public class PortfolioManager : MonoBehaviour
             if(securities.GetType() == typeof(Valute))
                 sum = (securities as Valute).GetPriceInCurrentValue() * amount;
             else
-                sum = amount * securities.Price;
+                sum = amount * securities.SellPrice;
             RemoveSecurities(securities, amount);
             BalanceManager._instance.SellIn(securities, sum);
 
