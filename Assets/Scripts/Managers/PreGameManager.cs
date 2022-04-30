@@ -33,9 +33,9 @@ public class PreGameManager : MonoBehaviour
 
     private void InitializeDifficulties()
     {
-        _difficulties.Add(new Difficulty("Easy", 1));
-        _difficulties.Add(new Difficulty("Medium", 1));
-        _difficulties.Add(new Difficulty("Hard", 1));
+        _difficulties.Add(new Difficulty("Easy", 1f));
+        _difficulties.Add(new Difficulty("Medium", 1.5f));
+        _difficulties.Add(new Difficulty("Hard", 2f));
 
         foreach (var diff in _difficulties)
         {
@@ -46,11 +46,11 @@ public class PreGameManager : MonoBehaviour
     }
     private void InitializeBrokers()
     {
-        _brokers.Add(new Broker("Sberbank", 1));
-        _brokers.Add(new Broker("Tinkoff", 1));
-        _brokers.Add(new Broker("VTB", 1));
-        _brokers.Add(new Broker("Alpha", 1));
-        _brokers.Add(new Broker("Freedom", 1));
+        _brokers.Add(new Broker("Freedom", 0.12f, 0f));
+        _brokers.Add(new Broker("Alpha", 0.014f, 199f));
+        _brokers.Add(new Broker("VTB", 0.06f, 210f));
+        _brokers.Add(new Broker("Tinkoff", 0.04f, 290f));
+        _brokers.Add(new Broker("Sberbank", 0.055f, 220f));
         foreach (var diff in _brokers)
         {
             var temp = Instantiate(_brokerPrefab, _brokersRT);
@@ -69,8 +69,9 @@ public class PreGameManager : MonoBehaviour
     }
     public void SetCommision(float comm)
     {
-        if(comm > 0)
-            _selectedComission.text = "Комиссия брокера: " + comm.ToString() +"%";
+        if(comm > 0 && CurrentBroker.Maintenance >= 0)
+            _selectedComission.text = "Комиссия брокера: " + comm +"%\n" + 
+            "Ежемесечная плата: " + CurrentBroker.Maintenance +"P";
         else
             throw new Exception("Wrong commision passed");
     }

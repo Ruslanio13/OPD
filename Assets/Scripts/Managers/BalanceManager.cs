@@ -96,5 +96,10 @@ public class BalanceManager : MonoBehaviour
         if (amount > 0f)
             RublesWallet += amount;
     }
+
+    public void PayForMaintenance()
+    {
+        RublesWallet -= PreGameManager._instance.CurrentBroker.Maintenance;
+    }
 }
 

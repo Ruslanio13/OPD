@@ -33,8 +33,8 @@ public class Company
 
     public void ChangePriceVolatility(float max, float min)
     {
-        if (_minPriceChange + min > -5f && _minPriceChange + min < 0f)
-            _minPriceChange += min;
+        if (_minPriceChange + min > -5f * PreGameManager._instance.CurrentDifficulty.Coefficient  && _minPriceChange + min < 0f)
+            _minPriceChange += min * PreGameManager._instance.CurrentDifficulty.Coefficient;
         if (_maxPriceChange + max < 5f && _maxPriceChange + max > 0f)
             _maxPriceChange += max;
     }

@@ -168,14 +168,17 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
+            Calendar.UpdateDate();
+            
             if (Calendar.AllDays % 10 == 0)
                 NewsManager._instance.SpawnCompanyNews(Companies);
             if (Calendar.AllDays % 21 == 0)
                 NewsManager._instance.SpawnGlobalNews(Countries);
+            if (Calendar.Day == 10)
+                BalanceManager._instance.PayForMaintenance();
 
             PortfolioManager._instance.UpdateObligations();
             BalanceManager._instance.UpdateBalance();
-            Calendar.UpdateDate();
 
 
             foreach (Company comp in Companies)
