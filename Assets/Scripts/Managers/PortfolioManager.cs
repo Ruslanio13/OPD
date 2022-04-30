@@ -216,9 +216,7 @@ public class PortfolioManager : MonoBehaviour
             spendTotal += sec.GetSpendMoney();
             sellNowTotal += (sec.securities.AmountInPortolio * sec.securities.Price);
         }
-        Debug.Log(spendTotal);
-        Debug.Log(sellNowTotal);
-        Debug.Log(BalanceManager._instance.GetWalletInCurrentValute());
+        
         float _total = ((sellNowTotal - spendTotal) / (BalanceManager._instance.GetWalletInCurrentValute() + spendTotal) * 100f);
         _totalProfit.text = _total.ToString("0.00") + "%";
         if (_total > 0f)

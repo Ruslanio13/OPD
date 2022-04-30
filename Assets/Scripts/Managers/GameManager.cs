@@ -187,7 +187,6 @@ public class GameManager : MonoBehaviour
             PortfolioManager._instance.UpdatePortfolio();
 
 
-            Debug.Log(currentSecurity.GetName());
             if (Calendar.IsTimeToDividends())
             {
                 GameObject notification;
@@ -233,7 +232,6 @@ public class GameManager : MonoBehaviour
 
         _shortInfoListTransform.sizeDelta = Vector2.zero;
 
-        Debug.Log(market.Count);
         for (int i = 0; i < market.Count; i++)
         {
             if (market[i].GetName() == currentValute.GetName())
@@ -263,7 +261,6 @@ public class GameManager : MonoBehaviour
         if (currentSecurity.GetType() == typeof(Valute))
         {
             currentValute = val;
-            Debug.Log(currentValute.GetName());
             SetSecuritiesMarket(BalanceManager._instance.Valutes);
         }
         else
