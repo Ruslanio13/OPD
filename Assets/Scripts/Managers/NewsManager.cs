@@ -54,7 +54,7 @@ public class NewsManager : MonoBehaviour
     {
         int countryID;
         int numberOfPattern;
-        GameObject tempg;
+        GameObject tempGO;
         News temp;
 
         _globalNewsFeedRT.sizeDelta += new Vector2(0, 375f);
@@ -66,8 +66,9 @@ public class NewsManager : MonoBehaviour
 
         temp.SetUpNews<Country>(countries[countryID], globalNewsPatterns[numberOfPattern]);
         AllGlobalNews.Add(temp);
-        tempg = Instantiate(newsPrefab, globalNewsFeed.transform);
-        tempg.GetComponent<NewsShortInfo>().SetUpNews(AllGlobalNews[AllGlobalNews.Count - 1]);
+        
+        tempGO = Instantiate(newsPrefab, globalNewsFeed.transform);
+        tempGO.GetComponent<NewsShortInfo>().SetUpNews(AllGlobalNews[AllGlobalNews.Count - 1]);
     }
 
     public void ShowCompanyNews(Company company)

@@ -14,12 +14,12 @@ public class News
         {
             comp = (obj as Company);
             TitleText = "Компания " + (obj as Company).GetNameOfCompany() + " " + template.title;
-            (obj as Company).ChangeMaxPriceChange(template.maxChange);
-            (obj as Company).ChangeMinPriceChange(template.minChange);
+            (obj as Company).ChangePriceVolatility(template.maxChange, template.minChange);
         }
         else
         {
-            TitleText = "Страна " + (obj as Country).Name + " " + template.title;
+            TitleText = (obj as Country).Name + " " + template.title;
+            (obj as Country).OnPriceVolatilityChange(template.maxChange, template.minChange);
         }       
        
         MainText = template.text;

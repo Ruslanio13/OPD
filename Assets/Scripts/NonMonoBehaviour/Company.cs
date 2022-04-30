@@ -31,18 +31,14 @@ public class Company
     [SerializeField] private float _minPriceChange;
     [SerializeField] private float _maxPriceChange;
 
-    public void ChangeMinPriceChange(float price)
+    public void ChangePriceVolatility(float max, float min)
     {
-        if (_minPriceChange + price > -5f && _minPriceChange + price < 0f)
-            _minPriceChange += price;
-    }
-    public void ChangeMaxPriceChange(float price)
-    {
-        if (_maxPriceChange + price < 5f && _maxPriceChange + price > 0f)
-            _maxPriceChange += price;
+        if (_minPriceChange + min > -5f && _minPriceChange + min < 0f)
+            _minPriceChange += min;
+        if (_maxPriceChange + max < 5f && _maxPriceChange + max > 0f)
+            _maxPriceChange += max;
     }
     
-
     public float GetMinPriceChange() => _minPriceChange;
     public float GetMaxPriceChange() => _maxPriceChange;
 
@@ -57,6 +53,8 @@ public class Company
         profit = UnityEngine.Random.Range(150f, 1000f);
         staff = UnityEngine.Random.Range(150, 1000);
         credit = UnityEngine.Random.Range(150f, 1000f);
+
+        country.HandlePriceVolatility += ChangePriceVolatility;
 
         CompanyObligation = new Obligation();
         CompanyShare = new Share();
