@@ -58,27 +58,23 @@ public class GameManager : MonoBehaviour
             SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new Share());
             SetSecuritiesMarket(SecMarket);
-            DetailedInfoManager._instance.SetState(currentSecurity, DetailedInfoManager.States.SHARE);
         });
         _selObligationMarket.onClick.AddListener(() =>
         {
             SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new Obligation());
             SetSecuritiesMarket(SecMarket);
-            DetailedInfoManager._instance.SetState(currentSecurity, DetailedInfoManager.States.SHARE);
         });
         _selValuteMarket.onClick.AddListener(() =>
         {
             SetValute(BalanceManager._instance.Valutes[0]);
             SetSecuritiesMarket(BalanceManager._instance.Valutes);
-            DetailedInfoManager._instance.SetState(currentSecurity, DetailedInfoManager.States.SHARE);
         });
         _selETFMarket.onClick.AddListener(() =>
         {
             SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new ETF());
             SetSecuritiesMarket(SecMarket);
-            DetailedInfoManager._instance.SetState(currentSecurity, DetailedInfoManager.States.ETF);
         });
 
         currentValute = BalanceManager._instance.Valutes[0];
@@ -143,7 +139,6 @@ public class GameManager : MonoBehaviour
         _marketCalendarTxt.text = Calendar.GetStrDate();
         _portfolioCalendarTxt.text = Calendar.GetStrDate();
         SelectSecurity(sec);
-        DetailedInfoManager._instance.UpdateDetailedInfo();
 
         foreach (ShortInfo info in _displayedSecurities)
         {
@@ -210,11 +205,11 @@ public class GameManager : MonoBehaviour
                 break;
             }
 
-                yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1f);
         }
     }
 
-    
+
     public void SetSecuritiesMarket<T>(List<T> market) where T : Securities
     {
         GameObject temp;
@@ -226,6 +221,7 @@ public class GameManager : MonoBehaviour
             infoPrefab = _obligationInfoPrefab;
         else
             infoPrefab = _shareInfoPrefab;
+        
 
 
         foreach (ShortInfo info in _displayedSecurities)
@@ -259,6 +255,7 @@ public class GameManager : MonoBehaviour
     {
         currentSecurity = sec;
         currentCompany = sec.ParentCompany;
+        DetailedInfoManager._instance.SetState(sec);
         NewsManager._instance.ShowCompanyNews(sec.ParentCompany);
     }
     public void SetValute(Valute val)

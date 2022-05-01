@@ -995,7 +995,7 @@ GameObject:
   - component: {fileID: 6725915165287273517}
   - component: {fileID: 4085670149850041944}
   m_Layer: 5
-  m_Name: ShareShortInfo 2
+  m_Name: ShareShortInfoInETF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

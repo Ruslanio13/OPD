@@ -28,9 +28,6 @@ public class ShortInfo : MonoBehaviour
         sec = securities;
         _securityName.text = securities.GetName();
         
-        if(sec.GetType() == typeof(Obligation))
-            percentOfPayback.text = (securities as Obligation).PercentOfPayback.ToString("0.00");
-
         button.onClick.AddListener(() => { GameManager._instance.UpdateAllInformation(securities); NewsManager._instance.ShowCompanyNews(securities.ParentCompany); });
 
         if(ETFAmount != null)
@@ -59,8 +56,6 @@ public class ShortInfo : MonoBehaviour
 
         if(GameManager._instance.currentSecurity.GetType() == typeof(Valute))
             deltaPrice = ((sec as Valute).GetPriceInCurrentValue() - (sec as Valute).GetPreviousPriceInCurrentValue()) / (sec as Valute).GetPreviousPriceInCurrentValue() * 100f;
-        else if (sec.GetType() == typeof(Obligation))
-            deltaPrice = (sec as Obligation).DeltaPaybackPercent;
         else
             deltaPrice = sec.DeltaPrice;
 
@@ -68,9 +63,6 @@ public class ShortInfo : MonoBehaviour
             price.text = (sec as Valute).GetPriceInCurrentValue().ToString("0.000");
         else
             price.text = sec.Price.ToString("0.00");
-
-        if(sec.GetType() == typeof(Obligation))
-            percentOfPayback.text = (sec as Obligation).PercentOfPayback.ToString("0.00");
 
 
         if (deltaPrice > 0)

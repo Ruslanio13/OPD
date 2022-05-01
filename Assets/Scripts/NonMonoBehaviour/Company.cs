@@ -14,11 +14,11 @@ public class Company
     public Obligation CompanyObligation;
     public ETF CompanyETF;
 
-    [SerializeField] float capitalization;
-    [SerializeField] int amountOfSecurities;
-    [SerializeField] float profit;
-    [SerializeField] int staff;
-    [SerializeField] float credit;
+    private float capitalization;
+    private int amountOfSecurities;
+    private float profit;
+    private int staff;
+    private float credit;
 
 
 
@@ -37,6 +37,9 @@ public class Company
             _minPriceChange += min * PreGameManager._instance.CurrentDifficulty.Coefficient;
         if (_maxPriceChange + max < 5f && _maxPriceChange + max > 0f)
             _maxPriceChange += max;
+    
+        CompanyShare.OnCompanyVolatilityChange(_maxPriceChange, _minPriceChange);
+        CompanyObligation.OnCompanyVolatilityChange(_maxPriceChange, _minPriceChange);
     }
     
     public float GetMinPriceChange() => _minPriceChange;
@@ -56,13 +59,15 @@ public class Company
         staff = UnityEngine.Random.Range(150, 1000);
         credit = UnityEngine.Random.Range(150f, 1000f);
 
-        country.HandlePriceVolatility += ChangePriceVolatility;
 
         CompanyObligation = new Obligation();
         CompanyShare = new Share();
         CompanyETF = new ETF();
         GeneratePreGameHistory();
         CompanyShare.CalculateAveragePrice();
+        CompanyObligation.CalculateAveragePrice();
+
+        country.HandlePriceVolatility += ChangePriceVolatility;
     }
 
     public void UpdatePrice()
@@ -87,8 +92,8 @@ public class Company
     {
         for (int i = 0; i < 1500; i++)
         {
-            CompanyShare.UpdatePrice();
-            CompanyObligation.UpdatePrice();
+            CompanyShare.UpdatePrice(false);
+            CompanyObligation.UpdatePrice(false);
         }
     }
 

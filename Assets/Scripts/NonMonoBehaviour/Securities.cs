@@ -20,8 +20,8 @@ public class Securities
 
     public List<float> _priceHistory = new List<float>();
 
-    protected float maxPrice = 2f;
-    protected float minPrice = -2f;
+    protected float maxPrice;
+    protected float minPrice;
 
     public float GetPriceInRubles()
     {
@@ -29,15 +29,33 @@ public class Securities
     }
     public Securities()
     {
+        maxPrice = 2f;
+        minPrice = -2f;
         Price = 5f;
         AmountInPortolio = 0;
     }
-    public virtual void UpdatePrice()
+    public virtual void UpdatePrice(bool reducePrice = true)
     {
     }
 
     public virtual string GetName() => ParentCompany.GetNameOfCompany();
 
+    public void CalculateAveragePrice()
+    {
+        for (int i = 0; i < 300; i++)
+        {
+            AveragePrice2017 += _priceHistory[i];
+            AveragePrice2018 += _priceHistory[i + 300];
+            AveragePrice2019 += _priceHistory[i + 600];
+            AveragePrice2020 += _priceHistory[i + 900];
+            AveragePrice2021 += _priceHistory[i + 1200];
+        }
+        AveragePrice2017 /= 300f;
+        AveragePrice2018 /= 300f;
+        AveragePrice2019 /= 300f;
+        AveragePrice2020 /= 300f;
+        AveragePrice2021 /= 300f;
+    }
     public virtual void RecalculateHistoryForValute(Valute val, Valute prevVal)
     {
         for (int i = _priceHistory.Count - 1500, j = val._priceHistory.Count - 1500; i < _priceHistory.Count; i++, j++)
@@ -68,53 +86,30 @@ public class Securities
 
         TransHistory.Add(tempList);
     }
+    public void OnCompanyVolatilityChange(float max, float min)
+    {
+        minPrice = min;
+        maxPrice = max;
+    }
 }
 
 [System.Serializable]
 public class Share : Securities
 {
     private int countOfChanges = 0;
-    private bool needToSet = true;
     private float _dividendsPercent;
 
     public Share()
     {
         _dividendsPercent = 4f;
     }
-    public override void UpdatePrice()
+    public override void UpdatePrice(bool reducePrice = true)
     {
-        if (ParentCompany != null && needToSet == true)
+        if (reducePrice)
         {
-            maxPrice = ParentCompany.GetMaxPriceChange();
-            minPrice = ParentCompany.GetMinPriceChange();
-            needToSet = false;
+            maxPrice *= 0.9f;
+            minPrice *= 0.9f;
         }
-        else if (ParentCompany == null)
-        {
-            maxPrice = 2f;
-            minPrice = -2f;
-        }
-
-        if (maxPrice != 2f && ParentCompany != null)
-        {
-            if (countOfChanges < 10)
-            {
-                maxPrice *= 0.9f;
-                minPrice *= 0.9f;
-                countOfChanges += 1;
-            }
-            else
-            {
-                needToSet = true;
-                countOfChanges = 0;
-            }
-        }
-
-        if (maxPrice == 2f)
-        {
-            needToSet = true;
-        }
-
         DeltaPrice = UnityEngine.Random.Range(minPrice, maxPrice);
         Price += Price * DeltaPrice / 100;
 
@@ -126,22 +121,6 @@ public class Share : Securities
     public override string GetName()
     {
         return ParentCompany.GetNameOfCompany();
-    }
-    public void CalculateAveragePrice()
-    {
-        for (int i = 0; i < 300; i++)
-        {
-            AveragePrice2017 += _priceHistory[i];
-            AveragePrice2018 += _priceHistory[i + 300];
-            AveragePrice2019 += _priceHistory[i + 600];
-            AveragePrice2020 += _priceHistory[i + 900];
-            AveragePrice2021 += _priceHistory[i + 1200];
-        }
-        AveragePrice2017 /= 300f;
-        AveragePrice2018 /= 300f;
-        AveragePrice2019 /= 300f;
-        AveragePrice2020 /= 300f;
-        AveragePrice2021 /= 300f;
     }
 
     public void PayDividends()
@@ -189,10 +168,16 @@ public class Obligation : Securities
 
     }
 
-    public override void UpdatePrice()
+    public override void UpdatePrice(bool reducePrice = true)
     {
+        if (reducePrice)
+        {
+            maxPrice *= 0.9f;
+            minPrice *= 0.9f;
+        }
+
+        DeltaPrice = Random.Range(minPrice, maxPrice);
         Price += Price * DeltaPrice / 100;
-        DeltaPrice = Random.Range(-0.1f, 0.1f);
 
         DeltaPaybackPercent = Random.Range(-2f, 2f);
         PercentOfPayback += PercentOfPayback * DeltaPaybackPercent / 100f;
@@ -229,9 +214,9 @@ public class ETF : Securities
     public void AddShareToFond(Share share, int amount)
     {
         Fond.Add((share, amount));
-        Price += share.Price * amount * percentageOfFondPrice/100f;
+        Price += share.Price * amount * percentageOfFondPrice / 100f;
     }
-    public override void UpdatePrice()
+    public override void UpdatePrice(bool reducePrice = true)
     {
         Price = 0;
         foreach (var ShareCortage in Fond)
@@ -250,21 +235,23 @@ public class ETF : Securities
             foreach (var Share in Fond)
                 _priceHistory[i] += Share.Item1._priceHistory[i] * Share.Item2 * percentageOfFondPrice / 100f;
         }
-        DeltaPrice = (_priceHistory[1499] - _priceHistory[1498])/_priceHistory[1499]*100f;
+        DeltaPrice = (_priceHistory[1499] - _priceHistory[1498]) / _priceHistory[1499] * 100f;
     }
 }
 
 [System.Serializable]
 public class Valute : Securities
 {
+    public Country ValuteCountry { get; private set; }
     public string Name { get; protected set; }
     public char Symbol { get; protected set; }
     private bool isUpdatable;
 
 
 
-    public Valute(string name, char sign, bool isUpdatable = true)
+    public Valute(string name, char sign, Country country, bool isUpdatable = true)
     {
+        ValuteCountry = country;
         Price = UnityEngine.Random.Range(0.8f, 100f);
         this.isUpdatable = isUpdatable;
         Price = 1f;
@@ -275,7 +262,7 @@ public class Valute : Securities
     public float GetPriceInCurrentValue() => GameManager._instance.currentValute.Price / Price;
     public float GetSellPriceInCurrentValue() => GameManager._instance.currentValute.Price / Price * (100f - PreGameManager._instance.CurrentBroker.Commision) / 100f;
     public float GetPreviousPriceInCurrentValue() => GameManager._instance.currentValute._priceHistory[_priceHistory.Count - 2] / _priceHistory[_priceHistory.Count - 2];
-    public override void UpdatePrice()
+    public override void UpdatePrice(bool reducePrice = true)
     {
 
         if (!isUpdatable)
@@ -288,7 +275,7 @@ public class Valute : Securities
 
         DeltaPrice = UnityEngine.Random.Range(-2f, 2f);
         Price += Price * DeltaPrice / 100;
-        _priceHistory.Add(Price);
+        _priceHistory.Add(1/Price);
     }
     public override void AddTransaction(int amount, float pricePerOne)
     {

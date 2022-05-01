@@ -10,6 +10,7 @@ public class DetailedInfoManager : MonoBehaviour
 {
     [SerializeField] private DetailedShareInfo _shareTable;
     [SerializeField] private DetailedETFInfo _ETFTable;
+    [SerializeField] private DetailedValuteInfo _valuteTable;
     public static DetailedInfoManager _instance;
     private DetailedInfo _currentInfo;
     private void Awake()
@@ -17,13 +18,6 @@ public class DetailedInfoManager : MonoBehaviour
         if (_instance == null)
             _instance = this;
     }
-    public enum States
-    {
-        SHARE,
-        OBLIGATION,
-        ETF
-    }
-    public States CurrentState{get; private set;}
 
     public void Start()
     {
@@ -32,25 +26,20 @@ public class DetailedInfoManager : MonoBehaviour
         _currentInfo = _shareTable;
     }
 
-    public void SetState(Securities sec, States newState)
+    public void SetState(Securities sec)
     {
-        _currentInfo?.gameObject.SetActive(false);
-        CurrentState = newState;
-        switch (newState)
-        {
-            case States.SHARE:
-            case States.OBLIGATION:
-                _shareTable.gameObject.SetActive(true);
-                _shareTable.SetInfo(sec);
-                _currentInfo = _shareTable;
-                break;
 
-            case States.ETF:
-                _ETFTable.gameObject.SetActive(true);
-                _ETFTable.SetInfo(sec);
-                _currentInfo = _ETFTable;
-                break;
-        }
+        _currentInfo?.gameObject.SetActive(false);
+        var temp = sec.GetType();
+        if (temp == typeof(Share) || temp == typeof(Obligation))
+            _currentInfo = _shareTable;
+        else if (temp == typeof(Valute))
+            _currentInfo = _valuteTable;
+        else if (temp == typeof(ETF))
+            _currentInfo = _ETFTable;
+
+        _currentInfo.gameObject.SetActive(true);
+        _currentInfo.SetInfo(sec);
     }
     public void UpdateDetailedInfo()
     {

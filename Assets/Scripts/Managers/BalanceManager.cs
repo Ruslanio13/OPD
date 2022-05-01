@@ -40,23 +40,27 @@ public class BalanceManager : MonoBehaviour
 
     public void GenerateValutesList()
     {
-        Valutes.Add(new Valute("доллар", '$', false));
-        Valutes.Add(new Valute("рубль", 'P'));
-        Valutes.Add(new Valute("евро", '€'));
-        Valutes.Add(new Valute("фунт", '€'));
-        Valutes.Add(new Valute("юань", '€'));
-        Valutes.Add(new Valute("йен", '€'));
-        Valutes.Add(new Valute("шведская крона", '€'));
-        Valutes.Add(new Valute("чешская крона", '€'));
-        Valutes.Add(new Valute("швейцарский франк", '€'));
-        Valutes.Add(new Valute("вон", '€'));
-        Valutes.Add(new Valute("гривна", '€'));
-        Valutes.Add(new Valute("тенге", '€'));
-        Valutes.Add(new Valute("песо", '€'));
+        Valutes.Add(new Valute("доллар", '$', GameManager._instance.Countries[0],false));
+        Valutes.Add(new Valute("рубль", 'P', GameManager._instance.Countries[0]));
+        Valutes.Add(new Valute("евро", '€', GameManager._instance.Countries[0]));
+        Valutes.Add(new Valute("фунт", '€', GameManager._instance.Countries[0]));
+        Valutes.Add(new Valute("юань", '€', GameManager._instance.Countries[0]));
+        Valutes.Add(new Valute("йен", '€', GameManager._instance.Countries[0]));
+        Valutes.Add(new Valute("шведская крона", '€', GameManager._instance.Countries[0]));
+        Valutes.Add(new Valute("чешская крона", '€', GameManager._instance.Countries[0]));
+        Valutes.Add(new Valute("швейцарский франк", '€', GameManager._instance.Countries[0]));
+        Valutes.Add(new Valute("вон", '€', GameManager._instance.Countries[0]));
+        Valutes.Add(new Valute("гривна", '€', GameManager._instance.Countries[0]));
+        Valutes.Add(new Valute("тенге", '€', GameManager._instance.Countries[0]));
+        Valutes.Add(new Valute("песо", '€', GameManager._instance.Countries[0]));
 
         for (int i = 0; i < 1500; i++)
         {
             UpdateBalance();
+        }
+        foreach(var item in Valutes)
+        {
+            item.CalculateAveragePrice();
         }
     }
 
