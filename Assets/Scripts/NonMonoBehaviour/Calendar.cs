@@ -1,49 +1,49 @@
 [System.Serializable]
 public class Calendar
 {
-    public int Day{get; private set;}
-    private int _month;
-    private int _year;
+    public int Day {get; private set;}
+    public int Month { get; private set; }
+    public int Year { get; private set; }
     public int AllDays { get; private set; }
 
     public Calendar(int day, int month, int year)
     {
         Day = day;
-        _month = month;
-        _year = year;
+        Month = month;
+        Year = year;
         AllDays = 0;
     }
 
     public Calendar()
     {
         Day = 1;
-        _month = 1;
-        _year = 2022;
+        Month = 1;
+        Year = 2022;
         AllDays = 0;
     }
 
-    public bool IsTimeToDividends() => _month == 1 && Day == 10;
+    public bool IsTimeToDividends() => Month == 1 && Day == 10;
 
     public string GetStrDate()
     {
         string date;
-        date = Day.ToString("00") + "." + _month.ToString("00") + "." + _year.ToString();
+        date = Day.ToString("00") + "." + Month.ToString("00") + "." + Year.ToString();
         return date;
     }
 
     public void UpdateDate()
     {
-        if ((_month == 1 || _month == 3 || _month == 5 || _month == 8 || _month == 10 || _month == 12) && Day == 31)
+        if ((Month == 1 || Month == 3 || Month == 5 || Month == 8 || Month == 10 || Month == 12) && Day == 31)
         {
             GoToNextMonth();
-            if (_month == 13)
+            if (Month == 13)
             {
-                _year += 1;
-                _month = 1;
+                Year += 1;
+                Month = 1;
             }
         }
-        else if (((_month == 4 || _month == 6 || _month == 7 || _month == 9 || _month == 11) && Day == 30) ||
-            ((_month == 2 && Day == 28 && _year % 4 != 0) || (_month == 2 && Day == 29 && _year % 4 == 0)))
+        else if (((Month == 4 || Month == 6 || Month == 7 || Month == 9 || Month == 11) && Day == 30) ||
+            ((Month == 2 && Day == 28 && Year % 4 != 0) || (Month == 2 && Day == 29 && Year % 4 == 0)))
             GoToNextMonth();
         else
             Day += 1;
@@ -53,6 +53,6 @@ public class Calendar
     private void GoToNextMonth()
     {
         Day = 1;
-        _month += 1;
+        Month += 1;
     }
 }

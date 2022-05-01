@@ -44,9 +44,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         foreach (Company comp in Companies)
-        {
             comp.SetCompanyToSecurities();
-        }
 
 
         _selDolButton.onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[0]));
@@ -83,16 +81,14 @@ public class GameManager : MonoBehaviour
             DetailedInfoManager._instance.SetState(currentSecurity, DetailedInfoManager.States.ETF);
         });
 
-
         currentValute = BalanceManager._instance.Valutes[0];
 
         CreateSecuritiesMarket(new Share());
         SetSecuritiesMarket(SecMarket);
 
-
-
         UpdateAllInformation(SecMarket[0]);
 
+        StartCoroutine(ChangeDays());
     }
 
 
@@ -137,10 +133,7 @@ public class GameManager : MonoBehaviour
         Companies.Add(new Company("Sony", Countries[10]));
 
         foreach (var comp in Companies)
-        {
             comp.InitializeETF();
-        }
-
     }
 
     public static GameManager _instance;
@@ -162,14 +155,12 @@ public class GameManager : MonoBehaviour
         BalanceManager._instance.UpdateAmountOfValuteOnGUI();
     }
 
-
-
-    private void Update()
+    private IEnumerator ChangeDays()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        while (true)
         {
             Calendar.UpdateDate();
-            
+
             if (Calendar.AllDays % 10 == 0)
                 NewsManager._instance.SpawnCompanyNews(Companies);
             if (Calendar.AllDays % 21 == 0)
@@ -200,7 +191,7 @@ public class GameManager : MonoBehaviour
                     if (portfolio[i].GetType() == typeof(Share))
                     {
                         notification = Instantiate(_notification);
-                        notification.GetComponent<OkButton>().SetInfo(portfolio[i].ParentCompany.GetNameOfCompany(), (portfolio[i] as Share).GetSumOfDividends());
+                        notification.GetComponent<NotificationButton>().SetInfo(portfolio[i].ParentCompany.GetNameOfCompany(), (portfolio[i] as Share).GetSumOfDividends());
                         (portfolio[i] as Share).PayDividends();
                         if (i == 0)
                             notificationPanel = Instantiate(_notificationPanel, notification.transform);
@@ -209,9 +200,21 @@ public class GameManager : MonoBehaviour
             }
             UpdateAllInformation(currentSecurity);
 
+            if (Calendar.Month % 3 == 1 && Calendar.Day == 1 && (Calendar.Month != 1 || Calendar.Year != 2022))
+            {
+                GameObject notification;
+                GameObject notificationPanel;
+                notification = Instantiate(_notification);
+                notificationPanel = Instantiate(_notificationPanel, notification.transform);
+                notification.GetComponent<NotificationButton>().SetInfo();
+                break;
+            }
 
+                yield return new WaitForSeconds(1f);
         }
     }
+
+    
     public void SetSecuritiesMarket<T>(List<T> market) where T : Securities
     {
         GameObject temp;
@@ -317,6 +320,4 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-
 }
