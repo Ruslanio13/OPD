@@ -73,8 +73,7 @@ public class PortfolioShortInfo : MonoBehaviour
         else if (securities.GetType() == typeof(Obligation))
         {
             _name.text = (securities as Obligation).ParentCompanyName;
-            PaybackCost.text = "Будет выплачено: "+(securities as Obligation).PaybackCost.ToString("0.00") + "P";
-            dueTo.text = "через: " + (securities as Obligation).DueTo.ToString() + " дней ";
+            dueTo.text = "Будет выплачено через: " + (securities as Obligation).DueTo.ToString() + " дней ";
         }
         else if(securities.GetType() == typeof(Valute))
         {

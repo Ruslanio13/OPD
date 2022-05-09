@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -84,6 +83,7 @@ public class SaveData
     public Calendar Calendar;
     public Broker Broker;
     public Difficulty Difficulty;
+
     public SaveData(List<Company> comp,List<Country> countries, List<Securities> port, float wal, List<Valute> val, List<News> localNews,List<News> globalNews, Calendar cal, Broker broker, Difficulty diff)
     {
         Companies = comp;

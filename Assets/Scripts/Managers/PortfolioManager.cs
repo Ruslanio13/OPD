@@ -134,7 +134,8 @@ public class PortfolioManager : MonoBehaviour
         if (securities.GetType() == typeof(Obligation))
         {
             infoPrefab = _obligationInfoPrefab;
-            Portfolio.Add(new Obligation(securities as Obligation, securities.ParentCompany.GetNameOfCompany(), amount));
+            Portfolio.Add(new Obligation(securities as Obligation, 
+            securities.ParentCompany.GetNameOfCompany(), amount));
         }
         else
         {
