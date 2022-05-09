@@ -12,6 +12,7 @@ public class PreGameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _selectedDiffName;
     [SerializeField] private TextMeshProUGUI _selectedBrokerName;
     [SerializeField] private TextMeshProUGUI _selectedComission;
+  
 
     public Difficulty CurrentDifficulty{get; private set;}
     public Broker CurrentBroker{get; private set;}
@@ -41,7 +42,7 @@ public class PreGameManager : MonoBehaviour
         {
             var temp = Instantiate(_difficultyPrefab, _difficultiesRT);
             temp.GetComponent<DifficultyShortInfo>().SetDifficulty(diff);
-            _difficultiesRT.sizeDelta += new Vector2(0, 65f);
+            _difficultiesRT.sizeDelta += new Vector2(0, 0f);
         }
     }
     private void InitializeBrokers()

@@ -19,6 +19,10 @@ public class PortfolioManager : MonoBehaviour
     [SerializeField] private Button _selValutesButton;
     [SerializeField] private Button _selETFButton;
     [SerializeField] private TextMeshProUGUI _totalProfit;
+    [SerializeField] private TextMeshProUGUI _currentDifficulty;
+    [SerializeField] private TextMeshProUGUI  _currentBrokerText;
+    [SerializeField] private TextMeshProUGUI  _currentComision;
+
     Color red = new Color(0.8f, 0.09f, 0.09f, 1);
     Color green = new Color(0.09f, 0.7f, 0.1f, 1f);
 
@@ -59,6 +63,12 @@ public class PortfolioManager : MonoBehaviour
             if (_portfolioInUI.Count != 0)
                 _portfolioInUI[0]?.SelectSecurity();
         });
+        Broker _currentBroker = FindObjectOfType<PreGameManager>().CurrentBroker;
+        _currentDifficulty.text = FindObjectOfType<PreGameManager>().CurrentDifficulty.Name; 
+        _currentBrokerText.text = _currentBroker.Name; 
+         
+        _currentComision.text = "Комиссия брокера: " + _currentBroker.Commision +"%\n" + 
+            "Ежемесечная плата: " + _currentBroker.Maintenance +"P"; 
     }
 
     private void Awake()
@@ -210,6 +220,7 @@ public class PortfolioManager : MonoBehaviour
         float sellNowTotal = 0f;
         float spendTotal = 0f;
 
+        
         foreach (PortfolioShortInfo sec in _portfolioInUI)
         {
             sec.UpdateInfo();
