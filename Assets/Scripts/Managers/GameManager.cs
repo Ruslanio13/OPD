@@ -106,10 +106,12 @@ public class GameManager : MonoBehaviour
         Countries.Add(new Country("United Kingdom"));               //11
         Countries.Add(new Country("South Korea"));              //12
     }
-    public void InitializeCompanies()
+    public void InitializeCompanies(List<Company> companies)
     {
         Calendar = new Calendar(1, 1, 2022);
-
+        for(int i = 0; i < companies.Count; i++)
+            Companies.Add(new Company(companies[i]));
+/*
         Companies.Add(new Company("Sberbank", Countries[4]));
         Companies.Add(new Company("VTB", Countries[0]));
         Companies.Add(new Company("Tinkoff", Countries[0]));
@@ -127,7 +129,7 @@ public class GameManager : MonoBehaviour
         Companies.Add(new Company("Oppo", Countries[3]));
         Companies.Add(new Company("Phillips", Countries[5]));
         Companies.Add(new Company("Sony", Countries[10]));
-
+*/
         foreach (var comp in Companies)
             comp.InitializeETF();
     }

@@ -2,6 +2,7 @@
 public class Country
 {
     public string Name {get; private set;}
+    public int ID {get; private set;}
 
     public delegate void ChangePriceVolatile(float a, float b);
     public event ChangePriceVolatile HandlePriceVolatility;

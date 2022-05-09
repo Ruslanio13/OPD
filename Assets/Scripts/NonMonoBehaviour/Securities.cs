@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
 [System.Serializable]
@@ -18,6 +19,7 @@ public class Securities
     public float AveragePrice2020 { get; protected set; }
     public float AveragePrice2021 { get; protected set; }
 
+    [JsonIgnore]
     public List<float> _priceHistory = new List<float>();
 
     protected float maxPrice;

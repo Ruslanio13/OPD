@@ -3,10 +3,13 @@ using UnityEngine;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using Newtonsoft.Json;
 
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager _instance;
+
+    private List<Company> _companyJSONList;
 
     private void Awake()
     {
@@ -16,6 +19,14 @@ public class SaveManager : MonoBehaviour
     }
 
     private void Start() {
+        try
+        {
+            _companyJSONList = JsonConvert.DeserializeObject<List<Company>>(File.ReadAllText("Companies.json"));
+        }
+        catch(Exception)
+        {
+            throw new Exception("Wrong JSON Save File Format");
+        }
         Load();    
     }
 
@@ -40,7 +51,7 @@ public class SaveManager : MonoBehaviour
         {
             Debug.Log("No save file. Creating New!");
             GameManager._instance.InitializeCountries();
-            GameManager._instance.InitializeCompanies();
+            GameManager._instance.InitializeCompanies(_companyJSONList);
             BalanceManager._instance.GenerateValutesList();
             BalanceManager._instance.CreateNewWallet();
 

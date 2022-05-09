@@ -2,31 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Newtonsoft.Json;
 
 [Serializable]
 public class Company
 {
-    [SerializeField] string companyName = "Enter new company name here";
-    [SerializeField] private List<float> _shareHistory;
+    private List<float> _shareHistory;
     public Securities DisplayedSec;
     public Country Country{get; private set;}
+    [JsonIgnore]
     public Share CompanyShare;
+    [JsonIgnore]
     public Obligation CompanyObligation;
+    [JsonIgnore]
     public ETF CompanyETF;
 
-    private float capitalization;
-    private int amountOfSecurities;
-    private float profit;
-    private int staff;
-    private float credit;
 
 
 
-    public float Profit { get => profit; }
-    public int Staff { get => staff; }
-    public float Credit { get => credit; }
-    public float Capitalization { get => capitalization; }
-    public int AmountOfSecurities { get => amountOfSecurities; }
+    public string CompanyName{get; private set;}
+    public float Profit { get; private set; }
+    public int Staff { get; private set; }
+    public float Credit { get; private set; }
+    public float Capitalization { get; private set; }
+    public int AmountOfSecurities { get; private set; }
 
     [SerializeField] private float _minPriceChange;
     [SerializeField] private float _maxPriceChange;
@@ -45,20 +44,21 @@ public class Company
     public float GetMinPriceChange() => _minPriceChange;
     public float GetMaxPriceChange() => _maxPriceChange;
 
-    public string GetNameOfCompany() => companyName;
+    public string GetNameOfCompany() => CompanyName;
 
-    public Company(string name, Country country)
+    [JsonConstructor]
+    public Company(string CompanyName, Country country)
     {
         _minPriceChange = -2f;
         _maxPriceChange = 2f;
         Country = country;
-        companyName = name;
-        capitalization = UnityEngine.Random.Range(150f, 1000f);
-        amountOfSecurities = UnityEngine.Random.Range(150, 1000);
-        profit = UnityEngine.Random.Range(150f, 1000f);
-        staff = UnityEngine.Random.Range(150, 1000);
-        credit = UnityEngine.Random.Range(150f, 1000f);
-
+        this.CompanyName = CompanyName;
+    }
+    public Company(Company companyFromJSON)
+    {
+        var country = GameManager._instance.Countries[companyFromJSON.Country.ID];
+        Country = country;
+        this.CompanyName = companyFromJSON.CompanyName;
 
         CompanyObligation = new Obligation();
         CompanyShare = new Share();
