@@ -69,21 +69,25 @@ public class GameManager : MonoBehaviour
         {
             SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new Share());
+            DetailedInfoManager._instance.SetState(CurrentSecurity);
         });
         _selObligationMarket.onClick.AddListener(() =>
         {
             SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new Obligation());
+            DetailedInfoManager._instance.SetState(CurrentSecurity);
         });
         _selValuteMarket.onClick.AddListener(() =>
         {
             SetValute(BalanceManager._instance.Valutes[0]);
             SetSecuritiesMarket(BalanceManager._instance.Valutes);
+            DetailedInfoManager._instance.SetState(CurrentSecurity);
         });
         _selETFMarket.onClick.AddListener(() =>
         {
             SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new ETF());
+            DetailedInfoManager._instance.SetState(CurrentSecurity);
         });
 
 
@@ -271,7 +275,7 @@ public class GameManager : MonoBehaviour
     {
         CurrentSecurity = sec;
         CurrentCompany = sec.ParentCompany;
-        DetailedInfoManager._instance.SetState(sec);
+        DetailedInfoManager._instance.UpdateDetailedInfo();
         NewsManager._instance.ShowCompanyNews(sec.ParentCompany);
     }
     public void SetValute(Valute val)

@@ -62,7 +62,7 @@ public class Securities
     {
         for (int i = _priceHistory.Count - 1500, j = val._priceHistory.Count - 1500; i < _priceHistory.Count; i++, j++)
         {
-            _priceHistory[i] *= val._priceHistory[j] / prevVal._priceHistory[j];
+            _priceHistory[i] *= prevVal._priceHistory[j] / val._priceHistory[j];
         }
 
         Price *= val.Price / prevVal.Price;

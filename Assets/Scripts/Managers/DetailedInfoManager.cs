@@ -13,6 +13,8 @@ public class DetailedInfoManager : MonoBehaviour
     [SerializeField] private DetailedValuteInfo _valuteTable;
     public static DetailedInfoManager _instance;
     private DetailedInfo _currentInfo;
+    private Securities _currentSecInMarket;
+
     private void Awake()
     {
         if (_instance == null)
@@ -29,9 +31,7 @@ public class DetailedInfoManager : MonoBehaviour
     public void SetState(Securities sec)
     {
         var temp = sec.GetType();
-
-        if(_currentInfo == _ETFTable && sec is Share)
-            return;
+        _currentSecInMarket = sec;
 
         _currentInfo?.gameObject.SetActive(false);
 
@@ -47,6 +47,12 @@ public class DetailedInfoManager : MonoBehaviour
     }
     public void UpdateDetailedInfo()
     {
-        _currentInfo?.SetInfo(GameManager._instance.CurrentSecurity);
+        if(_currentSecInMarket is ETF && GameManager._instance.CurrentSecurity is Share)
+            _currentInfo?.SetInfo(_currentSecInMarket);
+        else
+        {
+            _currentSecInMarket = GameManager._instance.CurrentSecurity;
+        }
+        _currentInfo?.SetInfo(_currentSecInMarket);
     }
 }
