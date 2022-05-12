@@ -76,16 +76,16 @@ public class Graph : MonoBehaviour
     public void UpdateGraph()
     {
         int g = 0;
-        int count = GameManager._instance.currentSecurity._priceHistory.Count;
+        int count = GameManager._instance.CurrentSecurity._priceHistory.Count;
         float currentPrice;
-        bool isValuteGraph = (GameManager._instance.currentSecurity.GetType() == typeof(Valute));
+        bool isValuteGraph = (GameManager._instance.CurrentSecurity.GetType() == typeof(Valute));
 
         for (int i = count - _graph.positionCount * _timeScaleKoef; i < count; i = i + _timeScaleKoef, g++)
         {
             if(isValuteGraph)
-                currentPrice = GameManager._instance.currentSecurity._priceHistory[i]/GameManager._instance.currentValute._priceHistory[i];
+                currentPrice = GameManager._instance.CurrentSecurity._priceHistory[i]/GameManager._instance.CurrentValute._priceHistory[i];
             else
-                currentPrice = GameManager._instance.currentSecurity._priceHistory[i];
+                currentPrice = GameManager._instance.CurrentSecurity._priceHistory[i];
             
             _graph.SetPosition(g, new Vector2(g * _stepX, currentPrice * _visualScale));
         }
@@ -111,14 +111,14 @@ public class Graph : MonoBehaviour
         transform.localPosition = new Vector2(transform.localPosition.x, 0f);
         _visualScale = 3;
         float currentPrice;
-        bool isValuteGraph = (GameManager._instance.currentSecurity.GetType() == typeof(Valute));
-        int count = GameManager._instance.currentSecurity._priceHistory.Count;
+        bool isValuteGraph = (GameManager._instance.CurrentSecurity.GetType() == typeof(Valute));
+        int count = GameManager._instance.CurrentSecurity._priceHistory.Count;
         for (int i = count - _graph.positionCount * _timeScaleKoef; i < count; i = i + _timeScaleKoef)
         {
             if(isValuteGraph)
-                currentPrice = GameManager._instance.currentSecurity._priceHistory[i]/GameManager._instance.currentValute._priceHistory[i];
+                currentPrice = GameManager._instance.CurrentSecurity._priceHistory[i]/GameManager._instance.CurrentValute._priceHistory[i];
             else
-                currentPrice = GameManager._instance.currentSecurity._priceHistory[i];
+                currentPrice = GameManager._instance.CurrentSecurity._priceHistory[i];
             if (_minY > currentPrice)
 
                 _minY = currentPrice;

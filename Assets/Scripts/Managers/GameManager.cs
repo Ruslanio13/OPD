@@ -28,11 +28,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button _selObligationMarket;
     [SerializeField] private Button _selValuteMarket;
     [SerializeField] private Button _selETFMarket;
+    [SerializeField] private Button _selRussianMarket;
+    [SerializeField] private Button _selWorldMarket;
     private List<ShortInfo> _displayedSecurities = new List<ShortInfo>();
-    public int currentIndex;
-    public Company currentCompany;
-    public Securities currentSecurity;
-    public Valute currentValute;
+    public int CurrentIndex {get; private set;}
+    public Company CurrentCompany {get; private set;}
+    public Securities CurrentSecurity {get; private set;}
+    public Valute CurrentValute {get; private set;}
+    public Country CurrentCountry {get; private set;}
     public Calendar Calendar;
 
     void Awake()
@@ -51,19 +54,26 @@ public class GameManager : MonoBehaviour
         _selRubButton.onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[1]));
         _selEurButton.onClick.AddListener(() => SetValute(BalanceManager._instance.Valutes[2]));
 
-
+        _selRussianMarket.onClick.AddListener(() => 
+        {
+            CurrentCountry = Countries[0];
+            CreateSecuritiesMarket(CurrentSecurity);
+        });
+        _selWorldMarket.onClick.AddListener(() => 
+        {
+            CurrentCountry = Countries[1];
+            CreateSecuritiesMarket(CurrentSecurity);
+        });
 
         _selSharesMarket.onClick.AddListener(() =>
         {
             SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new Share());
-            SetSecuritiesMarket(SecMarket);
         });
         _selObligationMarket.onClick.AddListener(() =>
         {
             SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new Obligation());
-            SetSecuritiesMarket(SecMarket);
         });
         _selValuteMarket.onClick.AddListener(() =>
         {
@@ -74,13 +84,14 @@ public class GameManager : MonoBehaviour
         {
             SetValute(BalanceManager._instance.Valutes[0]);
             CreateSecuritiesMarket(new ETF());
-            SetSecuritiesMarket(SecMarket);
         });
 
-        currentValute = BalanceManager._instance.Valutes[0];
+
+
+        CurrentValute = BalanceManager._instance.Valutes[0];
+        CurrentCountry = Countries[0];
 
         CreateSecuritiesMarket(new Share());
-        SetSecuritiesMarket(SecMarket);
 
         UpdateAllInformation(SecMarket[0]);
 
@@ -92,26 +103,27 @@ public class GameManager : MonoBehaviour
 
     public void InitializeCountries()
     {
-        Countries.Add(new Country("Russia"));                           //0
-        Countries.Add(new Country("USA"));              //1
-        Countries.Add(new Country("Ukraine"));              //2
-        Countries.Add(new Country("China"));                //3
-        Countries.Add(new Country("Tajikistan"));               //4
-        Countries.Add(new Country("Germany"));              //5
-        Countries.Add(new Country("Czech Republic"));               //6
-        Countries.Add(new Country("Switzerland"));              //7
-        Countries.Add(new Country("Kazakhstan"));               //8
-        Countries.Add(new Country("Sweden"));               //9
-        Countries.Add(new Country("Japan"));                //10
-        Countries.Add(new Country("United Kingdom"));               //11
-        Countries.Add(new Country("South Korea"));              //12
+        Countries.Add(new Country("Russia", Countries.Count));                           //0
+        Countries.Add(new Country("USA", Countries.Count));              //1
+        Countries.Add(new Country("Ukraine", Countries.Count));              //2
+        Countries.Add(new Country("China", Countries.Count));                //3
+        Countries.Add(new Country("Tajikistan", Countries.Count));               //4
+        Countries.Add(new Country("Germany", Countries.Count));              //5
+        Countries.Add(new Country("Czech Republic", Countries.Count));               //6
+        Countries.Add(new Country("Switzerland", Countries.Count));              //7
+        Countries.Add(new Country("Kazakhstan", Countries.Count));               //8
+        Countries.Add(new Country("Sweden", Countries.Count));               //9
+        Countries.Add(new Country("Japan", Countries.Count));                //10
+        Countries.Add(new Country("United Kingdom", Countries.Count));               //11
+        Countries.Add(new Country("South Korea", Countries.Count));              //12
     }
     public void InitializeCompanies(List<Company> companies)
     {
         Calendar = new Calendar(1, 1, 2022);
         for(int i = 0; i < companies.Count; i++)
             Companies.Add(new Company(companies[i]));
-/*
+/*     TODO : Удалить коммент когда задание начальных условий будет стабильно работать
+
         Companies.Add(new Company("Sberbank", Countries[4]));
         Companies.Add(new Company("VTB", Countries[0]));
         Companies.Add(new Company("Tinkoff", Countries[0]));
@@ -195,7 +207,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            UpdateAllInformation(currentSecurity);
+            UpdateAllInformation(CurrentSecurity);
 
             if (Calendar.Month % 3 == 1 && Calendar.Day == 1 && (Calendar.Month != 1 || Calendar.Year != 2022))
             {
@@ -216,8 +228,10 @@ public class GameManager : MonoBehaviour
     {
         GameObject temp;
         GameObject infoPrefab;
-
         ShortInfo temp2;
+
+        if(market.Count == 0)
+            throw new System.Exception("No companies on the selected market");
 
         if (market[0].GetType() == typeof(Obligation))
             infoPrefab = _obligationInfoPrefab;
@@ -238,63 +252,64 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < market.Count; i++)
         {
-            if (market[i].GetName() == currentValute.GetName())
+            if (market[i].GetName() == CurrentValute.GetName())
             {
                 if (i == 0)
                     SelectSecurity(market[1]);
                 continue;
             }
-
+            
             temp = Instantiate(infoPrefab, _shortInfoListTransform);
             temp2 = temp.GetComponent<ShortInfo>();
             temp2.SetInfo(market[i]);
             _displayedSecurities.Add(temp.GetComponent<ShortInfo>());
             _shortInfoListTransform.sizeDelta += new Vector2(0, 65f);
         }
-        UpdateAllInformation(currentSecurity);
+        UpdateAllInformation(CurrentSecurity);
     }
     public void SelectSecurity(Securities sec)
     {
-        currentSecurity = sec;
-        currentCompany = sec.ParentCompany;
+        CurrentSecurity = sec;
+        CurrentCompany = sec.ParentCompany;
         DetailedInfoManager._instance.SetState(sec);
         NewsManager._instance.ShowCompanyNews(sec.ParentCompany);
     }
     public void SetValute(Valute val)
     {
 
-        if (currentSecurity.GetType() == typeof(Valute))
+        if (CurrentSecurity.GetType() == typeof(Valute))
         {
-            currentValute = val;
+            CurrentValute = val;
             SetSecuritiesMarket(BalanceManager._instance.Valutes);
         }
         else
         {
             foreach (Securities sec in SecMarket)
             {
-                sec.RecalculateHistoryForValute(val, currentValute);
+                sec.RecalculateHistoryForValute(val, CurrentValute);
             }
-            currentValute = val;
+            CurrentValute = val;
         }
 
         BalanceManager._instance.UpdateAmountOfValuteOnGUI();
 
         PortfolioManager._instance.UpdatePortfolio();
 
-        UpdateAllInformation(currentSecurity);
+        UpdateAllInformation(CurrentSecurity);
     }
 
 
 
     public void CreateSecuritiesMarket<T>(T sec) where T : Securities
     {
-        System.Type reqType = typeof(T);
 
         SecMarket.Clear();
-        if (reqType == typeof(Valute))
+        if (sec is Valute)
         {
             foreach (Valute val in BalanceManager._instance.Valutes)
                 SecMarket.Add(val);
+            
+            SetSecuritiesMarket(SecMarket);
             return;
         }
 
@@ -302,21 +317,28 @@ public class GameManager : MonoBehaviour
 
         foreach (Company comp in Companies)
         {
-            if (reqType == typeof(Share))
+            if(CurrentCountry.ID == 0 && comp.Country.ID != 0)
+                continue;
+            if(CurrentCountry.ID != 0 && comp.Country.ID == 0)
+                continue;
+
+            if (sec is Share)
             {
                 SecMarket.Add(comp.CompanyShare);
                 continue;
             }
-            if (reqType == typeof(Obligation))
+            if (sec is Obligation)
             {
                 SecMarket.Add(comp.CompanyObligation);
                 continue;
             }
-            if (reqType == typeof(ETF))
+            if (sec is ETF)
             {
                 SecMarket.Add(comp.CompanyETF);
                 continue;
             }
         }
+        SetSecuritiesMarket(SecMarket);
+
     }
 }

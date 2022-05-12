@@ -54,8 +54,8 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
-      "ID": 0
+      "Name": "USA",
+      "ID": 1
     },
     "CompanyName": "Amazon",
     "Profit": 0.0,
@@ -68,7 +68,7 @@
     "DisplayedSec": null,
     "Country": {
       "Name": "Russia",
-      "ID": 0
+      "ID": 1
     },
     "CompanyName": "Asos",
     "Profit": 0.0,
@@ -158,10 +158,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Lenovo",
+      "Name": "Russia",
       "ID": 0
     },
-    "CompanyName": null,
+    "CompanyName": "Lenovo",
     "Profit": 0.0,
     "Staff": 0,
     "Credit": 0.0,

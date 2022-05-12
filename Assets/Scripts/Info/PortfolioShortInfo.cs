@@ -38,7 +38,7 @@ public class PortfolioShortInfo : MonoBehaviour
     }
     public void UpdateInfo()
     {
-        if (GameManager._instance.currentSecurity == securities)
+        if (GameManager._instance.CurrentSecurity == securities)
         {
             _buttonColors.normalColor = new Color32(0x3E, 0x5B, 0xD2, 255);
             _buttonColors.selectedColor = new Color32(0x3E, 0x5B, 0xD2, 255);
@@ -105,7 +105,7 @@ public class PortfolioShortInfo : MonoBehaviour
         float total = 0;
         int valID = 0;
         for (int i = 0; i < BalanceManager._instance.Valutes.Count; i++)
-            if (GameManager._instance.currentValute == BalanceManager._instance.Valutes[i])
+            if (GameManager._instance.CurrentValute == BalanceManager._instance.Valutes[i])
             {
                 valID = i;
                 break;

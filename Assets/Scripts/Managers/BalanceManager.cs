@@ -78,7 +78,7 @@ public class BalanceManager : MonoBehaviour
     {
         if (sum > 0)
         {
-            RublesWallet += GameManager._instance.currentValute.GetPriceInCurrentValue() / Valutes[1].GetPriceInCurrentValue() * sum;
+            RublesWallet += GameManager._instance.CurrentValute.GetPriceInCurrentValue() / Valutes[1].GetPriceInCurrentValue() * sum;
             return true;
         }
 
@@ -87,7 +87,7 @@ public class BalanceManager : MonoBehaviour
 
     public void UpdateAmountOfValuteOnGUI()
     {
-        Valute val = GameManager._instance.currentValute;
+        Valute val = GameManager._instance.CurrentValute;
 
 
         float onHands = RublesWallet * Valutes[1].GetPriceInCurrentValue() / val.GetPriceInCurrentValue();

@@ -30,7 +30,7 @@ public class PortfolioManager : MonoBehaviour
     {
         GoToPortfolio.onClick.AddListener(() =>
         {
-            InitializePortfolio(GameManager._instance.currentSecurity.GetType());
+            InitializePortfolio(GameManager._instance.CurrentSecurity.GetType());
             UpdatePortfolio();
             if (_portfolioInUI.Count != 0)
                 _portfolioInUI[0].SelectSecurity();
@@ -112,7 +112,7 @@ public class PortfolioManager : MonoBehaviour
 
         totalSum = (securities.GetType() == typeof(Valute)) ? amount * (securities as Valute).GetPriceInCurrentValue() : amount * securities.Price;
 
-        if (BalanceManager._instance.BuyWith(GameManager._instance.currentValute, totalSum))
+        if (BalanceManager._instance.BuyWith(GameManager._instance.CurrentValute, totalSum))
         {
             AddSecurities(securities, amount);
         }
@@ -153,13 +153,13 @@ public class PortfolioManager : MonoBehaviour
             if (securities.AmountInPortolio > 0)
             {
                 securities.SetAmount(securities.AmountInPortolio + amount);
-                securities.AddTransaction(amount, securities.Price / GameManager._instance.currentValute.Price);
+                securities.AddTransaction(amount, securities.Price / GameManager._instance.CurrentValute.Price);
             }
             else
             {
                 Portfolio.Add(securities);
                 securities.SetAmount(securities.AmountInPortolio + amount);
-                securities.AddTransaction(amount, securities.Price / GameManager._instance.currentValute.Price);
+                securities.AddTransaction(amount, securities.Price / GameManager._instance.CurrentValute.Price);
             }
         }
         UpdatePortfolio();

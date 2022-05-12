@@ -261,9 +261,9 @@ public class Valute : Securities
         Name = name;
         ParentCompany = null;
     }
-    public float GetPriceInCurrentValue() => GameManager._instance.currentValute.Price / Price;
-    public float GetSellPriceInCurrentValue() => GameManager._instance.currentValute.Price / Price * (100f - PreGameManager._instance.CurrentBroker.Commision) / 100f;
-    public float GetPreviousPriceInCurrentValue() => GameManager._instance.currentValute._priceHistory[_priceHistory.Count - 2] / _priceHistory[_priceHistory.Count - 2];
+    public float GetPriceInCurrentValue() => GameManager._instance.CurrentValute.Price / Price;
+    public float GetSellPriceInCurrentValue() => GameManager._instance.CurrentValute.Price / Price * (100f - PreGameManager._instance.CurrentBroker.Commision) / 100f;
+    public float GetPreviousPriceInCurrentValue() => GameManager._instance.CurrentValute._priceHistory[_priceHistory.Count - 2] / _priceHistory[_priceHistory.Count - 2];
     public override void UpdatePrice(bool reducePrice = true)
     {
 

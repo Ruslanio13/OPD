@@ -57,6 +57,7 @@ public class Company
     public Company(Company companyFromJSON)
     {
         var country = GameManager._instance.Countries[companyFromJSON.Country.ID];
+    
         Country = country;
         this.CompanyName = companyFromJSON.CompanyName;
 
@@ -79,11 +80,11 @@ public class Company
 
     public float GetSecurityDelta()
     {
-        if (GameManager._instance.currentCompany.GetType() == typeof(Share))
+        if (GameManager._instance.CurrentCompany.GetType() == typeof(Share))
             return CompanyShare.DeltaPrice;
-        if (GameManager._instance.currentCompany.GetType() == typeof(Obligation))
+        if (GameManager._instance.CurrentCompany.GetType() == typeof(Obligation))
             return CompanyObligation.DeltaPrice;
-        if (GameManager._instance.currentCompany.GetType() == typeof(ETF))
+        if (GameManager._instance.CurrentCompany.GetType() == typeof(ETF))
             return CompanyETF.DeltaPrice;
         return CompanyShare.DeltaPrice;
     }

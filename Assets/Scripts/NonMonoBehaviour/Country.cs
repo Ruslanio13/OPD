@@ -12,8 +12,9 @@ public class Country
         HandlePriceVolatility?.Invoke(max, min);
     }
 
-    public Country(string name)
+    public Country(string name, int ID)
     {
+        this.ID = ID;
         Name = name;
     }
 

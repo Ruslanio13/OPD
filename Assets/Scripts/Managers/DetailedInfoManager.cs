@@ -22,7 +22,7 @@ public class DetailedInfoManager : MonoBehaviour
     public void Start()
     {
         _shareTable.gameObject.SetActive(true);
-        _shareTable.SetInfo(GameManager._instance.currentSecurity);
+        _shareTable.SetInfo(GameManager._instance.CurrentSecurity);
         _currentInfo = _shareTable;
     }
 
@@ -43,6 +43,6 @@ public class DetailedInfoManager : MonoBehaviour
     }
     public void UpdateDetailedInfo()
     {
-        _currentInfo?.SetInfo(GameManager._instance.currentSecurity);
+        _currentInfo?.SetInfo(GameManager._instance.CurrentSecurity);
     }
 }
