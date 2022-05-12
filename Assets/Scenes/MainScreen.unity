@@ -6840,7 +6840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8322678563266725715, guid: 8c746486346479a4f84f51b54aad08d6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 48.166676
+      value: 48.16667
       objectReference: {fileID: 0}
     - target: {fileID: 8322678563266725715, guid: 8c746486346479a4f84f51b54aad08d6, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -9670,7 +9670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8322678563266725715, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -53.93314
+      value: -53.933136
       objectReference: {fileID: 0}
     - target: {fileID: 8322678563266725715, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15171,20 +15171,47 @@ MonoBehaviour:
   globalNews: {fileID: 1089710572}
   newsPrefab: {fileID: 7495269449804996474, guid: 7b226c83fbcffa549bac90b966a8874e, type: 3}
   localNewsPatterns:
+  - {fileID: 11400000, guid: 06e84ee971dc171479869d2474d40d9a, type: 2}
+  - {fileID: 11400000, guid: fc7c78f7f8bc2f54f8942aaec0969217, type: 2}
   - {fileID: 11400000, guid: 0196cfd72482ebd4ca381ff5fc276666, type: 2}
   - {fileID: 11400000, guid: f580a319082998f49a588b48d41651a8, type: 2}
   - {fileID: 11400000, guid: 7d659e2adaf09fe41b8fc6eb972e4a42, type: 2}
+  - {fileID: 11400000, guid: 41c471b0838affa4b9b5a00227cf0d98, type: 2}
+  - {fileID: 11400000, guid: 932e112a07a17cf45aeb0ddf09f39f6a, type: 2}
+  - {fileID: 11400000, guid: d4f271988e7264a4a93b9dcb5b08ccbc, type: 2}
+  - {fileID: 11400000, guid: f790525e7848ccd47b0f7cbed79a8ecb, type: 2}
   - {fileID: 11400000, guid: a895f74eb882c7841b1efa124f59a8f2, type: 2}
+  - {fileID: 11400000, guid: a220f833ada7bbb4cb336bc4a289810b, type: 2}
+  - {fileID: 11400000, guid: e7ea2621a6bf0b44cb5083578112662e, type: 2}
+  - {fileID: 11400000, guid: b1657daaabf868d4aafbb937e34b7447, type: 2}
+  - {fileID: 11400000, guid: b5db87f84447e2947a5b2bdb61a94db0, type: 2}
   - {fileID: 11400000, guid: ff28fac768e5c2c4b8297105a21d2a0d, type: 2}
+  - {fileID: 11400000, guid: f84304174afa59d4591adce157fdd41d, type: 2}
   - {fileID: 11400000, guid: e9c7e0aa6d90e0149b375936a44a742a, type: 2}
+  - {fileID: 11400000, guid: 50a2c05745e7eea4ab8762b0964ec1f6, type: 2}
+  - {fileID: 11400000, guid: e2240ce9e891d6d43a41d7551aded4c9, type: 2}
+  - {fileID: 11400000, guid: 036c6b9dc8e42e847bda72b16d66e78d, type: 2}
   globalNewsPatterns:
+  - {fileID: 11400000, guid: 1da3029301f06734f9ee2b0d4f43563f, type: 2}
+  - {fileID: 11400000, guid: 6c69741b28a27574cafde62263dc1752, type: 2}
   - {fileID: 11400000, guid: 9499d21e46402654d9e934612ebceedd, type: 2}
+  - {fileID: 11400000, guid: a265e38d091a43a46ad0dd10955567e9, type: 2}
   - {fileID: 11400000, guid: d7834d06483b74e42bfcaad28a36140e, type: 2}
+  - {fileID: 11400000, guid: 412f7e03706dd284d838b27f4bdb3c1e, type: 2}
+  - {fileID: 11400000, guid: 0fee6c221cf9bc748a3b8838dd16f020, type: 2}
   - {fileID: 11400000, guid: 53908987be6dc3343b69a0cd7d527152, type: 2}
+  - {fileID: 11400000, guid: 56f1b6627f2104e4aac06865240fab31, type: 2}
+  - {fileID: 11400000, guid: c97e84b1aa141e54590e6194ccb41aac, type: 2}
   - {fileID: 11400000, guid: e33e2f77677b1d3428c0905ec0e47a20, type: 2}
   - {fileID: 11400000, guid: 2ed5434ee7a7063479662a3b16f51dae, type: 2}
+  - {fileID: 11400000, guid: 7a78e38aba1739d429102d8e5b46f4bd, type: 2}
+  - {fileID: 11400000, guid: 8f0e84ff5f4e123419df455eb2c21029, type: 2}
   - {fileID: 11400000, guid: 5004fe92959e29e42957e378e090d7b5, type: 2}
+  - {fileID: 11400000, guid: e0519811bb41a66459f75f7e3f054ce7, type: 2}
+  - {fileID: 11400000, guid: 8553438e25cdfd04a911f9a5ce60c5af, type: 2}
+  - {fileID: 11400000, guid: c871553aa76184047b19bac74ce7105e, type: 2}
   - {fileID: 11400000, guid: 37ddf95eb0850ae4ab2917f28e92bb19, type: 2}
+  - {fileID: 11400000, guid: 82cd55365db225b4bb67cc31eff542ba, type: 2}
   _scrollbar: {fileID: 927374070}
   AllLocalNews: []
   AllGlobalNews: []
