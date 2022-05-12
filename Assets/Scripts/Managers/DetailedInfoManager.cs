@@ -28,9 +28,13 @@ public class DetailedInfoManager : MonoBehaviour
 
     public void SetState(Securities sec)
     {
+        var temp = sec.GetType();
+
+        if(_currentInfo == _ETFTable && sec is Share)
+            return;
 
         _currentInfo?.gameObject.SetActive(false);
-        var temp = sec.GetType();
+
         if (temp == typeof(Share) || temp == typeof(Obligation))
             _currentInfo = _shareTable;
         else if (temp == typeof(Valute))
