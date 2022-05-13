@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System;
 
 public class PortfolioShortInfo : MonoBehaviour
 {
@@ -51,7 +48,7 @@ public class PortfolioShortInfo : MonoBehaviour
             SelectSecurityButton.colors = _buttonColors;
         }
 
-        if (securities.GetType() == typeof(Share) |securities.GetType() == typeof(ETF))
+        if (securities.GetType() == typeof(Share) | securities.GetType() == typeof(ETF))
         {
             _name.text = securities.GetName();
 

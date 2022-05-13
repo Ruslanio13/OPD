@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -139,7 +138,6 @@ public class PortfolioManager : MonoBehaviour
     private void AddSecurities(Securities securities, int amount)
     {
         GameObject infoPrefab;
-
 
         if (securities.GetType() == typeof(Obligation))
         {

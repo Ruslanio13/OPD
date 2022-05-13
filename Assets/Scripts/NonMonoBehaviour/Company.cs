@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -35,10 +34,12 @@ public class Company
 
     public void ChangePriceVolatility(float max, float min)
     {
-        if (_minPriceChange + min > -5f * PreGameManager._instance.CurrentDifficulty.Coefficient  && _minPriceChange + min < 0f)
+        if (_minPriceChange + min * PreGameManager._instance.CurrentDifficulty.Coefficient > -2f - PreGameManager._instance.CurrentDifficulty.Coefficient && _minPriceChange + min * PreGameManager._instance.CurrentDifficulty.Coefficient < -0.25f)
             _minPriceChange += min * PreGameManager._instance.CurrentDifficulty.Coefficient;
-        if (_maxPriceChange + max < 5f && _maxPriceChange + max > 0f)
+        if (_maxPriceChange + max < 2f + PreGameManager._instance.CurrentDifficulty.Coefficient && _maxPriceChange + max > 0.5f)
             _maxPriceChange += max;
+        if (CompanyName == "Sberbank")
+            Debug.Log(_minPriceChange + " " + _maxPriceChange);
     
         CompanyShare.OnCompanyVolatilityChange(_maxPriceChange, _minPriceChange);
         CompanyObligation.OnCompanyVolatilityChange(_maxPriceChange, _minPriceChange);

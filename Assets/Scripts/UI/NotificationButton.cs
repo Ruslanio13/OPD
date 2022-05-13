@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class NotificationButton : MonoBehaviour
 {
@@ -10,12 +9,16 @@ public class NotificationButton : MonoBehaviour
     public void DeleteNot() => Destroy(gameObject);
     public void Quit() {
         Application.Quit();
-        Debug.Log("FDASdsa");
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 
-    public void SetInfo(string CompanyName, float amountOfDividends)
+    public void SetInfo(Securities sec, float amountOfMoney)
     {
-        _textInfo.text = "You got dividends from " + CompanyName + " \n" + amountOfDividends.ToString("0.00")+ " P";
+        if (sec is Share)
+            _textInfo.text = "Вы получили дивиденды от " + sec.ParentCompany.GetNameOfCompany() + " \n" + amountOfMoney.ToString("0.00") + " P";
+        else if (sec is Obligation)
+            _textInfo.text = "Вы получили выплаты по облигациям от " + (sec as Obligation).ParentCompanyName + " \n" + amountOfMoney.ToString("0.00") + " P";
+
         _okButton.SetActive(true);
         _quitButton.SetActive(false);
     }

@@ -203,9 +203,7 @@ public class GameManager : MonoBehaviour
                 {
                     if (portfolio[i].GetType() == typeof(Share))
                     {
-                        notification = Instantiate(_notification);
-                        notification.GetComponent<NotificationButton>().SetInfo(portfolio[i].ParentCompany.GetNameOfCompany(), (portfolio[i] as Share).GetSumOfDividends());
-                        (portfolio[i] as Share).PayDividends();
+                        notification = CreateNotification(portfolio[i]);
                         if (i == 0)
                             notificationPanel = Instantiate(_notificationPanel, notification.transform);
                     }
@@ -217,7 +215,7 @@ public class GameManager : MonoBehaviour
             {
                 GameObject notification;
                 GameObject notificationPanel;
-                notification = Instantiate(_notification);
+                notification = CreateNotification(null);
                 notificationPanel = Instantiate(_notificationPanel, notification.transform);
                 notification.GetComponent<NotificationButton>().SetInfo();
                 break;
@@ -227,6 +225,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public GameObject CreateNotification(Securities sec)
+    {
+        GameObject notification = Instantiate(_notification);
+        if (sec?.GetType() == typeof(Share))
+        {
+            notification.GetComponent<NotificationButton>().SetInfo(sec, (sec as Share).GetSumOfDividends());
+            (sec as Share).PayDividends();
+
+        }
+        else if (sec?.GetType() == typeof(Obligation))
+            notification.GetComponent<NotificationButton>().SetInfo(sec, (sec as Obligation).PaybackCost / 2);
+        else
+            notification.GetComponent<NotificationButton>().SetInfo();
+        return notification;
+    }
 
     public void SetSecuritiesMarket<T>(List<T> market) where T : Securities
     {
@@ -288,11 +301,16 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            foreach (Securities sec in SecMarket)
+            foreach(Company comp in Companies)
             {
-                sec.RecalculateHistoryForValute(val, CurrentValute);
+                comp.CompanyShare.RecalculateHistoryForValute(val, CurrentValute);
+                comp.CompanyETF.RecalculateHistoryForValute(val, CurrentValute);
+
             }
+
+            
             CurrentValute = val;
+
         }
 
         BalanceManager._instance.UpdateAmountOfValuteOnGUI();
