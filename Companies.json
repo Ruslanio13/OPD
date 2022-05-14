@@ -1,3 +1,20 @@
+/*
+   Countries.Add(new Country("Russia", Countries.Count));                           //0
+        Countries.Add(new Country("USA", Countries.Count));              //1
+        Countries.Add(new Country("Ukraine", Countries.Count));              //2
+        Countries.Add(new Country("China", Countries.Count));                //3
+        Countries.Add(new Country("Tajikistan", Countries.Count));               //4
+        Countries.Add(new Country("Germany", Countries.Count));              //5
+        Countries.Add(new Country("Czech Republic", Countries.Count));               //6
+        Countries.Add(new Country("Switzerland", Countries.Count));              //7
+        Countries.Add(new Country("Kazakhstan", Countries.Count));               //8
+        Countries.Add(new Country("Sweden", Countries.Count));               //9
+        Countries.Add(new Country("Japan", Countries.Count));                //10
+        Countries.Add(new Country("United Kingdom", Countries.Count));               //11
+        Countries.Add(new Country("South Korea", Countries.Count));              //12
+*/
+
+
 [
   {
     "DisplayedSec": null,
@@ -6,12 +23,18 @@
       "ID": 0
     },
     "CompanyName": "Sberbank",
-    "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "Profit": 1.0,
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
+
   {
     "DisplayedSec": null,
     "Country": {
@@ -20,10 +43,15 @@
     },
     "CompanyName": "VTB",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
@@ -33,10 +61,15 @@
     },
     "CompanyName": "Tinkoff",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
@@ -44,38 +77,53 @@
       "Name": "Russia",
       "ID": 0
     },
-    "CompanyName": "Raiffaizen",
+    "CompanyName": "Alpha",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
-      "ID": 0
+      "Name": "USA",
+      "ID": 1
     },
     "CompanyName": "Amazon",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
-      "ID": 0
+      "Name": "USA",
+      "ID": 1
     },
     "CompanyName": "Asos",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
@@ -85,114 +133,159 @@
     },
     "CompanyName": "DNS",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
-      "ID": 0
+      "Name": "South Korea",
+      "ID": 12
     },
     "CompanyName": "Samsung",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
-      "ID": 0
+      "Name": "USA",
+      "ID": 1
     },
     "CompanyName": "Apple",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
-      "ID": 0
+      "Name": "China",
+      "ID": 3
     },
     "CompanyName": "Xiaomi",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
-      "ID": 0
+      "Name": "China",
+      "ID": 3
     },
     "CompanyName": "Meizu",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
-      "ID": 0
+      "Name": "USA",
+      "ID": 1
     },
     "CompanyName": "LG",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Lenovo",
-      "ID": 0
+      "Name": "China",
+      "ID": 3
     },
-    "CompanyName": null,
+    "CompanyName": "Lenovo",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
-      "ID": 0
+      "Name": "USA",
+      "ID": 1
     },
     "CompanyName": "JBL",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
-      "ID": 0
+      "Name": "China",
+      "ID": 3
     },
     "CompanyName": "Oppo",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
@@ -200,24 +293,124 @@
       "Name": "Russia",
       "ID": 0
     },
-    "CompanyName": "Phillips",
+    "CompanyName": "Gazprom",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
-      "ID": 0
+      "Name": "Japan",
+      "ID": 10
     },
     "CompanyName": "Sony",
     "Profit": 0.0,
-    "Staff": 0,
-    "Credit": 0.0,
-    "Capitalization": 0.0,
-    "AmountOfSecurities": 0
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
+  },
+  {
+    "DisplayedSec": null,
+    "Country": {
+      "Name": "Russia",
+      "ID": 0
+    },
+    "CompanyName": "Magnit",
+    "Profit": 0.0,
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
+  },
+  {
+    "DisplayedSec": null,
+    "Country": {
+      "Name": "Russia",
+      "ID": 0
+    },
+    "CompanyName": "Rosneft",
+    "Profit": 0.0,
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
+  },
+  {
+    "DisplayedSec": null,
+    "Country": {
+      "Name": "Russia",
+      "ID": 0
+    },
+    "CompanyName": "Yandex",
+    "Profit": 0.0,
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
+  },
+  {
+    "DisplayedSec": null,
+    "Country": {
+      "Name": "Russia",
+      "ID": 0
+    },
+    "CompanyName": "Ozon",
+    "Profit": 0.0,
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
+  },
+  {
+    "DisplayedSec": null,
+    "Country": {
+      "Name": "Russia",
+      "ID": 0
+    },
+    "CompanyName": "Nornikel",
+    "Profit": 0.0,
+    "EBITDA": 0.0,
+    "ClearProfit": 0.0,
+    "Actives": 0.0,
+    "Debt": 0.0,
+    "DivProfit": 0.0,
+    "PE": 0.0,
+    "PS": 0.0,
+    "PBV": 0.0,
+    "EVEBITDA": 0.0
   }
 ]

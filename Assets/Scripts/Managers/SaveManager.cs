@@ -96,7 +96,7 @@ public class SaveData
     public Difficulty Difficulty;
 
     public SaveData(List<Company> comp,List<Country> countries, List<Securities> port, float wal, List<Valute> val, List<News> localNews,List<News> globalNews, Calendar cal, Broker broker, Difficulty diff)
-    {
+    {       
         Companies = comp;
         Countries = countries;
         Portfolio = port;

@@ -39,7 +39,7 @@ public class ShortInfo : MonoBehaviour
 
     public void UpdateInfo()
     {
-        if (GameManager._instance.currentSecurity == sec)
+        if (GameManager._instance.CurrentSecurity == sec)
         {
             _buttonColors.normalColor = new Color32(0x3E, 0x5B, 0xD2, 255);
             _buttonColors.selectedColor = new Color32(0x3E, 0x5B, 0xD2, 255);
@@ -52,9 +52,9 @@ public class ShortInfo : MonoBehaviour
             button.colors = _buttonColors;
         }
 
-        Valute currentVal = GameManager._instance.currentValute;
+        Valute currentVal = GameManager._instance.CurrentValute;
 
-        if(GameManager._instance.currentSecurity.GetType() == typeof(Valute))
+        if(GameManager._instance.CurrentSecurity.GetType() == typeof(Valute))
             deltaPrice = ((sec as Valute).GetPriceInCurrentValue() - (sec as Valute).GetPreviousPriceInCurrentValue()) / (sec as Valute).GetPreviousPriceInCurrentValue() * 100f;
         else
             deltaPrice = sec.DeltaPrice;

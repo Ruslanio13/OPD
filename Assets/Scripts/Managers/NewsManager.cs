@@ -46,7 +46,7 @@ public class NewsManager : MonoBehaviour
             temp.SetUpNews<Company>(companies[i], localNewsPatterns[numberOfRandomNew]);
             AllLocalNews.Add(temp);
         }
-        ShowCompanyNews(GameManager._instance.currentCompany);
+        ShowCompanyNews(GameManager._instance.CurrentCompany);
 
 
     }

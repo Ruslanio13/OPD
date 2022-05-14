@@ -14,48 +14,8 @@ public class Graph : MonoBehaviour
     [SerializeField] private float _visualScale;
     private float _minY;
     private float _maxY;
-    public enum Scale
-    {
-        YEAR = -1,
-        QUARTER = 0,
-        MONTH = 1
-    }
-    private Scale _currentTimeScale;
     private int _timeScaleKoef;
 
-    public void LessenScale()
-    {
-        if (_currentTimeScale == 0)
-        {
-            _currentTimeScale = (Scale)1;
-            _timeScaleKoef = 1;
-            SetAmountOfDots(50);
-        }
-        else if ((int)_currentTimeScale == -1)
-        {
-            _currentTimeScale = 0;
-            _timeScaleKoef = 90;
-            SetAmountOfDots(20);
-        }
-        UpdateGraph();
-    }
-    public void EnlargeScale()
-    {
-        if (_currentTimeScale == 0)
-        {
-            _currentTimeScale = (Scale)(-1);
-            _timeScaleKoef = 365;
-            _graph.positionCount = 5;
-            SetAmountOfDots(5);
-        }
-        else if ((int)_currentTimeScale == 1)
-        {
-            _currentTimeScale = 0;
-            _timeScaleKoef = 90;
-            SetAmountOfDots(20);
-        }
-        UpdateGraph();
-    }
 
     private void SetAmountOfDots(int v)
     {
@@ -65,9 +25,6 @@ public class Graph : MonoBehaviour
 
     private void Start()
     {
-        _currentTimeScale = Scale.MONTH;
-        _timeScaleKoef = 1;
-
         SetAmountOfDots(50);
         ResetPosition();
         UpdateGraph();
@@ -76,16 +33,16 @@ public class Graph : MonoBehaviour
     public void UpdateGraph()
     {
         int g = 0;
-        int count = GameManager._instance.currentSecurity._priceHistory.Count;
+        int count = GameManager._instance.CurrentSecurity._priceHistory.Count;
         float currentPrice;
-        bool isValuteGraph = (GameManager._instance.currentSecurity.GetType() == typeof(Valute));
+        bool isValuteGraph = (GameManager._instance.CurrentSecurity.GetType() == typeof(Valute));
 
-        for (int i = count - _graph.positionCount * _timeScaleKoef; i < count; i = i + _timeScaleKoef, g++)
+        for (int i = count - _graph.positionCount; i < count; i++, g++)
         {
             if(isValuteGraph)
-                currentPrice = GameManager._instance.currentSecurity._priceHistory[i]/GameManager._instance.currentValute._priceHistory[i];
+                currentPrice = GameManager._instance.CurrentSecurity._priceHistory[i]/GameManager._instance.CurrentValute._priceHistory[i];
             else
-                currentPrice = GameManager._instance.currentSecurity._priceHistory[i];
+                currentPrice = GameManager._instance.CurrentSecurity._priceHistory[i];
             
             _graph.SetPosition(g, new Vector2(g * _stepX, currentPrice * _visualScale));
         }
@@ -111,14 +68,14 @@ public class Graph : MonoBehaviour
         transform.localPosition = new Vector2(transform.localPosition.x, 0f);
         _visualScale = 3;
         float currentPrice;
-        bool isValuteGraph = (GameManager._instance.currentSecurity.GetType() == typeof(Valute));
-        int count = GameManager._instance.currentSecurity._priceHistory.Count;
-        for (int i = count - _graph.positionCount * _timeScaleKoef; i < count; i = i + _timeScaleKoef)
+        bool isValuteGraph = (GameManager._instance.CurrentSecurity.GetType() == typeof(Valute));
+        int count = GameManager._instance.CurrentSecurity._priceHistory.Count;
+        for (int i = count - _graph.positionCount; i < count; i++)
         {
             if(isValuteGraph)
-                currentPrice = GameManager._instance.currentSecurity._priceHistory[i]/GameManager._instance.currentValute._priceHistory[i];
+                currentPrice = GameManager._instance.CurrentSecurity._priceHistory[i]/GameManager._instance.CurrentValute._priceHistory[i];
             else
-                currentPrice = GameManager._instance.currentSecurity._priceHistory[i];
+                currentPrice = GameManager._instance.CurrentSecurity._priceHistory[i];
             if (_minY > currentPrice)
 
                 _minY = currentPrice;

@@ -20,6 +20,7 @@ public class DetailedValuteInfo : DetailedInfo
         _averagePrice2020.text = sec.AveragePrice2020.ToString("0.00") + "$";
         _averagePrice2021.text = sec.AveragePrice2021.ToString("0.00") + "$";
 
-        _countryName.text = (sec as Valute).ValuteCountry.Name;
+        if(sec is Valute)
+            _countryName.text = (sec as Valute).ValuteCountry.Name;
     }
 }
