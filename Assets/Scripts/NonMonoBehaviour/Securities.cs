@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -61,10 +60,7 @@ public class Securities
     public virtual void RecalculateHistoryForValute(Valute val, Valute prevVal)
     {
         for (int i = _priceHistory.Count - 1500, j = val._priceHistory.Count - 1500; i < _priceHistory.Count; i++, j++)
-        {
             _priceHistory[i] *= prevVal._priceHistory[j] / val._priceHistory[j];
-        }
-
         Price *= val.Price / prevVal.Price;
     }
     public void SetAmount(int am)
@@ -98,7 +94,6 @@ public class Securities
 [System.Serializable]
 public class Share : Securities
 {
-    private int countOfChanges = 0;
     private float _dividendsPercent;
 
     public Share()
@@ -113,6 +108,7 @@ public class Share : Securities
             minPrice *= 0.9f;
         }
         DeltaPrice = UnityEngine.Random.Range(minPrice, maxPrice);
+        
         Price += Price * DeltaPrice / 100;
 
         Price = Mathf.Round(Price * 10000f) / 10000f;
@@ -193,13 +189,19 @@ public class Obligation : Securities
         DueTo--;
         if (DueTo == (_paybackTime / 2))
         {
-            BalanceManager._instance.AddMoney(PaybackCost / 2);
+            PayBack();
         }
         else if (DueTo == 0)
         {
-            BalanceManager._instance.AddMoney(PaybackCost / 2);
+            PayBack();
             PortfolioManager._instance.RemoveSecurities(this, AmountInPortolio);
         }
+    }
+
+    private void PayBack()
+    {
+        BalanceManager._instance.AddMoney(PaybackCost / 2);
+        GameManager._instance.CreateNotification(this);
     }
 }
 [System.Serializable]
@@ -299,7 +301,6 @@ public class Valute : Securities
     {
         return Name;
     }
-
 
 }
 

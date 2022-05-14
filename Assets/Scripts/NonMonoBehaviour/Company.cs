@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -17,25 +16,30 @@ public class Company
     [JsonIgnore]
     public ETF CompanyETF;
 
-
-
-
     public string CompanyName{get; private set;}
     public float Profit { get; private set; }
-    public int Staff { get; private set; }
-    public float Credit { get; private set; }
-    public float Capitalization { get; private set; }
-    public int AmountOfSecurities { get; private set; }
+    public float EBITDA { get; private set; }
+    public float ClearProfit { get; private set; }
+    public float Actives { get; private set; }
+    public float Debt { get; private set; }
+    public float DivProfit { get; private set; }
+    public float PE { get; private set; }
+    public float PS { get; private set; }
+    public float PBV { get; private set; }
+    public float EVEBITDA { get; private set; }
+    
 
     [SerializeField] private float _minPriceChange;
     [SerializeField] private float _maxPriceChange;
 
     public void ChangePriceVolatility(float max, float min)
     {
-        if (_minPriceChange + min > -5f * PreGameManager._instance.CurrentDifficulty.Coefficient  && _minPriceChange + min < 0f)
+        if (_minPriceChange + min * PreGameManager._instance.CurrentDifficulty.Coefficient > -2f - PreGameManager._instance.CurrentDifficulty.Coefficient && _minPriceChange + min * PreGameManager._instance.CurrentDifficulty.Coefficient < -0.25f)
             _minPriceChange += min * PreGameManager._instance.CurrentDifficulty.Coefficient;
-        if (_maxPriceChange + max < 5f && _maxPriceChange + max > 0f)
+        if (_maxPriceChange + max < 2f + PreGameManager._instance.CurrentDifficulty.Coefficient && _maxPriceChange + max > 0.5f)
             _maxPriceChange += max;
+        if (CompanyName == "Sberbank")
+            Debug.Log(_minPriceChange + " " + _maxPriceChange);
     
         CompanyShare.OnCompanyVolatilityChange(_maxPriceChange, _minPriceChange);
         CompanyObligation.OnCompanyVolatilityChange(_maxPriceChange, _minPriceChange);
@@ -47,8 +51,19 @@ public class Company
     public string GetNameOfCompany() => CompanyName;
 
     [JsonConstructor]
-    public Company(string CompanyName, Country country)
+    public Company(string CompanyName, Country country, float Profit, float EBITDA, float ClearProfit, float Actives, float Debt, float DivProfit, float PE, float PS, float PBV, float EVEBITDA)
     {
+        this.Profit = Profit;
+        this.EBITDA = EBITDA;
+        this.ClearProfit = ClearProfit;
+        this.Actives = Actives;
+        this.Debt = Debt;
+        this.DivProfit = DivProfit;
+        this.PE = PE;
+        this.PS = PS;
+        this.PBV = PBV;
+        this.EVEBITDA = EVEBITDA;
+
         _minPriceChange = -2f;
         _maxPriceChange = 2f;
         Country = country;
@@ -56,6 +71,16 @@ public class Company
     }
     public Company(Company companyFromJSON)
     {
+        this.Profit = companyFromJSON.Profit;
+        this.EBITDA = companyFromJSON.EBITDA;
+        this.ClearProfit = companyFromJSON.ClearProfit;
+        this.Actives = companyFromJSON.Actives;
+        this.Debt = companyFromJSON.Debt;
+        this.DivProfit = companyFromJSON.DivProfit;
+        this.PE = companyFromJSON.PE;
+        this.PS = companyFromJSON.PS;
+        this.PBV = companyFromJSON.PBV;
+        this.EVEBITDA = companyFromJSON.EVEBITDA;
         var country = GameManager._instance.Countries[companyFromJSON.Country.ID];
     
         Country = country;
