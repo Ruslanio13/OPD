@@ -241,6 +241,10 @@ public class ETF : Securities
         }
         DeltaPrice = (_priceHistory[1499] - _priceHistory[1498]) / _priceHistory[1499] * 100f;
     }
+    public override string GetName()
+    {
+        return ParentCompany.ETFName;
+    }
 }
 
 [System.Serializable]

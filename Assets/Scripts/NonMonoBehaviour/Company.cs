@@ -9,6 +9,8 @@ public class Company
     private List<float> _shareHistory;
     public Securities DisplayedSec;
     public Country Country{get; private set;}
+    public string ETFName{get; private set;}
+
     [JsonIgnore]
     public Share CompanyShare;
     [JsonIgnore]
@@ -51,7 +53,7 @@ public class Company
     public string GetNameOfCompany() => CompanyName;
 
     [JsonConstructor]
-    public Company(string CompanyName, Country country, float Profit, float EBITDA, float ClearProfit, float Actives, float Debt, float DivProfit, float PE, float PS, float PBV, float EVEBITDA)
+    public Company(string CompanyName, Country country, float Profit, float EBITDA, float ClearProfit, float Actives, float Debt, float DivProfit, float PE, float PS, float PBV, float EVEBITDA, string ETFName)
     {
         this.Profit = Profit;
         this.EBITDA = EBITDA;
@@ -63,6 +65,7 @@ public class Company
         this.PS = PS;
         this.PBV = PBV;
         this.EVEBITDA = EVEBITDA;
+        this.ETFName = ETFName;
 
         _minPriceChange = -2f;
         _maxPriceChange = 2f;
@@ -81,6 +84,7 @@ public class Company
         this.PS = companyFromJSON.PS;
         this.PBV = companyFromJSON.PBV;
         this.EVEBITDA = companyFromJSON.EVEBITDA;
+        this.ETFName = companyFromJSON.ETFName;
         var country = GameManager._instance.Countries[companyFromJSON.Country.ID];
     
         Country = country;

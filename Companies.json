@@ -1,27 +1,11 @@
-/*
-   Countries.Add(new Country("Russia", Countries.Count));                           //0
-        Countries.Add(new Country("USA", Countries.Count));              //1
-        Countries.Add(new Country("Ukraine", Countries.Count));              //2
-        Countries.Add(new Country("China", Countries.Count));                //3
-        Countries.Add(new Country("Tajikistan", Countries.Count));               //4
-        Countries.Add(new Country("Germany", Countries.Count));              //5
-        Countries.Add(new Country("Czech Republic", Countries.Count));               //6
-        Countries.Add(new Country("Switzerland", Countries.Count));              //7
-        Countries.Add(new Country("Kazakhstan", Countries.Count));               //8
-        Countries.Add(new Country("Sweden", Countries.Count));               //9
-        Countries.Add(new Country("Japan", Countries.Count));                //10
-        Countries.Add(new Country("United Kingdom", Countries.Count));               //11
-        Countries.Add(new Country("South Korea", Countries.Count));              //12
-*/
-
-
 [
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
+      "Name": "Россия",
       "ID": 0
     },
+    "ETFName": "null",
     "CompanyName": "Sberbank",
     "Profit": 1.0,
     "EBITDA": 0.0,
@@ -34,13 +18,13 @@
     "PBV": 0.0,
     "EVEBITDA": 0.0
   },
-
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
+      "Name": "Россия",
       "ID": 0
     },
+    "ETFName": "null",
     "CompanyName": "VTB",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -56,9 +40,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
+      "Name": "Россия",
       "ID": 0
     },
+    "ETFName": "null",
     "CompanyName": "Tinkoff",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -74,9 +59,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
+      "Name": "Россия",
       "ID": 0
     },
+    "ETFName": "null",
     "CompanyName": "Alpha",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -92,9 +78,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "USA",
+      "Name": "США",
       "ID": 1
     },
+    "ETFName": "null",
     "CompanyName": "Amazon",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -110,9 +97,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "USA",
+      "Name": "США",
       "ID": 1
     },
+    "ETFName": "null",
     "CompanyName": "Asos",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -128,9 +116,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
+      "Name": "Россия",
       "ID": 0
     },
+    "ETFName": "null",
     "CompanyName": "DNS",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -146,9 +135,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "South Korea",
+      "Name": "Южная Корея",
       "ID": 12
     },
+    "ETFName": "null",
     "CompanyName": "Samsung",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -164,9 +154,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "USA",
+      "Name": "США",
       "ID": 1
     },
+    "ETFName": "null",
     "CompanyName": "Apple",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -182,9 +173,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "China",
+      "Name": "Китай",
       "ID": 3
     },
+    "ETFName": "null",
     "CompanyName": "Xiaomi",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -200,9 +192,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "China",
+      "Name": "Китай",
       "ID": 3
     },
+    "ETFName": "null",
     "CompanyName": "Meizu",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -218,9 +211,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "USA",
+      "Name": "США",
       "ID": 1
     },
+    "ETFName": "null",
     "CompanyName": "LG",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -236,9 +230,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "China",
+      "Name": "Китай",
       "ID": 3
     },
+    "ETFName": "null",
     "CompanyName": "Lenovo",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -254,9 +249,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "USA",
+      "Name": "США",
       "ID": 1
     },
+    "ETFName": "null",
     "CompanyName": "JBL",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -272,9 +268,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "China",
+      "Name": "Китай",
       "ID": 3
     },
+    "ETFName": "null",
     "CompanyName": "Oppo",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -290,9 +287,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
+      "Name": "Россия",
       "ID": 0
     },
+    "ETFName": "null",
     "CompanyName": "Gazprom",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -308,9 +306,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Japan",
+      "Name": "Япония",
       "ID": 10
     },
+    "ETFName": "null",
     "CompanyName": "Sony",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -326,9 +325,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
+      "Name": "Россия",
       "ID": 0
     },
+    "ETFName": "null",
     "CompanyName": "Magnit",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -344,9 +344,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
+      "Name": "Россия",
       "ID": 0
     },
+    "ETFName": "null",
     "CompanyName": "Rosneft",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -362,9 +363,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
+      "Name": "Россия",
       "ID": 0
     },
+    "ETFName": "null",
     "CompanyName": "Yandex",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -380,9 +382,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
+      "Name": "Россия",
       "ID": 0
     },
+    "ETFName": "null",
     "CompanyName": "Ozon",
     "Profit": 0.0,
     "EBITDA": 0.0,
@@ -398,9 +401,10 @@
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Russia",
+      "Name": "Россия",
       "ID": 0
     },
+    "ETFName": "null",
     "CompanyName": "Nornikel",
     "Profit": 0.0,
     "EBITDA": 0.0,
