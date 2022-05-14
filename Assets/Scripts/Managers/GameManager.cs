@@ -107,19 +107,19 @@ public class GameManager : MonoBehaviour
 
     public void InitializeCountries()
     {
-        Countries.Add(new Country("Russia", Countries.Count));                           //0
-        Countries.Add(new Country("USA", Countries.Count));              //1
-        Countries.Add(new Country("Ukraine", Countries.Count));              //2
-        Countries.Add(new Country("China", Countries.Count));                //3
-        Countries.Add(new Country("Tajikistan", Countries.Count));               //4
-        Countries.Add(new Country("Germany", Countries.Count));              //5
-        Countries.Add(new Country("Czech Republic", Countries.Count));               //6
-        Countries.Add(new Country("Switzerland", Countries.Count));              //7
-        Countries.Add(new Country("Kazakhstan", Countries.Count));               //8
-        Countries.Add(new Country("Sweden", Countries.Count));               //9
-        Countries.Add(new Country("Japan", Countries.Count));                //10
-        Countries.Add(new Country("United Kingdom", Countries.Count));               //11
-        Countries.Add(new Country("South Korea", Countries.Count));              //12
+        Countries.Add(new Country("Россия", Countries.Count));                           //0
+        Countries.Add(new Country("США", Countries.Count));              //1
+        Countries.Add(new Country("Украина", Countries.Count));              //2
+        Countries.Add(new Country("Китай", Countries.Count));                //3
+        Countries.Add(new Country("Таджикистан", Countries.Count));               //4
+        Countries.Add(new Country("Германия", Countries.Count));              //5
+        Countries.Add(new Country("Чешская республика", Countries.Count));               //6
+        Countries.Add(new Country("Швейцария", Countries.Count));              //7
+        Countries.Add(new Country("Казахстан", Countries.Count));               //8
+        Countries.Add(new Country("Швеция", Countries.Count));               //9
+        Countries.Add(new Country("Япония", Countries.Count));                //10
+        Countries.Add(new Country("Великобритания", Countries.Count));               //11
+        Countries.Add(new Country("Южная Корея", Countries.Count));              //12
     }
     public void InitializeCompanies(List<Company> companies)
     {

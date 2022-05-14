@@ -55,7 +55,9 @@ public class ShortInfo : MonoBehaviour
         Valute currentVal = GameManager._instance.CurrentValute;
 
         if(GameManager._instance.CurrentSecurity.GetType() == typeof(Valute))
-            deltaPrice = ((sec as Valute).GetPriceInCurrentValue() - (sec as Valute).GetPreviousPriceInCurrentValue()) / (sec as Valute).GetPreviousPriceInCurrentValue() * 100f;
+            deltaPrice = ((sec as Valute).GetPriceInCurrentValue() - (sec as Valute).GetPreviousPriceInCurrentValue()) / 
+            (sec as Valute).GetPreviousPriceInCurrentValue() * 100f;
+            
         else
             deltaPrice = sec.DeltaPrice;
 

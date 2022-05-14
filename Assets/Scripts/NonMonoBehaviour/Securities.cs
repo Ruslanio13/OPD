@@ -261,9 +261,9 @@ public class Valute : Securities
         Name = name;
         ParentCompany = null;
     }
-    public float GetPriceInCurrentValue() => GameManager._instance.CurrentValute.Price / Price;
+    public float GetPriceInCurrentValue() => _priceHistory[_priceHistory.Count - 1] / GameManager._instance.CurrentValute._priceHistory[_priceHistory.Count - 1];
     public float GetSellPriceInCurrentValue() => GameManager._instance.CurrentValute.Price / Price * (100f - PreGameManager._instance.CurrentBroker.Commision) / 100f;
-    public float GetPreviousPriceInCurrentValue() => GameManager._instance.CurrentValute._priceHistory[_priceHistory.Count - 2] / _priceHistory[_priceHistory.Count - 2];
+    public float GetPreviousPriceInCurrentValue() => _priceHistory[_priceHistory.Count - 2] / GameManager._instance.CurrentValute._priceHistory[_priceHistory.Count - 2];
     public override void UpdatePrice(bool reducePrice = true)
     {
 
@@ -271,13 +271,15 @@ public class Valute : Securities
         {
             DeltaPrice = 0;
             Price = 1;
-            _priceHistory.Add(Price);
+            _priceHistory.Add(1/Price);
             return;
         }
 
         DeltaPrice = UnityEngine.Random.Range(-2f, 2f);
         Price += Price * DeltaPrice / 100;
         _priceHistory.Add(1/Price);
+        
+
     }
     public override void AddTransaction(int amount, float pricePerOne)
     {
