@@ -164,7 +164,6 @@ public class GameManager : MonoBehaviour
         }
 
         _graph.ResetPosition();
-        _graph.UpdateGraph();
         BalanceManager._instance.UpdateAmountOfValuteOnGUI();
     }
 

@@ -20,14 +20,15 @@ public class Graph : MonoBehaviour
     private void SetAmountOfDots(int v)
     {
         _graph.positionCount = v;
-        _stepX = 800 / v;
+        _stepX = 800 / v * Screen.width / 1920f;
     }
 
     private void Start()
     {
+        _deltaX *= Screen.width / 1920f;
         SetAmountOfDots(50);
         ResetPosition();
-        UpdateGraph();
+        
     }
 
     public void UpdateGraph()
@@ -44,6 +45,7 @@ public class Graph : MonoBehaviour
             else
                 currentPrice = GameManager._instance.CurrentSecurity._priceHistory[i];
             
+            var temp = (Screen.width - 1920f);
             _graph.SetPosition(g, new Vector2(g * _stepX, currentPrice * _visualScale));
         }
 
@@ -85,9 +87,10 @@ public class Graph : MonoBehaviour
         }
 
         if (_maxY != _minY)
-            _visualScale = 350f/(_maxY - _minY);
+            _visualScale = 350f/(_maxY - _minY) * Screen.width / 1920f;
         else   
-            _visualScale = 1;
+            _visualScale = 1 * Screen.width / 1920f;
+        UpdateGraph();
 
     }
 }

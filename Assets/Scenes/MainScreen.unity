@@ -17146,7 +17146,7 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -400, y: -300, z: 0}
+  - {x: 0, y: 0, z: 0}
   - {x: 400, y: -300, z: 0}
   - {x: 400, y: -300, z: 0}
   - {x: 400, y: -300, z: 0}
@@ -18780,7 +18780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8322678563266725715, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -249.6657
+      value: -249.66568
       objectReference: {fileID: 0}
     - target: {fileID: 8322678563266725715, guid: 4986f731f7c9f2c438b53373c001c71f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
