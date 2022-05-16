@@ -11,7 +11,7 @@ public class PortfolioManager : MonoBehaviour
 
     [SerializeField] private GameObject _shareInfoPrefab;
     [SerializeField] private GameObject _obligationInfoPrefab;
-    [SerializeField] private Transform _portfolioParentTForm;
+    [SerializeField] private RectTransform _portfolioParentForm;
     [SerializeField] private Button GoToPortfolio;
     [SerializeField] private Button _selShareButton;
     [SerializeField] private Button _selObligationsButton;
@@ -92,11 +92,14 @@ public class PortfolioManager : MonoBehaviour
             Destroy(_portfolioInUI[i].gameObject);
         }
         _portfolioInUI.Clear();
+        _portfolioParentForm.sizeDelta = Vector2.zero;
+
         foreach (Securities sec in Portfolio)
         {
             if (sec.GetType() == reqSecType)
             {
-                tempGO = Instantiate(infoPrefab, _portfolioParentTForm);
+                tempGO = Instantiate(infoPrefab, _portfolioParentForm);
+                _portfolioParentForm.sizeDelta += new Vector2(0, 200f * Screen.height / 1920f);
                 tempInfo = tempGO.GetComponent<PortfolioShortInfo>();
                 tempInfo.SetInfo(sec);
 
