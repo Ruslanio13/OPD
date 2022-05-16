@@ -45,7 +45,7 @@ public class Graph : MonoBehaviour
             else
                 currentPrice = GameManager._instance.CurrentSecurity._priceHistory[i];
             
-            var temp = (Screen.width - 1920f);
+        
             _graph.SetPosition(g, new Vector2(g * _stepX, currentPrice * _visualScale));
         }
 
