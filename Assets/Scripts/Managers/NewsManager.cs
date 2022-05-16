@@ -5,7 +5,7 @@ using TMPro;
 
 public class NewsManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _newsButtonText;
+    [SerializeField] private List<TextMeshProUGUI> _newsButtonsText = new List<TextMeshProUGUI>();
     [SerializeField] private RectTransform _localNewsFeedRT;
     [SerializeField] private RectTransform _globalNewsFeedRT;
     [SerializeField] GameObject localNewsFeed;
@@ -100,12 +100,14 @@ public class NewsManager : MonoBehaviour
         _isGlobalNews = !_isGlobalNews;
         if (!_isGlobalNews)
         {
-            _newsButtonText.text = "Global news";
+            foreach (var text in _newsButtonsText)
+                text.text = "Global news";
             _scrollbar.content = _localNewsFeedRT;
         }
         else
         {
-            _newsButtonText.text = "Local news";
+            foreach (var text in _newsButtonsText)
+                text.text = "Local news";
             _scrollbar.content = _globalNewsFeedRT;
         }
 
