@@ -44,9 +44,9 @@ public class BalanceManager : MonoBehaviour
         Valutes.Add(new Valute("фунт", '€', GameManager._instance.Countries[11]));
         Valutes.Add(new Valute("юань", '€', GameManager._instance.Countries[3]));
         Valutes.Add(new Valute("йен", '€', GameManager._instance.Countries[10]));
-        Valutes.Add(new Valute("шведская крона", '€', GameManager._instance.Countries[9]));
+        Valutes.Add(new Valute("швед. крона", '€', GameManager._instance.Countries[9]));
         Valutes.Add(new Valute("чешская крона", '€', GameManager._instance.Countries[6]));
-        Valutes.Add(new Valute("швейцарский франк", '€', GameManager._instance.Countries[7]));
+        Valutes.Add(new Valute("швейц. франк", '€', GameManager._instance.Countries[7]));
         Valutes.Add(new Valute("вон", '€', GameManager._instance.Countries[12]));
         Valutes.Add(new Valute("гривна", '€', GameManager._instance.Countries[2]));
         Valutes.Add(new Valute("тенге", '€', GameManager._instance.Countries[8]));
