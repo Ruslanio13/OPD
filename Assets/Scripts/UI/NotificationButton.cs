@@ -9,7 +9,6 @@ public class NotificationButton : MonoBehaviour
     public void DeleteNot() => Destroy(gameObject);
     public void Quit() {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
     }
 
     public void SetInfo(Securities sec, float amountOfMoney)

@@ -37,7 +37,7 @@ public class NewsManager : MonoBehaviour
         int numberOfRandomNew;
         News temp;
 
-        _localNewsFeedRT.sizeDelta += new Vector2(0, 375f);
+        _localNewsFeedRT.sizeDelta += new Vector2(0, 750f * Screen.height / 1920f);
         
         for (i = 0; i < companies.Count; i++)
         {
@@ -57,7 +57,7 @@ public class NewsManager : MonoBehaviour
         GameObject tempGO;
         News temp;
 
-        _globalNewsFeedRT.sizeDelta += new Vector2(0, 375f);
+        _globalNewsFeedRT.sizeDelta += new Vector2(0, 750f * Screen.height / 1920f);
 
         countryID = UnityEngine.Random.Range(0, countries.Count);
         numberOfPattern = UnityEngine.Random.Range(0, globalNewsPatterns.Count);
@@ -86,7 +86,7 @@ public class NewsManager : MonoBehaviour
         {
             if (AllLocalNews[i].comp == company)
             {
-                _localNewsFeedRT.sizeDelta += new Vector2(0, 375);
+                _localNewsFeedRT.sizeDelta += new Vector2(0, 750f * Screen.height / 1920f);
                 temp = Instantiate(newsPrefab, localNewsFeed.transform);
                 temp.GetComponent<NewsShortInfo>().SetUpNews(AllLocalNews[i]);
                 _newsInUI.Add(temp.GetComponent<NewsShortInfo>());
