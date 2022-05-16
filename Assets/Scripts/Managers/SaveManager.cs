@@ -21,7 +21,7 @@ public class SaveManager : MonoBehaviour
     private void Start() {
         try
         {
-            _companyJSONList = JsonConvert.DeserializeObject<List<Company>>(File.ReadAllText("Companies.json"));
+            _companyJSONList = JsonConvert.DeserializeObject<List<Company>>(File.ReadAllText("Assets/Companies.json"));
         }
         catch(Exception)
         {
