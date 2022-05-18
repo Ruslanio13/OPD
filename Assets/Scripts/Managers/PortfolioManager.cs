@@ -99,7 +99,7 @@ public class PortfolioManager : MonoBehaviour
             if (sec.GetType() == reqSecType)
             {
                 tempGO = Instantiate(infoPrefab, _portfolioParentForm);
-                _portfolioParentForm.sizeDelta += new Vector2(0, 200f * Screen.height / 1920f);
+                _portfolioParentForm.sizeDelta += new Vector2(0, 150f * Screen.height / 1920f);
                 tempInfo = tempGO.GetComponent<PortfolioShortInfo>();
                 tempInfo.SetInfo(sec);
 
@@ -133,6 +133,8 @@ public class PortfolioManager : MonoBehaviour
             RemoveSecurities(securities, amount);
             BalanceManager._instance.SellIn(securities, sum);
 
+
+
         }
         else
             Debug.Log("Not Enough Securities");
@@ -145,34 +147,32 @@ public class PortfolioManager : MonoBehaviour
         if (securities.GetType() == typeof(Obligation))
         {
             infoPrefab = _obligationInfoPrefab;
-            Portfolio.Add(new Obligation(securities as Obligation, 
-            securities.ParentCompany.GetNameOfCompany(), amount));
+            var temp = new Obligation(securities as Obligation,  securities.ParentCompany.GetNameOfCompany(), amount);
+            temp.AddTransaction(amount, securities.Price / GameManager._instance.CurrentValute.Price);
+            Portfolio.Add(temp);
         }
         else
         {
             infoPrefab = _shareInfoPrefab;
-            if (securities.AmountInPortolio > 0)
-            {
-                securities.SetAmount(securities.AmountInPortolio + amount);
-                securities.AddTransaction(amount, securities.Price / GameManager._instance.CurrentValute.Price);
-            }
-            else
-            {
+            if (securities.AmountInPortolio == 0)
                 Portfolio.Add(securities);
-                securities.SetAmount(securities.AmountInPortolio + amount);
-                securities.AddTransaction(amount, securities.Price / GameManager._instance.CurrentValute.Price);
-            }
+
+            securities.SetAmount(securities.AmountInPortolio + amount);
+            securities.AddTransaction(amount, securities.Price / GameManager._instance.CurrentValute.Price);
         }
         UpdatePortfolio();
     }
 
     public void RemoveSecurities(Securities securities, int amount)
     {
+
         if (securities.GetType() == typeof(Obligation))
         {
             Portfolio.Remove(securities);
             Destroy(FindInUIList(securities).gameObject);
             _portfolioInUI.Remove(FindInUIList(securities));
+            _portfolioParentForm.sizeDelta -= new Vector2(0, 150f * Screen.height / 1920f);
+
         }
         else
         {
@@ -180,6 +180,7 @@ public class PortfolioManager : MonoBehaviour
             {
                 if (amount == securities.AmountInPortolio)
                 {
+                    _portfolioParentForm.sizeDelta -= new Vector2(0, 150f * Screen.height / 1920f);
                     Portfolio.Remove(securities);
                     Destroy(FindInUIList(securities).gameObject);
                     _portfolioInUI.Remove(FindInUIList(securities));
@@ -204,6 +205,7 @@ public class PortfolioManager : MonoBehaviour
                     }
                     if (securities.TransHistory[j][0] == 0)
                         securities.TransHistory.RemoveAt(j);
+
                     j--;
                 }
             }

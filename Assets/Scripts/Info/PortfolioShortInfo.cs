@@ -71,6 +71,9 @@ public class PortfolioShortInfo : MonoBehaviour
         {
             _name.text = (securities as Obligation).ParentCompanyName;
             dueTo.text = "Количество дней до выплаты: " + (securities as Obligation).DueTo.ToString();
+            _spendMoney.text = ShowSpentInCurrentVal(securities).ToString("0.00");
+            myAmountOfSecurities.text = securities.AmountInPortolio.ToString();
+
         }
         else if(securities.GetType() == typeof(Valute))
         {
@@ -108,11 +111,11 @@ public class PortfolioShortInfo : MonoBehaviour
                 break;
             }
 
-        if(sec.GetType() == typeof(Share) || sec.GetType() == typeof(ETF))
+        if(sec.GetType() != typeof(Valute))
             for (int i = 0; i < sec.TransHistory.Count; i++)
                 total += sec.TransHistory[i][0] * sec.TransHistory[i][1] * sec.TransHistory[i][valID + 2];
         
-        else if(sec.GetType() == typeof(Valute))
+        else 
             for (int i = 0; i < sec.TransHistory.Count; i++)
                 total += sec.TransHistory[i][0] / sec.TransHistory[i][1] * sec.TransHistory[i][valID + 2];
             

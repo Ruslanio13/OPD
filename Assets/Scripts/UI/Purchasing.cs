@@ -40,7 +40,7 @@ public class Purchasing : MonoBehaviour
     }
     public void Sell()
     {
-        if (int.TryParse(amountText.text, out amount))
+        if (int.TryParse(amountText.text, out amount) && !(GameManager._instance.CurrentSecurity is Obligation))
         {
             confirmationTable.SetActive(true);
             prePurchaseTable.SetActive(false);
