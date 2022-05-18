@@ -220,7 +220,7 @@ public class GameManager : MonoBehaviour
                 break;
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(40f);
         }
     }
 
