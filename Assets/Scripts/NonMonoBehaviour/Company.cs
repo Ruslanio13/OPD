@@ -74,19 +74,14 @@ public class Company
     }
     public Company(Company companyFromJSON)
     {
-        this.Profit = companyFromJSON.Profit;
-        this.EBITDA = companyFromJSON.EBITDA;
-        this.ClearProfit = companyFromJSON.ClearProfit;
-        this.Actives = companyFromJSON.Actives;
-        this.Debt = companyFromJSON.Debt;
-        this.DivProfit = companyFromJSON.DivProfit;
-        this.PE = companyFromJSON.PE;
-        this.PS = companyFromJSON.PS;
-        this.PBV = companyFromJSON.PBV;
-        this.EVEBITDA = companyFromJSON.EVEBITDA;
-        this.ETFName = companyFromJSON.ETFName;
         var country = GameManager._instance.Countries[companyFromJSON.Country.ID];
-    
+        if(country.ID != 0)
+            SetAdditionalInfo(companyFromJSON, BalanceManager._instance.Valutes[0].Price);
+        else
+            SetAdditionalInfo(companyFromJSON);
+
+        this.ETFName = companyFromJSON.ETFName;
+
         Country = country;
         this.CompanyName = companyFromJSON.CompanyName;
 
@@ -98,6 +93,21 @@ public class Company
         CompanyObligation.CalculateAveragePrice();
 
         country.HandlePriceVolatility += ChangePriceVolatility;
+    }
+
+    private void SetAdditionalInfo(Company companyFromJSON, float valutePrice = 1)
+    {
+
+        this.Profit = companyFromJSON.Profit * valutePrice;
+        this.EBITDA = companyFromJSON.EBITDA * valutePrice;
+        this.ClearProfit = companyFromJSON.ClearProfit * valutePrice;
+        this.Actives = companyFromJSON.Actives * valutePrice;
+        this.Debt = companyFromJSON.Debt * valutePrice;
+        this.DivProfit = companyFromJSON.DivProfit * valutePrice;
+        this.PE = companyFromJSON.PE * valutePrice;
+        this.PS = companyFromJSON.PS * valutePrice;
+        this.PBV = companyFromJSON.PBV * valutePrice;
+        this.EVEBITDA = companyFromJSON.EVEBITDA * valutePrice;
     }
 
     public void UpdatePrice()
