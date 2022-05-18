@@ -279,7 +279,7 @@ public class GameManager : MonoBehaviour
             temp2 = temp.GetComponent<ShortInfo>();
             temp2.SetInfo(market[i]);
             _displayedSecurities.Add(temp.GetComponent<ShortInfo>());
-            _shortInfoListTransform.sizeDelta += new Vector2(0, 40f * Screen.height / 1920f);
+            _shortInfoListTransform.sizeDelta += new Vector2(0, 80f * Screen.height / 1920f);
         }
         UpdateAllInformation(CurrentSecurity);
     }

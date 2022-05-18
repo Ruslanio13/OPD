@@ -24,7 +24,7 @@ public class NotificationButton : MonoBehaviour
 
     public void SetInfo()
     {
-        _textInfo.text = "Round is over!";
+        _textInfo.text = "Раунд закончился!";
         _quitButton.SetActive(true);
         _okButton.SetActive(false);
     }

@@ -70,7 +70,7 @@ public class PortfolioShortInfo : MonoBehaviour
         else if (securities.GetType() == typeof(Obligation))
         {
             _name.text = (securities as Obligation).ParentCompanyName;
-            dueTo.text = "Будет выплачено через: " + (securities as Obligation).DueTo.ToString() + " дней ";
+            dueTo.text = "Количество дней до выплаты: " + (securities as Obligation).DueTo.ToString();
         }
         else if(securities.GetType() == typeof(Valute))
         {
