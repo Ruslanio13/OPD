@@ -101,13 +101,13 @@ public class NewsManager : MonoBehaviour
         if (!_isGlobalNews)
         {
             foreach (var text in _newsButtonsText)
-                text.text = "Global news";
+                text.text = "Мировые новости";
             _scrollbar.content = _localNewsFeedRT;
         }
         else
         {
             foreach (var text in _newsButtonsText)
-                text.text = "Local news";
+                text.text = "Локальные новости";
             _scrollbar.content = _globalNewsFeedRT;
         }
 

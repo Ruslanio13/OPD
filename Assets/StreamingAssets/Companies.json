@@ -6,17 +6,17 @@
       "ID": 0
     },
     "ETFName": "WTHB",
-    "CompanyName": "Sberbank",
-    "Profit": 1.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
+    "CompanyName": "ВиКэй (Мэил)",
+    "Profit": 128.9,
+    "EBITDA": 22.7,
+    "ClearProfit": -67.7,
+    "Actives": 269.9,
+    "Debt": 73.5,
     "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "PE": -1.19,
+    "PS": 0.63,
+    "PBV": -3.04,
+    "EVEBITDA": 5.95
   },
   {
     "DisplayedSec": null,
@@ -25,17 +25,17 @@
       "ID": 0
     },
     "ETFName": "SBJB",
-    "CompanyName": "VTB",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
+    "CompanyName": "Азон",
+    "Profit": 178.2,
+    "EBITDA": -41.2,
+    "ClearProfit": -56.8,
+    "Actives": 241.3,
+    "Debt": 62.1,
     "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "PE": -7.11,
+    "PS": 2.27,
+    "PBV": 13.7,
+    "EVEBITDA": -8.25
   },
   {
     "DisplayedSec": null,
@@ -44,14 +44,14 @@
       "ID": 0
     },
     "ETFName": "AMRB",
-    "CompanyName": "Tinkoff",
+    "CompanyName": "Збербанк (ЗБЕР)",
     "Profit": 0.0,
     "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
+    "ClearProfit": 1251,
+    "Actives": 41165,
+    "Debt": 2409,
     "DivProfit": 0.0,
-    "PE": 0.0,
+    "PE": 2.29,
     "PS": 0.0,
     "PBV": 0.0,
     "EVEBITDA": 0.0
@@ -63,55 +63,55 @@
       "ID": 0
     },
     "ETFName": "AMIJ",
-    "CompanyName": "Alpha",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
+    "CompanyName": "Воздухфлот",
+    "Profit": 491.7,
+    "EBITDA": 116.5,
+    "ClearProfit": -34.5,
+    "Actives": 1106,
+    "Debt": 798.3,
     "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "PE": -2.16,
+    "PS": 0.15,
+    "PBV": -0.52,
+    "EVEBITDA": 6.68
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "США",
-      "ID": 1
+      "Name": "Россия",
+      "ID": 0
     },
     "ETFName": "TMOS",
-    "CompanyName": "Amazon",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
+    "CompanyName": "Газпрод",
+    "Profit": 10241,
+    "EBITDA": 3687,
+    "ClearProfit": 2093,
+    "Actives": 27047,
+    "Debt": 4884,
     "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "PE": 2.92,
+    "PS": 0.60,
+    "PBV": 0.38,
+    "EVEBITDA": 2.44
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "США",
-      "ID": 1
+      "Name": "Россия",
+      "ID": 0
     },
-    "ETFName": "DIWD",
-    "CompanyName": "Asos",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
-    "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "ETFName": "TMOS",
+    "CompanyName": "ГМК Севникель",
+    "Profit": 1317,
+    "EBITDA": 775.9,
+    "ClearProfit": 478.6,
+    "Actives": 1741,
+    "Debt": 759.7,
+    "DivProfit": 7.1,
+    "PE": 6.82,
+    "PS": 2.48,
+    "PBV": 12.8,
+    "EVEBITDA": 4.66
   },
   {
     "DisplayedSec": null,
@@ -120,169 +120,169 @@
       "ID": 0
     },
     "ETFName": "AKSP",
-    "CompanyName": "DNS",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
-    "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "CompanyName": "Рукойл",
+    "Profit": 9431,
+    "EBITDA": 1404,
+    "ClearProfit": 	773.4,
+    "Actives": 6865,
+    "Debt": 758.0,
+    "DivProfit": 7.6,
+    "PE": 3.80,
+    "PS": 0.31,
+    "PBV": 0.66,
+    "EVEBITDA": 2.15
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Южная Корея",
-      "ID": 12
+      "Name": "Россия",
+      "ID": 0
     },
-    "ETFName": "AMEM",
-    "CompanyName": "Samsung",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
-    "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "ETFName": "AKSP",
+    "CompanyName": "Лагнит",
+    "Profit": 2006,
+    "EBITDA": 207.0,
+    "ClearProfit": 	48.1,
+    "Actives": 1209,
+    "Debt": 320.7,
+    "DivProfit": 6.1,
+    "PE": 10.3,
+    "PS": 0.25,
+    "PBV": 8.23,
+    "EVEBITDA": 3.49
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "США",
-      "ID": 1
+      "Name": "Россия",
+      "ID": 0
     },
     "ETFName": "SBRI",
-    "CompanyName": "Apple",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
-    "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "CompanyName": "МТЦ",
+    "Profit": 534.4,
+    "EBITDA": 226.4,
+    "ClearProfit": 63.5,
+    "Actives": 1016,
+    "Debt": 462.1,
+    "DivProfit": 4.8,
+    "PE": 6.85,
+    "PS": 0.81,
+    "PBV": -3.26,
+    "EVEBITDA": 3.64
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Китай",
-      "ID": 3
+      "Name": "Россия",
+      "ID": 0
     },
     "ETFName": "HASL",
-    "CompanyName": "Xiaomi",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
-    "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "CompanyName": "Госнефть",
+    "Profit": 8761,
+    "EBITDA": 2330,
+    "ClearProfit": 1057,
+    "Actives": 16457,
+    "Debt": 6089,
+    "DivProfit": 4.6,
+    "PE": 3.96,
+    "PS": 0.48,
+    "PBV": 0.78,
+    "EVEBITDA": 4.12
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Китай",
-      "ID": 3
+      "Name": "Россия",
+      "ID": 0
     },
     "ETFName": "BZDA",
-    "CompanyName": "Meizu",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
+    "CompanyName": "Гостелеком",
+    "Profit": 580.1,
+    "EBITDA": 218.8,
+    "ClearProfit": 28.5,
+    "Actives": 1103,
+    "Debt": 444.4,
     "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "PE": 7.19,
+    "PS": 0.35,
+    "PBV": 5.34,
+    "EVEBITDA": 2.74
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "США",
-      "ID": 1
+      "Name": "Россия",
+      "ID": 0
     },
     "ETFName": "TBIO",
-    "CompanyName": "LG",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
+    "CompanyName": "Сургутгазнефть",
+    "Profit": 1536,
+    "EBITDA": 400.0,
+    "ClearProfit": 457.2,
+    "Actives": 6103,
     "Debt": 0.0,
-    "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "DivProfit": 19.5,
+    "PE": 2.39,
+    "PS": 0.71,
+    "PBV": 0.21,
+    "EVEBITDA": -7.24
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Китай",
-      "ID": 3
+      "Name": "Россия",
+      "ID": 0
     },
     "ETFName": "RUSE",
-    "CompanyName": "Lenovo",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
-    "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "CompanyName": "Татарнефть",
+    "Profit": 1265,
+    "EBITDA": 293.2,
+    "ClearProfit": 198.4,
+    "Actives": 1502,
+    "Debt": 32.2,
+    "DivProfit": 6.7,
+    "PE": 4.63,
+    "PS": 0.73,
+    "PBV": 0.98,
+    "EVEBITDA": 2.71
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "США",
-      "ID": 1
+      "Name": "Россия",
+      "ID": 0
     },
     "ETFName": "SBCB",
-    "CompanyName": "JBL",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
+    "CompanyName": "Яндех",
+    "Profit": 389.0,
+    "EBITDA": 23.0,
+    "ClearProfit": 8.01,
+    "Actives": 	511.2,
+    "Debt": 104.5,
     "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "PE": 185.6,
+    "PS": 4.17,
+    "PBV": 12.6,
+    "EVEBITDA": 45.7
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Китай",
-      "ID": 3
+      "Name": "Россия",
+      "ID": 0
     },
     "ETFName": "BSUR",
-    "CompanyName": "Oppo",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
-    "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "CompanyName": "Металлполи",
+    "Profit": 212.9,
+    "EBITDA": 107.9,
+    "ClearProfit": 67.3,
+    "Actives": 382.7,
+    "Debt": 153.3,
+    "DivProfit": 5.1,
+    "PE": 4.52,
+    "PS": 1.43,
+    "PBV": 1.87,
+    "EVEBITDA": 3.95
   },
   {
     "DisplayedSec": null,
@@ -291,36 +291,36 @@
       "ID": 0
     },
     "ETFName": "AMHY",
-    "CompanyName": "Gazprom",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
+    "CompanyName": "Росэнерго",
+    "Profit": 225.2,
+    "EBITDA": 26.7,
+    "ClearProfit": 2.89,
+    "Actives": 379.1,
+    "Debt": 7.51,
     "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "PE": 24.5,
+    "PS": 0.32,
+    "PBV": 0.23,
+    "EVEBITDA": 2.94
   },
   {
     "DisplayedSec": null,
     "Country": {
-      "Name": "Япония",
-      "ID": 10
+      "Name": "Россия",
+      "ID": 0
     },
     "ETFName": "AMSK",
-    "CompanyName": "Sony",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
-    "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "CompanyName": "АгроФос",
+    "Profit": 420.5,
+    "EBITDA": 191.8,
+    "ClearProfit": 130.2,
+    "Actives": 405.4,
+    "Debt": 169.8,
+    "DivProfit": 6.3,
+    "PE": 7.84,
+    "PS": 2.43,
+    "PBV": 6.27,
+    "EVEBITDA": 6.09
   },
   {
     "DisplayedSec": null,
@@ -329,17 +329,17 @@
       "ID": 0
     },
     "ETFName": "AMGR",
-    "CompanyName": "Magnit",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
+    "CompanyName": "Башкирнефть",
+    "Profit": 851.7,
+    "EBITDA": 157.2,
+    "ClearProfit": 83.3,
+    "Actives": 916.1,
+    "Debt": 138.1,
     "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "PE": 2.07,
+    "PS": 0.20,
+    "PBV": 0.31,
+    "EVEBITDA": 1.92
   },
   {
     "DisplayedSec": null,
@@ -348,17 +348,17 @@
       "ID": 0
     },
     "ETFName": "AMLV",
-    "CompanyName": "Rosneft",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
+    "CompanyName": "Полоса",
+    "Profit": 508.9,
+    "EBITDA": 48.1,
+    "ClearProfit": 11.3,
+    "Actives": 343.0,
+    "Debt": 149.0,
     "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "PE": 6.84,
+    "PS": 0.15,
+    "PBV": 0.94,
+    "EVEBITDA": 4.32
   },
   {
     "DisplayedSec": null,
@@ -367,17 +367,17 @@
       "ID": 0
     },
     "ETFName": "VXGD",
-    "CompanyName": "Yandex",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
+    "CompanyName": "Росал",
+    "Profit": 733.3,
+    "EBITDA": 145.0,
+    "ClearProfit": 126.5,
+    "Actives": 1481,
+    "Debt": 569.0,
     "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "PE": 7.73,
+    "PS": 1.33,
+    "PBV": 1.95,
+    "EVEBITDA": 8.78
   },
   {
     "DisplayedSec": null,
@@ -386,17 +386,17 @@
       "ID": 0
     },
     "ETFName": "VXWO",
-    "CompanyName": "Ozon",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
-    "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
+    "CompanyName": "Антипод золото",
+    "Profit": 365.2,
+    "EBITDA": 258.6,
+    "ClearProfit": 166.9,
+    "Actives": 595.1,
+    "Debt": 243.1,
+    "DivProfit": 2.2,
+    "PE": 9.91,
+    "PS": 4.53,
+    "PBV": 6.72,
+    "EVEBITDA": 6.95
   },
   {
     "DisplayedSec": null,
@@ -405,16 +405,928 @@
       "ID": 0
     },
     "ETFName": "OLBE",
-    "CompanyName": "Nornikel",
-    "Profit": 0.0,
-    "EBITDA": 0.0,
-    "ClearProfit": 0.0,
-    "Actives": 0.0,
-    "Debt": 0.0,
-    "DivProfit": 0.0,
-    "PE": 0.0,
-    "PS": 0.0,
-    "PBV": 0.0,
-    "EVEBITDA": 0.0
-  }
+    "CompanyName": "Н.Видео",
+    "Profit": 476.4,
+    "EBITDA": 43.7,
+    "ClearProfit": 3.30,
+    "Actives": 443.4,
+    "Debt": 153.6,
+    "DivProfit": 15.7,
+    "PE": 12.2,
+    "PS": 0.08,
+    "PBV": -0.73,
+    "EVEBITDA": 4.16
+  },
+  {
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "WTHB",
+		"CompanyName": "Эпл",
+		"Profit": 365817,
+		"EBITDA": 123136,
+		"ClearProfit": 94680,
+		"Actives": 351002,
+		"Debt": 62080,
+		"DivProfit": 0.0,
+		"PE": 25.9,
+		"PS": 6.69,
+		"PBV": 38.8,
+		"EVEBITDA": 20.4
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "SBJB",
+		"CompanyName": "АМД",
+		"Profit": 14852,
+		"EBITDA": 3486,
+		"ClearProfit": 3969,
+		"Actives": 11153,
+		"Debt": 582.0,
+		"DivProfit": 0.0,
+		"PE": 31.1,
+		"PS": 8.30,
+		"PBV": 18.6,
+		"EVEBITDA": -0.87
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "AMRB",
+		"CompanyName": "АмазонН",
+		"Profit": 457965,
+		"EBITDA": 64860,
+		"ClearProfit": 26263,
+		"Actives": 382406,
+		"Debt": 113903,
+		"DivProfit": 0.0,
+		"PE": 43.1,
+		"PS": 2.47,
+		"PBV": 10.8,
+		"EVEBITDA": 18.0
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "AMIJ",
+		"CompanyName": "Боинг",
+		"Profit": 62797,
+		"EBITDA": -3989,
+		"ClearProfit": -8503,
+		"Actives": 146846,
+		"Debt": 62419,
+		"DivProfit": 0.0,
+		"PE": -8.87,
+		"PS": 1.2,
+		"PBV": -3.0,
+		"EVEBITDA": -29.5
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "TMOS",
+		"CompanyName": "Дисней",
+		"Profit": 67418,
+		"EBITDA": 8074,
+		"ClearProfit": 2091,
+		"Actives": 203609,
+		"Debt": 0.0,
+		"DivProfit": 0.0,
+		"PE": 93.4,
+		"PS": 2.9,
+		"PBV": -89.8,
+		"EVEBITDA": 24.2
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "DIWD",
+		"CompanyName": "Мета (Фейсбук)",
+		"Profit": 112330,
+		"EBITDA": 55452,
+		"ClearProfit": 40304,
+		"Actives": 169585,
+		"Debt": 12640,
+		"DivProfit": 0.0,
+		"PE": 14.1,
+		"PS": 5.06,
+		"PBV": 4.99,
+		"EVEBITDA": 9.43
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "AKSP",
+		"CompanyName": "Гугл",
+		"Profit": 239210,
+		"EBITDA": 98030,
+		"ClearProfit": 70618,
+		"Actives": 347403,
+		"Debt": 27860,
+		"DivProfit": 0.0,
+		"PE": 21.9,
+		"PS": 6.46,
+		"PBV": 7.01,
+		"EVEBITDA": -1.16
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "AMEM",
+		"CompanyName": "Интел",
+		"Profit": 78474,
+		"EBITDA": 36329,
+		"ClearProfit": 21102,
+		"Actives": 167962,
+		"Debt": 40304,
+		"DivProfit": 0.0,
+		"PE": 8.50,
+		"PS": 2.29,
+		"PBV": 3.23,
+		"EVEBITDA": 5.10
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "SBRI",
+		"CompanyName": "Мастеркард",
+		"Profit": 17788,
+		"EBITDA": 10767,
+		"ClearProfit": 8093,
+		"Actives": 35410,
+		"Debt": 13861,
+		"DivProfit": 0.0,
+		"PE": 40.7,
+		"PS": 18.5,
+		"PBV": -74.5,
+		"EVEBITDA": 31.3
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "HASL",
+		"CompanyName": "Майкрософт",
+		"Profit": 176251,
+		"EBITDA": 90051,
+		"ClearProfit": 67883,
+		"Actives": 335418,
+		"Debt": 63338,
+		"DivProfit": 0.0,
+		"PE": 29.4,
+		"PS": 11.3,
+		"PBV": 21.3,
+		"EVEBITDA": 21.4
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "BZDA",
+		"CompanyName": "Макдональдс",
+		"Profit": 22528,
+		"EBITDA": 11914,
+		"ClearProfit": 7284,
+		"Actives": 52727,
+		"Debt": 48816,
+		"DivProfit": 0.0,
+		"PE": 24.7,
+		"PS": 7.99,
+		"PBV": -21.4,
+		"EVEBITDA": 18.8
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "TBIO",
+		"CompanyName": "Нетфликс",
+		"Profit": 28633,
+		"EBITDA": 18530,
+		"ClearProfit": 5051,
+		"Actives": 42740,
+		"Debt": 15493,
+		"DivProfit": 0.0,
+		"PE": 16.5,
+		"PS": 2.91,
+		"PBV": -6.11,
+		"EVEBITDA": 4.93
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "RUSE",
+		"CompanyName": "Нвидия",
+		"Profit": 24274,
+		"EBITDA": 9517,
+		"ClearProfit": 8207,
+		"Actives": 40632,
+		"Debt": 10944,
+		"DivProfit": 0.0,
+		"PE": 54.5,
+		"PS": 18.4,
+		"PBV": 26.3,
+		"EVEBITDA": 44.1
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "SBCB",
+		"CompanyName": "Твиттер",
+		"Profit": 4799,
+		"EBITDA": 236.8,
+		"ClearProfit": -181.0,
+		"Actives": 14589,
+		"Debt": 5450,
+		"DivProfit": 0.0,
+		"PE": -165.6,
+		"PS": 6.25,
+		"PBV": 5.14,
+		"EVEBITDA": 118.3
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "BSUR",
+		"CompanyName": "Виза",
+		"Profit": 24105,
+		"EBITDA": 17380,
+		"ClearProfit": 12311,
+		"Actives": 82896,
+		"Debt": 20977,
+		"DivProfit": 0.0,
+		"PE": 34.6,
+		"PS": 17.7,
+		"PBV": -70.7,
+		"EVEBITDA": 24.7
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "AMHY",
+		"CompanyName": "Адобе",
+		"Profit": 15099,
+		"EBITDA": 6319,
+		"ClearProfit": 5839,
+		"Actives": 26144,
+		"Debt": 4685,
+		"DivProfit": 0.0,
+		"PE": 33.1,
+		"PS": 12.8,
+		"PBV": 190.0,
+		"EVEBITDA": 30.4
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "AMSK",
+		"CompanyName": "Циско",
+		"Profit": 50789,
+		"EBITDA": 16415,
+		"ClearProfit": 11397,
+		"Actives": 95981,
+		"Debt": 9502,
+		"DivProfit": 0.0,
+		"PE": 18.7,
+		"PS": 4.19,
+		"PBV": 387.9,
+		"EVEBITDA": 12.1
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "AMGR",
+		"CompanyName": "Электроник Артс",
+		"Profit": 6396,
+		"EBITDA": 1359,
+		"ClearProfit": 785.0,
+		"Actives": 13019,
+		"Debt": 1945,
+		"DivProfit": 0.0,
+		"PE": 48.0,
+		"PS": 5.89,
+		"PBV": 28.6,
+		"EVEBITDA": 27.7
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "AMLV",
+		"CompanyName": "ФедЭкс",
+		"Profit": 86641,
+		"EBITDA": 12385,
+		"ClearProfit": 5098,
+		"Actives": 82048,
+		"Debt": 36324,
+		"DivProfit": 0.0,
+		"PE": 11.4,
+		"PS": 0.67,
+		"PBV": 3.33,
+		"EVEBITDA": 7.08
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXGD",
+		"CompanyName": "Форд Мотор",
+		"Profit": 134615,
+		"EBITDA": 16527,
+		"ClearProfit": 2867,
+		"Actives": 252677,
+		"Debt": 145873,
+		"DivProfit": 0.0,
+		"PE": 18.7,
+		"PS": 0.40,
+		"PBV": 1.46,
+		"EVEBITDA": 9.25
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Дженерал Электрик",
+		"Profit": 75757,
+		"EBITDA": 1266,
+		"ClearProfit": -40.0,
+		"Actives": 237133,
+		"Debt": 62888,
+		"DivProfit": 0.0,
+		"PE": -2103,
+		"PS": 1.11,
+		"PBV": 28.5,
+		"EVEBITDA": 92.2
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "OLBE",
+		"CompanyName": "Дженерал Моторс",
+		"Profit": 130938,
+		"EBITDA": 27258,
+		"ClearProfit": 11124,
+		"Actives": 238557,
+		"Debt": 109928,
+		"DivProfit": 0.0,
+		"PE": 4.93,
+		"PS": 0.42,
+		"PBV": 1.01,
+		"EVEBITDA": 5.17
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Дженерал Электрик",
+		"Profit": 75757,
+		"EBITDA": 1266,
+		"ClearProfit": -40.0,
+		"Actives": 237133,
+		"Debt": 62888,
+		"DivProfit": 0.0,
+		"PE": -2103,
+		"PS": 1.11,
+		"PBV": 28.5,
+		"EVEBITDA": 92.2
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Хевлет-Пакард (ХП)",
+		"Profit": 62070,
+		"EBITDA": 5773,
+		"ClearProfit": 4072,
+		"Actives": 35523,
+		"Debt": 8320,
+		"DivProfit": 0.0,
+		"PE": 11.5,
+		"PS": 0.75,
+		"PBV": -4.13,
+		"EVEBITDA": 8.93
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Пейпал",
+		"Profit": 24569,
+		"EBITDA": 6724,
+		"ClearProfit": 4935,
+		"Actives": 74534,
+		"Debt": 8947,
+		"DivProfit": 0.0,
+		"PE": 18.6,
+		"PS": 3.75,
+		"PBV": 7.84,
+		"EVEBITDA": 13.0
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "КуалКом",
+		"Profit": 33566,
+		"EBITDA": 12415,
+		"ClearProfit": 9042,
+		"Actives": 41240,
+		"Debt": 15745,
+		"DivProfit": 0.0,
+		"PE": 17.2,
+		"PS": 4.64,
+		"PBV": 125.1,
+		"EVEBITDA": 12.8
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Валмарт",
+		"Profit": 419883,
+		"EBITDA": 20128,
+		"ClearProfit": 10138,
+		"Actives": 244851,
+		"Debt": 57597,
+		"DivProfit": 0.0,
+		"PE": 36.6,
+		"PS": 0.88,
+		"PBV": 6.96,
+		"EVEBITDA": 20.5
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Старбакс",
+		"Profit": 29060,
+		"EBITDA": 7349,
+		"ClearProfit": 4199,
+		"Actives": 31393,
+		"Debt": 23605,
+		"DivProfit": 0.0,
+		"PE": 20.6,
+		"PS": 2.98,
+		"PBV": -9.27,
+		"EVEBITDA": 14.1
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Джонсон & Джонсон",
+		"Profit": 91446,
+		"EBITDA": 27284,
+		"ClearProfit": 17880,
+		"Actives": 179228,
+		"Debt": 33928,
+		"DivProfit": 0.0,
+		"PE": 26.3,
+		"PS": 5.14,
+		"PBV": -36.0,
+		"EVEBITDA": 17.3
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "ИБМ",
+		"Profit": 74460,
+		"EBITDA": 13057,
+		"ClearProfit": 4765,
+		"Actives": 144214,
+		"Debt": 58978,
+		"DivProfit": 0.0,
+		"PE": 26.0,
+		"PS": 1.67,
+		"PBV": -2.38,
+		"EVEBITDA": 13.4
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Проктер & Гамбл",
+		"Profit": 77138,
+		"EBITDA": 20574,
+		"ClearProfit": 14141,
+		"Actives": 119669,
+		"Debt": 32547,
+		"DivProfit": 0.0,
+		"PE": 26.7,
+		"PS": 4.90,
+		"PBV": -21.1,
+		"EVEBITDA": 19.4
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "КЭТ",
+		"Profit": 48408,
+		"EBITDA": 9518,
+		"ClearProfit": 5149,
+		"Actives": 80784,
+		"Debt": 36784,
+		"DivProfit": 0.0,
+		"PE": 22.5,
+		"PS": 2.39,
+		"PBV": 12.6,
+		"EVEBITDA": 15.0
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "НэкстЭра Энерджи",
+		"Profit": 16418,
+		"EBITDA": 7800,
+		"ClearProfit": 2364,
+		"Actives": 139163,
+		"Debt": 55341,
+		"DivProfit": 0.0,
+		"PE": 59.6,
+		"PS": 8.58,
+		"PBV": 4.43,
+		"EVEBITDA": 25.1
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Найк",
+		"Profit": 46192,
+		"EBITDA": 7800,
+		"ClearProfit": 6083,
+		"Actives": 37917,
+		"Debt": 12790,
+		"DivProfit": 0.0,
+		"PE": 29.8,
+		"PS": 3.92,
+		"PBV": 13.1,
+		"EVEBITDA": -0.12
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Кока-Кола",
+		"Profit": 37802,
+		"EBITDA": 15094,
+		"ClearProfit": 8813,
+		"Actives": 90606,
+		"Debt": 41708,
+		"DivProfit": 0.0,
+		"PE": 32.0,
+		"PS": 7.47,
+		"PBV": -45.4,
+		"EVEBITDA": 20.5
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Убер",
+		"Profit": 14806,
+		"EBITDA": -1590,
+		"ClearProfit": -2477,
+		"Actives": 36884,
+		"Debt": 10935,
+		"DivProfit": 0.0,
+		"PE": -18.3,
+		"PS": 3.05,
+		"PBV": 7.29,
+		"EVEBITDA": -31.2
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "ЮнайтедХелс Груп",
+		"Profit": 277365,
+		"EBITDA": 24543,
+		"ClearProfit": 15426,
+		"Actives": 213045,
+		"Debt": 46965,
+		"DivProfit": 0.0,
+		"PE": 30.1,
+		"PS": 1.67,
+		"PBV": -29.7,
+		"EVEBITDA": 19.8
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Юнайтед Эир",
+		"Profit": 19854,
+		"EBITDA": 3650,
+		"ClearProfit": -3215,
+		"Actives": 69294,
+		"Debt": 39887,
+		"DivProfit": 0.0,
+		"PE": -4.67,
+		"PS": 0.76,
+		"PBV": -7.86,
+		"EVEBITDA": 9.72
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Оракл",
+		"Profit": 40840,
+		"EBITDA": 18644,
+		"ClearProfit": 13952,
+		"Actives": 122924,
+		"Debt": 82718,
+		"DivProfit": 0.0,
+		"PE": 14.2,
+		"PS": 4.84,
+		"PBV": -4.15,
+		"EVEBITDA": 12.9
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Букинг",
+		"Profit": 9215,
+		"EBITDA": 1870,
+		"ClearProfit": 382.0,
+		"Actives": 23341,
+		"Debt": 11329,
+		"DivProfit": 0.0,
+		"PE": 229.5,
+		"PS": 9.51,
+		"PBV": 43.9,
+		"EVEBITDA": 46.4
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Ибэй",
+		"Profit": 11060,
+		"EBITDA": 13861,
+		"ClearProfit": 12484,
+		"Actives": 29257,
+		"Debt": 9306,
+		"DivProfit": 0.0,
+		"PE": 2.39,
+		"PS": 2.70,
+		"PBV": 4.39,
+		"EVEBITDA": 1.78
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Юнион Пацифик",
+		"Profit": 21212,
+		"EBITDA": 11393,
+		"ClearProfit": 6192,
+		"Actives": 62360,
+		"Debt": 30693,
+		"DivProfit": 0.0,
+		"PE": 24.3,
+		"PS": 7.10,
+		"PBV": 10.8,
+		"EVEBITDA": 15.8
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Голдман Сачс",
+		"Profit": 60147,
+		"EBITDA": 35962,
+		"ClearProfit": 22206,
+		"Actives": 1443230,
+		"Debt": 313738,
+		"DivProfit": 0.0,
+		"PE": 4.88,
+		"PS": 1.80,
+		"PBV": 1.07,
+		"EVEBITDA": 11.7
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "ПепсиКо",
+		"Profit": 76681,
+		"EBITDA": 14284,
+		"ClearProfit": 8141,
+		"Actives": 93254,
+		"Debt": 41257,
+		"DivProfit": 0.0,
+		"PE": 29.6,
+		"PS": 3.14,
+		"PBV": -11.2,
+		"EVEBITDA": 19.3
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "ДжиПиМорган Чейз",
+		"Profit": 121637,
+		"EBITDA": 75525,
+		"ClearProfit": 50071,
+		"Actives": 3757576,
+		"Debt": 474916,
+		"DivProfit": 0.0,
+		"PE": 7.31,
+		"PS": 3.01,
+		"PBV": 1.57,
+		"EVEBITDA": -2.08
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Американ Аирлайнс",
+		"Profit": 20455,
+		"EBITDA": -25.0,
+		"ClearProfit": -1062,
+		"Actives": 68437,
+		"Debt": 46655,
+		"DivProfit": 0.0,
+		"PE": -10.7,
+		"PS": 0.56,
+		"PBV": -0.84,
+		"EVEBITDA": -1741
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Броадком",
+		"Profit": 26510,
+		"EBITDA": 13872,
+		"ClearProfit": 6071,
+		"Actives": 75880,
+		"Debt": 40457,
+		"DivProfit": 0.0,
+		"PE": 41.0,
+		"PS": 9.39,
+		"PBV": -7.83,
+		"EVEBITDA": 20.1
+	},
+	{
+		"DisplayedSec": null,
+		"Country": {
+			"Name": "США",
+			"ID": 1
+		},
+		"ETFName": "VXWO",
+		"CompanyName": "Тесла",
+		"Profit": 46848,
+		"EBITDA": 7154,
+		"ClearProfit": 3437,
+		"Actives": 57834,
+		"Debt": 10126,
+		"DivProfit": 0.0,
+		"PE": 219.1,
+		"PS": 16.1,
+		"PBV": 28.3,
+		"EVEBITDA": 104.5
+	}
 ]
