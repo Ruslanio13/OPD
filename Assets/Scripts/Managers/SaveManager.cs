@@ -52,8 +52,8 @@ public class SaveManager : MonoBehaviour
         {
             Debug.Log("No save file. Creating New!");
             GameManager._instance.InitializeCountries();
-            GameManager._instance.InitializeCompanies(_companyJSONList);
             BalanceManager._instance.GenerateValutesList();
+            GameManager._instance.InitializeCompanies(_companyJSONList);
             BalanceManager._instance.CreateNewWallet();
 
             return;

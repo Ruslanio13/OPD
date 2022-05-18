@@ -76,7 +76,7 @@ public class Company
     {
         var country = GameManager._instance.Countries[companyFromJSON.Country.ID];
         if(country.ID != 0)
-            SetAdditionalInfo(companyFromJSON, BalanceManager._instance.Valutes[0].Price);
+            SetAdditionalInfo(companyFromJSON, BalanceManager._instance.Valutes[1].Price);
         else
             SetAdditionalInfo(companyFromJSON);
 
