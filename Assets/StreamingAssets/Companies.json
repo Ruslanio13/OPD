@@ -81,7 +81,7 @@
       "Name": "Россия",
       "ID": 0
     },
-    "ETFName": "TMOS",
+    "ETFName": "TWSS",
     "CompanyName": "Газпрод",
     "Profit": 10241,
     "EBITDA": 3687,
@@ -119,7 +119,7 @@
       "Name": "Россия",
       "ID": 0
     },
-    "ETFName": "AKSP",
+    "ETFName": "AXSP",
     "CompanyName": "Рукойл",
     "Profit": 9431,
     "EBITDA": 1404,
@@ -803,7 +803,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "VXWY",
 		"CompanyName": "Дженерал Электрик",
 		"Profit": 75757,
 		"EBITDA": 1266,
@@ -841,7 +841,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "VXWP",
 		"CompanyName": "Дженерал Электрик",
 		"Profit": 75757,
 		"EBITDA": 1266,
@@ -860,7 +860,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "CXWO",
 		"CompanyName": "Хевлет-Пакард (ХП)",
 		"Profit": 62070,
 		"EBITDA": 5773,
@@ -879,7 +879,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "LXKO",
 		"CompanyName": "Пейпал",
 		"Profit": 24569,
 		"EBITDA": 6724,
@@ -898,7 +898,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "TGFY",
 		"CompanyName": "КуалКом",
 		"Profit": 33566,
 		"EBITDA": 12415,
@@ -917,7 +917,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "FJDE",
 		"CompanyName": "Валмарт",
 		"Profit": 419883,
 		"EBITDA": 20128,
@@ -936,7 +936,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "LDPE",
 		"CompanyName": "Старбакс",
 		"Profit": 29060,
 		"EBITDA": 7349,
@@ -955,7 +955,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "SJRK",
 		"CompanyName": "Джонсон & Джонсон",
 		"Profit": 91446,
 		"EBITDA": 27284,
@@ -974,7 +974,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "DDKE",
 		"CompanyName": "ИБМ",
 		"Profit": 74460,
 		"EBITDA": 13057,
@@ -993,7 +993,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "KPED",
 		"CompanyName": "Проктер & Гамбл",
 		"Profit": 77138,
 		"EBITDA": 20574,
@@ -1012,7 +1012,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "KOEE",
 		"CompanyName": "КЭТ",
 		"Profit": 48408,
 		"EBITDA": 9518,
@@ -1031,7 +1031,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "CKES",
 		"CompanyName": "НэкстЭра Энерджи",
 		"Profit": 16418,
 		"EBITDA": 7800,
@@ -1050,7 +1050,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "PEKF",
 		"CompanyName": "Найк",
 		"Profit": 46192,
 		"EBITDA": 7800,
@@ -1069,7 +1069,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "KOFD",
 		"CompanyName": "Кока-Кола",
 		"Profit": 37802,
 		"EBITDA": 15094,
@@ -1088,7 +1088,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "WQDS",
 		"CompanyName": "Убер",
 		"Profit": 14806,
 		"EBITDA": -1590,
@@ -1107,7 +1107,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "ZCDS",
 		"CompanyName": "ЮнайтедХелс Груп",
 		"Profit": 277365,
 		"EBITDA": 24543,
@@ -1126,7 +1126,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "MDKD",
 		"CompanyName": "Юнайтед Эир",
 		"Profit": 19854,
 		"EBITDA": 3650,
@@ -1145,7 +1145,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "KEDS",
 		"CompanyName": "Оракл",
 		"Profit": 40840,
 		"EBITDA": 18644,
@@ -1164,7 +1164,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "KJDO",
 		"CompanyName": "Букинг",
 		"Profit": 9215,
 		"EBITDA": 1870,
@@ -1183,7 +1183,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "KDPE",
 		"CompanyName": "Ибэй",
 		"Profit": 11060,
 		"EBITDA": 13861,
@@ -1202,7 +1202,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "KFLE",
 		"CompanyName": "Юнион Пацифик",
 		"Profit": 21212,
 		"EBITDA": 11393,
@@ -1221,7 +1221,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "KOPR",
 		"CompanyName": "Голдман Сачс",
 		"Profit": 60147,
 		"EBITDA": 35962,
@@ -1240,7 +1240,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "IROT",
 		"CompanyName": "ПепсиКо",
 		"Profit": 76681,
 		"EBITDA": 14284,
@@ -1259,7 +1259,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "IOSF",
 		"CompanyName": "ДжиПиМорган Чейз",
 		"Profit": 121637,
 		"EBITDA": 75525,
@@ -1278,7 +1278,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "KFEO",
 		"CompanyName": "Американ Аирлайнс",
 		"Profit": 20455,
 		"EBITDA": -25.0,
@@ -1297,7 +1297,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "KDLE",
 		"CompanyName": "Броадком",
 		"Profit": 26510,
 		"EBITDA": 13872,
@@ -1316,7 +1316,7 @@
 			"Name": "США",
 			"ID": 1
 		},
-		"ETFName": "VXWO",
+		"ETFName": "MLFW",
 		"CompanyName": "Тесла",
 		"Profit": 46848,
 		"EBITDA": 7154,

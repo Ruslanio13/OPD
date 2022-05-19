@@ -155,7 +155,7 @@ public class Company
         for(int i = 0; i < UnityEngine.Random.Range(10, 16); i++)
         {
             var randShare = UnityEngine.Random.Range(0, allowedNumbers.Count);
-            var randAmount = UnityEngine.Random.Range(0, 20);
+            var randAmount = UnityEngine.Random.Range(1, 20);
             CompanyETF.AddShareToFond(GameManager._instance.Companies[allowedNumbers[randShare]].CompanyShare, randAmount);
 
             allowedNumbers.RemoveAt(randShare);

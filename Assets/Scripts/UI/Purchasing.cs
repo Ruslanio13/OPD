@@ -32,7 +32,7 @@ public class Purchasing : MonoBehaviour
         {
             confirmationTable.SetActive(true);
             prePurchaseTable.SetActive(false);
-            question.text = "Вы уверены что хотите купить " + Convert.ToInt32(amountText.text) + " ?";
+            question.text = "Вы уверены что хотите купить " + Convert.ToInt32(amountText.text) + "?";
             toSell = false;
         }
         else
@@ -44,7 +44,7 @@ public class Purchasing : MonoBehaviour
         {
             confirmationTable.SetActive(true);
             prePurchaseTable.SetActive(false);
-            question.text = "Вы уверены что хотите продать " + Convert.ToInt32(amountText.text) + " ?";
+            question.text = "Вы уверены что хотите продать " + Convert.ToInt32(amountText.text) + "?";
             toSell = true;
         }
         else

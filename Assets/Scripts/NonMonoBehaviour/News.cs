@@ -18,7 +18,7 @@ public class News
         }
         else
         {
-            TitleText = (obj as Country).Name + " " + template.title;
+            TitleText = "Страна " + (obj as Country).Name + " " + template.title;
             (obj as Country).OnPriceVolatilityChange(template.maxChange, template.minChange);
         }       
        
