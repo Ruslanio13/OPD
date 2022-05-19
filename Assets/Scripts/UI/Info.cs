@@ -6,6 +6,7 @@ public class Info : MonoBehaviour
 {
     [SerializeField] public List<GameObject> _portfolioHelpMessages = new List<GameObject>();
     [SerializeField] public List<GameObject> _marketHelpMessages = new List<GameObject>();
+    [SerializeField] public List<GameObject> _startScreenHelpMessages = new List<GameObject>();
     
     public void ShowMarketHelp()
     {
@@ -56,5 +57,14 @@ public class Info : MonoBehaviour
     public void ClosePortfolioHelp()
     {
         _portfolioHelpMessages[2].SetActive(false);
+    }
+
+    public void ShowStartScreenHelp()
+    {
+        _startScreenHelpMessages[0].SetActive(true);
+    }
+    public void CloseStartScreenHelp()
+    {
+        _startScreenHelpMessages[0].SetActive(false);
     }
 }
